@@ -11,6 +11,15 @@
 		7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27AF5B2B2379B000827166 /* ContentView.swift */; };
 		7F27AF5E2B2379B100827166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F27AF5D2B2379B100827166 /* Assets.xcassets */; };
 		7F27AF612B2379B100827166 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F27AF602B2379B100827166 /* Preview Assets.xcassets */; };
+		7F3B79D42B24DFBF008E03C8 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79D32B24DFBF008E03C8 /* Search.swift */; };
+		7F3B79D62B24DFCD008E03C8 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79D52B24DFCD008E03C8 /* Profile.swift */; };
+		7F3B79D82B24DFE5008E03C8 /* Hack_Land.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79D72B24DFE5008E03C8 /* Hack_Land.swift */; };
+		7F3B79DA2B24DFF3008E03C8 /* Hack_teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79D92B24DFF3008E03C8 /* Hack_teams.swift */; };
+		7F3B79DC2B24DFFD008E03C8 /* Team_info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79DB2B24DFFD008E03C8 /* Team_info.swift */; };
+		7F3B79DE2B24E009008E03C8 /* Team_create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79DD2B24E009008E03C8 /* Team_create.swift */; };
+		7F3B79E02B24E01A008E03C8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79DF2B24E01A008E03C8 /* Settings.swift */; };
+		7F3B79E42B24E193008E03C8 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79E32B24E193008E03C8 /* Home.swift */; };
+		7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +28,15 @@
 		7F27AF5B2B2379B000827166 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7F27AF5D2B2379B100827166 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F27AF602B2379B100827166 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7F3B79D32B24DFBF008E03C8 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		7F3B79D52B24DFCD008E03C8 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		7F3B79D72B24DFE5008E03C8 /* Hack_Land.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hack_Land.swift; sourceTree = "<group>"; };
+		7F3B79D92B24DFF3008E03C8 /* Hack_teams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hack_teams.swift; sourceTree = "<group>"; };
+		7F3B79DB2B24DFFD008E03C8 /* Team_info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team_info.swift; sourceTree = "<group>"; };
+		7F3B79DD2B24E009008E03C8 /* Team_create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team_create.swift; sourceTree = "<group>"; };
+		7F3B79DF2B24E01A008E03C8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		7F3B79E32B24E193008E03C8 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +69,7 @@
 		7F27AF582B2379B000827166 /* CrewCrafters */ = {
 			isa = PBXGroup;
 			children = (
+				7F3B79D22B24DF8B008E03C8 /*  Views */,
 				7F27AF592B2379B000827166 /* CrewCraftersApp.swift */,
 				7F27AF5B2B2379B000827166 /* ContentView.swift */,
 				7F27AF5D2B2379B100827166 /* Assets.xcassets */,
@@ -65,6 +84,22 @@
 				7F27AF602B2379B100827166 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7F3B79D22B24DF8B008E03C8 /*  Views */ = {
+			isa = PBXGroup;
+			children = (
+				7F3B79D32B24DFBF008E03C8 /* Search.swift */,
+				7F3B79D52B24DFCD008E03C8 /* Profile.swift */,
+				7F3B79D72B24DFE5008E03C8 /* Hack_Land.swift */,
+				7F3B79D92B24DFF3008E03C8 /* Hack_teams.swift */,
+				7F3B79DB2B24DFFD008E03C8 /* Team_info.swift */,
+				7F3B79DD2B24E009008E03C8 /* Team_create.swift */,
+				7F3B79DF2B24E01A008E03C8 /* Settings.swift */,
+				7F3B79E32B24E193008E03C8 /* Home.swift */,
+				7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */,
+			);
+			path = " Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +172,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F3B79D42B24DFBF008E03C8 /* Search.swift in Sources */,
+				7F3B79D62B24DFCD008E03C8 /* Profile.swift in Sources */,
+				7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */,
+				7F3B79E42B24E193008E03C8 /* Home.swift in Sources */,
+				7F3B79DC2B24DFFD008E03C8 /* Team_info.swift in Sources */,
 				7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */,
+				7F3B79DA2B24DFF3008E03C8 /* Hack_teams.swift in Sources */,
+				7F3B79D82B24DFE5008E03C8 /* Hack_Land.swift in Sources */,
+				7F3B79E02B24E01A008E03C8 /* Settings.swift in Sources */,
+				7F3B79DE2B24E009008E03C8 /* Team_create.swift in Sources */,
 				7F27AF5A2B2379B000827166 /* CrewCraftersApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
