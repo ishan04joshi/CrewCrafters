@@ -18,7 +18,7 @@ struct ContentView: View {
                 Image(systemName: "person.crop.circle")
                 Text("Profile")
             }
-            Hack_teams().tabItem {
+            Hack_Land().tabItem {
                 Image(systemName: "chart.bar.fill")
                 Text("LeaderBoard")
             }

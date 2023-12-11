@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Hack_teams: View {
+    @State var showingDetail = false
     @State var searchText = ""
     var body: some View {
         NavigationView{
@@ -169,12 +170,29 @@ struct Hack_teams: View {
                 }.padding(.bottom, 15.0)
                 
             }.searchable(text: $searchText)
+                .navigationBarBackButtonHidden(true)
                 .navigationTitle("Teams")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        
+                        Button (action: gohacks){
+                            HStack {
+                                Image(systemName: "chevron.backward")
+                                Text("Hackathon")
+                            }
+                        }
+                    }
+                }
             
         }
     }
 }
-
+func gohacks() {
+    if let window = UIApplication.shared.windows.first {
+        window.rootViewController = UIHostingController(rootView: Hack_Land())
+        window.makeKeyAndVisible()
+    }
+}
 #Preview {
     Hack_teams()
 }
