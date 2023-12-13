@@ -18,15 +18,16 @@ struct ContentView: View {
                 Image(systemName: "person.crop.circle")
                 Text("Profile")
             }
-            Hack_Land().tabItem {
+            Search().tabItem {
+                Image(systemName: "magnifyingglass.circle.fill")
+                Text("Search")
+            }
+            Leaderboard().tabItem {
                 Image(systemName: "chart.bar.fill")
                 Text("LeaderBoard")
             }
             
-            Settings().tabItem {
-                Image(systemName: "gear")
-                Text("Settings")
-            }
+            
         }
          
         

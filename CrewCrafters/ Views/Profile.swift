@@ -66,7 +66,8 @@ struct Profile: View {
                     .padding(.bottom)
                     
                     Text("Featured")
-                        .font(.title2)
+                        .font(.title3)
+                        .fontWeight(.semibold)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     
@@ -85,7 +86,8 @@ struct Profile: View {
                     
                     
                     Text("Tech Stack")
-                        .font(.title2)
+                        .font(.title3)
+                        .fontWeight(.semibold)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     
