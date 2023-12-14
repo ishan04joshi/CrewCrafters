@@ -17,7 +17,7 @@ struct Search: View {
                     Button(action: goHackLand){
                         Image("hackathon_poster")
                             .resizable(resizingMode: .stretch)
-                            .frame(width: 340.0, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
+                            .frame(width: 355.0, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
                     }
 
                     HStack{
@@ -38,17 +38,18 @@ struct Search: View {
                 }
                 .padding(.horizontal, 10.0)
                 
+                
                 VStack{
-                    Image("hackathon_poster").resizable(resizingMode: .stretch).frame(width: 340.0, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
+                    Image("hackathon_poster1").resizable(resizingMode: .stretch).frame(width: 355, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
 
                     HStack{
-                        Text("Ocean Hackathon '23")
+                        Text("Horizen Hackathon '23")
                             .font(.callout)
                             .fontWeight(.bold)
                         Spacer()
                         HStack{
                             Image(systemName: "calendar")
-                            Text("15sept- 21sept")
+                            Text("11oct- 15oct")
                                 .font(.callout)
                                 .fontWeight(.semibold)
                         }
@@ -60,7 +61,7 @@ struct Search: View {
                 .padding(.horizontal, 10.0)
                 
                 VStack{
-                    Image("hackathon_poster").resizable(resizingMode: .stretch).frame(width: 340.0, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
+                    Image("hackathon_poster").resizable(resizingMode: .stretch).frame(width: 355, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
 
                     HStack{
                         Text("Ocean Hackathon '23")
@@ -82,10 +83,10 @@ struct Search: View {
                 .padding(.horizontal, 10.0)
                 
                 VStack{
-                    Image("hackathon_poster").resizable(resizingMode: .stretch).frame(width: 340.0, height: 157.0)
+                    Image("hackathon_poster1").resizable(resizingMode: .stretch).frame(width: 355, height: 157.0)
 
                     HStack{
-                        Text("Ocean Hackathon '23")
+                        Text("Horizen Hackathon '23")
                             .font(.callout)
                             .fontWeight(.bold)
                         Spacer()
@@ -118,18 +119,14 @@ struct Search: View {
                         }
                     }
                 }
+                .contentMargins(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/, /*@START_MENU_TOKEN@*/10.0/*@END_MENU_TOKEN@*/)
         }
     }
 }
 
 
 
-func goHackLand() {
-    if let window = UIApplication.shared.windows.first {
-        window.rootViewController = UIHostingController(rootView: Hack_Land())
-        window.makeKeyAndVisible()
-    }
-}
+
 
 
 #Preview {

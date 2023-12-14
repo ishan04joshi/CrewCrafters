@@ -113,7 +113,23 @@ struct Profile: View {
                     
                     
                 }
-            }
+            }.navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        HStack
+                        {
+                            Button (action: goHome){
+                                
+                                Image(systemName: "chevron.backward")
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                }.navigationTitle("Profile")
+                
         }
         
     }

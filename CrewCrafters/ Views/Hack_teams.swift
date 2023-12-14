@@ -12,7 +12,7 @@ struct Hack_teams: View {
     @State var searchText = ""
     var body: some View {
         NavigationView{
-            List{
+            ScrollView{
                 //card1
                 HStack{
                     
@@ -42,6 +42,7 @@ struct Hack_teams: View {
                             .tint(.black)
                     }
                     Spacer()
+                    Spacer()
                     ZStack{
                         Text("2/5")
                             .font(.largeTitle)
@@ -49,7 +50,7 @@ struct Hack_teams: View {
                             .foregroundColor(Color.blue)
                     }
                     
-                }.padding(.bottom, 15.0)
+                }.padding(.all, 10.0)
                 
                 //card2
                 
@@ -79,6 +80,7 @@ struct Hack_teams: View {
                         
                     }
                     Spacer()
+                    Spacer()
                     ZStack{
                         Text("1/5")
                             .font(.largeTitle)
@@ -86,7 +88,7 @@ struct Hack_teams: View {
                             .foregroundColor(Color.red)
                     }
                     
-                }.padding(.bottom, 15.0)
+                }.padding(.all, 10.0)
                 
                 
                 //card3
@@ -119,6 +121,7 @@ struct Hack_teams: View {
                             .tint(.black)
                     }
                     Spacer()
+                    Spacer()
                     ZStack{
                         Text("3/5")
                             .font(.largeTitle)
@@ -126,7 +129,7 @@ struct Hack_teams: View {
                             .foregroundColor(Color.blue)
                     }
                     
-                }.padding(.bottom, 15.0)
+                }.padding(.all, 10.0)
                 
                 
                 
@@ -160,6 +163,7 @@ struct Hack_teams: View {
                             .tint(.black)
                     }
                     Spacer()
+                    Spacer()
                     ZStack{
                         Text("4/6")
                             .font(.largeTitle)
@@ -167,7 +171,7 @@ struct Hack_teams: View {
                             .foregroundColor(Color.blue)
                     }
                     
-                }.padding(.bottom, 15.0)
+                }.padding(.all, 10.0)
                 
             }.searchable(text: $searchText)
                 .navigationBarBackButtonHidden(true)
@@ -175,7 +179,7 @@ struct Hack_teams: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         
-                        Button (action: gohacks){
+                        Button (action: goHackLand){
                             HStack {
                                 Image(systemName: "chevron.backward")
                                 Text("Hackathon")
@@ -183,16 +187,12 @@ struct Hack_teams: View {
                         }
                     }
                 }
+                .contentMargins(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/, 10)
             
         }
     }
 }
-func gohacks() {
-    if let window = UIApplication.shared.windows.first {
-        window.rootViewController = UIHostingController(rootView: Hack_Land())
-        window.makeKeyAndVisible()
-    }
-}
+
 #Preview {
     Hack_teams()
 }

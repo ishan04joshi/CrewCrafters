@@ -82,17 +82,20 @@ struct Hack_Land: View {
                             Hack_teams()
                         }.buttonStyle(.bordered)
                             .tint(.blue)
-                        Button("Make a Team") {
-                            
+                        Button (action: goTeamCreate){
+                            Text("Make a Team")
+                        }.sheet(isPresented: $showingDetail) {
+                            Team_create()
                         }.buttonStyle(.bordered)
                             .tint(.blue)
+                        
                     }
                     Spacer()
                     
                     
                     
                 }.navigationBarTitleDisplayMode(.inline)
-                    .toolbar { // <2>
+                    .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
                             HStack
                             {
@@ -113,18 +116,7 @@ struct Hack_Land: View {
     }
 }
 
-func goSearch() {
-    if let window = UIApplication.shared.windows.first {
-        window.rootViewController = UIHostingController(rootView: Search())
-        window.makeKeyAndVisible()
-    }
-}
-func goHome() {
-    if let window = UIApplication.shared.windows.first {
-        window.rootViewController = UIHostingController(rootView: ContentView())
-        window.makeKeyAndVisible()
-    }
-}
+
 #Preview {
     Hack_Land()
 }
