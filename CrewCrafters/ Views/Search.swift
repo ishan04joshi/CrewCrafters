@@ -12,7 +12,7 @@ struct Search: View {
     @State var searchText = ""
     var body: some View {
         NavigationView{
-            List{
+            ScrollView{
                 VStack{
                     Button(action: goHackLand){
                         Image("hackathon_poster")
@@ -36,11 +36,15 @@ struct Search: View {
                     .padding([.top, .leading, .trailing], 7.0)
 
                 }
-                .padding(.horizontal, 10.0)
-                
+                .padding(.all, 10.0)
+                Divider()
                 
                 VStack{
-                    Image("hackathon_poster1").resizable(resizingMode: .stretch).frame(width: 355, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
+                    Button(action: goHackLand){
+                        Image("hackathon_poster1")
+                            .resizable(resizingMode: .stretch)
+                            .frame(width: 355.0, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
+                    }
 
                     HStack{
                         Text("Horizen Hackathon '23")
@@ -58,10 +62,16 @@ struct Search: View {
                     .padding([.top, .leading, .trailing], 7.0)
 
                 }
-                .padding(.horizontal, 10.0)
+                .padding(.all, 10.0)
+                Divider()
+                
                 
                 VStack{
-                    Image("hackathon_poster").resizable(resizingMode: .stretch).frame(width: 355, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
+                    Button(action: goHackLand){
+                        Image("hackathon_poster")
+                            .resizable(resizingMode: .stretch)
+                            .frame(width: 355.0, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
+                    }
 
                     HStack{
                         Text("Ocean Hackathon '23")
@@ -80,10 +90,16 @@ struct Search: View {
                     .cornerRadius(20)
 
                 }
-                .padding(.horizontal, 10.0)
+                .padding(.all, 10.0)
+                Divider()
+                
                 
                 VStack{
-                    Image("hackathon_poster1").resizable(resizingMode: .stretch).frame(width: 355, height: 157.0)
+                    Button(action: goHackLand){
+                        Image("hackathon_poster1")
+                            .resizable(resizingMode: .stretch)
+                            .frame(width: 355.0, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
+                    }
 
                     HStack{
                         Text("Horizen Hackathon '23")
@@ -101,9 +117,9 @@ struct Search: View {
                     .padding([.top, .leading, .trailing], 7.0)
 
                 }
-                .padding(.horizontal, 10.0)
+                .padding(.all, 10.0)
                 
-                
+                Divider()
                 
                 
             }.searchable(text: $searchText)          .navigationBarBackButtonHidden(true)

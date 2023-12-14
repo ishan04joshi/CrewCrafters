@@ -69,7 +69,7 @@ struct Team_info: View {
                     }
                     
                 }.padding(.all, 10.0)
-                
+                Divider()
                 
                 HStack{
                     
@@ -100,7 +100,7 @@ struct Team_info: View {
                     }
                     
                 }.padding(.all, 10.0)
-                    
+                Divider()
                 HStack{
                     
                     VStack{
@@ -130,7 +130,7 @@ struct Team_info: View {
                     }
                     
                 }.padding(.all, 10.0)
-                
+                Divider()
                 HStack{
                     
                     VStack{
@@ -160,6 +160,7 @@ struct Team_info: View {
                     }
                     
                 }.padding(.all, 10.0)
+                Divider()
                 
                 
                 HStack{
@@ -191,7 +192,7 @@ struct Team_info: View {
                     }
                     
                 }.padding(.all, 10.0)
-                
+                Divider()
                 HStack{
                     
                     VStack{
@@ -221,7 +222,7 @@ struct Team_info: View {
                     }
                     
                 }.padding(.all, 10.0)
-                
+                Divider()
                 
                 Spacer()
                 

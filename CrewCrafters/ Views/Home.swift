@@ -45,6 +45,12 @@ func goTeamCreate() {
         window.makeKeyAndVisible()
     }
 }
+func goTeaminfo() {
+    if let window = UIApplication.shared.windows.first {
+        window.rootViewController = UIHostingController(rootView: Team_info())
+        window.makeKeyAndVisible()
+    }
+}
 #Preview {
     Home()
 }

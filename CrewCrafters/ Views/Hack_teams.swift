@@ -32,12 +32,12 @@ struct Hack_teams: View {
                         Text("Domain")
                             .font(.title2)
                         
-                        Button("Open Position 1") {
-                            
+                        Button(action: goTeaminfo) {
+                            Text("Open Position 1")
                         }.buttonStyle(.bordered)
                             .tint(.black)
-                        Button("Open Position 2") {
-                            
+                        Button(action: goTeaminfo) {
+                            Text("Open Position 2")
                         }.buttonStyle(.bordered)
                             .tint(.black)
                     }
@@ -51,6 +51,7 @@ struct Hack_teams: View {
                     }
                     
                 }.padding(.all, 10.0)
+                Divider()
                 
                 //card2
                 
@@ -73,8 +74,8 @@ struct Hack_teams: View {
                             .font(.title2)
                         Spacer()
                         Spacer()
-                        Button("Open Position 1") {
-                            
+                        Button(action: goTeaminfo) {
+                            Text("Open Position 1")
                         }.buttonStyle(.bordered)
                             .tint(.black)
                         
@@ -89,6 +90,7 @@ struct Hack_teams: View {
                     }
                     
                 }.padding(.all, 10.0)
+                Divider()
                 
                 
                 //card3
@@ -111,12 +113,12 @@ struct Hack_teams: View {
                         Text("Domain")
                             .font(.title2)
                         
-                        Button("Open Position 1") {
-                            
+                        Button(action: goTeaminfo) {
+                            Text("Open Position 1")
                         }.buttonStyle(.bordered)
                             .tint(.black)
-                        Button("Open Position 2") {
-                            
+                        Button(action: goTeaminfo) {
+                            Text("Open Position 2")
                         }.buttonStyle(.bordered)
                             .tint(.black)
                     }
@@ -130,6 +132,7 @@ struct Hack_teams: View {
                     }
                     
                 }.padding(.all, 10.0)
+                Divider()
                 
                 
                 
@@ -153,12 +156,12 @@ struct Hack_teams: View {
                         Text("Domain")
                             .font(.title2)
                         
-                        Button("Open Position 1") {
-                            
+                        Button(action: goTeaminfo) {
+                            Text("Open Position 1")
                         }.buttonStyle(.bordered)
                             .tint(.black)
-                        Button("Open Position 2") {
-                            
+                        Button(action: goTeaminfo) {
+                            Text("Open Position 2")
                         }.buttonStyle(.bordered)
                             .tint(.black)
                     }
@@ -172,6 +175,7 @@ struct Hack_teams: View {
                     }
                     
                 }.padding(.all, 10.0)
+                Divider()
                 
             }.searchable(text: $searchText)
                 .navigationBarBackButtonHidden(true)

@@ -16,11 +16,12 @@ struct Hack_Land: View {
         NavigationView{
             
             ScrollView{
-                VStack(alignment: .center){
-                    
+                
+                VStack{
                     Text("Ocean Hackathon®: data, an event and an international community")
                         .font(.title2)
                         .fontWeight(.semibold)
+                        .padding(.bottom, 10.0)
                     
                     Image("hackathon_poster")
                         .resizable()
@@ -29,89 +30,93 @@ struct Hack_Land: View {
                     Spacer()
                     Text("The Ambassadors perceive the sea as a field of innovation that must be appropriated but also made known and protected. They are by our side and award the teams on the podium of the Grand Finale.")
                         .font(.headline)
+                        .padding(.top, 10.0)
+                }
+                Spacer()
+                    .padding(.bottom, 20.0)
+                HStack{
                     Spacer()
-                    
-                    HStack
+                    Button(action: gohacks) {
+                        Text("Join a Team")
+                    }.buttonStyle(.bordered)
+                        .tint(.blue)
+                    Spacer()
+                    Button (action: goTeamCreate){
+                        Text("Make a Team")
+                    }.buttonStyle(.bordered)
+                        .tint(.blue)
+                    Spacer()
+                }
+                
+                HStack
+                {
+                    VStack(alignment: .leading)
                     {
-                        VStack(alignment: .leading)
-                        {
-                            Text("Themes: ")
-                                .font(.title3)
-                                .fontWeight(.semibold)
-                            Text("Artificial Intelligence.")
-                            Text("Natural Language Processing.")
-                            Text("App: Weather API.")
-                            Text("Deep Learning: Augmented Reality (AR).")
-                            Text("Marketplace and Community Hub.")
-                            
-                        }
-                        Spacer()
-                    }
-                    Spacer()
-                    HStack
-                    {
-                        VStack(alignment: .leading)
-                        {
-                            Text("Partners: ")
-                                .font(.title3)
-                                .fontWeight(.semibold)
-                            HStack{
-                                Spacer()
-                                Image("partner1").resizable(resizingMode: .stretch)
-                                    .frame(width: 85.0, height: 85.0)
-                                Spacer()
-                                Image("partner2").resizable(resizingMode: .stretch)
-                                    .frame(width: 85.0, height: 85.0)
-                                Spacer()
-                                Image("partner3").resizable(resizingMode: .stretch)
-                                    .frame(width: 85.0, height: 85.0)
-                                Spacer()
-                            }
-                            
-                        }
-                        
-                        Spacer()
-                    }
-                    Spacer()
-                    HStack{
-                        Button(action: {
-                            self.showingDetail.toggle()
-                        }) {
-                            Text("Join a Team")
-                        }.sheet(isPresented: $showingDetail) {
-                            Hack_teams()
-                        }.buttonStyle(.bordered)
-                            .tint(.blue)
-                        Button (action: goTeamCreate){
-                            Text("Make a Team")
-                        }.sheet(isPresented: $showingDetail) {
-                            Team_create()
-                        }.buttonStyle(.bordered)
-                            .tint(.blue)
+                        Text("Themes: ")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                        Text("Artificial Intelligence.")
+                        Text("Natural Language Processing.")
+                        Text("App: Weather API.")
+                        Text("Deep Learning: Augmented Reality (AR).")
+                        Text("Marketplace and Community Hub.")
                         
                     }
                     Spacer()
+                }
+                .padding(.vertical, 10.0)
+                Spacer()
+                    .padding(.bottom, 10.0)
+                HStack
+                {
+                    VStack(alignment: .leading)
+                    {
+                        Text("Partners: ")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                        HStack{
+                            Spacer()
+                            Image("partner1").resizable(resizingMode: .stretch)
+                                .frame(width: 85.0, height: 85.0)
+                            Spacer()
+                            Spacer()
+                            Image("partner2").resizable(resizingMode: .stretch)
+                                .frame(width: 85.0, height: 85.0)
+                            Spacer()
+                            Spacer()
+                            Image("partner3").resizable(resizingMode: .stretch)
+                                .frame(width: 85.0, height: 85.0)
+                            Spacer()
+                        }
+                        
+                    }
                     
-                    
-                    
-                }.navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            HStack
-                            {
-                                Button (action: goSearch){
-                                    
-                                    Image(systemName: "chevron.backward")
-                                    
-                                }
+                    Spacer()
+                }
+                Spacer()
+                
+                Spacer()
+                
+                
+                
+            }.navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        HStack
+                        {
+                            Button (action: goSearch){
+                                
+                                Image(systemName: "chevron.backward")
                                 
                             }
                             
                         }
                         
-                    }.navigationTitle("Hackathon").padding(.all, 7)
-                
-            }
+                    }
+                    
+                }.navigationTitle("Hackathon").padding(.all, 7)
+            
+            
         }
     }
 }

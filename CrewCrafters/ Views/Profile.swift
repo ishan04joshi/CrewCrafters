@@ -66,6 +66,7 @@ struct Profile: View {
                     }
                     .padding(.bottom)
                     
+                    
                     Text("Featured")
                         .font(.title3)
                         .fontWeight(.semibold)
