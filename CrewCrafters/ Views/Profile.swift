@@ -45,6 +45,7 @@ struct Profile: View {
                                 .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
                             Text("Projects")
                                 .font(.headline)
+                                
                         }
                         Spacer()
                         VStack{
@@ -73,8 +74,13 @@ struct Profile: View {
                     
                     ScrollView (.horizontal) {
                         HStack (spacing: 15) {
-                            ForEach(0..<5){_ in
-                                Image("hackathon_poster")
+                            ForEach(0..<3){_ in
+                                Image("project_poster")
+                                    .resizable()
+                                    .frame(width: 250, height: 150)
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(15)
+                                Image("project_poster2")
                                     .resizable()
                                     .frame(width: 250, height: 150)
                                     .aspectRatio(contentMode: .fit)

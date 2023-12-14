@@ -76,6 +76,28 @@ struct Search: View {
                         
                     }
                     .padding([.top, .leading, .trailing], 7.0)
+                    .cornerRadius(20)
+
+                }
+                .padding(.horizontal, 10.0)
+                
+                VStack{
+                    Image("hackathon_poster").resizable(resizingMode: .stretch).frame(width: 340.0, height: 157.0)
+
+                    HStack{
+                        Text("Ocean Hackathon '23")
+                            .font(.callout)
+                            .fontWeight(.bold)
+                        Spacer()
+                        HStack{
+                            Image(systemName: "calendar")
+                            Text("15sept- 21sept")
+                                .font(.callout)
+                                .fontWeight(.semibold)
+                        }
+                        
+                    }
+                    .padding([.top, .leading, .trailing], 7.0)
 
                 }
                 .padding(.horizontal, 10.0)
