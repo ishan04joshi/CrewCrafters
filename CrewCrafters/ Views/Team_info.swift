@@ -225,7 +225,7 @@ struct Team_info: View {
                 
                 Spacer()
                 
-            }.navigationBarTitleDisplayMode(.inline).navigationTitle("Team A").padding(.all, 10)
+            }.navigationTitle("Team A").padding(.all, 10)
         }
 }
 
