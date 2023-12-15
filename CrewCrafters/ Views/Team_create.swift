@@ -18,7 +18,7 @@ struct Team_create: View {
     @State var n: Int = 1
     
     var body: some View {
-        NavigationView{
+        
             
             VStack{
                 
@@ -71,21 +71,18 @@ struct Team_create: View {
                         
                     }
                     
+                    
                 }.contentMargins(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/, 5)
                 
-                Button(action: gohacks) {
-                    Text("Publish Team")
-                }.buttonStyle(.bordered)
-                    .tint(.blue)
-            }.navigationBarTitleDisplayMode(.inline).navigationTitle("Create Your Team")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button (action: goHackLand){
-                            Image(systemName: "chevron.backward")
-                        }
-                    }
-                }.padding(.all, 7)
-        }
+                VStack{
+                    Button(action: gohacks) {
+                        NavigationLink(destination: Hack_teams()){
+                            Text("Publish Team").foregroundColor(.blue)}
+                    }.buttonStyle(.bordered)
+                        .tint(.blue)
+                }
+            }.navigationBarTitleDisplayMode(.inline).navigationTitle("Create Your Team").padding(.all, 7)
+        
         
     }
 }

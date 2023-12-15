@@ -9,11 +9,9 @@ import SwiftUI
 
 struct Hack_Land: View {
     @State var showingDetail = false
-    
+    var title: String
     var body: some View {
         
-        
-        NavigationView{
             
             ScrollView{
                 
@@ -36,13 +34,19 @@ struct Hack_Land: View {
                     .padding(.bottom, 20.0)
                 HStack{
                     Spacer()
-                    Button(action: gohacks) {
-                        Text("Join a Team")
+                    Button(action: {print("")}){
+                        NavigationLink(destination: Hack_teams()){
+                            Text("Join a Team")
+                                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        }
                     }.buttonStyle(.bordered)
                         .tint(.blue)
                     Spacer()
-                    Button (action: goTeamCreate){
-                        Text("Make a Team")
+                    Button(action: {print("")}){
+                        NavigationLink(destination: Team_create()){
+                            Text("Make a Team")
+                                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        }
                     }.buttonStyle(.bordered)
                         .tint(.blue)
                     Spacer()
@@ -99,29 +103,14 @@ struct Hack_Land: View {
                 
                 
                 
-            }.navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        HStack
-                        {
-                            Button (action: goSearch){
-                                
-                                Image(systemName: "chevron.backward")
-                                
-                            }
-                            
-                        }
-                        
-                    }
-                    
-                }.navigationTitle("Hackathon").padding(.all, 7)
+            }.navigationTitle(title).padding(.all, 7)
             
             
-        }
+        
     }
 }
 
 
 #Preview {
-    Hack_Land()
+    Hack_Land( title: String())
 }

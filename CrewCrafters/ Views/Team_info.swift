@@ -12,8 +12,7 @@ struct Team_info: View {
     
     var body: some View {
         
-        
-        NavigationView{
+
             ScrollView{
                 VStack(alignment: .leading){
                     Image("hackathon_poster")
@@ -226,24 +225,8 @@ struct Team_info: View {
                 
                 Spacer()
                 
-            }.navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        HStack
-                        {
-                            Button (action: gohacks){
-                                
-                                Image(systemName: "chevron.backward")
-                                
-                            }
-                            
-                        }
-                        
-                    }
-                    
-                }.navigationTitle("Team A").padding(.all, 10)
+            }.navigationBarTitleDisplayMode(.inline).navigationTitle("Team A").padding(.all, 10)
         }
-    }
 }
 
 #Preview {

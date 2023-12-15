@@ -17,7 +17,7 @@ struct Home: View {
 }
 func goHackLand() {
     if let window = UIApplication.shared.windows.first {
-        window.rootViewController = UIHostingController(rootView: Hack_Land())
+        window.rootViewController = UIHostingController(rootView: Hack_Land(title: String()))
         window.makeKeyAndVisible()
     }
 }

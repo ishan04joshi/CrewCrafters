@@ -14,38 +14,42 @@ struct Search: View {
         NavigationView{
             ScrollView{
                 VStack{
-                    Button(action: goHackLand){
-                        Image("hackathon_poster")
-                            .resizable(resizingMode: .stretch)
-                            .frame(width: 355.0, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
-                    }
-
-                    HStack{
-                        Text("Ocean Hackathon '23")
-                            .font(.callout)
-                            .fontWeight(.bold)
-                        Spacer()
-                        HStack{
-                            Image(systemName: "calendar")
-                            Text("15sept- 21sept")
-                                .font(.callout)
-                                .fontWeight(.semibold)
+                    NavigationLink(destination: Hack_Land(title: "Ocean Hackathon"),label: {
+                        VStack{
+                            Image("hackathon_poster")
+                                .resizable(resizingMode: .stretch)
+                                .frame(width: 355.0, height: 157.0).cornerRadius(20.0)
+                            
+                            
+                            HStack{
+                                Text("Ocean Hackathon '23")
+                                    .font(.callout)
+                                    .fontWeight(.bold)
+                                Spacer()
+                                HStack{
+                                    Image(systemName: "calendar")
+                                    Text("15sept- 21sept")
+                                        .font(.callout)
+                                        .fontWeight(.semibold)
+                                }
+                                
+                            }
+                            .padding([.top, .leading, .trailing], 7.0)
                         }
-                        
-                    }
-                    .padding([.top, .leading, .trailing], 7.0)
-
+                    })
+                    
                 }
                 .padding(.all, 10.0)
                 Divider()
                 
+                
                 VStack{
-                    Button(action: goHackLand){
+                    NavigationLink(destination: Hack_Land(title: "Horizen Hackathon")){
                         Image("hackathon_poster1")
                             .resizable(resizingMode: .stretch)
-                            .frame(width: 355.0, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
+                            .frame(width: 355.0, height: 157.0).cornerRadius(20.0)
                     }
-
+                    
                     HStack{
                         Text("Horizen Hackathon '23")
                             .font(.callout)
@@ -60,7 +64,7 @@ struct Search: View {
                         
                     }
                     .padding([.top, .leading, .trailing], 7.0)
-
+                    
                 }
                 .padding(.all, 10.0)
                 Divider()
@@ -70,9 +74,9 @@ struct Search: View {
                     Button(action: goHackLand){
                         Image("hackathon_poster")
                             .resizable(resizingMode: .stretch)
-                            .frame(width: 355.0, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
+                            .frame(width: 355.0, height: 157.0).cornerRadius(20.0)
                     }
-
+                    
                     HStack{
                         Text("Ocean Hackathon '23")
                             .font(.callout)
@@ -88,7 +92,7 @@ struct Search: View {
                     }
                     .padding([.top, .leading, .trailing], 7.0)
                     .cornerRadius(20)
-
+                    
                 }
                 .padding(.all, 10.0)
                 Divider()
@@ -98,9 +102,9 @@ struct Search: View {
                     Button(action: goHackLand){
                         Image("hackathon_poster1")
                             .resizable(resizingMode: .stretch)
-                            .frame(width: 355.0, height: 157.0).cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
+                            .frame(width: 355.0, height: 157.0).cornerRadius(20.0)
                     }
-
+                    
                     HStack{
                         Text("Horizen Hackathon '23")
                             .font(.callout)
@@ -115,27 +119,16 @@ struct Search: View {
                         
                     }
                     .padding([.top, .leading, .trailing], 7.0)
-
+                    
                 }
                 .padding(.all, 10.0)
                 
                 Divider()
                 
                 
-            }.searchable(text: $searchText)          .navigationBarBackButtonHidden(true)
+            }.searchable(text: $searchText)
                 .navigationTitle("Hackathons")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        
-                        Button (action: goHome){
-                            HStack {
-                                Image(systemName: "chevron.backward")
-                                Text("Home")
-                            }
-                        }
-                    }
-                }
-                .contentMargins(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/, /*@START_MENU_TOKEN@*/10.0/*@END_MENU_TOKEN@*/)
+                
         }
     }
 }
