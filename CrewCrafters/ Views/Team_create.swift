@@ -27,7 +27,7 @@ struct Team_create: View {
                         .fill(Color(hue: 1.0, saturation: 0.0, brightness: 0.867))
                         .frame(width: 155)
                     
-                    Image(systemName: "camera.fill").resizable().frame(width: 50, height: 50)
+                    Image(systemName: "camera.fill").resizable().frame(width: 50, height: 40)
                 }
                 Form {
                     Section(header: Text("Team Information")
