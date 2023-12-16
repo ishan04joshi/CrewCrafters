@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Hack_Land: View {
     var title: String
+    var image: String
     @State var showingDetail = false
     @ObservedObject var viewModel = HackLandViewModel()
     
@@ -16,7 +17,7 @@ struct Hack_Land: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     
-                    Image("hackathon_poster")
+                    Image(image)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 360)
@@ -25,15 +26,25 @@ struct Hack_Land: View {
                     
                     HStack{
                         Spacer()
+                        Spacer()
                         
-                        Button(action: gohacks) {
-                            Text("Join a Team")
-                        }.buttonStyle(.borderedProminent)
+                        Button(action: {print("")}){
+                            NavigationLink(destination: Hack_teams(hack: title, image: image)){
+                                Text("Join a Team")
+                                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                            }
+                        }.buttonStyle(.bordered)
+                            .tint(.blue)
+                        Spacer()
+                        Button(action: {print("")}){
+                            NavigationLink(destination: Team_create()){
+                                Text("Make a Team")
+                                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                            }
+                        }.buttonStyle(.bordered)
+                            .tint(.blue)
                         
-                        Button (action: goTeamCreate){
-                            Text("Make a Team")
-                        }.buttonStyle(.borderedProminent)
-                        
+                        Spacer()
                         Spacer()
                     }
                     .padding(.bottom)
@@ -171,10 +182,10 @@ struct Hack_Land: View {
                 }
                 
             }
-            .navigationTitle(title).padding(.all, 7)
+            .navigationTitle("\(title) Hackathon").padding(.all, 7)
         }
     }
 
 #Preview {
-    Hack_Land( title: String())
+    Hack_Land( title: String(), image: String())
 }

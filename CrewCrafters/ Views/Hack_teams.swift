@@ -10,6 +10,8 @@ import SwiftUI
 struct Hack_teams: View {
     @State var showingDetail = false
     @State var searchText = ""
+    var hack: String
+    var image: String
     var body: some View {
         ScrollView{
             //card1
@@ -33,7 +35,7 @@ struct Hack_teams: View {
                     
                     
                     Button(action: {print("")}) {
-                        NavigationLink(destination: Team_info()){
+                        NavigationLink(destination: Team_info(name: "Team A", image: image)){
                             Text("Open Position 1").foregroundColor(.black)
                         }
                     }.buttonStyle(.bordered)
@@ -41,7 +43,7 @@ struct Hack_teams: View {
                     
                     
                     Button(action: {print("")}) {
-                        NavigationLink(destination: Team_info()){
+                        NavigationLink(destination: Team_info(name: "Team A",image: image)){
                             Text("Open Position 2").foregroundColor(.black)
                         }
                     }.buttonStyle(.bordered)
@@ -83,7 +85,7 @@ struct Hack_teams: View {
                     
                     
                     Button(action: {print("")}) {
-                        NavigationLink(destination: Team_info()){
+                        NavigationLink(destination: Team_info(name: "Team B",image: image)){
                             Text("Open Position 1").foregroundColor(.black)
                         }
                     }.buttonStyle(.bordered)
@@ -124,14 +126,14 @@ struct Hack_teams: View {
                         .font(.title2)
                     
                     Button(action: {print("")}) {
-                        NavigationLink(destination: Team_info()){
+                        NavigationLink(destination: Team_info(name: "Team C",image: image)){
                             Text("Open Position 1").foregroundColor(.black)
                         }
                     }.buttonStyle(.bordered)
                         .tint(.black)
                     
                     Button(action: {print("")}) {
-                        NavigationLink(destination: Team_info()){
+                        NavigationLink(destination: Team_info(name: "Team C",image: image)){
                             Text("Open Position 2").foregroundColor(.black)
                         }
                     }.buttonStyle(.bordered)
@@ -172,7 +174,7 @@ struct Hack_teams: View {
                         .font(.title2)
                     
                     Button(action: {print("")}) {
-                        NavigationLink(destination: Team_info()){
+                        NavigationLink(destination: Team_info(name: "Team D",image: image)){
                             Text("Open Position 1").foregroundColor(.black)
                         }
                     }.buttonStyle(.bordered)
@@ -180,7 +182,7 @@ struct Hack_teams: View {
                     
                     
                     Button(action: {print("")}) {
-                        NavigationLink(destination: Team_info()){
+                        NavigationLink(destination: Team_info(name: "Team D",image: image)){
                             Text("Open Position 2").foregroundColor(.black)
                         }
                     }.buttonStyle(.bordered)
@@ -201,7 +203,7 @@ struct Hack_teams: View {
             Divider()
             
         }.searchable(text: $searchText)
-            .navigationTitle("Teams")
+            .navigationTitle("\(hack)'s Teams")
             .contentMargins(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/, 10)
         
         
@@ -209,5 +211,5 @@ struct Hack_teams: View {
 }
 
 #Preview {
-    Hack_teams()
+    Hack_teams(hack: String(), image: String())
 }

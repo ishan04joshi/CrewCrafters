@@ -75,8 +75,8 @@ struct Team_create: View {
                 }.contentMargins(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/, 5)
                 
                 VStack{
-                    Button(action: gohacks) {
-                        NavigationLink(destination: Hack_teams()){
+                    Button(action: goHome){
+                        NavigationLink(destination: Hack_teams(hack: String(), image: String())){
                             Text("Publish Team").foregroundColor(.blue)}
                     }.buttonStyle(.bordered)
                         .tint(.blue)

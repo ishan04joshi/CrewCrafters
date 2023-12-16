@@ -9,13 +9,14 @@ import SwiftUI
 
 struct Team_info: View {
     @State var showingDetail = false
-    
+    var name: String
+    var image: String
     var body: some View {
         
 
             ScrollView{
                 VStack(alignment: .leading){
-                    Image("hackathon_poster")
+                    Image(image)
                         .resizable()
                         .frame(width: 375.0, height: 195.0)
                         .cornerRadius(/*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
@@ -225,10 +226,10 @@ struct Team_info: View {
                 
                 Spacer()
                 
-            }.navigationTitle("Team A").padding(.all, 10)
+            }.navigationTitle(name).padding(.all, 10)
         }
 }
 
 #Preview {
-    Team_info()
+    Team_info(name: String(), image: String())
 }

@@ -14,7 +14,7 @@ struct Search: View {
         NavigationView{
             ScrollView{
                 VStack{
-                    NavigationLink(destination: Hack_Land(title: "Ocean Hackathon"),label: {
+                    NavigationLink(destination: Hack_Land(title: "Ocean", image: "hackathon_poster"),label: {
                         VStack{
                             Image("hackathon_poster")
                                 .resizable(resizingMode: .stretch)
@@ -44,7 +44,7 @@ struct Search: View {
                 
                 
                 VStack{
-                    NavigationLink(destination: Hack_Land(title: "Horizen Hackathon"),label: {
+                    NavigationLink(destination: Hack_Land(title: "Horizen",image: "hackathon_poster1"),label: {
                         VStack{
                             Image("hackathon_poster1")
                                 .resizable(resizingMode: .stretch)
@@ -73,7 +73,7 @@ struct Search: View {
                 Divider()
                 
                 VStack{
-                    NavigationLink(destination: Hack_Land(title: "Ocean Hackathon"),label: {
+                    NavigationLink(destination: Hack_Land(title: "Ocean", image: "hackathon_poster"),label: {
                         VStack{
                             Image("hackathon_poster")
                                 .resizable(resizingMode: .stretch)
@@ -102,7 +102,7 @@ struct Search: View {
                 Divider()
                 
                 VStack{
-                    NavigationLink(destination: Hack_Land(title: "Horizen Hackathon"),label: {
+                    NavigationLink(destination: Hack_Land(title: "Horizen",image: "hackathon_poster1"),label: {
                         VStack{
                             Image("hackathon_poster1")
                                 .resizable(resizingMode: .stretch)
