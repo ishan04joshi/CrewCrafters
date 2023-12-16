@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F4D23032B2C725F003B5EC7 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23022B2C725F003B5EC7 /* TextStyles.swift */; };
+		1F4D230F2B2D9E4F003B5EC7 /* HackLandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D230E2B2D9E4E003B5EC7 /* HackLandModel.swift */; };
+		1F4D23132B2D9E7A003B5EC7 /* HackLandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23122B2D9E7A003B5EC7 /* HackLandViewModel.swift */; };
 		7F27AF5A2B2379B000827166 /* CrewCraftersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27AF592B2379B000827166 /* CrewCraftersApp.swift */; };
 		7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27AF5B2B2379B000827166 /* ContentView.swift */; };
 		7F27AF5E2B2379B100827166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F27AF5D2B2379B100827166 /* Assets.xcassets */; };
@@ -23,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F4D23022B2C725F003B5EC7 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
+		1F4D230E2B2D9E4E003B5EC7 /* HackLandModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackLandModel.swift; sourceTree = "<group>"; };
+		1F4D23122B2D9E7A003B5EC7 /* HackLandViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackLandViewModel.swift; sourceTree = "<group>"; };
 		7F27AF562B2379B000827166 /* CrewCrafters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrewCrafters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F27AF592B2379B000827166 /* CrewCraftersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewCraftersApp.swift; sourceTree = "<group>"; };
 		7F27AF5B2B2379B000827166 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,6 +56,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F4D230D2B2D9E23003B5EC7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1F4D230E2B2D9E4E003B5EC7 /* HackLandModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1F4D23112B2D9E64003B5EC7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1F4D23122B2D9E7A003B5EC7 /* HackLandViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		7F27AF4D2B2379B000827166 = {
 			isa = PBXGroup;
 			children = (
@@ -69,9 +91,12 @@
 		7F27AF582B2379B000827166 /* CrewCrafters */ = {
 			isa = PBXGroup;
 			children = (
+				1F4D23112B2D9E64003B5EC7 /* ViewModels */,
+				1F4D230D2B2D9E23003B5EC7 /* Models */,
 				7F3B79D22B24DF8B008E03C8 /*  Views */,
 				7F27AF592B2379B000827166 /* CrewCraftersApp.swift */,
 				7F27AF5B2B2379B000827166 /* ContentView.swift */,
+				1F4D23022B2C725F003B5EC7 /* TextStyles.swift */,
 				7F27AF5D2B2379B100827166 /* Assets.xcassets */,
 				7F27AF5F2B2379B100827166 /* Preview Content */,
 			);
@@ -172,9 +197,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F4D23032B2C725F003B5EC7 /* TextStyles.swift in Sources */,
 				7F3B79D42B24DFBF008E03C8 /* Search.swift in Sources */,
 				7F3B79D62B24DFCD008E03C8 /* Profile.swift in Sources */,
 				7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */,
+				1F4D23132B2D9E7A003B5EC7 /* HackLandViewModel.swift in Sources */,
 				7F3B79E42B24E193008E03C8 /* Home.swift in Sources */,
 				7F3B79DC2B24DFFD008E03C8 /* Team_info.swift in Sources */,
 				7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */,
@@ -183,6 +210,7 @@
 				7F3B79E02B24E01A008E03C8 /* Settings.swift in Sources */,
 				7F3B79DE2B24E009008E03C8 /* Team_create.swift in Sources */,
 				7F27AF5A2B2379B000827166 /* CrewCraftersApp.swift in Sources */,
+				1F4D230F2B2D9E4F003B5EC7 /* HackLandModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

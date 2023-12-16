@@ -11,7 +11,7 @@ struct Profile: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack() {
+                VStack {
                     ZStack{
                         Image("bg")
                             .resizable()
@@ -23,14 +23,14 @@ struct Profile: View {
                             .resizable()
                             .frame(width: 350, height: 250)
                             .aspectRatio(contentMode: .fit)
-                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                            .clipShape(Circle())
                             .scaleEffect(x: 0.70, y: 0.70)
                             .offset(y: 115)
                     }
                     .padding(.bottom, 80.0)
                     
                     Text("Elon Musk")
-                        .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
+                        .font(.title2)
                         .fontWeight(.bold)
                     Text("Elon Musk")
                         .font(.subheadline)
@@ -41,7 +41,7 @@ struct Profile: View {
                         Spacer()
                         VStack{
                             Text("7")
-                                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
+                                .font(.title3)
                             Text("Projects")
                                 .font(.headline)
                             
@@ -49,14 +49,14 @@ struct Profile: View {
                         Spacer()
                         VStack{
                             Text("3")
-                                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
+                                .font(.title3)
                             Text("Teams")
                                 .font(.headline)
                         }
                         Spacer()
                         VStack{
                             Text("20")
-                                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
+                                .font(.title3)
                             Text("Followers")
                                 .font(.headline)
                         }
@@ -67,7 +67,7 @@ struct Profile: View {
                     
                     
                     Text("Featured")
-                        .profileTitleStyle()
+                        .titleStyle()
                     
                     ScrollView (.horizontal) {
                         HStack (spacing: 15) {
@@ -90,7 +90,7 @@ struct Profile: View {
                     Spacer()
                     
                     Text("Tech Stack")
-                        .profileTitleStyle()
+                        .titleStyle()
                     
                     ScrollView (.horizontal) {
                         HStack (spacing: 10) {
@@ -107,7 +107,7 @@ struct Profile: View {
                     .padding([.leading, .bottom, .trailing])
                     
                     Text("Achievements")
-                        .profileTitleStyle()
+                        .titleStyle()
                     
                     ScrollView (.horizontal) {
                         HStack (spacing: 15) {
@@ -130,7 +130,7 @@ struct Profile: View {
                     .padding([.leading, .bottom, .trailing])
                     
                     Text("About")
-                        .profileTitleStyle()
+                        .titleStyle()
                     
                     Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vestibulum enim a felis faucibus ultrices. Donec sed hendrerit justo. Nunc convallis metus eget sem euismod mollis. Praesent laoreet lacus sed mauris viverra porta sit amet non urna.")
                         .font(.body)
@@ -139,7 +139,7 @@ struct Profile: View {
                     
                     
                     Text("Hackathons")
-                        .profileTitleStyle()
+                        .titleStyle()
                     
                     ScrollView {
                         VStack (alignment: .leading, spacing: 15) {
@@ -169,7 +169,7 @@ struct Profile: View {
                     
                     
                     Text("Endorsements")
-                        .profileTitleStyle()
+                        .titleStyle()
                     
                     ScrollView {
                         VStack (alignment: .leading, spacing: 10) {
@@ -179,7 +179,7 @@ struct Profile: View {
                                         .resizable()
                                         .frame(width: 50, height: 50)
                                         .aspectRatio(contentMode: .fit)
-                                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                                        .clipShape(Circle())
                                         .padding(.trailing, 5.0)
                                     VStack(alignment: .leading){
                                         Text("Bhupinder Jogi")
@@ -215,23 +215,6 @@ struct Profile: View {
                     
                 }.navigationTitle("Profile")
         }
-    }
-}
-
-
-struct profileTitle: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .font(.title3)
-            .fontWeight(.bold)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding([.leading, .bottom])
-    }
-}
-
-extension View {
-    func profileTitleStyle() -> some View {
-        self.modifier(profileTitle())
     }
 }
 
