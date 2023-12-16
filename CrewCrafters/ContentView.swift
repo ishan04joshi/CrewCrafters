@@ -15,23 +15,19 @@ struct ContentView: View {
                 Image(systemName: "house")
                 Text("Home")
             }
-            Profile().tabItem {
-                Image(systemName: "person.crop.circle")
-                Text("Profile")
-            }
             Search().tabItem {
-                Image(systemName: "magnifyingglass.circle.fill")
+                Image(systemName: "magnifyingglass")
                 Text("Search")
             }
             Leaderboard().tabItem {
                 Image(systemName: "chart.bar.fill")
                 Text("LeaderBoard")
             }
-            
-            
+            Profile().tabItem {
+                Image(systemName: "person.crop.circle")
+                Text("Profile")
+            }
         }
-         
-        
     }
 }
 
