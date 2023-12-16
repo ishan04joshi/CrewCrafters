@@ -11,7 +11,6 @@ struct Profile: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack() {
                     ZStack{
                         Image("bg")
                             .resizable()
@@ -195,17 +194,17 @@ struct Profile: View {
                             }
                         }
                     }
-                    .padding([.leading, .bottom, .trailing])
-                    
-                }
+                    .padding([.leading, .bottom, .trailing]).navigationTitle("Profile")
             }.navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
+                .toolbar {                    ToolbarItem(placement: .navigationBarTrailing) {
                         HStack
                         {
-                            Button (action: goHome){
-                                
-                                Image(systemName: "chevron.backward")
+                            Button(action: {print("")}){
+                                NavigationLink(destination: Settings()){
+                                    
+                                    Image(systemName: "gear")
+                                    
+                                }
                                 
                             }
                             
@@ -213,7 +212,7 @@ struct Profile: View {
                         
                     }
                     
-                }.navigationTitle("Profile")
+                }
         }
     }
 }
