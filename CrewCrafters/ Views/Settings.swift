@@ -10,7 +10,6 @@ import SwiftUI
 struct Settings: View {
     var body: some View {
         VStack{
-            
             List{
                 Section(header: Text("Account")
                     .font(.subheadline)
@@ -85,11 +84,7 @@ struct Settings: View {
                             Image(systemName: "rectangle.portrait.and.arrow.right").padding(.trailing, 20.0)
                             Text("Log Out")
                         }
-                        
                     }
-                
-                
-                
             }
         }.navigationTitle("Settings")
             .padding(.all, 7)

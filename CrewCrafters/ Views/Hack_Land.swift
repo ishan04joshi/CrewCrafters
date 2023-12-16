@@ -31,7 +31,7 @@ struct Hack_Land: View {
                         Button(action: {print("")}){
                             NavigationLink(destination: Hack_teams(hack: title, image: image)){
                                 Text("Join a Team")
-                                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                                    .foregroundColor(.blue)
                             }
                         }.buttonStyle(.bordered)
                             .tint(.blue)
@@ -39,7 +39,7 @@ struct Hack_Land: View {
                         Button(action: {print("")}){
                             NavigationLink(destination: Team_create()){
                                 Text("Make a Team")
-                                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                                    .foregroundColor(.blue)
                             }
                         }.buttonStyle(.bordered)
                             .tint(.blue)
@@ -61,7 +61,7 @@ struct Hack_Land: View {
                         .titleStyle()
                     
                     VStack(alignment: .leading, spacing: 10.0) {
-                        ForEach(viewModel.themeItems, id: \.id){ item in
+                        ForEach(viewModel.themeItems){ item in
                             Text(item.title)
                                 .themelistStyle()
                         }
@@ -182,10 +182,11 @@ struct Hack_Land: View {
                 }
                 
             }
-            .navigationTitle("\(title) Hackathon").padding(.all, 7)
+            .navigationTitle("\(title) Hackathon")
+            .padding(.all, 7)
         }
     }
 
 #Preview {
-    Hack_Land( title: String(), image: String())
+    Hack_Land( title: String(), image: String("hackathon_poster"))
 }
