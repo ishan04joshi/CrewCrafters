@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct Settings: View {
+    @State var searchText = ""
     var body: some View {
-        VStack{
+        NavigationView{
             List{
                 Section(header: Text("Account")
                     .font(.subheadline)
@@ -86,8 +87,12 @@ struct Settings: View {
                         }
                     }
             }
-        }.navigationTitle("Settings")
+            .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
+            .searchable(text: $searchText)
             .padding(.all, 7)
+        }
+        
     }
 }
 
