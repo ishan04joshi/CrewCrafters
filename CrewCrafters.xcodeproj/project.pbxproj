@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AE58F2B343814004852AA /* SettingsViewModel.swift */; };
+		1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AE5932B3438A7004852AA /* SettingModel.swift */; };
 		1F4D23162B2DC1FD003B5EC7 /* HackLandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23152B2DC1FD003B5EC7 /* HackLandModel.swift */; };
 		1F4D23192B2DC214003B5EC7 /* HackLandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23182B2DC214003B5EC7 /* HackLandViewModel.swift */; };
 		1F4D231D2B2DC2BD003B5EC7 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D231C2B2DC2BD003B5EC7 /* TextStyles.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F2AE58F2B343814004852AA /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		1F2AE5932B3438A7004852AA /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		1F4D23152B2DC1FD003B5EC7 /* HackLandModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackLandModel.swift; sourceTree = "<group>"; };
 		1F4D23182B2DC214003B5EC7 /* HackLandViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackLandViewModel.swift; sourceTree = "<group>"; };
 		1F4D231C2B2DC2BD003B5EC7 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
@@ -65,6 +69,7 @@
 			children = (
 				1F4D23152B2DC1FD003B5EC7 /* HackLandModel.swift */,
 				1F4D23222B2E21A9003B5EC7 /* LeaderboardModel.swift */,
+				1F2AE5932B3438A7004852AA /* SettingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -74,6 +79,7 @@
 			children = (
 				1F4D23182B2DC214003B5EC7 /* HackLandViewModel.swift */,
 				1F4D23242B2E21FE003B5EC7 /* LeaderboardViewModel.swift */,
+				1F2AE58F2B343814004852AA /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -210,7 +216,9 @@
 				7F3B79E42B24E193008E03C8 /* Home.swift in Sources */,
 				1F4D23212B2DC5EF003B5EC7 /* Hack_Land.swift in Sources */,
 				1F4D23252B2E21FE003B5EC7 /* LeaderboardViewModel.swift in Sources */,
+				1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */,
 				7F3B79DC2B24DFFD008E03C8 /* Team_info.swift in Sources */,
+				1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */,
 				1F4D23192B2DC214003B5EC7 /* HackLandViewModel.swift in Sources */,
 				7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */,
 				7F3B79DA2B24DFF3008E03C8 /* Hack_teams.swift in Sources */,

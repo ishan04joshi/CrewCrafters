@@ -195,9 +195,8 @@ struct Profile: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack
                     {
-                        Button(action: {print("")}){
+                        Button(action: {}){
                             NavigationLink(destination: Settings()){
-                                
                                 Image(systemName: "gear")
                                 
                             }
