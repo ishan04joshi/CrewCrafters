@@ -11,7 +11,7 @@ struct Settings: View {
     @State var searchText = ""
     @ObservedObject var viewModel = SettingsViewModel()
     var body: some View {
-        NavigationView {
+        VStack {
             List {
                 ForEach(viewModel.setting) { section in
                     Section(header: Text(section.header)
@@ -27,10 +27,9 @@ struct Settings: View {
                         }
                 }
             }
-            .navigationTitle("Settings")
-            .searchable(text: $searchText)
             .padding(.all, 7)
-        }
+        }.navigationTitle("Settings")
+            .searchable(text: $searchText)
     }
 }
 
