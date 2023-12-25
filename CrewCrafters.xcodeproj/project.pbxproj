@@ -15,6 +15,8 @@
 		1F4D23212B2DC5EF003B5EC7 /* Hack_Land.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23202B2DC5EF003B5EC7 /* Hack_Land.swift */; };
 		1F4D23232B2E21A9003B5EC7 /* LeaderboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23222B2E21A9003B5EC7 /* LeaderboardModel.swift */; };
 		1F4D23252B2E21FE003B5EC7 /* LeaderboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23242B2E21FE003B5EC7 /* LeaderboardViewModel.swift */; };
+		7F23D3A02B39F0D4006B01BE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F23D39F2B39F0D4006B01BE /* Login.swift */; };
+		7F23D3A22B39F177006B01BE /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F23D3A12B39F177006B01BE /* SignIn.swift */; };
 		7F27AF5A2B2379B000827166 /* CrewCraftersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27AF592B2379B000827166 /* CrewCraftersApp.swift */; };
 		7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27AF5B2B2379B000827166 /* ContentView.swift */; };
 		7F27AF5E2B2379B100827166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F27AF5D2B2379B100827166 /* Assets.xcassets */; };
@@ -38,6 +40,8 @@
 		1F4D23202B2DC5EF003B5EC7 /* Hack_Land.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hack_Land.swift; sourceTree = "<group>"; };
 		1F4D23222B2E21A9003B5EC7 /* LeaderboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardModel.swift; sourceTree = "<group>"; };
 		1F4D23242B2E21FE003B5EC7 /* LeaderboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewModel.swift; sourceTree = "<group>"; };
+		7F23D39F2B39F0D4006B01BE /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		7F23D3A12B39F177006B01BE /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		7F27AF562B2379B000827166 /* CrewCrafters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrewCrafters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F27AF592B2379B000827166 /* CrewCraftersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewCraftersApp.swift; sourceTree = "<group>"; };
 		7F27AF5B2B2379B000827166 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,12 +133,14 @@
 				7F3B79D32B24DFBF008E03C8 /* Search.swift */,
 				7F3B79D52B24DFCD008E03C8 /* Profile.swift */,
 				7F3B79D92B24DFF3008E03C8 /* Hack_teams.swift */,
+				7F23D3A12B39F177006B01BE /* SignIn.swift */,
 				1F4D23202B2DC5EF003B5EC7 /* Hack_Land.swift */,
 				7F3B79DB2B24DFFD008E03C8 /* Team_info.swift */,
 				7F3B79DD2B24E009008E03C8 /* Team_create.swift */,
 				7F3B79DF2B24E01A008E03C8 /* Settings.swift */,
 				7F3B79E32B24E193008E03C8 /* Home.swift */,
 				7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */,
+				7F23D39F2B39F0D4006B01BE /* Login.swift */,
 			);
 			path = " Views";
 			sourceTree = "<group>";
@@ -216,12 +222,14 @@
 				7F3B79E42B24E193008E03C8 /* Home.swift in Sources */,
 				1F4D23212B2DC5EF003B5EC7 /* Hack_Land.swift in Sources */,
 				1F4D23252B2E21FE003B5EC7 /* LeaderboardViewModel.swift in Sources */,
+				7F23D3A22B39F177006B01BE /* SignIn.swift in Sources */,
 				1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */,
 				7F3B79DC2B24DFFD008E03C8 /* Team_info.swift in Sources */,
 				1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */,
 				1F4D23192B2DC214003B5EC7 /* HackLandViewModel.swift in Sources */,
 				7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */,
 				7F3B79DA2B24DFF3008E03C8 /* Hack_teams.swift in Sources */,
+				7F23D3A02B39F0D4006B01BE /* Login.swift in Sources */,
 				1F4D23232B2E21A9003B5EC7 /* LeaderboardModel.swift in Sources */,
 				1F4D231D2B2DC2BD003B5EC7 /* TextStyles.swift in Sources */,
 				7F3B79E02B24E01A008E03C8 /* Settings.swift in Sources */,

@@ -76,7 +76,7 @@ struct Team_create: View {
                 
                 VStack{
                     Button(action: goHome){
-                        NavigationLink(destination: Hack_teams(hack: String(), image: String())){
+                        NavigationLink(destination: Team_info(name: name, image: "hackathon_poster")){
                             Text("Publish Team").foregroundColor(.blue)}
                     }.buttonStyle(.bordered)
                         .tint(.blue)
