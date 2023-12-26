@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignIn: View {
-    @State private var email: String = "" // by default it's empty
+    @State private var email: String = ""
     var body: some View {
         ZStack {
             
@@ -21,10 +21,9 @@ struct SignIn: View {
                         .fontWeight(.bold)
                         .padding(.bottom, 30)
                     
-                    SocalLoginButton(image: Image(uiImage: #imageLiteral(resourceName: "apple")), text: Text("Sign in with Apple"))
+                    SignInWithAppleButtonView()
                     
-                    SocalLoginButton(image: Image(uiImage: #imageLiteral(resourceName: "google")), text: Text("Sign in with Google").foregroundColor(Color.blue))
-                        .padding(.vertical)
+                    SocialLoginButton(image: Image(uiImage: #imageLiteral(resourceName: "google")), text: Text("Sign in with Google"))
                     
                     Text("or get a link emailed to you")
                         .foregroundColor(Color.black.opacity(0.4))
@@ -50,16 +49,16 @@ struct SignIn: View {
                     .foregroundColor(Color.blue)
                 Spacer()
                 Button(action: goHome){
-                        Text("Go to Home")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.blue)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.white)
-                            .cornerRadius(50.0)
-                            .shadow(color: Color.black.opacity(0.08), radius: 60, x: 0.0, y: 16)
-                            .padding(.vertical)}
+                    Text("Go to Home")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.blue)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.white)
+                        .cornerRadius(50.0)
+                        .shadow(color: Color.black.opacity(0.08), radius: 60, x: 0.0, y: 16)
+                    .padding(.vertical)}
                 
                 Spacer()
             }
@@ -67,26 +66,23 @@ struct SignIn: View {
         }
     }
 }
-struct SocalLoginButton: View {
+
+
+struct SocialLoginButton: View {
     var image: Image
     var text: Text
     
     var body: some View {
         HStack {
             image
-                .padding(.horizontal)
-            Spacer()
             text
-                .font(.title2)
-            Spacer()
         }
-        .padding()
-        .frame(maxWidth: .infinity)
+        .frame(width: 200, height: 45)
         .background(Color.white)
-        .cornerRadius(50.0)
-        .shadow(color: Color.black.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
+        .cornerRadius(15)
     }
 }
+
 #Preview {
     SignIn()
 }
