@@ -23,10 +23,13 @@ struct SignIn: View {
                     
                     SignInWithAppleButtonView()
                     
+                    //GoogleSignInButtonView()
+                    
                     SocialLoginButton(image: Image(uiImage: #imageLiteral(resourceName: "google")), text: Text("Sign in with Google"))
                     
                     Text("or get a link emailed to you")
-                        .foregroundColor(Color.black.opacity(0.4))
+                        .font(.subheadline)
+                        .foregroundColor(Color.black.opacity(0.3))
                     
                     TextField("Work email address", text: $email)
                         .font(.title3)
@@ -34,7 +37,7 @@ struct SignIn: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.white)
                         .cornerRadius(50.0)
-                        .shadow(color: Color.black.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
+                        .shadow(color: Color.black.opacity(0.08), radius: 60, x: 0.0, y: 16)
                         .padding(.vertical)
                     
                     PrimaryButton(title: "Email me a signup link")
@@ -75,11 +78,12 @@ struct SocialLoginButton: View {
     var body: some View {
         HStack {
             image
-            text
+            text.fontWeight(.semibold)
         }
         .frame(width: 200, height: 45)
         .background(Color.white)
-        .cornerRadius(15)
+        .cornerRadius(5)
+        .shadow(color: Color.black.opacity(0.3), radius: 2, x: 3, y: 3)
     }
 }
 
