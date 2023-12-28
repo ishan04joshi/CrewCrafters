@@ -23,7 +23,7 @@ struct Login: View {
                         NavigationLink(
                             destination: SignIn().navigationBarHidden(true),
                             label: {
-                                Text("Sign In")
+                                Text("Log In")
                                     .font(.title3)
                                     .fontWeight(.bold)
                                     .foregroundColor(Color.blue)

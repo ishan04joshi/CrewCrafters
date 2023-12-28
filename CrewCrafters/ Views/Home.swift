@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct Home: View {
+
     var body: some View {
         NavigationView{
             ScrollView{
-                
                 HStack(){
                     Spacer()
                     Image("user")
                         .resizable()
-                        .frame(width: 80, height: 80)
+                        .frame(width: 90, height: 90)
                         .clipShape(Circle())
                     Spacer()
                     Text("Hello, Elon Musk!")
@@ -24,10 +24,9 @@ struct Home: View {
                         .fontWeight(.semibold)
                     Spacer()
                     Spacer()
-                    
-                    
                 }.padding(.top, 30.0)
-
+                
+                
                 Text("Trending Hackathon")
                     .padding(.top, 30.0)
                     .titleStyle()
@@ -148,6 +147,7 @@ func goHome() {
         window.makeKeyAndVisible()
     }
 }
+
 
 #Preview {
     Home()

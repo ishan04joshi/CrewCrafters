@@ -16,7 +16,7 @@ struct SignIn: View {
                 Spacer()
                 
                 VStack {
-                    Text("Sign In")
+                    Text("Log In")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(.bottom, 30)
@@ -25,14 +25,17 @@ struct SignIn: View {
                     
                     //GoogleSignInButtonView()
                     
+                    
                     SocialLoginButton(image: Image(uiImage: #imageLiteral(resourceName: "google")), text: Text("Sign in with Google"))
+                        .padding(.vertical, 20.0)
                     
                     Text("or get a link emailed to you")
                         .font(.subheadline)
+                        .padding(.vertical)
                         .foregroundColor(Color.black.opacity(0.3))
                     
                     TextField("Work email address", text: $email)
-                        .font(.title3)
+                        .font(.subheadline)
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.white)
@@ -80,7 +83,7 @@ struct SocialLoginButton: View {
             image
             text.fontWeight(.semibold)
         }
-        .frame(width: 200, height: 45)
+        .frame(width: 320, height: 45)
         .background(Color.white)
         .cornerRadius(5)
         .shadow(color: Color.black.opacity(0.3), radius: 2, x: 3, y: 3)
