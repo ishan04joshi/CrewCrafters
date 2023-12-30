@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Home: View {
-
     var body: some View {
         NavigationView{
             ScrollView{
@@ -130,7 +129,7 @@ struct Home: View {
                         HStack
                         {
                             Button(action: {}){
-                                NavigationLink(destination: Login()){
+                                NavigationLink(destination: Login().navigationBarHidden(true)){
                                     Image(systemName: "person.crop.circle")
                                     
                                 }

@@ -8,44 +8,74 @@
 import SwiftUI
 
 struct Login: View {
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var isPasswordVisible: Bool = false
     var body: some View {
-            NavigationView {
-                ZStack {
-                    Color("BgColor").edgesIgnoringSafeArea(.all)
-                    VStack {
-                        Spacer()
-                        Image("CrewCrafter").resizable()
-                            .frame(width: 250, height: 250)
-                            .aspectRatio(contentMode: .fit)
-                            .cornerRadius(15)
-                        Spacer()
-                        PrimaryButton(title: "Get Started")
-                        NavigationLink(
-                            destination: SignIn().navigationBarHidden(true),
-                            label: {
-                                Text("Log In")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color.blue)
-                                    .padding()
-                                    .frame(maxWidth: .infinity)
-                                    .background(Color.black.opacity(0.1))
-                                    .cornerRadius(50.0)
-                                    .shadow(color: Color.black.opacity(0.08), radius: 60, x: 0.0, y: 16)
-                                    .padding(.vertical)
-                            })
-                            .navigationBarHidden(true)
-                        
-                        HStack {
-                            Text("New around here? ")
-                            Text("Sign in")
-                                .foregroundColor(Color.blue)
+        VStack {
+            Text("Log In")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+            
+            TextField("Email Address", text: $email)
+                .textFieldStyle(CustomTextFieldStyle())
+                .padding(.bottom)
+            
+            ZStack(alignment: .trailingFirstTextBaseline) {
+                if isPasswordVisible {
+                    TextField("Password", text: $password)
+                        .textFieldStyle(CustomTextFieldStyle())
+                } else {
+                    SecureField("Password", text: $password)
+                        .textFieldStyle(CustomTextFieldStyle())
+                }
+                
+                Button(action: {
+                    isPasswordVisible.toggle()
+                    if isPasswordVisible {
+                        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+                            isPasswordVisible = false
                         }
                     }
-                    .padding()
+                }) {
+                    Image(systemName: "eye")
+                        .padding(.trailing, 10)
+                        .foregroundColor(Color.gray)
+                }
+                .padding(.trailing, 20)
+            }
+            
+            HStack(spacing: 0) {
+                Button(action: {
+                    
+                }) {
+                    Text("Forgot Password?")
+                        .font(.subheadline)
+                        .padding(.horizontal)
+                        .foregroundColor(.blue)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
+            .padding(.bottom)
+            
+            NavigationLink(
+                destination: Home().navigationBarHidden(true),
+                label: {
+                    Text("Get Started")
+                })
+            .buttonStyle(NavigationButton())
+            .navigationBarHidden(true)
+            
+            HStack(spacing: 0) {
+                Text("New around here? ")
+                NavigationLink("Sign in", destination: SignIn().navigationBarHidden(true))
+                    .foregroundColor(Color.blue)
+            }
         }
+        .padding()
+    }
 }
 
 #Preview {

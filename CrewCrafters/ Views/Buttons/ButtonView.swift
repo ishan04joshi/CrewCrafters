@@ -7,22 +7,6 @@
 
 import SwiftUI
 import AuthenticationServices
-import GoogleSignIn
-import GoogleSignInSwift
-
-struct PrimaryButton: View {
-    var title: String
-    var body: some View {
-        Text(title)
-            .font(.title3)
-            .fontWeight(.bold)
-            .foregroundColor(.white)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color.blue)
-            .cornerRadius(50)
-    }
-}
 
 struct SignInWithAppleButtonView: View {
     var body: some View {
@@ -46,18 +30,6 @@ struct SignInWithAppleButtonView: View {
     }
 }
 
-struct GoogleSignInButtonView: View {
-    var body: some View {
-        GoogleSignInButton(style: .wide, action: handleSignInButton)
-            .frame(width: 320, height: 45)
-    }
-}
-
-func handleSignInButton() {
-    
-}
-
 #Preview {
     SignInWithAppleButtonView()
-    //GoogleSignInButtonView()
 }
