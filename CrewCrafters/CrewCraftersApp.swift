@@ -11,7 +11,7 @@ import SwiftUI
 struct CrewCraftersApp: App {
     var body: some Scene {
         WindowGroup {
-            Onboarding()
+            ContentView()
         }
     }
 }

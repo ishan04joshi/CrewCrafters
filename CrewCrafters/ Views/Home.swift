@@ -80,9 +80,6 @@ struct Home: View {
                                 .aspectRatio(contentMode: .fit)
                                 .cornerRadius(15)
                             
-                            
-                            
-                            
                             Text("Just applied in Amaze Team for Ocean Hackathon as Web Developer")
                                 .fontWeight(.semibold)
                         }
@@ -129,7 +126,7 @@ struct Home: View {
                         HStack
                         {
                             Button(action: {}){
-                                NavigationLink(destination: Login().navigationBarHidden(true)){
+                                NavigationLink(destination: Notification()){
                                     Image(systemName: "person.crop.circle")
                                     
                                 }
@@ -140,6 +137,7 @@ struct Home: View {
         }
     }
 }
+
 func goHome() {
     if let window = UIApplication.shared.windows.first {
         window.rootViewController = UIHostingController(rootView: ContentView())

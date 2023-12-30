@@ -23,6 +23,8 @@
 		1FBA16422B3F112F0064829C /* GoogleSignInButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA16412B3F112F0064829C /* GoogleSignInButtonView.swift */; };
 		1FBA16442B3F11870064829C /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA16432B3F11870064829C /* SocialLoginButton.swift */; };
 		1FCC7F3C2B400A4800D66078 /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC7F3B2B400A4800D66078 /* NavigationButton.swift */; };
+		1FCC7F3E2B402BC200D66078 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC7F3D2B402BC200D66078 /* MainTabView.swift */; };
+		1FCC7F402B402EAE00D66078 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC7F3F2B402EAE00D66078 /* Notification.swift */; };
 		7F23D3A02B39F0D4006B01BE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F23D39F2B39F0D4006B01BE /* Login.swift */; };
 		7F23D3A22B39F177006B01BE /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F23D3A12B39F177006B01BE /* SignIn.swift */; };
 		7F27AF5A2B2379B000827166 /* CrewCraftersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27AF592B2379B000827166 /* CrewCraftersApp.swift */; };
@@ -55,6 +57,8 @@
 		1FBA16412B3F112F0064829C /* GoogleSignInButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButtonView.swift; sourceTree = "<group>"; };
 		1FBA16432B3F11870064829C /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
 		1FCC7F3B2B400A4800D66078 /* NavigationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
+		1FCC7F3D2B402BC200D66078 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		1FCC7F3F2B402EAE00D66078 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		7F23D39F2B39F0D4006B01BE /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		7F23D3A12B39F177006B01BE /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		7F27AF562B2379B000827166 /* CrewCrafters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrewCrafters.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +177,8 @@
 				7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */,
 				7F23D39F2B39F0D4006B01BE /* Login.swift */,
 				1FBA16362B3F09D30064829C /* Onboarding.swift */,
+				1FCC7F3D2B402BC200D66078 /* MainTabView.swift */,
+				1FCC7F3F2B402EAE00D66078 /* Notification.swift */,
 			);
 			path = " Views";
 			sourceTree = "<group>";
@@ -256,6 +262,7 @@
 			files = (
 				7F3B79D42B24DFBF008E03C8 /* Search.swift in Sources */,
 				1F4D23162B2DC1FD003B5EC7 /* HackLandModel.swift in Sources */,
+				1FCC7F3E2B402BC200D66078 /* MainTabView.swift in Sources */,
 				7F3B79D62B24DFCD008E03C8 /* Profile.swift in Sources */,
 				7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */,
 				7F3B79E42B24E193008E03C8 /* Home.swift in Sources */,
@@ -277,6 +284,7 @@
 				7F3B79E02B24E01A008E03C8 /* Settings.swift in Sources */,
 				7F3B79DE2B24E009008E03C8 /* Team_Create.swift in Sources */,
 				1FBA163A2B3F0EC80064829C /* PrimaryButton.swift in Sources */,
+				1FCC7F402B402EAE00D66078 /* Notification.swift in Sources */,
 				7F27AF5A2B2379B000827166 /* CrewCraftersApp.swift in Sources */,
 				1FA391092B3C359F0094D805 /* ButtonView.swift in Sources */,
 				1FCC7F3C2B400A4800D66078 /* NavigationButton.swift in Sources */,

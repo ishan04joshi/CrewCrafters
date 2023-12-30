@@ -75,12 +75,13 @@ struct SignIn: View {
             .padding(.bottom)
             
             NavigationLink(
-                destination: Home().navigationBarHidden(true),
+                destination: MainTabView().navigationBarHidden(true),
                 label: {
                     Text("Sign In")
                 })
             .buttonStyle(NavigationButton())
             .navigationBarHidden(true)
+            
             
             
             HStack(spacing: 0) {

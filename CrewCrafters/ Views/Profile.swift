@@ -14,7 +14,8 @@ struct Profile: View {
                 ZStack{
                     Image("bg")
                         .resizable()
-                        .frame(width: .infinity, height: 230)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 230)
                         .aspectRatio(contentMode: .fill)
                         .clipShape(CustomShape())
                     
