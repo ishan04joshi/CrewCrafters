@@ -127,7 +127,7 @@ struct Home: View {
                         {
                             Button(action: {}){
                                 NavigationLink(destination: Notification()){
-                                    Image(systemName: "person.crop.circle")
+                                    Image(systemName: "bell")
                                     
                                 }
                             }
@@ -140,7 +140,7 @@ struct Home: View {
 
 func goHome() {
     if let window = UIApplication.shared.windows.first {
-        window.rootViewController = UIHostingController(rootView: ContentView())
+        window.rootViewController = UIHostingController(rootView: Notification())
         window.makeKeyAndVisible()
     }
 }
