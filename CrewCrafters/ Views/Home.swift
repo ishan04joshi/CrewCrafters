@@ -139,11 +139,14 @@ struct Home: View {
 }
 
 func goHome() {
-    if let window = UIApplication.shared.windows.first {
+    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+       let window = windowScene.windows.first {
+        
         window.rootViewController = UIHostingController(rootView: Notification())
         window.makeKeyAndVisible()
     }
 }
+
 
 
 #Preview {
