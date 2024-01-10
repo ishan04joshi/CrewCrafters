@@ -62,8 +62,8 @@ struct Team_create: View {
                         
                     Section(header: Text("Members Information")) {
                         ForEach(0..<member_count+1, id: \.self){index in
-                            VStack{
-                                Text("Position \(index + 1):")
+                            VStack(alignment: .leading){
+                                Text("Position \(index + 1)")
                                 TextField("Tech Stack",text: $techstack)
                                 TextField("Details",text: $details)
                             }
@@ -72,7 +72,7 @@ struct Team_create: View {
                     }
                     
                     
-                }.contentMargins(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/, 5)
+                }.contentMargins(.horizontal, 5)
                 
                 VStack{
                     Button(action: goHome){

@@ -131,7 +131,9 @@ struct Search: View {
                 Divider()
                 Spacer()
                 
-            }.searchable(text: $searchText)
+            }
+            .foregroundStyle(Color.black)
+            .searchable(text: $searchText)
                 .navigationTitle("Hackathons")
                 
         }

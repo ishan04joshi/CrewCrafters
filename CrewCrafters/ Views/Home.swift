@@ -9,144 +9,110 @@ import SwiftUI
 
 struct Home: View {
     var body: some View {
-        NavigationView{
-            ScrollView{
-                HStack(){
-                    Spacer()
-                    Image("user")
-                        .resizable()
-                        .frame(width: 90, height: 90)
-                        .clipShape(Circle())
-                    Spacer()
-                    Text("Hello, Elon Musk!")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                    Spacer()
-                    Spacer()
-                }.padding(.top, 30.0)
-                
-                
-                Text("Trending Hackathon")
-                    .padding(.top, 30.0)
-                    .titleStyle()
-                ScrollView (.horizontal) {
-                    HStack (spacing: 15) {
-                        ForEach(0..<3){_ in
-                            Image("hackathon_poster")
-                                .resizable()
-                                .frame(width: 250, height: 150)
-                                .aspectRatio(contentMode: .fit)
-                                .cornerRadius(15)
-                            Image("hackathon_poster1")
-                                .resizable()
-                                .frame(width: 250, height: 150)
-                                .aspectRatio(contentMode: .fit)
-                                .cornerRadius(15)
-                        }
+        NavigationView {
+            ScrollView {
+                VStack {
+                    HStack {
+                        Image("user")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 60)
+                            .clipShape(Circle())
+                        Text("Hello, Elon Musk!")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                        Spacer()
                     }
-                }
-                .padding([.leading, .bottom, .trailing])
-                
-                Text("Applied Hackathon")
-                    .titleStyle()
-                VStack{
+                    .padding()
+                    
+                    
+                    Text("Trending Hackathons")
+                        .titleStyle()
+                    
+                    ScrollView (.horizontal) {
+                        HStack (spacing: 15) {
+                            ForEach(0..<3){_ in
+                                Image("hackathon_poster")
+                                    .resizable()
+                                    .frame(width: 250, height: 150)
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(15)
+                                Image("hackathon_poster1")
+                                    .resizable()
+                                    .frame(width: 250, height: 150)
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(15)
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                    .padding([.leading, .bottom, .trailing])
+                    
+                    Text("Applied Hackathon")
+                        .titleStyle()
                     
                     ForEach(0..<2){_ in
-                        VStack (alignment: .leading) {
-                            HStack{
-                                Image(systemName: "person")
-                                Text("Elon Musk")
-                                    .font(.callout)
-                                    .fontWeight(.bold)
-                                Spacer()
-                                Text("X")
-                                    .fontWeight(.heavy)
-                                Spacer()
-                                HStack{
-                                    
-                                    Text("Amaze Team")
-                                        .font(.callout)
-                                        .fontWeight(.semibold)
-                                    Image(systemName: "person.3.fill")
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Image("user")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(Circle())
+                                    .frame(width: 50)
+                                VStack(alignment: .leading) {
+                                    Text("Elon Musk")
+                                        .fontWeight(.bold)
+                                    HStack(alignment: .center, spacing: 3) {
+                                        Text("Amaze Team")
+                                            .fontWeight(.semibold)
+                                        Image(systemName: "person.3.fill")
+                                            .font(.caption)
+                                    }
+                                    .foregroundStyle(Color.black.opacity(0.5))
                                 }
-                                
                             }
-                            .padding([.top, .leading, .trailing], 7.0)
+                            .padding(8)
                             
+                            Text("Just applied in Amaze Team for Ocean Hackathon as Web Developer")
+                                .lineLimit(...6)
+                                .padding(8)
                             
                             Image("hackathon_poster")
                                 .resizable()
-                                .frame(width: 355, height: 157)
                                 .aspectRatio(contentMode: .fit)
-                                .cornerRadius(15)
-                            
-                            Text("Just applied in Amaze Team for Ocean Hackathon as Web Developer")
-                                .fontWeight(.semibold)
+                                .cornerRadius(20)
                         }
-                        Divider()
-                        VStack (alignment: .leading) {
-                            
-                            HStack{
-                                Image(systemName: "person")
-                                Text("Elon Musk")
-                                    .font(.callout)
-                                    .fontWeight(.bold)
-                                Spacer()
-                                Text("X")
-                                    .fontWeight(.heavy)
-                                Spacer()
-                                HStack{
-                                    
-                                    Text("Amaze Team")
-                                        .font(.callout)
-                                        .fontWeight(.semibold)
-                                    Image(systemName: "person.3.fill")
-                                }
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(20)
+                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 3, y: 5)
+                    }
+                    .padding([.leading, .bottom, .trailing])
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    HStack
+                    {
+                        Button(action: {}){
+                            NavigationLink(destination: Notification()){
+                                Image(systemName: "person.crop.circle")
                                 
                             }
-                            .padding([.top, .leading, .trailing], 7.0)
-                            
-                            Image("hackathon_poster1")
-                                .resizable()
-                                .frame(width: 355, height: 157)
-                                .aspectRatio(contentMode: .fit)
-                                .cornerRadius(15)
-                            
-                            Text("Just applied in Amaze Team for Ocean Hackathon as Web Developer").fontWeight(.semibold)
-                        }
-                        Divider()
-                    }
-                }
-                .padding([.leading, .bottom, .trailing])
-                
-                
-            }.navigationTitle("Home")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        HStack
-                        {
-                            Button(action: {}){
-                                NavigationLink(destination: Notification()){
-                                    Image(systemName: "bell")
-                                    
-                                }
-                            }
                         }
                     }
                 }
+            }
         }
     }
 }
 
 func goHome() {
-    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-       let window = windowScene.windows.first {
-        
-        window.rootViewController = UIHostingController(rootView: Notification())
+    if let window = UIApplication.shared.windows.first {
+        window.rootViewController = UIHostingController(rootView: ContentView())
         window.makeKeyAndVisible()
     }
 }
-
 
 
 #Preview {
