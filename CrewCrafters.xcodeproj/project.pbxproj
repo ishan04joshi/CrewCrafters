@@ -39,6 +39,8 @@
 		7F3B79E02B24E01A008E03C8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79DF2B24E01A008E03C8 /* Settings.swift */; };
 		7F3B79E42B24E193008E03C8 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79E32B24E193008E03C8 /* Home.swift */; };
 		7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */; };
+		7F9532DF2B53EF7A000760B6 /* Organizer_Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9532DE2B53EF7A000760B6 /* Organizer_Home.swift */; };
+		7F9532E12B53F224000760B6 /* Organizer_Team_Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9532E02B53F224000760B6 /* Organizer_Team_Create.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		7F3B79DF2B24E01A008E03C8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7F3B79E32B24E193008E03C8 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
+		7F9532DE2B53EF7A000760B6 /* Organizer_Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organizer_Home.swift; sourceTree = "<group>"; };
+		7F9532E02B53F224000760B6 /* Organizer_Team_Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organizer_Team_Create.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,8 @@
 				7F3B79DD2B24E009008E03C8 /* Team_Create.swift */,
 				7F3B79DF2B24E01A008E03C8 /* Settings.swift */,
 				7F3B79E32B24E193008E03C8 /* Home.swift */,
+				7F9532DE2B53EF7A000760B6 /* Organizer_Home.swift */,
+				7F9532E02B53F224000760B6 /* Organizer_Team_Create.swift */,
 				7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */,
 				7F23D39F2B39F0D4006B01BE /* Login.swift */,
 				1FBA16362B3F09D30064829C /* Onboarding.swift */,
@@ -272,6 +278,7 @@
 				1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */,
 				7F3B79DC2B24DFFD008E03C8 /* Team_Info.swift in Sources */,
 				1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */,
+				7F9532E12B53F224000760B6 /* Organizer_Team_Create.swift in Sources */,
 				1F4D23192B2DC214003B5EC7 /* HackLandViewModel.swift in Sources */,
 				1FBA16422B3F112F0064829C /* GoogleSignInButtonView.swift in Sources */,
 				7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */,
@@ -280,6 +287,7 @@
 				1F4D23232B2E21A9003B5EC7 /* LeaderboardModel.swift in Sources */,
 				1FBA16442B3F11870064829C /* SocialLoginButton.swift in Sources */,
 				1FBA16372B3F09D30064829C /* Onboarding.swift in Sources */,
+				7F9532DF2B53EF7A000760B6 /* Organizer_Home.swift in Sources */,
 				1F4D231D2B2DC2BD003B5EC7 /* TextStyles.swift in Sources */,
 				7F3B79E02B24E01A008E03C8 /* Settings.swift in Sources */,
 				7F3B79DE2B24E009008E03C8 /* Team_Create.swift in Sources */,
