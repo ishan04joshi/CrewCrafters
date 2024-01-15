@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct OrganiserCreateHack: Identifiable {
     var id = UUID()
-    var showingDetail: Bool
+    var hackathonPoster: UIImage?
     var name: String
     var mode: String
     var theme_count: Int

@@ -12,22 +12,11 @@ struct Organizer_Create: View {
     var body: some View {
         
         VStack{
-            
             Form {
                 Section(header: Text("Hackathon Information")) {
-                    HStack {
-                        Spacer()
-                        ZStack {
-                            Circle()
-                                .fill(Color(hue: 1.0, saturation: 0.0, brightness: 0.867))
-                                .frame(width: 155)
-                            
-                            Image(systemName: "camera.fill")
-                                .resizable()
-                                .frame(width: 50, height: 40)
-                        }
-                        Spacer()
-                    }
+                    CameraButton(image: $viewModel.hackathonInfo.hackathonPoster)
+                        .padding(.top, 20)
+                        .padding(.bottom, 20)
                     
                     HStack{
                         Text("Hackathon Name: ")
@@ -51,7 +40,7 @@ struct Organizer_Create: View {
                             }
                         }
                     }
-                    .padding(.bottom, 7.0)
+                    .padding(.bottom, 5.0)
                     
                     ForEach(0..<max(1, viewModel.hackathonInfo.theme_count), id: \.self) { themeIndex in
                         VStack(alignment: .leading) {
@@ -70,12 +59,14 @@ struct Organizer_Create: View {
                                    in: Date.now...,
                                    displayedComponents: [.date])
                     }
+                    .padding(.vertical, 4)
+                    
                     HStack {
                         DatePicker("End Date", selection: $viewModel.hackathonInfo.selectedEndDate,
                                    in: viewModel.hackathonInfo.selectedStartDate.addingTimeInterval(86400)...,
                                    displayedComponents: [.date])
                     }
-                    .padding(.bottom, 7.0)
+                    .padding(.vertical, 4)
                 }
                 
                 Section(header: Text("Prize details")) {
@@ -107,7 +98,7 @@ struct Organizer_Create: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Create Your Team")
-        .padding(.all, 7)
+        .padding(.horizontal, 7)
     }
 }
 

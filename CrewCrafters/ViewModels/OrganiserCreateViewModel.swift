@@ -12,7 +12,7 @@ class OrganiserCreateHackViewModel: ObservableObject {
 
     init() {
         self.hackathonInfo = OrganiserCreateHack(
-            showingDetail: false,
+            hackathonPoster: nil,
             name: "",
             mode: "",
             theme_count: 0,

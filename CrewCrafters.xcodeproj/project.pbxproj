@@ -12,6 +12,8 @@
 		1F377BE22B555D3500424028 /* OrganiserCreateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE12B555D3500424028 /* OrganiserCreateModel.swift */; };
 		1F377BE42B555E7A00424028 /* OrganiserCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE32B555E7A00424028 /* OrganiserCreateViewModel.swift */; };
 		1F377BE62B557C9E00424028 /* Organiser_Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE52B557C9E00424028 /* Organiser_Create.swift */; };
+		1F377BE82B55B0AC00424028 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE72B55B0AC00424028 /* ImagePicker.swift */; };
+		1F377BEA2B55B10500424028 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE92B55B10500424028 /* CameraButton.swift */; };
 		1F4D23162B2DC1FD003B5EC7 /* HackLandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23152B2DC1FD003B5EC7 /* HackLandModel.swift */; };
 		1F4D23192B2DC214003B5EC7 /* HackLandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23182B2DC214003B5EC7 /* HackLandViewModel.swift */; };
 		1F4D231D2B2DC2BD003B5EC7 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D231C2B2DC2BD003B5EC7 /* TextStyles.swift */; };
@@ -51,6 +53,8 @@
 		1F377BE12B555D3500424028 /* OrganiserCreateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganiserCreateModel.swift; sourceTree = "<group>"; };
 		1F377BE32B555E7A00424028 /* OrganiserCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganiserCreateViewModel.swift; sourceTree = "<group>"; };
 		1F377BE52B557C9E00424028 /* Organiser_Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organiser_Create.swift; sourceTree = "<group>"; };
+		1F377BE72B55B0AC00424028 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		1F377BE92B55B10500424028 /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		1F4D23152B2DC1FD003B5EC7 /* HackLandModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackLandModel.swift; sourceTree = "<group>"; };
 		1F4D23182B2DC214003B5EC7 /* HackLandViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackLandViewModel.swift; sourceTree = "<group>"; };
 		1F4D231C2B2DC2BD003B5EC7 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 				1FBA16392B3F0EC80064829C /* PrimaryButton.swift */,
 				1FBA16412B3F112F0064829C /* GoogleSignInButtonView.swift */,
 				1FBA16432B3F11870064829C /* SocialLoginButton.swift */,
+				1F377BE92B55B10500424028 /* CameraButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 				1FBA16362B3F09D30064829C /* Onboarding.swift */,
 				1FCC7F3D2B402BC200D66078 /* MainTabView.swift */,
 				1FCC7F3F2B402EAE00D66078 /* Notification.swift */,
+				1F377BE72B55B0AC00424028 /* ImagePicker.swift */,
 			);
 			path = " Views";
 			sourceTree = "<group>";
@@ -284,12 +290,14 @@
 				7F23D3A22B39F177006B01BE /* SignIn.swift in Sources */,
 				1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */,
 				1F377BE22B555D3500424028 /* OrganiserCreateModel.swift in Sources */,
+				1F377BEA2B55B10500424028 /* CameraButton.swift in Sources */,
 				7F3B79DC2B24DFFD008E03C8 /* Team_Info.swift in Sources */,
 				1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */,
 				1F4D23192B2DC214003B5EC7 /* HackLandViewModel.swift in Sources */,
 				1FBA16422B3F112F0064829C /* GoogleSignInButtonView.swift in Sources */,
 				7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */,
 				7F3B79DA2B24DFF3008E03C8 /* Hack_Teams.swift in Sources */,
+				1F377BE82B55B0AC00424028 /* ImagePicker.swift in Sources */,
 				7F23D3A02B39F0D4006B01BE /* Login.swift in Sources */,
 				1F4D23232B2E21A9003B5EC7 /* LeaderboardModel.swift in Sources */,
 				1FBA16442B3F11870064829C /* SocialLoginButton.swift in Sources */,
