@@ -14,7 +14,7 @@ struct Organizer_Home: View {
             ScrollView{
                 HStack{
                     Text("Approved Hackthones")
-                        .font(.title)
+                        .font(.title2)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.leading)
                     
@@ -119,7 +119,7 @@ struct Organizer_Home: View {
                 Spacer()
                 
             }
-            .foregroundStyle(Color.black)
+            .foregroundStyle(.primary)
             .navigationTitle("Welcome! SIIEC")
             
         }

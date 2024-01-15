@@ -132,7 +132,7 @@ struct Search: View {
                 Spacer()
                 
             }
-            .foregroundStyle(Color.black)
+            .foregroundStyle(.primary)
             .searchable(text: $searchText)
                 .navigationTitle("Hackathons")
                 

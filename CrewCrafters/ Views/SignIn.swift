@@ -96,11 +96,17 @@ struct SignIn: View {
                 .foregroundColor(Color.black.opacity(0.3))
             
             
-            SignInWithAppleButtonView()
+            //SignInWithAppleButtonView()
             
             //GoogleSignInButtonView()
             
-            SocialLoginButton(image: Image(uiImage: #imageLiteral(resourceName: "google")), text: Text("Sign in with Google"))
+            HStack{
+                Image(uiImage: #imageLiteral(resourceName: "apple"))
+                    .padding()
+                
+                Image(uiImage: #imageLiteral(resourceName: "google"))
+                    .padding()
+            }
             
             Spacer()
             
