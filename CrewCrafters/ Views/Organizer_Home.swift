@@ -17,7 +17,7 @@ struct Organizer_Home: View {
                         .font(.title)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.leading)
-                        
+                    
                     Spacer()
                 }.padding(.all, 10.0)
                 VStack(alignment: .leading){
@@ -54,7 +54,7 @@ struct Organizer_Home: View {
                         .font(.title)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.leading)
-                        
+                    
                     Spacer()
                 }.padding(.all, 10.0)
                 
@@ -120,8 +120,8 @@ struct Organizer_Home: View {
                 
             }
             .foregroundStyle(Color.black)
-                .navigationTitle("Welcome! SIIEC")
-                
+            .navigationTitle("Welcome! SIIEC")
+            
         }
     }
 }

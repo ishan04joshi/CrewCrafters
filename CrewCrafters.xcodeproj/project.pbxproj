@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AE58F2B343814004852AA /* SettingsViewModel.swift */; };
 		1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AE5932B3438A7004852AA /* SettingModel.swift */; };
+		1F377BE22B555D3500424028 /* OrganiserCreateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE12B555D3500424028 /* OrganiserCreateModel.swift */; };
+		1F377BE42B555E7A00424028 /* OrganiserCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE32B555E7A00424028 /* OrganiserCreateViewModel.swift */; };
+		1F377BE62B557C9E00424028 /* Organiser_Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE52B557C9E00424028 /* Organiser_Create.swift */; };
 		1F4D23162B2DC1FD003B5EC7 /* HackLandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23152B2DC1FD003B5EC7 /* HackLandModel.swift */; };
 		1F4D23192B2DC214003B5EC7 /* HackLandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23182B2DC214003B5EC7 /* HackLandViewModel.swift */; };
 		1F4D231D2B2DC2BD003B5EC7 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D231C2B2DC2BD003B5EC7 /* TextStyles.swift */; };
@@ -40,12 +43,14 @@
 		7F3B79E42B24E193008E03C8 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79E32B24E193008E03C8 /* Home.swift */; };
 		7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */; };
 		7F9532DF2B53EF7A000760B6 /* Organizer_Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9532DE2B53EF7A000760B6 /* Organizer_Home.swift */; };
-		7F9532E12B53F224000760B6 /* Organizer_Team_Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9532E02B53F224000760B6 /* Organizer_Team_Create.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1F2AE58F2B343814004852AA /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		1F2AE5932B3438A7004852AA /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		1F377BE12B555D3500424028 /* OrganiserCreateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganiserCreateModel.swift; sourceTree = "<group>"; };
+		1F377BE32B555E7A00424028 /* OrganiserCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganiserCreateViewModel.swift; sourceTree = "<group>"; };
+		1F377BE52B557C9E00424028 /* Organiser_Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organiser_Create.swift; sourceTree = "<group>"; };
 		1F4D23152B2DC1FD003B5EC7 /* HackLandModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackLandModel.swift; sourceTree = "<group>"; };
 		1F4D23182B2DC214003B5EC7 /* HackLandViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackLandViewModel.swift; sourceTree = "<group>"; };
 		1F4D231C2B2DC2BD003B5EC7 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
@@ -77,7 +82,6 @@
 		7F3B79E32B24E193008E03C8 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
 		7F9532DE2B53EF7A000760B6 /* Organizer_Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organizer_Home.swift; sourceTree = "<group>"; };
-		7F9532E02B53F224000760B6 /* Organizer_Team_Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organizer_Team_Create.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 				1F4D23152B2DC1FD003B5EC7 /* HackLandModel.swift */,
 				1F4D23222B2E21A9003B5EC7 /* LeaderboardModel.swift */,
 				1F2AE5932B3438A7004852AA /* SettingModel.swift */,
+				1F377BE12B555D3500424028 /* OrganiserCreateModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 				1F4D23182B2DC214003B5EC7 /* HackLandViewModel.swift */,
 				1F4D23242B2E21FE003B5EC7 /* LeaderboardViewModel.swift */,
 				1F2AE58F2B343814004852AA /* SettingsViewModel.swift */,
+				1F377BE32B555E7A00424028 /* OrganiserCreateViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -179,7 +185,7 @@
 				7F3B79DF2B24E01A008E03C8 /* Settings.swift */,
 				7F3B79E32B24E193008E03C8 /* Home.swift */,
 				7F9532DE2B53EF7A000760B6 /* Organizer_Home.swift */,
-				7F9532E02B53F224000760B6 /* Organizer_Team_Create.swift */,
+				1F377BE52B557C9E00424028 /* Organiser_Create.swift */,
 				7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */,
 				7F23D39F2B39F0D4006B01BE /* Login.swift */,
 				1FBA16362B3F09D30064829C /* Onboarding.swift */,
@@ -269,6 +275,7 @@
 				7F3B79D42B24DFBF008E03C8 /* Search.swift in Sources */,
 				1F4D23162B2DC1FD003B5EC7 /* HackLandModel.swift in Sources */,
 				1FCC7F3E2B402BC200D66078 /* MainTabView.swift in Sources */,
+				1F377BE42B555E7A00424028 /* OrganiserCreateViewModel.swift in Sources */,
 				7F3B79D62B24DFCD008E03C8 /* Profile.swift in Sources */,
 				7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */,
 				7F3B79E42B24E193008E03C8 /* Home.swift in Sources */,
@@ -276,9 +283,9 @@
 				1F4D23252B2E21FE003B5EC7 /* LeaderboardViewModel.swift in Sources */,
 				7F23D3A22B39F177006B01BE /* SignIn.swift in Sources */,
 				1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */,
+				1F377BE22B555D3500424028 /* OrganiserCreateModel.swift in Sources */,
 				7F3B79DC2B24DFFD008E03C8 /* Team_Info.swift in Sources */,
 				1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */,
-				7F9532E12B53F224000760B6 /* Organizer_Team_Create.swift in Sources */,
 				1F4D23192B2DC214003B5EC7 /* HackLandViewModel.swift in Sources */,
 				1FBA16422B3F112F0064829C /* GoogleSignInButtonView.swift in Sources */,
 				7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */,
@@ -291,6 +298,7 @@
 				1F4D231D2B2DC2BD003B5EC7 /* TextStyles.swift in Sources */,
 				7F3B79E02B24E01A008E03C8 /* Settings.swift in Sources */,
 				7F3B79DE2B24E009008E03C8 /* Team_Create.swift in Sources */,
+				1F377BE62B557C9E00424028 /* Organiser_Create.swift in Sources */,
 				1FBA163A2B3F0EC80064829C /* PrimaryButton.swift in Sources */,
 				1FCC7F402B402EAE00D66078 /* Notification.swift in Sources */,
 				7F27AF5A2B2379B000827166 /* CrewCraftersApp.swift in Sources */,
