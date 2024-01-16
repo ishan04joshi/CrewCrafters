@@ -43,6 +43,8 @@
 		7F3B79E02B24E01A008E03C8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79DF2B24E01A008E03C8 /* Settings.swift */; };
 		7F3B79E42B24E193008E03C8 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79E32B24E193008E03C8 /* Home.swift */; };
 		7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */; };
+		7F3FD46D2B5697F2000C43EB /* Admin_Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FD46C2B5697F2000C43EB /* Admin_Home.swift */; };
+		7F3FD46F2B5699DC000C43EB /* Admin_Approved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FD46E2B5699DC000C43EB /* Admin_Approved.swift */; };
 		7F9532DF2B53EF7A000760B6 /* Organizer_Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9532DE2B53EF7A000760B6 /* Organizer_Home.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +85,8 @@
 		7F3B79DF2B24E01A008E03C8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7F3B79E32B24E193008E03C8 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
+		7F3FD46C2B5697F2000C43EB /* Admin_Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin_Home.swift; sourceTree = "<group>"; };
+		7F3FD46E2B5699DC000C43EB /* Admin_Approved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin_Approved.swift; sourceTree = "<group>"; };
 		7F9532DE2B53EF7A000760B6 /* Organizer_Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organizer_Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,6 +189,8 @@
 				7F3B79DB2B24DFFD008E03C8 /* Team_Info.swift */,
 				7F3B79DD2B24E009008E03C8 /* Team_Create.swift */,
 				7F3B79DF2B24E01A008E03C8 /* Settings.swift */,
+				7F3FD46C2B5697F2000C43EB /* Admin_Home.swift */,
+				7F3FD46E2B5699DC000C43EB /* Admin_Approved.swift */,
 				7F3B79E32B24E193008E03C8 /* Home.swift */,
 				7F9532DE2B53EF7A000760B6 /* Organizer_Home.swift */,
 				1F377BE52B557C9E00424028 /* Organiser_Create.swift */,
@@ -287,6 +293,7 @@
 				7F23D3A22B39F177006B01BE /* SignIn.swift in Sources */,
 				1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */,
 				1F377BE22B555D3500424028 /* OrganiserCreateModel.swift in Sources */,
+				7F3FD46D2B5697F2000C43EB /* Admin_Home.swift in Sources */,
 				1F377BEA2B55B10500424028 /* CameraButton.swift in Sources */,
 				7F3B79DC2B24DFFD008E03C8 /* Team_Info.swift in Sources */,
 				1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */,
@@ -307,6 +314,7 @@
 				1FBA163A2B3F0EC80064829C /* PrimaryButton.swift in Sources */,
 				1FCC7F402B402EAE00D66078 /* Notification.swift in Sources */,
 				7F27AF5A2B2379B000827166 /* CrewCraftersApp.swift in Sources */,
+				7F3FD46F2B5699DC000C43EB /* Admin_Approved.swift in Sources */,
 				1FCC7F3C2B400A4800D66078 /* NavigationButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

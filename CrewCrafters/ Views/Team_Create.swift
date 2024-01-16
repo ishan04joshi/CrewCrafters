@@ -16,18 +16,16 @@ struct Team_create: View {
     @State var details: String = ""
     @State var member_count: Int = 0
     @State var n: Int = 1
-    
+    @StateObject private var viewModel = OrganiserCreateHackViewModel()
     var body: some View {
         
         
         VStack{
             
             ZStack{
-                Circle()
-                    .fill(Color(hue: 1.0, saturation: 0.0, brightness: 0.867))
-                    .frame(width: 155)
-                
-                Image(systemName: "camera.fill").resizable().frame(width: 50, height: 40)
+                CameraButton(image: $viewModel.hackathonInfo.hackathonPoster)
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
             }
             Form {
                 Section(header: Text("Team Information")
