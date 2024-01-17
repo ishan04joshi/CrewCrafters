@@ -13,13 +13,13 @@ struct OrganiserCreateHack: Identifiable {
     var hackathonPoster: UIImage?
     var name: String
     var mode: String
-    var theme_count: Int
+    var problem_count: Int
+    var problemStatements: [ProblemStatementInfo]
     var selectedStartDate: Date
     var selectedEndDate: Date
     var prize1: String
     var prize2: String
     var prize3: String
-    var problemStatement: [ProblemStatementInfo]
 }
 
 struct ProblemStatementInfo {

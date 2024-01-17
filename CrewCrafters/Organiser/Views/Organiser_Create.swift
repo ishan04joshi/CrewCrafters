@@ -34,7 +34,7 @@ struct Organizer_Create: View {
                 Section(header: Text("Problem Statements")) {
                     HStack {
                         Text("Problem Statements:")
-                        Picker("", selection: $viewModel.hackathonInfo.theme_count) {
+                        Picker("", selection: $viewModel.hackathonInfo.problem_count) {
                             ForEach(1...6, id: \.self) { count in
                                 Text("\(count)").tag(count)
                             }
@@ -42,12 +42,12 @@ struct Organizer_Create: View {
                     }
                     .padding(.bottom, 5.0)
                     
-                    ForEach(0..<max(1, viewModel.hackathonInfo.theme_count), id: \.self) { themeIndex in
+                    ForEach(0..<max(1, viewModel.hackathonInfo.problem_count), id: \.self) { index in
                         VStack(alignment: .leading) {
-                            ForEach(0..<max(1, viewModel.hackathonInfo.problemStatement.count), id: \.self) { problemIndex in
-                                TextField("Problem Statement \(problemIndex+1)", text: $viewModel.hackathonInfo.problemStatement[problemIndex].problem)
-                                TextField("Description", text: $viewModel.hackathonInfo.problemStatement[problemIndex].description)
-                                TextField("Theme", text: $viewModel.hackathonInfo.problemStatement[problemIndex].theme)
+                            ForEach(0..<max(1, viewModel.hackathonInfo.problemStatements.count), id: \.self) { problemIndex in
+                                TextField("Problem Statement \(index + 1)",text: $viewModel.hackathonInfo.problemStatements[problemIndex].problem)
+                                TextField("Description", text: $viewModel.hackathonInfo.problemStatements[problemIndex].description)
+                                TextField("Theme", text: $viewModel.hackathonInfo.problemStatements[problemIndex].theme)
                             }
                         }
                     }

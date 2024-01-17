@@ -9,19 +9,19 @@ import Foundation
 
 class OrganiserCreateHackViewModel: ObservableObject {
     @Published var hackathonInfo: OrganiserCreateHack
-
+    
     init() {
         self.hackathonInfo = OrganiserCreateHack(
             hackathonPoster: nil,
             name: "",
             mode: "",
-            theme_count: 0,
+            problem_count: 0,
+            problemStatements: Array(repeating: ProblemStatementInfo(problem: "", description: "", theme: ""), count: 1),
             selectedStartDate: Date.now,
             selectedEndDate: Date.now,
             prize1: "",
             prize2: "",
-            prize3: "",
-            problemStatement: Array(repeating: ProblemStatementInfo(problem: "", description: "", theme: ""), count: 1)
+            prize3: ""
         )
     }
 }

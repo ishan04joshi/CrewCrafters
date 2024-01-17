@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Home: View {
+struct ParticipantHome: View {
     var body: some View {
         NavigationView {
             ScrollView {
@@ -108,5 +108,5 @@ struct Home: View {
 }
 
 #Preview {
-    Home()
+    ParticipantHome()
 }

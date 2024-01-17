@@ -25,6 +25,7 @@ struct SignIn: View {
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
     @State private var showPrivacyPolicy = false
+    @ObservedObject var onboardingViewModel: OnboardingViewModel
     
     var body: some View {
         VStack {
@@ -74,13 +75,27 @@ struct SignIn: View {
             }
             .padding(.bottom)
             
-            NavigationLink(
-                destination: MainTabView().navigationBarHidden(true),
-                label: {
+            if onboardingViewModel.currentUser.role == .participant {
+                NavigationLink(destination: MainTabView()) {
                     Text("Sign In")
+                }
+                .simultaneousGesture(TapGesture().onEnded{
+                    print("particiapnt")
                 })
-            .buttonStyle(NavigationButton())
-            .navigationBarHidden(true)
+                .buttonStyle(NavigationButton())
+                .navigationBarHidden(true)
+            }
+            else {
+                NavigationLink(destination: Organizer_Home()) {
+                    Text("Sign In")
+                }
+                .simultaneousGesture(TapGesture().onEnded{
+                    print("organiser")
+                })
+                .buttonStyle(NavigationButton())
+                .navigationBarHidden(true)
+            }
+            
             
             
             
@@ -136,6 +151,6 @@ struct CustomTextFieldStyle: TextFieldStyle {
     }
 }
 
-#Preview {
-    SignIn()
-}
+//#Preview {
+//    SignIn()
+//}

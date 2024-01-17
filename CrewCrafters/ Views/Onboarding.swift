@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Onboarding: View {
+    @EnvironmentObject private var viewModel: OnboardingViewModel
     var body: some View {
         NavigationView {
             VStack {
@@ -18,13 +19,25 @@ struct Onboarding: View {
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(15)
                 Spacer()
-                NavigationLink(
-                    destination: SignIn().navigationBarHidden(true),
-                    label: {
-                        Text("Get Started")
-                    })
+
+                NavigationLink(destination: SignIn(onboardingViewModel: viewModel)) {
+                    Text("Sign In as Participant")
+                }
+                .simultaneousGesture(TapGesture().onEnded{
+                    viewModel.signInAsParticipant()
+                })
                 .buttonStyle(NavigationButton())
                 .navigationBarHidden(true)
+                
+                NavigationLink(destination: SignIn(onboardingViewModel: viewModel)) {
+                    Text("Sign In as Organiser")
+                }
+                .simultaneousGesture(TapGesture().onEnded{
+                    viewModel.signInAsOrganizer()
+                })
+                .buttonStyle(NavigationButton())
+                .navigationBarHidden(true)
+                
                 Spacer()
             }
             .padding()

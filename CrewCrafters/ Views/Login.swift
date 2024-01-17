@@ -11,6 +11,7 @@ struct Login: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
+    @EnvironmentObject private var viewModel: OnboardingViewModel
     var body: some View {
         VStack {
             Text("Log In")
@@ -71,7 +72,7 @@ struct Login: View {
             
             HStack(spacing: 0) {
                 Text("New around here? ")
-                NavigationLink("Sign in", destination: SignIn().navigationBarHidden(true))
+                NavigationLink("Sign in", destination: SignIn(onboardingViewModel: viewModel).navigationBarHidden(true))
                     .foregroundColor(Color.blue)
             }
         }
