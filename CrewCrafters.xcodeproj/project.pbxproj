@@ -10,6 +10,7 @@
 		1F115C332B5803B400227CD8 /* Organiser_Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F115C322B5803B400227CD8 /* Organiser_Home.swift */; };
 		1F115C372B582FC800227CD8 /* ParticipantHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F115C362B582FC800227CD8 /* ParticipantHome.swift */; };
 		1F115C392B584E8500227CD8 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F115C382B584E8500227CD8 /* OnboardingViewModel.swift */; };
+		1F115C3B2B597CA100227CD8 /* OrganiserTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F115C3A2B597CA100227CD8 /* OrganiserTabView.swift */; };
 		1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AE58F2B343814004852AA /* SettingsViewModel.swift */; };
 		1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AE5932B3438A7004852AA /* SettingModel.swift */; };
 		1F377BE22B555D3500424028 /* OrganiserCreateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE12B555D3500424028 /* OrganiserCreateModel.swift */; };
@@ -47,13 +48,13 @@
 		7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */; };
 		7F3FD46D2B5697F2000C43EB /* Admin_Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FD46C2B5697F2000C43EB /* Admin_Home.swift */; };
 		7F3FD46F2B5699DC000C43EB /* Admin_Approved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FD46E2B5699DC000C43EB /* Admin_Approved.swift */; };
-		7F90036E2B59173400DA54C5 /* organiser_TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F90036D2B59173400DA54C5 /* organiser_TabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1F115C322B5803B400227CD8 /* Organiser_Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organiser_Home.swift; sourceTree = "<group>"; };
 		1F115C362B582FC800227CD8 /* ParticipantHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantHome.swift; sourceTree = "<group>"; };
 		1F115C382B584E8500227CD8 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		1F115C3A2B597CA100227CD8 /* OrganiserTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganiserTabView.swift; sourceTree = "<group>"; };
 		1F2AE58F2B343814004852AA /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		1F2AE5932B3438A7004852AA /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		1F377BE12B555D3500424028 /* OrganiserCreateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganiserCreateModel.swift; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
 		7F3FD46C2B5697F2000C43EB /* Admin_Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin_Home.swift; sourceTree = "<group>"; };
 		7F3FD46E2B5699DC000C43EB /* Admin_Approved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin_Approved.swift; sourceTree = "<group>"; };
-		7F90036D2B59173400DA54C5 /* organiser_TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = organiser_TabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,8 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				1F377BE52B557C9E00424028 /* Organiser_Create.swift */,
-				7F90036D2B59173400DA54C5 /* organiser_TabView.swift */,
 				1F115C322B5803B400227CD8 /* Organiser_Home.swift */,
+				1F115C3A2B597CA100227CD8 /* OrganiserTabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -356,9 +356,9 @@
 				1FCC7F3E2B402BC200D66078 /* MainTabView.swift in Sources */,
 				1F377BE42B555E7A00424028 /* OrganiserCreateViewModel.swift in Sources */,
 				7F3B79D62B24DFCD008E03C8 /* Profile.swift in Sources */,
+				1F115C3B2B597CA100227CD8 /* OrganiserTabView.swift in Sources */,
 				1F115C372B582FC800227CD8 /* ParticipantHome.swift in Sources */,
 				1F115C392B584E8500227CD8 /* OnboardingViewModel.swift in Sources */,
-				7F90036E2B59173400DA54C5 /* organiser_TabView.swift in Sources */,
 				7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */,
 				1F4D23212B2DC5EF003B5EC7 /* Hack_Land.swift in Sources */,
 				1F4D23252B2E21FE003B5EC7 /* LeaderboardViewModel.swift in Sources */,

@@ -86,7 +86,7 @@ struct SignIn: View {
                 .navigationBarHidden(true)
             }
             else {
-                NavigationLink(destination: organiser_TabView()) {
+                NavigationLink(destination: OrganiserTabView()) {
                     Text("Sign In")
                 }
                 .simultaneousGesture(TapGesture().onEnded{
@@ -96,12 +96,9 @@ struct SignIn: View {
                 .navigationBarHidden(true)
             }
             
-            
-            
-            
             HStack(spacing: 0) {
                 Text("Already have an account? ")
-                NavigationLink("Log in", destination: Login().navigationBarHidden(true))
+                NavigationLink("Log in", destination: Login(onboardingViewModel: onboardingViewModel).navigationBarHidden(true))
                     .foregroundColor(Color.blue)
             }
             

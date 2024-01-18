@@ -11,7 +11,8 @@ struct Login: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
-    @EnvironmentObject private var viewModel: OnboardingViewModel
+    @ObservedObject var onboardingViewModel: OnboardingViewModel
+    
     var body: some View {
         VStack {
             Text("Log In")
@@ -61,18 +62,31 @@ struct Login: View {
             }
             .padding(.bottom)
             
-            NavigationLink(
-                destination: MainTabView().navigationBarHidden(true),
-                label: {
+            if onboardingViewModel.currentUser.role == .participant {
+                NavigationLink(destination: MainTabView()) {
                     Text("Sign In")
+                }
+                .simultaneousGesture(TapGesture().onEnded{
+                    print("particiapnt")
                 })
-            .buttonStyle(NavigationButton())
-            .navigationBarHidden(true)
+                .buttonStyle(NavigationButton())
+                .navigationBarHidden(true)
+            }
+            else {
+                NavigationLink(destination: OrganiserTabView()) {
+                    Text("Sign In")
+                }
+                .simultaneousGesture(TapGesture().onEnded{
+                    print("organiser")
+                })
+                .buttonStyle(NavigationButton())
+                .navigationBarHidden(true)
+            }
             
             
             HStack(spacing: 0) {
                 Text("New around here? ")
-                NavigationLink("Sign in", destination: SignIn(onboardingViewModel: viewModel).navigationBarHidden(true))
+                NavigationLink("Sign in", destination: SignIn(onboardingViewModel: onboardingViewModel).navigationBarHidden(true))
                     .foregroundColor(Color.blue)
             }
         }
@@ -80,6 +94,6 @@ struct Login: View {
     }
 }
 
-#Preview {
-    Login()
-}
+//#Preview {
+//    Login()
+//}

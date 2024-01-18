@@ -1,13 +1,12 @@
 //
-//  organiser_TabView.swift
+//  OrganiserTabView.swift
 //  CrewCrafters
-//
 //  Created by user1 on 18/01/24.
 //
 
 import SwiftUI
 
-struct organiser_TabView: View {
+struct OrganiserTabView: View {
     var body: some View {
         TabView {
             Organizer_Home()
@@ -31,5 +30,5 @@ struct organiser_TabView: View {
 }
 
 #Preview {
-    organiser_TabView()
+    OrganiserTabView()
 }
