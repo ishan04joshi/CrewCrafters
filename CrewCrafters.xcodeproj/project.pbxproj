@@ -47,6 +47,7 @@
 		7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */; };
 		7F3FD46D2B5697F2000C43EB /* Admin_Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FD46C2B5697F2000C43EB /* Admin_Home.swift */; };
 		7F3FD46F2B5699DC000C43EB /* Admin_Approved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FD46E2B5699DC000C43EB /* Admin_Approved.swift */; };
+		7F90036E2B59173400DA54C5 /* organiser_TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F90036D2B59173400DA54C5 /* organiser_TabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
 		7F3FD46C2B5697F2000C43EB /* Admin_Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin_Home.swift; sourceTree = "<group>"; };
 		7F3FD46E2B5699DC000C43EB /* Admin_Approved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin_Approved.swift; sourceTree = "<group>"; };
+		7F90036D2B59173400DA54C5 /* organiser_TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = organiser_TabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				1F377BE52B557C9E00424028 /* Organiser_Create.swift */,
+				7F90036D2B59173400DA54C5 /* organiser_TabView.swift */,
 				1F115C322B5803B400227CD8 /* Organiser_Home.swift */,
 			);
 			path = Views;
@@ -355,6 +358,7 @@
 				7F3B79D62B24DFCD008E03C8 /* Profile.swift in Sources */,
 				1F115C372B582FC800227CD8 /* ParticipantHome.swift in Sources */,
 				1F115C392B584E8500227CD8 /* OnboardingViewModel.swift in Sources */,
+				7F90036E2B59173400DA54C5 /* organiser_TabView.swift in Sources */,
 				7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */,
 				1F4D23212B2DC5EF003B5EC7 /* Hack_Land.swift in Sources */,
 				1F4D23252B2E21FE003B5EC7 /* LeaderboardViewModel.swift in Sources */,

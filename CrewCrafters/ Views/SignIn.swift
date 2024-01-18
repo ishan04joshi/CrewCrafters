@@ -86,7 +86,7 @@ struct SignIn: View {
                 .navigationBarHidden(true)
             }
             else {
-                NavigationLink(destination: Organizer_Home()) {
+                NavigationLink(destination: organiser_TabView()) {
                     Text("Sign In")
                 }
                 .simultaneousGesture(TapGesture().onEnded{
