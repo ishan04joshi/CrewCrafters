@@ -48,6 +48,7 @@
 		7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */; };
 		7F3FD46D2B5697F2000C43EB /* Admin_Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FD46C2B5697F2000C43EB /* Admin_Home.swift */; };
 		7F3FD46F2B5699DC000C43EB /* Admin_Approved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FD46E2B5699DC000C43EB /* Admin_Approved.swift */; };
+		7FD6E0B92B59AC0100818D83 /* Apply_form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD6E0B82B59AC0100818D83 /* Apply_form.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
 		7F3FD46C2B5697F2000C43EB /* Admin_Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin_Home.swift; sourceTree = "<group>"; };
 		7F3FD46E2B5699DC000C43EB /* Admin_Approved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin_Approved.swift; sourceTree = "<group>"; };
+		7FD6E0B82B59AC0100818D83 /* Apply_form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apply_form.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				7F3B79D52B24DFCD008E03C8 /* Profile.swift */,
 				7F3B79D92B24DFF3008E03C8 /* Hack_Teams.swift */,
 				1F4D23202B2DC5EF003B5EC7 /* Hack_Land.swift */,
+				7FD6E0B82B59AC0100818D83 /* Apply_form.swift */,
 				7F3B79DB2B24DFFD008E03C8 /* Team_Info.swift */,
 				7F3B79DD2B24E009008E03C8 /* Team_Create.swift */,
 				1F115C362B582FC800227CD8 /* ParticipantHome.swift */,
@@ -381,6 +384,7 @@
 				1FBA16372B3F09D30064829C /* Onboarding.swift in Sources */,
 				1F4D231D2B2DC2BD003B5EC7 /* TextStyles.swift in Sources */,
 				7F3B79E02B24E01A008E03C8 /* Settings.swift in Sources */,
+				7FD6E0B92B59AC0100818D83 /* Apply_form.swift in Sources */,
 				7F3B79DE2B24E009008E03C8 /* Team_Create.swift in Sources */,
 				1F377BE62B557C9E00424028 /* Organiser_Create.swift in Sources */,
 				1FBA163A2B3F0EC80064829C /* PrimaryButton.swift in Sources */,

@@ -90,10 +90,13 @@ struct Team_info: View {
                 Spacer()
                 Spacer()
                 ZStack{
-                    Button("Apply Now") {
-                        
+                    Button(action: {print("")}){
+                        NavigationLink(destination: Apply_form()){
+                            Text("Apply Now")
+                                .foregroundColor(.blue)
+                        }
                     }.buttonStyle(.bordered)
-                        .tint(Color.blue)
+                        .tint(.blue)
                 }
                 
             }.padding(.all, 10.0)
@@ -120,10 +123,13 @@ struct Team_info: View {
                 Spacer()
                 Spacer()
                 ZStack{
-                    Button("Apply Now") {
-                        
+                    Button(action: {print("")}){
+                        NavigationLink(destination: Apply_form()){
+                            Text("Apply Now")
+                                .foregroundColor(.blue)
+                        }
                     }.buttonStyle(.bordered)
-                        .tint(Color.blue)
+                        .tint(.blue)
                 }
                 
             }.padding(.all, 10.0)
@@ -150,10 +156,13 @@ struct Team_info: View {
                 Spacer()
                 Spacer()
                 ZStack{
-                    Button("Apply Now") {
-                        
+                    Button(action: {print("")}){
+                        NavigationLink(destination: Apply_form()){
+                            Text("Apply Now")
+                                .foregroundColor(.blue)
+                        }
                     }.buttonStyle(.bordered)
-                        .tint(Color.blue)
+                        .tint(.blue)
                 }
                 
             }.padding(.all, 10.0)
@@ -182,10 +191,13 @@ struct Team_info: View {
                 Spacer()
                 Spacer()
                 ZStack{
-                    Button("Apply Now") {
-                        
+                    Button(action: {print("")}){
+                        NavigationLink(destination: Apply_form()){
+                            Text("Apply Now")
+                                .foregroundColor(.blue)
+                        }
                     }.buttonStyle(.bordered)
-                        .tint(Color.blue)
+                        .tint(.blue)
                 }
                 
             }.padding(.all, 10.0)
@@ -212,10 +224,13 @@ struct Team_info: View {
                 Spacer()
                 Spacer()
                 ZStack{
-                    Button("Apply Now") {
-                        
+                    Button(action: {print("")}){
+                        NavigationLink(destination: Apply_form()){
+                            Text("Apply Now")
+                                .foregroundColor(.blue)
+                        }
                     }.buttonStyle(.bordered)
-                        .tint(Color.blue)
+                        .tint(.blue)
                 }
                 
             }.padding(.all, 10.0)
