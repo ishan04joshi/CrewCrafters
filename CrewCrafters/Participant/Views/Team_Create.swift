@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Team_create: View {
-    @State var showingDetail = false
     @State var name: String = ""
     @State var theme: String = ""
     @State var problem: String = ""

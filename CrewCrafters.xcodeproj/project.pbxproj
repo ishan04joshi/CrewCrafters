@@ -17,8 +17,6 @@
 		1F377BE82B55B0AC00424028 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE72B55B0AC00424028 /* ImagePicker.swift */; };
 		1F377BEA2B55B10500424028 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE92B55B10500424028 /* CameraButton.swift */; };
 		1F377BEC2B55BD2100424028 /* SignInWithAppleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BEB2B55BD2100424028 /* SignInWithAppleButtonView.swift */; };
-		1F4D23162B2DC1FD003B5EC7 /* HackLandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23152B2DC1FD003B5EC7 /* HackLandModel.swift */; };
-		1F4D23192B2DC214003B5EC7 /* HackLandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23182B2DC214003B5EC7 /* HackLandViewModel.swift */; };
 		1F4D231D2B2DC2BD003B5EC7 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D231C2B2DC2BD003B5EC7 /* TextStyles.swift */; };
 		1F4D23212B2DC5EF003B5EC7 /* Hack_Land.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23202B2DC5EF003B5EC7 /* Hack_Land.swift */; };
 		1F4D23232B2E21A9003B5EC7 /* LeaderboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23222B2E21A9003B5EC7 /* LeaderboardModel.swift */; };
@@ -62,8 +60,6 @@
 		1F377BE72B55B0AC00424028 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1F377BE92B55B10500424028 /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		1F377BEB2B55BD2100424028 /* SignInWithAppleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonView.swift; sourceTree = "<group>"; };
-		1F4D23152B2DC1FD003B5EC7 /* HackLandModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackLandModel.swift; sourceTree = "<group>"; };
-		1F4D23182B2DC214003B5EC7 /* HackLandViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackLandViewModel.swift; sourceTree = "<group>"; };
 		1F4D231C2B2DC2BD003B5EC7 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		1F4D23202B2DC5EF003B5EC7 /* Hack_Land.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hack_Land.swift; sourceTree = "<group>"; };
 		1F4D23222B2E21A9003B5EC7 /* LeaderboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardModel.swift; sourceTree = "<group>"; };
@@ -132,7 +128,6 @@
 		1F115C2A2B58022000227CD8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1F4D23152B2DC1FD003B5EC7 /* HackLandModel.swift */,
 				1F4D23222B2E21A9003B5EC7 /* LeaderboardModel.swift */,
 				1F2AE5932B3438A7004852AA /* SettingModel.swift */,
 			);
@@ -142,7 +137,6 @@
 		1F115C2B2B58022800227CD8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				1F4D23182B2DC214003B5EC7 /* HackLandViewModel.swift */,
 				1F4D23242B2E21FE003B5EC7 /* LeaderboardViewModel.swift */,
 				1F2AE58F2B343814004852AA /* SettingsViewModel.swift */,
 			);
@@ -355,7 +349,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F3B79D42B24DFBF008E03C8 /* Search.swift in Sources */,
-				1F4D23162B2DC1FD003B5EC7 /* HackLandModel.swift in Sources */,
 				1FCC7F3E2B402BC200D66078 /* MainTabView.swift in Sources */,
 				7F3B79D62B24DFCD008E03C8 /* Profile.swift in Sources */,
 				1F115C3B2B597CA100227CD8 /* OrganiserTabView.swift in Sources */,
@@ -373,7 +366,6 @@
 				7F3B79DC2B24DFFD008E03C8 /* Team_Info.swift in Sources */,
 				1F6ECDE62B63C439005C065F /* HackathonModel.swift in Sources */,
 				1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */,
-				1F4D23192B2DC214003B5EC7 /* HackLandViewModel.swift in Sources */,
 				1FBA16422B3F112F0064829C /* GoogleSignInButtonView.swift in Sources */,
 				7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */,
 				7F3B79DA2B24DFF3008E03C8 /* Hack_Teams.swift in Sources */,

@@ -28,7 +28,7 @@ struct Hack_Land: View {
                     HStack{
                         Spacer()
                         Spacer()
-//                        NavigationLink(destination: Hack_teams()){
+//                        NavigationLink(destination: Hack_Teams(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0),){
 //                            Text("Join a Team")
 //                                .foregroundColor(.blue)
 //                            
@@ -157,11 +157,11 @@ struct PrizeView: View {
     }
 }
 
-struct HackLand_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            Hack_Land(hackathonIndex: 0)
-        }
-        .environmentObject(HackathonViewModel())
-    }
-}
+//struct HackLand_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            Hack_Land(hackathonIndex: 0)
+//        }
+//        .environmentObject(HackathonViewModel())
+//    }
+//}

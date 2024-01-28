@@ -13,6 +13,30 @@ struct ProblemStatementInfo {
     var description: String
 }
 
+struct MemberInfo:Identifiable{
+    var id =  UUID()
+    var name: String
+    var techstack: [String]
+}
+
+struct TeamsInfo: Identifiable{
+    var id =  UUID()
+    var teamPoster: UIImage?
+    var name: String
+    var memberCount: Int
+    var filledPosition: Int
+    var theme: String
+    var problemStatement: String
+    var techstack: [String]
+    var details: String
+}
+
+struct HackathonTeams: Identifiable {
+    var id = UUID()
+    var name: String
+    var teamInfo: [TeamsInfo]
+}
+
 struct Hackathon: Identifiable, Equatable {
     static func == (lhs: Hackathon, rhs: Hackathon) -> Bool {
         return lhs.id == rhs.id
