@@ -8,143 +8,64 @@
 import SwiftUI
 
 struct Search: View {
-    @State var showingDetail = false
-    @State var searchText = ""
+    @EnvironmentObject var hackathonViewModel: HackathonViewModel
+    @State private var searchText = ""
+    
     var body: some View {
-        NavigationView{
-            ScrollView{
-                VStack{
-                    NavigationLink(destination: Hack_Land(title: "Ocean", image: "hackathon_poster"),label: {
-                        VStack{
-                            Image("hackathon_poster")
-                                .resizable(resizingMode: .stretch)
-                                .frame(width: 355.0, height: 157.0).cornerRadius(20.0)
-                            
-                            
-                            HStack{
-                                Text("Ocean Hackathon '23")
-                                    .font(.callout)
-                                    .fontWeight(.bold)
-                                Spacer()
-                                HStack{
-                                    Image(systemName: "calendar")
-                                    Text("15sept- 21sept")
-                                        .font(.callout)
-                                        .fontWeight(.semibold)
-                                }
-                                
-                            }
-                            .padding([.top, .leading, .trailing], 7.0)
-                        }
-                    })
-                    
+        NavigationView {
+            VStack(spacing: 0){
+                HStack {
+                    TextField("Search Hackathons", text: $searchText)
+                        .padding(8)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(8)
+                        .padding(.horizontal, 8)
+                        .padding(.bottom, 8)
                 }
-                .padding(.all, 10.0)
-                Divider()
                 
-                
-                VStack{
-                    NavigationLink(destination: Hack_Land(title: "Horizen",image: "hackathon_poster1"),label: {
-                        VStack{
-                            Image("hackathon_poster1")
-                                .resizable(resizingMode: .stretch)
-                                .frame(width: 355.0, height: 157.0).cornerRadius(20.0)
-                            
-                            
-                            HStack{
-                                Text("Horizen Hackathon '23")
-                                    .font(.callout)
-                                    .fontWeight(.bold)
-                                Spacer()
-                                HStack{
-                                    Image(systemName: "calendar")
-                                    Text("15sept- 21sept")
-                                        .font(.callout)
-                                        .fontWeight(.semibold)
-                                }
-                                
-                            }
-                            .padding([.top, .leading, .trailing], 7.0)
+                ScrollView {
+                    ForEach(hackathonViewModel.filteredHackathons(for: .participant).filter {
+                        searchText.isEmpty || $0.name.localizedCaseInsensitiveContains(searchText)
+                    }) { hackathon in
+                        NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)) {
+                            HackathonItemView(hackathon: hackathon)
                         }
-                    })
-                    
+                        .buttonStyle(PlainButtonStyle())
+                        Divider()
+                    }
                 }
-                .padding(.all, 10.0)
-                Divider()
-                
-                VStack{
-                    NavigationLink(destination: Hack_Land(title: "Ocean", image: "hackathon_poster"),label: {
-                        VStack{
-                            Image("hackathon_poster")
-                                .resizable(resizingMode: .stretch)
-                                .frame(width: 355.0, height: 157.0).cornerRadius(20.0)
-                            
-                            
-                            HStack{
-                                Text("Ocean Hackathon '23")
-                                    .font(.callout)
-                                    .fontWeight(.bold)
-                                Spacer()
-                                HStack{
-                                    Image(systemName: "calendar")
-                                    Text("15sept- 21sept")
-                                        .font(.callout)
-                                        .fontWeight(.semibold)
-                                }
-                                
-                            }
-                            .padding([.top, .leading, .trailing], 7.0)
-                        }
-                    })
-                    
-                }
-                .padding(.all, 10.0)
-                Divider()
-                
-                VStack{
-                    NavigationLink(destination: Hack_Land(title: "Horizen",image: "hackathon_poster1"),label: {
-                        VStack{
-                            Image("hackathon_poster1")
-                                .resizable(resizingMode: .stretch)
-                                .frame(width: 355.0, height: 157.0).cornerRadius(20.0)
-                            
-                            
-                            HStack{
-                                Text("Horizen Hackathon '23")
-                                    .font(.callout)
-                                    .fontWeight(.bold)
-                                Spacer()
-                                HStack{
-                                    Image(systemName: "calendar")
-                                    Text("15sept- 21sept")
-                                        .font(.callout)
-                                        .fontWeight(.semibold)
-                                }
-                                
-                            }
-                            .padding([.top, .leading, .trailing], 7.0)
-                        }
-                    })
-                    
-                }
-                .padding(.all, 10.0)
-                Divider()
-                Spacer()
-                
+                .padding(.horizontal)
             }
-            .foregroundStyle(.primary)
-            .searchable(text: $searchText)
-                .navigationTitle("Hackathons")
-                
+            .navigationTitle("Search")
         }
     }
 }
 
-
-
-
-
-
-#Preview {
-    Search()
+struct HackathonItemView: View {
+    let hackathon: Hackathon
+    
+    var body: some View {
+        VStack {
+            Image(uiImage: hackathon.hackathonPoster ?? UIImage(named: "default_hackathon_poster")!)
+                .resizable(resizingMode: .stretch)
+                .frame(width: 355.0, height: 157.0)
+                .cornerRadius(20.0)
+                .padding(.all, 10.0)
+            
+            HStack {
+                Text(hackathon.name)
+                    .font(.callout)
+                    .fontWeight(.bold)
+                    .padding([.top, .leading, .trailing], 7.0)
+                Spacer()
+                HStack {
+                    Image(systemName: "calendar")
+                    Text("\(formatDate(from: hackathon.startDate)) - \(formatDate(from: hackathon.endDate))")
+                        .font(.callout)
+                        .fontWeight(.semibold)
+                        .padding([.top, .trailing], 7.0)
+                }
+            }
+        }
+    }
 }

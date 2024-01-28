@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Hack_teams: View {
-    @State var showingDetail = false
     @State var searchText = ""
     var hack: String
     var image: String

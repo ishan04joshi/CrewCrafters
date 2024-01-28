@@ -6,3 +6,30 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct ProblemStatementInfo {
+    var problem: String
+    var description: String
+}
+
+struct Hackathon: Identifiable, Equatable {
+    static func == (lhs: Hackathon, rhs: Hackathon) -> Bool {
+        return lhs.id == rhs.id
+    }
+    var id = UUID()
+    var hackathonPoster: UIImage?
+    var name: String
+    var about: String
+    var mode: String
+    var problem_count: Int
+    var problemStatements: [ProblemStatementInfo]
+    var themes: [String]
+    var startDate: Date
+    var endDate: Date
+    var partners: [UIImage]
+    var prize1: String
+    var prize2: String
+    var prize3: String
+    var isApproved: Bool
+}

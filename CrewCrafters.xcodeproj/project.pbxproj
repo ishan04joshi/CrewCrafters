@@ -13,8 +13,6 @@
 		1F115C3B2B597CA100227CD8 /* OrganiserTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F115C3A2B597CA100227CD8 /* OrganiserTabView.swift */; };
 		1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AE58F2B343814004852AA /* SettingsViewModel.swift */; };
 		1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AE5932B3438A7004852AA /* SettingModel.swift */; };
-		1F377BE22B555D3500424028 /* OrganiserCreateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE12B555D3500424028 /* OrganiserCreateModel.swift */; };
-		1F377BE42B555E7A00424028 /* OrganiserCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE32B555E7A00424028 /* OrganiserCreateViewModel.swift */; };
 		1F377BE62B557C9E00424028 /* Organiser_Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE52B557C9E00424028 /* Organiser_Create.swift */; };
 		1F377BE82B55B0AC00424028 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE72B55B0AC00424028 /* ImagePicker.swift */; };
 		1F377BEA2B55B10500424028 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE92B55B10500424028 /* CameraButton.swift */; };
@@ -25,6 +23,8 @@
 		1F4D23212B2DC5EF003B5EC7 /* Hack_Land.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23202B2DC5EF003B5EC7 /* Hack_Land.swift */; };
 		1F4D23232B2E21A9003B5EC7 /* LeaderboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23222B2E21A9003B5EC7 /* LeaderboardModel.swift */; };
 		1F4D23252B2E21FE003B5EC7 /* LeaderboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23242B2E21FE003B5EC7 /* LeaderboardViewModel.swift */; };
+		1F6ECDE62B63C439005C065F /* HackathonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6ECDE52B63C439005C065F /* HackathonModel.swift */; };
+		1F6ECDE82B63C664005C065F /* HackathonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6ECDE72B63C664005C065F /* HackathonViewModel.swift */; };
 		1FA3910C2B3C35B70094D805 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 1FA3910B2B3C35B70094D805 /* GoogleSignIn */; };
 		1FA3910E2B3C35B70094D805 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1FA3910D2B3C35B70094D805 /* GoogleSignInSwift */; };
 		1FBA16372B3F09D30064829C /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA16362B3F09D30064829C /* Onboarding.swift */; };
@@ -58,8 +58,6 @@
 		1F115C3A2B597CA100227CD8 /* OrganiserTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganiserTabView.swift; sourceTree = "<group>"; };
 		1F2AE58F2B343814004852AA /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		1F2AE5932B3438A7004852AA /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
-		1F377BE12B555D3500424028 /* OrganiserCreateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganiserCreateModel.swift; sourceTree = "<group>"; };
-		1F377BE32B555E7A00424028 /* OrganiserCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganiserCreateViewModel.swift; sourceTree = "<group>"; };
 		1F377BE52B557C9E00424028 /* Organiser_Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organiser_Create.swift; sourceTree = "<group>"; };
 		1F377BE72B55B0AC00424028 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1F377BE92B55B10500424028 /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
@@ -70,6 +68,8 @@
 		1F4D23202B2DC5EF003B5EC7 /* Hack_Land.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hack_Land.swift; sourceTree = "<group>"; };
 		1F4D23222B2E21A9003B5EC7 /* LeaderboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardModel.swift; sourceTree = "<group>"; };
 		1F4D23242B2E21FE003B5EC7 /* LeaderboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewModel.swift; sourceTree = "<group>"; };
+		1F6ECDE52B63C439005C065F /* HackathonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackathonModel.swift; sourceTree = "<group>"; };
+		1F6ECDE72B63C664005C065F /* HackathonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackathonViewModel.swift; sourceTree = "<group>"; };
 		1FA3910F2B3C36120094D805 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1FBA16362B3F09D30064829C /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		1FBA16392B3F0EC80064829C /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
@@ -168,7 +168,6 @@
 		1F115C2D2B58028600227CD8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				1F377BE32B555E7A00424028 /* OrganiserCreateViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -186,7 +185,6 @@
 		1F115C2F2B58029900227CD8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1F377BE12B555D3500424028 /* OrganiserCreateModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,6 +249,8 @@
 				1FA3910F2B3C36120094D805 /* Info.plist */,
 				7F27AF5D2B2379B100827166 /* Assets.xcassets */,
 				7F27AF5F2B2379B100827166 /* Preview Content */,
+				1F6ECDE52B63C439005C065F /* HackathonModel.swift */,
+				1F6ECDE72B63C664005C065F /* HackathonViewModel.swift */,
 			);
 			path = CrewCrafters;
 			sourceTree = "<group>";
@@ -357,7 +357,6 @@
 				7F3B79D42B24DFBF008E03C8 /* Search.swift in Sources */,
 				1F4D23162B2DC1FD003B5EC7 /* HackLandModel.swift in Sources */,
 				1FCC7F3E2B402BC200D66078 /* MainTabView.swift in Sources */,
-				1F377BE42B555E7A00424028 /* OrganiserCreateViewModel.swift in Sources */,
 				7F3B79D62B24DFCD008E03C8 /* Profile.swift in Sources */,
 				1F115C3B2B597CA100227CD8 /* OrganiserTabView.swift in Sources */,
 				1F115C372B582FC800227CD8 /* ParticipantHome.swift in Sources */,
@@ -368,10 +367,11 @@
 				1F115C332B5803B400227CD8 /* Organiser_Home.swift in Sources */,
 				7F23D3A22B39F177006B01BE /* SignIn.swift in Sources */,
 				1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */,
-				1F377BE22B555D3500424028 /* OrganiserCreateModel.swift in Sources */,
 				7F3FD46D2B5697F2000C43EB /* Admin_Home.swift in Sources */,
+				1F6ECDE82B63C664005C065F /* HackathonViewModel.swift in Sources */,
 				1F377BEA2B55B10500424028 /* CameraButton.swift in Sources */,
 				7F3B79DC2B24DFFD008E03C8 /* Team_Info.swift in Sources */,
+				1F6ECDE62B63C439005C065F /* HackathonModel.swift in Sources */,
 				1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */,
 				1F4D23192B2DC214003B5EC7 /* HackLandViewModel.swift in Sources */,
 				1FBA16422B3F112F0064829C /* GoogleSignInButtonView.swift in Sources */,

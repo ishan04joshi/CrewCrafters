@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct Admin_Approved: View {
+    let hackathon: Hackathon
+    @EnvironmentObject var hackathonViewModel: HackathonViewModel
     var body: some View {
-        NavigationView{
-            ScrollView{
-                
-                
-                
-                VStack{
-                    NavigationLink(destination: Hack_Land(title: "Horizen",image: "hackathon_poster1"),label: {
+        NavigationView {
+            ScrollView {
+                VStack {
+                    NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0),label: {
                         VStack{
                             Image("hackathon_poster1")
                                 .resizable(resizingMode: .stretch)
@@ -36,7 +35,7 @@ struct Admin_Approved: View {
                                 
                             }
                             .padding([.top, .leading, .trailing], 7.0)
-                           
+                            
                         }
                     })
                     
@@ -45,7 +44,7 @@ struct Admin_Approved: View {
                 Divider()
                 
                 VStack{
-                    NavigationLink(destination: Hack_Land(title: "Ocean", image: "hackathon_poster"),label: {
+                    NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0),label: {
                         VStack{
                             Image("hackathon_poster")
                                 .resizable(resizingMode: .stretch)
@@ -74,7 +73,7 @@ struct Admin_Approved: View {
                 Divider()
                 
                 VStack{
-                    NavigationLink(destination: Hack_Land(title: "Horizen",image: "hackathon_poster1"),label: {
+                    NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0),label: {
                         VStack{
                             Image("hackathon_poster1")
                                 .resizable(resizingMode: .stretch)
@@ -95,7 +94,7 @@ struct Admin_Approved: View {
                                 
                             }
                             .padding([.top, .leading, .trailing], 7.0)
-                           
+                            
                         }
                     })
                     
@@ -105,7 +104,7 @@ struct Admin_Approved: View {
                 
                 
                 VStack{
-                    NavigationLink(destination: Hack_Land(title: "Ocean", image: "hackathon_poster"),label: {
+                    NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0),label: {
                         VStack{
                             Image("hackathon_poster")
                                 .resizable(resizingMode: .stretch)
@@ -145,6 +144,7 @@ struct Admin_Approved: View {
     }
 }
 
-#Preview {
-    Admin_Approved()
-}
+//
+//#Preview {
+//    Admin_Approved()
+//}

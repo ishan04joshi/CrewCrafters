@@ -16,16 +16,16 @@ struct Team_create: View {
     @State var details: String = ""
     @State var member_count: Int = 0
     @State var n: Int = 1
-    @StateObject private var viewModel = OrganiserCreateHackViewModel()
+    @StateObject private var viewModel = HackathonViewModel() //CHANGE
     var body: some View {
         
         
         VStack{
             
             ZStack{
-                CameraButton(image: $viewModel.hackathonInfo.hackathonPoster)
-                    .padding(.top, 20)
-                    .padding(.bottom, 20)
+//                CameraButton(image: $viewModel.hackathons.hackathonPoster)
+//                    .padding(.top, 20)
+//                    .padding(.bottom, 20)
             }
             Form {
                 Section(header: Text("Team Information")

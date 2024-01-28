@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Admin_Home: View {
+    let hackathon: Hackathon
+    @EnvironmentObject var hackathonViewModel: HackathonViewModel
     var body: some View {
         NavigationView{
             ScrollView{
@@ -22,7 +24,7 @@ struct Admin_Home: View {
                 }.padding(.all, 10.0)
                 
                 VStack{
-                    NavigationLink(destination: Hack_Land(title: "Horizen",image: "hackathon_poster1"),label: {
+                    NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0),label: {
                         VStack{
                             Image("hackathon_poster1")
                                 .resizable(resizingMode: .stretch)
@@ -66,7 +68,7 @@ struct Admin_Home: View {
                 Divider()
                 
                 VStack{
-                    NavigationLink(destination: Hack_Land(title: "Ocean", image: "hackathon_poster"),label: {
+                    NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0),label: {
                         VStack{
                             Image("hackathon_poster")
                                 .resizable(resizingMode: .stretch)
@@ -119,6 +121,6 @@ struct Admin_Home: View {
     }
 }
 
-#Preview {
-    Admin_Home()
-}
+//#Preview {
+//    Admin_Home()
+//}

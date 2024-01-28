@@ -10,6 +10,7 @@ import SwiftUI
 struct CameraButton: View {
     @Binding var image: UIImage?
     @State private var isImagePickerPresented: Bool = false
+    @EnvironmentObject var hackathonViewModel: HackathonViewModel
     
     var body: some View {
         HStack {
@@ -32,10 +33,18 @@ struct CameraButton: View {
                         isImagePickerPresented.toggle()
                     }
                     .sheet(isPresented: $isImagePickerPresented) {
-                        ImagePicker(image: $image)
+                        ImagePicker(image: $image) { selectedImage in
+                            if let selectedImage = selectedImage {
+                                hackathonViewModel.currentHackathon.hackathonPoster = selectedImage
+                            } 
+                            else {
+                                hackathonViewModel.currentHackathon.hackathonPoster = hackathonViewModel.defaultPoster
+                            }
+                        }
                     }
                 Spacer()
             }
         }
     }
 }
+
