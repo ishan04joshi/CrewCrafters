@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct CrewCraftersApp: App {
     @StateObject private var onboardingViewModel = OnboardingViewModel()
+    @StateObject private var hackathonViewModel = HackathonViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(onboardingViewModel)
+                .environmentObject(hackathonViewModel)
         }
     }
 }

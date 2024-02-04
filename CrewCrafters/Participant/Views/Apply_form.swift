@@ -18,7 +18,7 @@ struct Apply_form: View {
     @State private var role = "Web Dev"
         let position = ["Web Dev", "App Dev", "Cloud Engg.", "AI Engg.", "Backend Dev"]
     @State var n: Int = 1
-    @StateObject private var viewModel = OrganiserCreateHackViewModel()
+    @StateObject private var viewModel = HackathonViewModel() //CHANGE
     var body: some View {
         
         

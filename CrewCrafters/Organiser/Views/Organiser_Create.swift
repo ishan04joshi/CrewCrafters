@@ -2,39 +2,40 @@
 //  Organizer_Create.swift
 //  CrewCrafters
 //
-//  Created by user1 on 14/01/24.
+//  Created by Manvi Singhal on 14/01/24.
 //
 
 import SwiftUI
 
 struct Organizer_Create: View {
-    @StateObject private var viewModel = OrganiserCreateHackViewModel()
+    @EnvironmentObject var hackathonViewModel: HackathonViewModel
+    
     var body: some View {
-        
-        VStack{
+        VStack {
             Form {
                 Section(header: Text("Hackathon Information")) {
-                    CameraButton(image: $viewModel.hackathonInfo.hackathonPoster)
+                    CameraButton(image: $hackathonViewModel.currentHackathon.hackathonPoster)
                         .padding(.top, 20)
                         .padding(.bottom, 20)
                     
-                    HStack{
+                    HStack {
                         Text("Hackathon Name: ")
-                        TextField("Name",text: $viewModel.hackathonInfo.name)
+                        TextField("Name", text: $hackathonViewModel.currentHackathon.name)
                     }
                     .padding(.bottom, 7.0)
                     
-                    HStack{
+                    HStack {
                         Text("Mode :")
-                        TextField("Online / Offline",text: $viewModel.hackathonInfo.mode)
+                        TextField("Online / Offline", text: $hackathonViewModel.currentHackathon.mode)
                     }
                     .padding(.bottom, 7.0)
                 }
                 
+                
                 Section(header: Text("Problem Statements")) {
                     HStack {
                         Text("Problem Statements:")
-                        Picker("", selection: $viewModel.hackathonInfo.problem_count) {
+                        Picker("", selection: $hackathonViewModel.currentHackathon.problem_count) {
                             ForEach(1...6, id: \.self) { count in
                                 Text("\(count)").tag(count)
                             }
@@ -42,66 +43,75 @@ struct Organizer_Create: View {
                     }
                     .padding(.bottom, 5.0)
                     
-                    ForEach(0..<max(1, viewModel.hackathonInfo.problem_count), id: \.self) { index in
+                    ForEach(0..<max(1, hackathonViewModel.currentHackathon.problem_count), id: \.self) { index in
                         VStack(alignment: .leading) {
-                            ForEach(0..<max(1, viewModel.hackathonInfo.problemStatements.count), id: \.self) { problemIndex in
-                                TextField("Problem Statement \(index + 1)",text: $viewModel.hackathonInfo.problemStatements[problemIndex].problem)
-                                TextField("Description", text: $viewModel.hackathonInfo.problemStatements[problemIndex].description)
-                                TextField("Theme", text: $viewModel.hackathonInfo.problemStatements[problemIndex].theme)
+                            ForEach(0..<max(1, hackathonViewModel.currentHackathon.problemStatements.count), id: \.self) { problemIndex in
+                                TextField("Problem Statement \(index + 1)", text: $hackathonViewModel.currentHackathon.problemStatements[problemIndex].problem)
+                                TextField("Description", text: $hackathonViewModel.currentHackathon.problemStatements[problemIndex].description)
                             }
                         }
                     }
                 }
                 
+                
                 Section(header: Text("Timeline")) {
                     HStack {
-                        DatePicker("Start Date", selection: $viewModel.hackathonInfo.selectedStartDate,
-                                   in: Date.now...,
-                                   displayedComponents: [.date])
+                        DatePicker("Start Date", selection: $hackathonViewModel.currentHackathon.startDate,
+                                   in: Date()..., displayedComponents: [.date])
                     }
                     .padding(.vertical, 4)
                     
                     HStack {
-                        DatePicker("End Date", selection: $viewModel.hackathonInfo.selectedEndDate,
-                                   in: viewModel.hackathonInfo.selectedStartDate.addingTimeInterval(86400)...,
+                        DatePicker("End Date", selection: $hackathonViewModel.currentHackathon.endDate,
+                                   in: hackathonViewModel.currentHackathon.startDate.addingTimeInterval(86400)...,
                                    displayedComponents: [.date])
                     }
                     .padding(.vertical, 4)
                 }
                 
+                
                 Section(header: Text("Prize details")) {
-                    HStack{
+                    HStack {
                         Text("First Position: ")
-                        TextField("Amount",text: $viewModel.hackathonInfo.prize1)
+                        TextField("Amount", text: $hackathonViewModel.currentHackathon.prize1)
                     }
                     .padding(.bottom, 7.0)
                     
-                    HStack{
+                    HStack {
                         Text("Second Position: ")
-                        TextField("Amount",text: $viewModel.hackathonInfo.prize2)
+                        TextField("Amount", text: $hackathonViewModel.currentHackathon.prize2)
                     }
                     .padding(.bottom, 7.0)
                     
-                    HStack{
+                    HStack {
                         Text("Third Position: ")
-                        TextField("Amount",text: $viewModel.hackathonInfo.prize3)
+                        TextField("Amount", text: $hackathonViewModel.currentHackathon.prize3)
                     }
                     .padding(.bottom, 7.0)
                 }
             }
             .contentMargins(.horizontal, 5)
             
-            NavigationLink(destination: Hack_Land(title: "hi", image: "hackathon_poster")){
-                Text("Publish Hackathon")}
+            NavigationLink(destination: Organizer_Home()) {
+                Text("Publish Hackathon")
+            }
             .buttonStyle(NavigationButton())
             .padding()
+            .simultaneousGesture(TapGesture().onEnded {
+                hackathonViewModel.addNewHackathon(hackathonViewModel.currentHackathon)
+            })
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Create Your Team")
+        .navigationTitle("Create Hackathon")
         .padding(.horizontal, 7)
     }
 }
 
-#Preview {
-    Organizer_Create()
-}
+//struct Organizer_Create_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            Organizer_Create()
+//        }
+//        .environmentObject(HackathonViewModel()) // Make sure to provide the environment object
+//    }
+//}

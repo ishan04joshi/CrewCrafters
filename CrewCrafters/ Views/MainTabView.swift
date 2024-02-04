@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject var hackathonViewModel: HackathonViewModel
     var body: some View {
         TabView {
             ParticipantHome()
@@ -35,6 +36,6 @@ struct MainTabView: View {
     }
 }
 
-#Preview {
-    MainTabView()
-}
+//#Preview {
+//    MainTabView()
+//}
