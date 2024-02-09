@@ -8,13 +8,6 @@
 import Foundation
 import SwiftUI
 
-enum MemberStatus {
-    case applied
-    case selected
-    case rejected
-    case none
-}
-
 struct ProblemStatementInfo {
     var problem: String
     var description: String
@@ -24,7 +17,6 @@ struct MemberInfo:Identifiable{
     var id =  UUID()
     var name: String
     var techstack: [String]
-    var status: MemberStatus
 }
 
 struct TeamsInfo: Identifiable{
