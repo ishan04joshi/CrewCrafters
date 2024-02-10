@@ -1,17 +1,10 @@
-//
-//  Onboarding.swift
-//  CrewCrafters
-//
-//  Created by Manvi Singhal on 29/12/23.
-//
-
 import SwiftUI
 
 struct Onboarding: View {
     @EnvironmentObject private var onboardingViewModel: OnboardingViewModel
+    @State private var isActive: Bool = false
     
     var body: some View {
-        
         NavigationView {
             VStack {
                 Spacer()
@@ -21,32 +14,29 @@ struct Onboarding: View {
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(15)
                 Spacer()
-
-                NavigationLink(destination: Login(onboardingViewModel: onboardingViewModel)) {
-                    Text("Sign In as Participant")
-                }
-                .simultaneousGesture(TapGesture().onEnded{
-                    onboardingViewModel.signInAsParticipant()
-                })
-                .buttonStyle(NavigationButton())
-                .navigationBarHidden(true)
-                
-                NavigationLink(destination: Login(onboardingViewModel: onboardingViewModel)) {
-                    Text("Sign In as Organiser")
-                }
-                .simultaneousGesture(TapGesture().onEnded{
-                    onboardingViewModel.signInAsOrganizer()
-                })
-                .buttonStyle(NavigationButton())
-                .navigationBarHidden(true)
-                
-                Spacer()
             }
             .padding()
+            .onAppear {
+                // Simulate splash screen delay for 2 seconds
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.isActive = true
+                }
+            }
+            .background(
+                NavigationLink(
+                    destination: Login(onboardingViewModel: onboardingViewModel),
+                    isActive: $isActive
+                ) {
+                    EmptyView()
+                }
+                .navigationBarHidden(true)
+            )
         }
     }
 }
 
-#Preview {
-    Onboarding()
+struct Onboarding_Previews: PreviewProvider {
+    static var previews: some View {
+        Onboarding()
+    }
 }
