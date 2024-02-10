@@ -9,7 +9,9 @@ import SwiftUI
 
 struct Onboarding: View {
     @EnvironmentObject private var onboardingViewModel: OnboardingViewModel
+    
     var body: some View {
+        
         NavigationView {
             VStack {
                 Spacer()
@@ -20,7 +22,7 @@ struct Onboarding: View {
                     .cornerRadius(15)
                 Spacer()
 
-                NavigationLink(destination: SignIn(onboardingViewModel: onboardingViewModel)) {
+                NavigationLink(destination: Login(onboardingViewModel: onboardingViewModel)) {
                     Text("Sign In as Participant")
                 }
                 .simultaneousGesture(TapGesture().onEnded{
@@ -29,7 +31,7 @@ struct Onboarding: View {
                 .buttonStyle(NavigationButton())
                 .navigationBarHidden(true)
                 
-                NavigationLink(destination: SignIn(onboardingViewModel: onboardingViewModel)) {
+                NavigationLink(destination: Login(onboardingViewModel: onboardingViewModel)) {
                     Text("Sign In as Organiser")
                 }
                 .simultaneousGesture(TapGesture().onEnded{

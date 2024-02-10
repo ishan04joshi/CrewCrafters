@@ -6,9 +6,14 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct CrewCraftersApp: App {
+    init()
+    {
+        FirebaseApp.configure()
+    }   
     @StateObject private var onboardingViewModel = OnboardingViewModel()
     @StateObject private var hackathonViewModel = HackathonViewModel()
     var body: some Scene {

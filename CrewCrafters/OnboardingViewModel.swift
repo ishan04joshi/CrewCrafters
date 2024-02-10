@@ -18,6 +18,7 @@ struct User {
 
 class OnboardingViewModel: ObservableObject {
     @Published var currentUser: User
+    @Published var isSignupComplete: Bool = false
     
     init() {
         self.currentUser = User(role: .participant)

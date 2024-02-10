@@ -1,21 +1,16 @@
-//
-//  Login.swift
-//  CrewCrafters
-//
-//  Created by user1 on 25/12/23.
-//
-
 import SwiftUI
+import FirebaseAuth
 
 struct Login: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
     @ObservedObject var onboardingViewModel: OnboardingViewModel
-    
+    @State private var isLoggedIn: Bool = false
+
     var body: some View {
         VStack {
-            Text("Log In")
+            Text("Sign In")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -51,7 +46,7 @@ struct Login: View {
             
             HStack(spacing: 0) {
                 Button(action: {
-                    
+                    // Handle forgot password action
                 }) {
                     Text("Forgot Password?")
                         .font(.subheadline)
@@ -62,38 +57,51 @@ struct Login: View {
             }
             .padding(.bottom)
             
-            if onboardingViewModel.currentUser.role == .participant {
-                NavigationLink(destination: MainTabView()) {
-                    Text("Sign In")
-                }
-                .simultaneousGesture(TapGesture().onEnded{
-                    print("particiapnt")
-                })
-                .buttonStyle(NavigationButton())
-                .navigationBarHidden(true)
+            // Sign In Button
+            NavigationLink(destination: determineDestinationView(), isActive: $isLoggedIn) {
+                EmptyView()
             }
-            else {
-                NavigationLink(destination: OrganiserTabView()) {
-                    Text("Sign In")
-                }
-                .simultaneousGesture(TapGesture().onEnded{
-                    print("organiser")
-                })
-                .buttonStyle(NavigationButton())
-                .navigationBarHidden(true)
+            Button(action: {
+                signInWithFirebase()
+            }) {
+                Text("Sign In")
             }
-            
+            .buttonStyle(NavigationButton())
+            .navigationBarHidden(true)
             
             HStack(spacing: 0) {
                 Text("New around here? ")
-                NavigationLink("Sign in", destination: SignIn(onboardingViewModel: onboardingViewModel).navigationBarHidden(true))
+                NavigationLink("Sign Up", destination: SignIn(onboardingViewModel: onboardingViewModel).navigationBarHidden(true))
                     .foregroundColor(Color.blue)
             }
         }
         .padding()
     }
+    
+    // Function to determine the destination view based on user role
+    private func determineDestinationView() -> some View {
+        if onboardingViewModel.currentUser.role == .participant {
+            return AnyView(MainTabView())
+        } else {
+            return AnyView(OrganiserTabView())
+        }
+    }
+    
+    // Function to handle sign in with Firebase
+    private func signInWithFirebase() {
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                print("Error signing in: \(error.localizedDescription)")
+                // Handle error, show alert or provide feedback to the user
+            } else {
+                // Successful sign-in
+                print("User signed in successfully")
+                
+                // Update the view model or perform any necessary operations
+                
+                // Activate the navigation link to navigate to the appropriate view
+                self.isLoggedIn = true
+            }
+        }
+    }
 }
-
-//#Preview {
-//    Login()
-//}
