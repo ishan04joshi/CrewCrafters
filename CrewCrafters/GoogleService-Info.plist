@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>23941747632-420v2m26dik82g5v9ergge1nkohvneqs.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.23941747632-420v2m26dik82g5v9ergge1nkohvneqs</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDaTs2ct6-mrtBefi2pCxtG8djJOHuQtms</string>
+	<key>GCM_SENDER_ID</key>
+	<string>23941747632</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>srmist.edu.in.CrewCrafters</string>
+	<key>PROJECT_ID</key>
+	<string>crewcrafter-d76f8</string>
+	<key>STORAGE_BUCKET</key>
+	<string>crewcrafter-d76f8.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:23941747632:ios:84ab75537d49c020cb3c75</string>
+</dict>
+</plist>
