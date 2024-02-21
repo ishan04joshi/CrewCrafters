@@ -4,9 +4,11 @@
 //
 //  Created by Manvi Singhal on 26/01/24.
 //
-
+import Firebase
+import FirebaseFirestore
 import Foundation
 import SwiftUI
+
 
 class HackathonViewModel: ObservableObject {
     @Published var hackathons: [Hackathon] = []
@@ -32,7 +34,7 @@ class HackathonViewModel: ObservableObject {
                 prize1: "7000",
                 prize2: "6000",
                 prize3: "5000",
-                isApproved: false
+                status: true
             ),
             Hackathon(
                 hackathonPoster: defaultPoster,
@@ -51,7 +53,7 @@ class HackathonViewModel: ObservableObject {
                 prize1: "",
                 prize2: "",
                 prize3: "",
-                isApproved: true
+                status: true
             ),
             Hackathon(
                 hackathonPoster: defaultPoster,
@@ -70,7 +72,7 @@ class HackathonViewModel: ObservableObject {
                 prize1: "",
                 prize2: "",
                 prize3: "",
-                isApproved: true
+                status: false
             )
         ]
     }
@@ -89,19 +91,54 @@ class HackathonViewModel: ObservableObject {
         prize1: "",
         prize2: "",
         prize3: "",
-        isApproved: false
+        status: true
     )
     
+
+    
     func addNewHackathon(_ hackathon: Hackathon) {
-        hackathons.append(hackathon)
+        let db = Firestore.firestore()
+        
+        db.collection("hackathons").addDocument(data: [
+            "title": hackathon.name,
+            "description": hackathon.about,
+            "end_date": hackathon.endDate,
+            "hackathon_id": hackathon.id,
+            "mode": hackathon.mode,
+            "organiser_id": "none",
+            "partners": [],
+            "poster": defaultPoster,
+            "prize": [hackathon.prize1, hackathon.prize2, hackathon.prize3],
+            "problem_count": hackathon.problem_count,
+            "problem_statements": hackathon.problemStatements,
+            "start_date": hackathon.startDate,
+            "status": hackathon.status,
+            "themes": hackathon.themes
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID")
+            }
+        }
     }
+    
+//    db.collection("hackathons").getDocuments { (querySnapshot, error) in
+//        if let error = error {
+//            print("Error getting documents: \(error)")
+//        } else {
+//            for document in querySnapshot!.documents {
+//                print("\(document.documentID) => \(document.data())")
+//            }
+//        }
+//    }
     
     func filteredHackathons(for userRole: UserRole) -> [Hackathon] {
         switch userRole {
         case .organizer:
             return hackathons
         case .participant:
-            return hackathons.filter { $0.isApproved }
+            return hackathons.filter { $0.status }
         }
     }
 }

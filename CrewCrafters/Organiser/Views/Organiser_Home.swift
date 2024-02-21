@@ -19,7 +19,7 @@ struct Organizer_Home: View {
                         .font(.headline)
                         .fontWeight(.bold)
                     
-                    ForEach(hackathonViewModel.hackathons.filter { !$0.isApproved }) { hackathon in
+                    ForEach(hackathonViewModel.hackathons.filter { !$0.status }) { hackathon in
                         HackathonView(hackathon: hackathon)
                     }
                 }
@@ -31,7 +31,7 @@ struct Organizer_Home: View {
                         .font(.headline)
                         .fontWeight(.bold)
                     
-                    ForEach(hackathonViewModel.hackathons.filter { $0.isApproved }) { hackathon in
+                    ForEach(hackathonViewModel.hackathons.filter { $0.status }) { hackathon in
                         HackathonView(hackathon: hackathon)
                     }
                 }

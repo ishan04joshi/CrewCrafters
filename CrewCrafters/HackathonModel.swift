@@ -55,5 +55,5 @@ struct Hackathon: Identifiable, Equatable {
     var prize1: String
     var prize2: String
     var prize3: String
-    var isApproved: Bool
+    var status: Bool
 }
