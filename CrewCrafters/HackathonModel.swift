@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ProblemStatementInfo {
     var problem: String
-    var description: String
 }
 
 struct MemberInfo:Identifiable{

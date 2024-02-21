@@ -47,7 +47,7 @@ struct Organizer_Create: View {
                         VStack(alignment: .leading) {
                             ForEach(0..<max(1, hackathonViewModel.currentHackathon.problemStatements.count), id: \.self) { problemIndex in
                                 TextField("Problem Statement \(index + 1)", text: $hackathonViewModel.currentHackathon.problemStatements[problemIndex].problem)
-                                TextField("Description", text: $hackathonViewModel.currentHackathon.problemStatements[problemIndex].description)
+                                //TextField("Description", text: $hackathonViewModel.currentHackathon.problemStatements[problemIndex].description)
                             }
                         }
                     }

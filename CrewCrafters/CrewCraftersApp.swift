@@ -7,13 +7,17 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseAppCheck
 
 @main
 struct CrewCraftersApp: App {
     init()
     {
+        let providerFactory = AppCheckDebugProviderFactory()
+        AppCheck.setAppCheckProviderFactory(providerFactory)
+
         FirebaseApp.configure()
-    }   
+    }
     @StateObject private var onboardingViewModel = OnboardingViewModel()
     @StateObject private var hackathonViewModel = HackathonViewModel()
     var body: some Scene {

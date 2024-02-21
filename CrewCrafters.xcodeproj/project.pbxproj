@@ -154,9 +154,7 @@
 		1F115C292B58021700227CD8 /* Organiser */ = {
 			isa = PBXGroup;
 			children = (
-				1F115C2F2B58029900227CD8 /* Models */,
 				1F115C2E2B58029100227CD8 /* Views */,
-				1F115C2D2B58028600227CD8 /* ViewModels */,
 			);
 			path = Organiser;
 			sourceTree = "<group>";
@@ -195,13 +193,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		1F115C2D2B58028600227CD8 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		1F115C2E2B58029100227CD8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,13 +201,6 @@
 				1F115C3A2B597CA100227CD8 /* OrganiserTabView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		1F115C2F2B58029900227CD8 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		1F115C302B5802CE00227CD8 /* Admin */ = {
@@ -585,6 +569,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CrewCrafters/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Crewcrafter;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -618,6 +603,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CrewCrafters/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Crewcrafter;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
