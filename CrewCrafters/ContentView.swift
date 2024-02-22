@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            Onboarding()
+            Team_create()
         }
         .navigationBarHidden(true)
     }
