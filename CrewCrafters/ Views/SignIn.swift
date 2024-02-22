@@ -9,7 +9,7 @@ struct SignIn: View {
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
     @State private var roleSelection: Int = 0 // 0 for Organizer, 1 for Participant
-    @ObservedObject var onboardingViewModel: OnboardingViewModel
+    
     @State private var isSignedUp: Bool = false
 
     var body: some View {
@@ -99,12 +99,7 @@ struct SignIn: View {
                 addUserToFirestore(firstName: firstName, lastName: lastName, email: email, role: role)
                 
                 // Set current user in ViewModel
-                switch role {
-                case .organizer:
-                    self.onboardingViewModel.signInAsOrganizer()
-                case .participant:
-                    self.onboardingViewModel.signInAsParticipant()
-                }
+                
                 self.isSignedUp = true // Activate the navigation link
             }
         }
@@ -141,6 +136,6 @@ struct CustomTextFieldStyle: TextFieldStyle {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SignIn(onboardingViewModel: OnboardingViewModel())
+        SignIn()
     }
 }

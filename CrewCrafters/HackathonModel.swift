@@ -58,7 +58,7 @@ struct Hackathon: Identifiable, Equatable, Codable {
                 return UIImage(data: data)
             }
             set {
-                hackathonPosterData = newValue?.jpegData(compressionQuality: 0.0)
+                hackathonPosterData = newValue?.jpegData(compressionQuality: 0.1)
             }
         }
     
@@ -67,7 +67,7 @@ struct Hackathon: Identifiable, Equatable, Codable {
                 return partnerImagesData.compactMap { UIImage(data: $0) }
             }
             set {
-                partnerImagesData = newValue.compactMap { $0.jpegData(compressionQuality: 1) }
+                partnerImagesData = newValue.compactMap { $0.jpegData(compressionQuality: 0.1) }
             }
         }
 }

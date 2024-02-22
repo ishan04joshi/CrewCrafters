@@ -5,7 +5,7 @@ struct Login: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
-    @ObservedObject var onboardingViewModel: OnboardingViewModel
+    @State private var userole: String = ""
     @State private var isLoggedIn: Bool = false
 
     var body: some View {
@@ -71,7 +71,7 @@ struct Login: View {
             
             HStack(spacing: 0) {
                 Text("New around here? ")
-                NavigationLink("Sign Up", destination: SignIn(onboardingViewModel: onboardingViewModel).navigationBarHidden(true))
+                NavigationLink("Sign Up", destination: SignIn().navigationBarHidden(true))
                     .foregroundColor(Color.blue)
             }
         }
@@ -80,7 +80,7 @@ struct Login: View {
     
     // Function to determine the destination view based on user role
     private func determineDestinationView() -> some View {
-        if onboardingViewModel.currentUser.role == .participant {
+        if userole=="abc" {
             return AnyView(MainTabView())
         } else {
             return AnyView(OrganiserTabView())

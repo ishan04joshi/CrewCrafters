@@ -43,7 +43,6 @@ struct Organizer_Home: View {
     }
 }
 
-
 struct HackathonView: View {
     let hackathon: Hackathon
     @EnvironmentObject var hackathonViewModel: HackathonViewModel
@@ -56,7 +55,7 @@ struct HackathonView: View {
                     VStack(alignment: .leading) {
                         Image(uiImage: hackathon.hackathonPoster ?? UIImage(named: "default_hackathon_poster")!)
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
+                            .aspectRatio(contentMode: .fit)
                             .frame(width: 355.0, height: 157.0)
                             .cornerRadius(20.0)
                         

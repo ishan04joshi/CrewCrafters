@@ -25,7 +25,7 @@ class HackathonViewModel: ObservableObject {
         endDate: Date(),
         partnerImagesData: [],
         prize: [],
-        status: true
+        status: false
     )
     private let db = Firestore.firestore()
     
@@ -67,7 +67,6 @@ class HackathonViewModel: ObservableObject {
         }
     }
 
-    
     func filteredHackathons(for userRole: UserRole) -> [Hackathon] {
         switch userRole {
         case .organizer:
