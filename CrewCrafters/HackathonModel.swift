@@ -8,9 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct ProblemStatementInfo {
-    var problem: String
-}
 
 struct MemberInfo:Identifiable{
     var id =  UUID()
@@ -25,7 +22,7 @@ struct TeamsInfo: Identifiable{
     var memberCount: Int
     var filledPosition: Int
     var theme: String
-    var problemStatement: String
+    var problemStatement: [String]
     var techstack: [String]
     var details: String
 }
@@ -46,13 +43,11 @@ struct Hackathon: Identifiable, Equatable {
     var about: String
     var mode: String
     var problem_count: Int
-    var problemStatements: [ProblemStatementInfo]
+    var problemStatements: [String]
     var themes: [String]
     var startDate: Date
     var endDate: Date
     var partners: [UIImage]
-    var prize1: String
-    var prize2: String
-    var prize3: String
+    var prize: [String]
     var status: Bool
 }

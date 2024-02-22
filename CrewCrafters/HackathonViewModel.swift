@@ -17,64 +17,64 @@ class HackathonViewModel: ObservableObject {
     let partner2 = UIImage(named: "partner2")!
     let partner3 = UIImage(named: "partner3")!
     
-    init() {
-        self.hackathons = [
-            Hackathon(
-                hackathonPoster: poster1,
-                name: "Hackathon 1",
-                about: "Lorem Ispum Dolor",
-                mode: "Online",
-                problem_count: 1,
-                problemStatements: [ProblemStatementInfo(problem: "")],
-                themes: ["Artificial Intelligence","Natural Language Processing"],
-                startDate: Date.now,
-                endDate: Date.now.addingTimeInterval(86400),
-                partners: [partner1,partner2,partner3],
-                prize1: "7000",
-                prize2: "6000",
-                prize3: "5000",
-                status: true
-            ),
-            Hackathon(
-                hackathonPoster: defaultPoster,
-                name: "ocean hack",
-                about: "",
-                mode: "Offline",
-                problem_count: 2,
-                problemStatements: [
-                    ProblemStatementInfo(problem: ""),
-                    ProblemStatementInfo(problem: ""),
-                ],
-                themes: [],
-                startDate: Date.now,
-                endDate: Date.now,
-                partners: [],
-                prize1: "",
-                prize2: "",
-                prize3: "",
-                status: true
-            ),
-            Hackathon(
-                hackathonPoster: defaultPoster,
-                name: "SIH",
-                about: "",
-                mode: "Offline",
-                problem_count: 2,
-                problemStatements: [
-                    ProblemStatementInfo(problem: ""),
-                    ProblemStatementInfo(problem: ""),
-                ],
-                themes: [],
-                startDate: Date.now,
-                endDate: Date.now,
-                partners: [],
-                prize1: "",
-                prize2: "",
-                prize3: "",
-                status: false
-            )
-        ]
-    }
+//    init() {
+//        self.hackathons = [
+//            Hackathon(
+//                hackathonPoster: poster1,
+//                name: "Hackathon 1",
+//                about: "Lorem Ispum Dolor",
+//                mode: "Online",
+//                problem_count: 1,
+//                problemStatements: [ProblemStatementInfo(problem: "")],
+//                themes: ["Artificial Intelligence","Natural Language Processing"],
+//                startDate: Date.now,
+//                endDate: Date.now.addingTimeInterval(86400),
+//                partners: [partner1,partner2,partner3],
+//                prize1: "7000",
+//                prize2: "6000",
+//                prize3: "5000",
+//                status: true
+//            ),
+//            Hackathon(
+//                hackathonPoster: defaultPoster,
+//                name: "ocean hack",
+//                about: "",
+//                mode: "Offline",
+//                problem_count: 2,
+//                problemStatements: [
+//                    ProblemStatementInfo(problem: ""),
+//                    ProblemStatementInfo(problem: ""),
+//                ],
+//                themes: [],
+//                startDate: Date.now,
+//                endDate: Date.now,
+//                partners: [],
+//                prize1: "",
+//                prize2: "",
+//                prize3: "",
+//                status: true
+//            ),
+//            Hackathon(
+//                hackathonPoster: defaultPoster,
+//                name: "SIH",
+//                about: "",
+//                mode: "Offline",
+//                problem_count: 2,
+//                problemStatements: [
+//                    ProblemStatementInfo(problem: ""),
+//                    ProblemStatementInfo(problem: ""),
+//                ],
+//                themes: [],
+//                startDate: Date.now,
+//                endDate: Date.now,
+//                partners: [],
+//                prize1: "",
+//                prize2: "",
+//                prize3: "",
+//                status: false
+//            )
+//        ]
+//    }
     
     @Published var currentHackathon: Hackathon = Hackathon(
         hackathonPoster: nil,
@@ -82,14 +82,12 @@ class HackathonViewModel: ObservableObject {
         about: "",
         mode: "",
         problem_count: 1,
-        problemStatements: [ProblemStatementInfo(problem: "")],
+        problemStatements: [],
         themes: [],
         startDate: Date.now,
         endDate: Date.now,
         partners: [],
-        prize1: "",
-        prize2: "",
-        prize3: "",
+        prize: [],
         status: true
     )
     
@@ -98,10 +96,15 @@ class HackathonViewModel: ObservableObject {
     func addNewHackathon(_ hackathon: Hackathon) {
         let db = Firestore.firestore()
         do {
-          try db.collection("hackathons").addDocument(data: [
+          try db.collection("ishan").addDocument(data: [
             "title": hackathon.name,
             "mode": hackathon.mode,
-            "problem_count": hackathon.problem_count
+            "start_date": Timestamp(date: hackathon.startDate),
+            "end_date": Timestamp(date: hackathon.endDate),
+            "problem_count": hackathon.problem_count,
+            "prize": hackathon.prize,
+            "problemStatements": hackathon.problemStatements,
+            "status": hackathon.status,
           ])
           print("Document successfully written!")
         } catch {

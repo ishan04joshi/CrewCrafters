@@ -31,10 +31,10 @@ struct Organizer_Create: View {
                     .padding(.bottom, 7.0)
                 }
                 
-                
                 Section(header: Text("Problem Statements")) {
+                    
                     HStack {
-                        Text("Problem Statements:")
+                        Text("No. Problems:")
                         Picker("", selection: $hackathonViewModel.currentHackathon.problem_count) {
                             ForEach(1...6, id: \.self) { count in
                                 Text("\(count)").tag(count)
@@ -43,16 +43,34 @@ struct Organizer_Create: View {
                     }
                     .padding(.bottom, 5.0)
                     
-                    ForEach(0..<max(1, hackathonViewModel.currentHackathon.problem_count), id: \.self) { index in
-                        VStack(alignment: .leading) {
-                            ForEach(0..<max(1, hackathonViewModel.currentHackathon.problemStatements.count), id: \.self) { problemIndex in
-                                TextField("Problem Statement \(index + 1)", text: $hackathonViewModel.currentHackathon.problemStatements[problemIndex].problem)
-                                //TextField("Description", text: $hackathonViewModel.currentHackathon.problemStatements[problemIndex].description)
+                    ForEach(0..<hackathonViewModel.currentHackathon.problem_count, id: \.self) { index in
+                        VStack {
+                            HStack{
+                                Text("Problem Statement: \(index + 1)")
+                                Spacer()
                             }
+                            TextField("Statement", text: Binding(
+                                            get: {
+                                                if index < hackathonViewModel.currentHackathon.problemStatements.count{
+                                                    return hackathonViewModel.currentHackathon.problemStatements[index]
+                                                } else {
+                                                    return ""
+                                                }
+                                            },
+                                            set: { newValue in
+                                                
+                                                if index < hackathonViewModel.currentHackathon.problemStatements.count {
+                                                    hackathonViewModel.currentHackathon.problemStatements[index] = newValue
+                                                } else {
+                                                    hackathonViewModel.currentHackathon.problemStatements.append(newValue)
+                                                }
+                                            }
+                                        ))
+
                         }
+                        .padding(.bottom, 7.0)
                     }
                 }
-                
                 
                 Section(header: Text("Timeline")) {
                     HStack {
@@ -71,24 +89,32 @@ struct Organizer_Create: View {
                 
                 
                 Section(header: Text("Prize details")) {
-                    HStack {
-                        Text("First Position: ")
-                        TextField("Amount", text: $hackathonViewModel.currentHackathon.prize1)
+                    ForEach(0..<3, id: \.self) { index in
+                        HStack {
+                            Text("\(index + 1) Position: ")
+                            TextField("Amount", text: Binding(
+                                            get: {
+                                                if index < hackathonViewModel.currentHackathon.prize.count {
+                                                    return hackathonViewModel.currentHackathon.prize[index]
+                                                } else {
+                                                    return ""
+                                                }
+                                            },
+                                            set: { newValue in
+                                                
+                                                if index < hackathonViewModel.currentHackathon.prize.count {
+                                                    hackathonViewModel.currentHackathon.prize[index] = newValue
+                                                } else {
+                                                    hackathonViewModel.currentHackathon.prize.append(newValue)
+                                                }
+                                            }
+                                        ))
+
+                        }
+                        .padding(.bottom, 7.0)
                     }
-                    .padding(.bottom, 7.0)
-                    
-                    HStack {
-                        Text("Second Position: ")
-                        TextField("Amount", text: $hackathonViewModel.currentHackathon.prize2)
-                    }
-                    .padding(.bottom, 7.0)
-                    
-                    HStack {
-                        Text("Third Position: ")
-                        TextField("Amount", text: $hackathonViewModel.currentHackathon.prize3)
-                    }
-                    .padding(.bottom, 7.0)
                 }
+
             }
             .contentMargins(.horizontal, 5)
             
