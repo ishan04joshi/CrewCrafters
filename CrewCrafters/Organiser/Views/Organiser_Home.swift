@@ -24,7 +24,6 @@ struct Organizer_Home: View {
                 }
                 .listRowSeparator(.hidden)
                 
-                
                 Section {
                     Text("Approved Hackathons")
                         .font(.headline)

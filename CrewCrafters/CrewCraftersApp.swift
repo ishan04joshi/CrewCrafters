@@ -18,12 +18,12 @@ struct CrewCraftersApp: App {
 
         FirebaseApp.configure()
     }
-    @StateObject private var onboardingViewModel = OnboardingViewModel()
+    @StateObject private var userViewModel = UserViewModel()
     @StateObject private var hackathonViewModel = HackathonViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(onboardingViewModel)
+                .environmentObject(userViewModel)
                 .environmentObject(hackathonViewModel)
         }
     }

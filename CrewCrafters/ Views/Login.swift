@@ -7,7 +7,7 @@ struct Login: View {
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
     @State private var isLoggedIn: Bool = false
-    @State private var userRole: String = ""
+    @EnvironmentObject var userViewModel: UserViewModel
 
     var body: some View {
         VStack {
@@ -81,10 +81,10 @@ struct Login: View {
     
     // Function to determine the destination view based on user role
     private func determineDestinationView() -> some View {
-        if userRole == "Participant" {
+        if userViewModel.userRole == "Participant" {
             return AnyView(MainTabView())
         } 
-        else if userRole == "Admin"{
+        else if userViewModel.userRole == "Admin"{
             return AnyView(OrganiserTabView())
         }
         else {
@@ -117,7 +117,7 @@ struct Login: View {
                         
                         if let document = document, document.exists {
                             if let role = document.data()?["role"] as? String {
-                                self.userRole = role
+                                userViewModel.userRole = role
                                 print("User role: \(role)")
                                 
                                 // Activate the navigation link to navigate to the appropriate view
@@ -138,6 +138,4 @@ struct Login: View {
             }
         }
     }
-
-
 }

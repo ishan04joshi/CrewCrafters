@@ -24,7 +24,7 @@ class TeamsViewModel: ObservableObject {
     func addNewTeam(_ teams: Teams) {
         let db = Firestore.firestore()
         do {
-          try db.collection("ishan").addDocument(data: [
+          try db.collection("Teams").addDocument(data: [
             "name": teams.name,
             "theme": teams.theme,
             "problem": teams.problem,

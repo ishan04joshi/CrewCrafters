@@ -10,6 +10,7 @@ import SwiftUI
 struct Hack_Land: View {
     let hackathonIndex: Int
     @EnvironmentObject var hackathonViewModel: HackathonViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
         if hackathonIndex < hackathonViewModel.hackathons.count {
@@ -25,27 +26,31 @@ struct Hack_Land: View {
                         .cornerRadius(20.0)
                         .padding([.leading, .bottom, .trailing])
                     
-                    HStack{
-                        Spacer()
-                        Spacer()
-//                        NavigationLink(destination: Hack_Teams(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0),){
-//                            Text("Join a Team")
-//                                .foregroundColor(.blue)
-//                            
-//                        }
-                        .buttonStyle(.bordered)
-                        .tint(.blue)
-                        Spacer()
-                        NavigationLink(destination: Team_create()){
-                            Text("Make a Team")
-                                .foregroundColor(.blue)
+                    if userViewModel.userRole == "Participant"{
+                        HStack{
+                            Spacer()
+                            Spacer()
+                            
+                            NavigationLink(destination: Hack_Teams(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)){
+                                Text("Join a Team")
+                                    .foregroundColor(.blue)
+                                
+                            }
+                            .buttonStyle(.bordered)
+                            .tint(.blue)
+                            Spacer()
+                            NavigationLink(destination: Team_create()){
+                                Text("Make a Team")
+                                    .foregroundColor(.blue)
+                            }
+                            .buttonStyle(.bordered)
+                            .tint(.blue)
+                            Spacer()
+                            Spacer()
                         }
-                        .buttonStyle(.bordered)
-                        .tint(.blue)
-                        Spacer()
-                        Spacer()
+                        .padding(.bottom)
                     }
-                    .padding(.bottom)
+                    
                     
                     
                     Text("About")

@@ -3,6 +3,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 struct SignIn: View {
+    @EnvironmentObject var userViewModel: UserViewModel
     @State private var firstName: String = ""
     @State private var lastName: String = ""
     @State private var email: String = ""
@@ -62,8 +63,10 @@ struct SignIn: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.bottom)
+                .onChange(of: roleSelection) { newValue in
+                    userViewModel.userRole = newValue == 0 ? "Organizer" : "Participant"
+                }
                 
-                // Sign Up Button
                 NavigationLink(destination: roleSelection == 0 ? AnyView(OrganiserTabView()) : AnyView(MainTabView()), isActive: $isSignedUp) {
                     EmptyView()
                 }
@@ -82,22 +85,18 @@ struct SignIn: View {
         }
     }
     
-    // Function to handle sign up with Firebase
     func signUpWithFirebase() {
-        let role = roleSelection == 0 ? UserRole.organizer : UserRole.participant
+        let role = roleSelection == 0 ? "Organizer" : "Participant"
+        userViewModel.userRole = role
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 print("Error signing up: \(error.localizedDescription)")
                 // Handle error, show alert or provide feedback to the user
             } else {
-                // Successful sign-up
                 print("User signed up successfully as \(role)")
                 
-                // Add user information to Firestore
                 addUserToFirestore(firstName: firstName, lastName: lastName, email: email, role: role)
-                
-                // Set current user in ViewModel
                 
                 self.isSignedUp = true // Activate the navigation link
             }
@@ -105,15 +104,14 @@ struct SignIn: View {
     }
 
     
-    func addUserToFirestore(firstName: String, lastName: String, email: String, role: UserRole) {
+    func addUserToFirestore(firstName: String, lastName: String, email: String, role: String) {
         let db = Firestore.firestore()
         if let currentUserUID = Auth.auth().currentUser?.uid {
-            // Set document ID to the user's authentication UID
             db.collection("users").document(currentUserUID).setData([
                 "firstName": firstName,
                 "lastName": lastName,
                 "email": email,
-                "role": role == .organizer ? "Organizer" : "Participant"
+                "role": userViewModel.userRole
             ]) { error in
                 if let error = error {
                     print("Error adding document: \(error)")

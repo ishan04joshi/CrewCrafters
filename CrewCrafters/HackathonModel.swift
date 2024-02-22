@@ -53,21 +53,21 @@ struct Hackathon: Identifiable, Equatable, Codable {
     var status: Bool
     
     var hackathonPoster: UIImage? {
-            get {
-                guard let data = hackathonPosterData else { return nil }
-                return UIImage(data: data)
-            }
-            set {
-                hackathonPosterData = newValue?.jpegData(compressionQuality: 0.1)
-            }
+        get {
+            guard let data = hackathonPosterData else { return nil }
+            return UIImage(data: data)
         }
+        set {
+            hackathonPosterData = newValue?.jpegData(compressionQuality: 0.1)
+        }
+    }
     
     var partners: [UIImage] {
-            get {
-                return partnerImagesData.compactMap { UIImage(data: $0) }
-            }
-            set {
-                partnerImagesData = newValue.compactMap { $0.jpegData(compressionQuality: 0.1) }
-            }
+        get {
+            return partnerImagesData.compactMap { UIImage(data: $0) }
         }
+        set {
+            partnerImagesData = newValue.compactMap { $0.jpegData(compressionQuality: 0.1) }
+        }
+    }
 }

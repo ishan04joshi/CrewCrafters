@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct Onboarding: View {
-    @EnvironmentObject private var onboardingViewModel: OnboardingViewModel
     @State private var isActive: Bool = false
     
     var body: some View {

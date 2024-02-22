@@ -5,14 +5,21 @@
 //  Created by Manvi Singhal on 26/01/24.
 //
 
+import SwiftUI
 import Firebase
 import Foundation
-import SwiftUI
 import FirebaseFirestore
 
 class HackathonViewModel: ObservableObject {
     @Published var hackathons: [Hackathon] = []
     let defaultPoster = UIImage(named: "default_hackathon_poster")!
+    private let db = Firestore.firestore()
+    @EnvironmentObject var userViewModel: UserViewModel
+    
+    init() {
+        fetchHackathons()
+    }
+    
     @Published var currentHackathon: Hackathon = Hackathon(
         hackathonPosterData: nil,
         name: "",
@@ -27,7 +34,6 @@ class HackathonViewModel: ObservableObject {
         prize: [],
         status: false
     )
-    private let db = Firestore.firestore()
     
     func fetchHackathons() {
         db.collection("test2").getDocuments { querySnapshot, error in
@@ -66,13 +72,17 @@ class HackathonViewModel: ObservableObject {
             print("Error writing document: \(error)")
         }
     }
-
-    func filteredHackathons(for userRole: UserRole) -> [Hackathon] {
-        switch userRole {
-        case .organizer:
+    
+    func filteredHackathons() -> [Hackathon] {
+        let userRole = userViewModel.userRole
+        
+        if userRole == "Organizer" {
             return hackathons
-        case .participant:
+        } else if userRole == "Participant" {
             return hackathons.filter { $0.status }
+        } else {
+            // Handle other cases or return an empty array
+            return []
         }
     }
 }
