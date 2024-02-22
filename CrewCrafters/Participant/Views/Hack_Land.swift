@@ -124,9 +124,9 @@ struct Hack_Land: View {
                         .titleStyle()
                     
                     VStack(alignment: .leading, spacing: 15.0) {
-                        PrizeView(prizeTitle: "First Place", prize: "₹\(hackathon.prize[0])")
-                        PrizeView(prizeTitle: "Second Place", prize: "₹\(hackathon.prize[1])")
-                        PrizeView(prizeTitle: "Third Place", prize: "₹\(hackathon.prize[2])")
+                        PrizeView(prizeTitle: "First Place", prize: "\(hackathon.prize[0])")
+                        PrizeView(prizeTitle: "Second Place", prize: "\(hackathon.prize[1])")
+                        PrizeView(prizeTitle: "Third Place", prize: "\(hackathon.prize[2])")
                     }
                     .padding([.leading, .bottom, .trailing])
                 }
