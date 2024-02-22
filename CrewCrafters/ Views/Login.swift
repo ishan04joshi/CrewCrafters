@@ -19,7 +19,7 @@ struct Login: View {
             
             TextField("Email Address", text: $email)
                 .textFieldStyle(CustomTextFieldStyle())
-                .padding(.bottom)
+                .padding(.bottom).autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
             
             ZStack(alignment: .trailingFirstTextBaseline) {
                 if isPasswordVisible {
@@ -81,7 +81,7 @@ struct Login: View {
     
     // Function to determine the destination view based on user role
     private func determineDestinationView() -> some View {
-        if userRole == "participant" {
+        if userRole == "Participant" {
             return AnyView(MainTabView())
         } else {
             return AnyView(OrganiserTabView())

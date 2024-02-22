@@ -30,7 +30,7 @@ struct SignIn: View {
                 
                 TextField("Email Address", text: $email)
                     .textFieldStyle(CustomTextFieldStyle())
-                    .padding(.bottom)
+                    .padding(.bottom).autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 
                 ZStack(alignment: .trailingFirstTextBaseline) {
                     if isPasswordVisible {
