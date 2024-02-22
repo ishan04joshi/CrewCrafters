@@ -83,7 +83,11 @@ struct Login: View {
     private func determineDestinationView() -> some View {
         if userRole == "Participant" {
             return AnyView(MainTabView())
-        } else {
+        } 
+        else if userRole == "Admin"{
+            return AnyView(OrganiserTabView())
+        }
+        else {
             return AnyView(OrganiserTabView())
         }
     }

@@ -24,7 +24,7 @@ struct Search: View {
                 }
                 
                 ScrollView {
-                    ForEach(hackathonViewModel.filteredHackathons(for: .participant).filter {
+                    ForEach(hackathonViewModel.hackathons.filter {
                         searchText.isEmpty || $0.name.localizedCaseInsensitiveContains(searchText)
                     }) { hackathon in
                         NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)) {
@@ -37,9 +37,13 @@ struct Search: View {
                 .padding(.horizontal)
             }
             .navigationTitle("Search")
+            .onAppear {
+                hackathonViewModel.fetchHackathons()
+            }
         }
     }
 }
+
 
 struct HackathonItemView: View {
     let hackathon: Hackathon
