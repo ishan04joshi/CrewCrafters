@@ -24,7 +24,7 @@ struct Onboarding: View {
             }
             .background(
                 NavigationLink(
-                    destination: Login(onboardingViewModel: onboardingViewModel),
+                    destination: Login(),
                     isActive: $isActive
                 ) {
                     EmptyView()
