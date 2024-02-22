@@ -1,12 +1,13 @@
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 
 struct Login: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
-    @ObservedObject var onboardingViewModel: OnboardingViewModel
     @State private var isLoggedIn: Bool = false
+    @State private var userRole: String = ""
 
     var body: some View {
         VStack {
@@ -71,7 +72,7 @@ struct Login: View {
             
             HStack(spacing: 0) {
                 Text("New around here? ")
-                NavigationLink("Sign Up", destination: SignIn(onboardingViewModel: onboardingViewModel).navigationBarHidden(true))
+                NavigationLink("Sign Up", destination: SignIn())
                     .foregroundColor(Color.blue)
             }
         }
@@ -80,7 +81,7 @@ struct Login: View {
     
     // Function to determine the destination view based on user role
     private func determineDestinationView() -> some View {
-        if onboardingViewModel.currentUser.role == .participant {
+        if userRole == "participant" {
             return AnyView(MainTabView())
         } else {
             return AnyView(OrganiserTabView())
@@ -97,11 +98,42 @@ struct Login: View {
                 // Successful sign-in
                 print("User signed in successfully")
                 
-                // Update the view model or perform any necessary operations
-                
-                // Activate the navigation link to navigate to the appropriate view
-                self.isLoggedIn = true
+                // Fetch user role from Firebase
+                if let currentUser = Auth.auth().currentUser {
+                    let userUID = currentUser.uid
+                    // Assuming you have a Firebase database where user roles are stored under "users" node
+                    let db = Firestore.firestore()
+                    let userRef = db.collection("users").document(userUID)
+                    userRef.getDocument { document, error in
+                        if let error = error {
+                            print("Error fetching document: \(error.localizedDescription)")
+                            // Handle error
+                            return
+                        }
+                        
+                        if let document = document, document.exists {
+                            if let role = document.data()?["role"] as? String {
+                                self.userRole = role
+                                print("User role: \(role)")
+                                
+                                // Activate the navigation link to navigate to the appropriate view
+                                self.isLoggedIn = true
+                            } else {
+                                print("Role field not found in document")
+                                // Handle case when role field is not found
+                            }
+                        } else {
+                            print("Document does not exist")
+                            // Handle case when user document does not exist
+                        }
+                    }
+                } else {
+                    print("Current user is nil")
+                    // Handle case when current user is nil
+                }
             }
         }
     }
+
+
 }

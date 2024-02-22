@@ -9,7 +9,6 @@ struct SignIn: View {
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
     @State private var roleSelection: Int = 0 // 0 for Organizer, 1 for Participant
-    @ObservedObject var onboardingViewModel: OnboardingViewModel
     @State private var isSignedUp: Bool = false
 
     var body: some View {
@@ -99,12 +98,7 @@ struct SignIn: View {
                 addUserToFirestore(firstName: firstName, lastName: lastName, email: email, role: role)
                 
                 // Set current user in ViewModel
-                switch role {
-                case .organizer:
-                    self.onboardingViewModel.signInAsOrganizer()
-                case .participant:
-                    self.onboardingViewModel.signInAsParticipant()
-                }
+                
                 self.isSignedUp = true // Activate the navigation link
             }
         }
@@ -113,19 +107,25 @@ struct SignIn: View {
     
     func addUserToFirestore(firstName: String, lastName: String, email: String, role: UserRole) {
         let db = Firestore.firestore()
-        db.collection("users").addDocument(data: [
-            "firstName": firstName,
-            "lastName": lastName,
-            "email": email,
-            "role": role == .organizer ? "Organizer" : "Participant"
-        ]) { error in
-            if let error = error {
-                print("Error adding document: \(error)")
-            } else {
-                print("Document added successfully")
+        if let currentUserUID = Auth.auth().currentUser?.uid {
+            // Set document ID to the user's authentication UID
+            db.collection("users").document(currentUserUID).setData([
+                "firstName": firstName,
+                "lastName": lastName,
+                "email": email,
+                "role": role == .organizer ? "Organizer" : "Participant"
+            ]) { error in
+                if let error = error {
+                    print("Error adding document: \(error)")
+                } else {
+                    print("Document added successfully")
+                }
             }
+        } else {
+            print("Error: Current user not available")
         }
     }
+
 }
 
 struct CustomTextFieldStyle: TextFieldStyle {
@@ -141,6 +141,6 @@ struct CustomTextFieldStyle: TextFieldStyle {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SignIn(onboardingViewModel: OnboardingViewModel())
+        SignIn()
     }
 }
