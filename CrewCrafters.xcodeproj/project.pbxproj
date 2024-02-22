@@ -15,7 +15,6 @@
 		1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AE5932B3438A7004852AA /* SettingModel.swift */; };
 		1F377BE62B557C9E00424028 /* Organiser_Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE52B557C9E00424028 /* Organiser_Create.swift */; };
 		1F377BE82B55B0AC00424028 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE72B55B0AC00424028 /* ImagePicker.swift */; };
-		1F377BEA2B55B10500424028 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BE92B55B10500424028 /* CameraButton.swift */; };
 		1F377BEC2B55BD2100424028 /* SignInWithAppleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F377BEB2B55BD2100424028 /* SignInWithAppleButtonView.swift */; };
 		1F4D231D2B2DC2BD003B5EC7 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D231C2B2DC2BD003B5EC7 /* TextStyles.swift */; };
 		1F4D23212B2DC5EF003B5EC7 /* Hack_Land.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D23202B2DC5EF003B5EC7 /* Hack_Land.swift */; };
@@ -76,7 +75,6 @@
 		1F2AE5932B3438A7004852AA /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		1F377BE52B557C9E00424028 /* Organiser_Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organiser_Create.swift; sourceTree = "<group>"; };
 		1F377BE72B55B0AC00424028 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		1F377BE92B55B10500424028 /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		1F377BEB2B55BD2100424028 /* SignInWithAppleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonView.swift; sourceTree = "<group>"; };
 		1F4D231C2B2DC2BD003B5EC7 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		1F4D23202B2DC5EF003B5EC7 /* Hack_Land.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hack_Land.swift; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 				1FCC7F3B2B400A4800D66078 /* NavigationButton.swift */,
 				1FBA16392B3F0EC80064829C /* PrimaryButton.swift */,
 				1FBA16412B3F112F0064829C /* GoogleSignInButtonView.swift */,
-				1F377BE92B55B10500424028 /* CameraButton.swift */,
 				1F377BEB2B55BD2100424028 /* SignInWithAppleButtonView.swift */,
 			);
 			path = Buttons;
@@ -410,7 +407,6 @@
 				1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */,
 				7F3FD46D2B5697F2000C43EB /* Admin_Home.swift in Sources */,
 				1F6ECDE82B63C664005C065F /* HackathonViewModel.swift in Sources */,
-				1F377BEA2B55B10500424028 /* CameraButton.swift in Sources */,
 				7F3B79DC2B24DFFD008E03C8 /* Team_Info.swift in Sources */,
 				1F6ECDE62B63C439005C065F /* HackathonModel.swift in Sources */,
 				1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */,

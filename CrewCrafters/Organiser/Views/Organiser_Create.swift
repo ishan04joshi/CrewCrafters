@@ -9,14 +9,42 @@ import SwiftUI
 
 struct Organizer_Create: View {
     @EnvironmentObject var hackathonViewModel: HackathonViewModel
+    @State private var isImagePickerPresented = false
     
     var body: some View {
         VStack {
             Form {
                 Section(header: Text("Hackathon Information")) {
-                    CameraButton(image: $hackathonViewModel.currentHackathon.hackathonPoster)
-                        .padding(.top, 20)
-                        .padding(.bottom, 20)
+                    //CameraButton
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            isImagePickerPresented.toggle()
+                        }) {
+                            if let hackathonPoster = hackathonViewModel.currentHackathon.hackathonPoster {
+                                Image(uiImage: hackathonPoster)
+                                    .resizable()
+                                    .scaledToFit()
+                            } else {
+                                Circle()
+                                    .fill(Color(hue: 1.0, saturation: 0.0, brightness: 0.867))
+                                    .frame(width: 155)
+                                    .overlay(
+                                        Image(systemName: "camera.fill")
+                                            .resizable()
+                                            .frame(width: 50, height: 40)
+                                            .foregroundStyle(Color.black)
+                                    )
+                            }
+                        }
+                        .sheet(isPresented: $isImagePickerPresented) {
+                            ImagePicker(image: $hackathonViewModel.currentHackathon.hackathonPoster, defaultPoster: hackathonViewModel.defaultPoster)
+                        }
+                        Spacer()
+                    }
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
+
                     
                     HStack {
                         Text("Hackathon Name: ")
@@ -25,10 +53,19 @@ struct Organizer_Create: View {
                     .padding(.bottom, 7.0)
                     
                     HStack {
+                        Text("About Hackathon: ")
+                        TextField("About", text: $hackathonViewModel.currentHackathon.about)
+                    }
+                    .padding(.bottom, 7.0)
+                    
+                    HStack {
                         Text("Mode :")
                         TextField("Online / Offline", text: $hackathonViewModel.currentHackathon.mode)
                     }
                     .padding(.bottom, 7.0)
+                    
+                    
+                    
                 }
                 
                 Section(header: Text("Problem Statements")) {
@@ -50,23 +87,23 @@ struct Organizer_Create: View {
                                 Spacer()
                             }
                             TextField("Statement", text: Binding(
-                                            get: {
-                                                if index < hackathonViewModel.currentHackathon.problemStatements.count{
-                                                    return hackathonViewModel.currentHackathon.problemStatements[index]
-                                                } else {
-                                                    return ""
-                                                }
-                                            },
-                                            set: { newValue in
-                                                
-                                                if index < hackathonViewModel.currentHackathon.problemStatements.count {
-                                                    hackathonViewModel.currentHackathon.problemStatements[index] = newValue
-                                                } else {
-                                                    hackathonViewModel.currentHackathon.problemStatements.append(newValue)
-                                                }
-                                            }
-                                        ))
-
+                                get: {
+                                    if index < hackathonViewModel.currentHackathon.problemStatements.count{
+                                        return hackathonViewModel.currentHackathon.problemStatements[index]
+                                    } else {
+                                        return ""
+                                    }
+                                },
+                                set: { newValue in
+                                    
+                                    if index < hackathonViewModel.currentHackathon.problemStatements.count {
+                                        hackathonViewModel.currentHackathon.problemStatements[index] = newValue
+                                    } else {
+                                        hackathonViewModel.currentHackathon.problemStatements.append(newValue)
+                                    }
+                                }
+                            ))
+                            
                         }
                         .padding(.bottom, 7.0)
                     }
@@ -93,28 +130,28 @@ struct Organizer_Create: View {
                         HStack {
                             Text("\(index + 1) Position: ")
                             TextField("Amount", text: Binding(
-                                            get: {
-                                                if index < hackathonViewModel.currentHackathon.prize.count {
-                                                    return hackathonViewModel.currentHackathon.prize[index]
-                                                } else {
-                                                    return ""
-                                                }
-                                            },
-                                            set: { newValue in
-                                                
-                                                if index < hackathonViewModel.currentHackathon.prize.count {
-                                                    hackathonViewModel.currentHackathon.prize[index] = newValue
-                                                } else {
-                                                    hackathonViewModel.currentHackathon.prize.append(newValue)
-                                                }
-                                            }
-                                        ))
-
+                                get: {
+                                    if index < hackathonViewModel.currentHackathon.prize.count {
+                                        return hackathonViewModel.currentHackathon.prize[index]
+                                    } else {
+                                        return ""
+                                    }
+                                },
+                                set: { newValue in
+                                    
+                                    if index < hackathonViewModel.currentHackathon.prize.count {
+                                        hackathonViewModel.currentHackathon.prize[index] = newValue
+                                    } else {
+                                        hackathonViewModel.currentHackathon.prize.append(newValue)
+                                    }
+                                }
+                            ))
+                            
                         }
                         .padding(.bottom, 7.0)
                     }
                 }
-
+                
             }
             .contentMargins(.horizontal, 5)
             
@@ -122,9 +159,10 @@ struct Organizer_Create: View {
                 Text("Publish Hackathon")
             }
             .buttonStyle(NavigationButton())
+            .navigationBarBackButtonHidden()
             .padding()
             .simultaneousGesture(TapGesture().onEnded {
-                hackathonViewModel.addNewHackathon(hackathonViewModel.currentHackathon)
+                hackathonViewModel.addNewHackathon(hackathonViewModel.currentHackathon) {}
             })
         }
         .navigationBarTitleDisplayMode(.inline)

@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct Organizer_Home: View {
     @EnvironmentObject var hackathonViewModel: HackathonViewModel
     
