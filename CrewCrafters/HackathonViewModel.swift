@@ -36,7 +36,7 @@ class HackathonViewModel: ObservableObject {
     )
     
     func fetchHackathons() {
-        db.collection("test2").getDocuments { querySnapshot, error in
+        db.collection("hackathons").getDocuments { querySnapshot, error in
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
@@ -59,7 +59,7 @@ class HackathonViewModel: ObservableObject {
     
     func addNewHackathon(_ hackathon: Hackathon, completion: @escaping () -> Void) {
         do {
-            try db.collection("test2").addDocument(from: hackathon) { error in
+            try db.collection("hackathons").addDocument(from: hackathon) { error in
                 if let error = error {
                     print("Error writing document: \(error)")
                 } else {

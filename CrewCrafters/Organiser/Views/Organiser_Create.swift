@@ -10,6 +10,13 @@ import SwiftUI
 struct Organizer_Create: View {
     @EnvironmentObject var hackathonViewModel: HackathonViewModel
     @State private var isImagePickerPresented = false
+    @State private var initialName = ""
+        @State private var initialAbout = ""
+        @State private var initialMode = ""
+        @State private var initialProblemCount = 1 // Assuming default value is 1
+        @State private var initialStartDate = Date()
+        @State private var initialEndDate = Date()
+        @State private var initialPrizes: [String] = ["", "", ""]
     
     var body: some View {
         VStack {
@@ -153,9 +160,9 @@ struct Organizer_Create: View {
                 }
                 
             }
-            .contentMargins(.horizontal, 5)
+           
             
-            NavigationLink(destination: Organizer_Home()) {
+            NavigationLink(destination: OrganiserTabView()) {
                 Text("Publish Hackathon")
             }
             .buttonStyle(NavigationButton())
@@ -164,7 +171,19 @@ struct Organizer_Create: View {
             .simultaneousGesture(TapGesture().onEnded {
                 hackathonViewModel.addNewHackathon(hackathonViewModel.currentHackathon) {}
             })
-        }
+            .simultaneousGesture(TapGesture().onEnded {
+                            // Reset all state variables to initial values
+                            hackathonViewModel.addNewHackathon(hackathonViewModel.currentHackathon) {}
+                            hackathonViewModel.currentHackathon.name = initialName
+                            hackathonViewModel.currentHackathon.about = initialAbout
+                            hackathonViewModel.currentHackathon.mode = initialMode
+                            hackathonViewModel.currentHackathon.problem_count = initialProblemCount
+                            hackathonViewModel.currentHackathon.startDate = initialStartDate
+                            hackathonViewModel.currentHackathon.endDate = initialEndDate
+                            hackathonViewModel.currentHackathon.prize = initialPrizes
+                        })
+                    }
+        
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Create Hackathon")
         .padding(.horizontal, 7)
