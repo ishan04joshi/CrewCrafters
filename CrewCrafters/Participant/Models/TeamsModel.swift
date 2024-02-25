@@ -9,15 +9,17 @@ import Foundation
 import SwiftUI
 
 
-struct Teams: Identifiable, Equatable {
+struct Teams: Identifiable, Equatable , Decodable{
     static func == (lhs: Teams, rhs: Teams) -> Bool {
         return lhs.id == rhs.id
     }
-    var id = UUID()
+    var id : String = ""
     var name: String
     var theme: String
     var problem: String
     var member_count: Int
     var tech_stack: [String]
+    var hackathonId: String
     
 }
+

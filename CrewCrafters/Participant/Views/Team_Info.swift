@@ -9,8 +9,9 @@ import SwiftUI
 
 struct Team_info: View {
     @State var showingDetail = false
-    var name: String
-    var image: String
+    let teamIndex: Int
+    var name: String = ""
+    var image: String = ""
     var body: some View {
         ScrollView{
             VStack(alignment: .leading){
@@ -240,6 +241,6 @@ struct Team_info: View {
     }
 }
 
-#Preview {
-    Team_info(name: "Amaze Team", image: "hackathon_poster1")
-}
+//#Preview {
+//    Team_info(name: "Amaze Team", image: "hackathon_poster1")
+//}

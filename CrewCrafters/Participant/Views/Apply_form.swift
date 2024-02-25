@@ -84,10 +84,10 @@ struct Apply_form: View {
                 
             }.contentMargins(.horizontal, 5)
             
-            NavigationLink(destination: Team_info(name: name, image: "hackathon_poster")){
-                Text("Apply")}
-            .buttonStyle(NavigationButton())
-            .padding()
+//            NavigationLink(destination: Team_info(name: name, image: "hackathon_poster")){
+//                Text("Apply")}
+//            .buttonStyle(NavigationButton())
+//            .padding()
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Create Your Team")

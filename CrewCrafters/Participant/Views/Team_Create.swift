@@ -49,15 +49,20 @@ struct Team_create: View {
                 Section(header: Text("Members Information")) {
                     HStack{
                         Text("Member Count:")
-                        Picker(" ", selection: $count) {
+                        Picker("Member Count:", selection: $count) {
                             ForEach(1...6, id: \.self) { count in
-                                Text("\(count)").tag(count - 1)
+                                Text("\(count)").tag(count)
                             }
-                            Text("Other").tag(6)
+                            Text("Other").tag(7) // Assuming 7 represents "Other"
+                        }
+                        .onChange(of: count) { newValue in
+                            teamsViewModel.currentTeam.member_count = newValue
                         }
                         
+                        
                     }.padding(.bottom, 7.0)
-                    ForEach(0..<count+1, id: \.self) { index in
+                    
+                    ForEach(0..<count, id: \.self) { index in
                         VStack {
                             HStack{
                                 Text("Member: \(index + 1)")
@@ -91,7 +96,7 @@ struct Team_create: View {
             }.contentMargins(.horizontal, 5)
             
             
-            NavigationLink(destination: Team_info(name: teamsViewModel.currentTeam.name, image: "hackathon_poster")){
+            NavigationLink(destination: Search()){
                 Text("Publish Team")}
             .buttonStyle(NavigationButton())
             .padding().simultaneousGesture(TapGesture().onEnded {
