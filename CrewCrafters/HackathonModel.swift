@@ -38,7 +38,7 @@ struct Hackathon: Identifiable, Equatable, Codable {
         return lhs.id == rhs.id
     }
     
-    var id = UUID()
+    var id : String = ""
     var hackathonPosterData: Data?
     var name: String
     var about: String

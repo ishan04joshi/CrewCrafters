@@ -39,7 +39,7 @@ struct Hack_Land: View {
                             .buttonStyle(.bordered)
                             .tint(.blue)
                             Spacer()
-                            NavigationLink(destination: Team_create()){
+                            NavigationLink(destination: Team_create(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)){
                                 Text("Make a Team")
                                     .foregroundColor(.blue)
                             }

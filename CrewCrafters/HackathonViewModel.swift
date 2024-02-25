@@ -1,10 +1,3 @@
-//
-//  HackathonViewModel.swift
-//  CrewCrafters
-//
-//  Created by Manvi Singhal on 26/01/24.
-//
-
 import SwiftUI
 import Firebase
 import Foundation
@@ -12,6 +5,20 @@ import FirebaseFirestore
 
 class HackathonViewModel: ObservableObject {
     @Published var hackathons: [Hackathon] = []
+    @Published var currentHackathon: Hackathon = Hackathon(
+            hackathonPosterData: nil,
+            name: "",
+            about: "",
+            mode: "",
+            problem_count: 1,
+            problemStatements: [],
+            themes: [],
+            startDate: Date(),
+            endDate: Date(),
+            partnerImagesData: [],
+            prize: [],
+            status: false
+        )
     let defaultPoster = UIImage(named: "default_hackathon_poster")!
     private let db = Firestore.firestore()
     @EnvironmentObject var userViewModel: UserViewModel
@@ -19,21 +26,6 @@ class HackathonViewModel: ObservableObject {
     init() {
         fetchHackathons()
     }
-    
-    @Published var currentHackathon: Hackathon = Hackathon(
-        hackathonPosterData: nil,
-        name: "",
-        about: "",
-        mode: "",
-        problem_count: 1,
-        problemStatements: [],
-        themes: [],
-        startDate: Date(),
-        endDate: Date(),
-        partnerImagesData: [],
-        prize: [],
-        status: false
-    )
     
     func fetchHackathons() {
         db.collection("hackathons").getDocuments { querySnapshot, error in
@@ -47,7 +39,9 @@ class HackathonViewModel: ObservableObject {
                 
                 self.hackathons = documents.compactMap { document in
                     do {
-                        return try document.data(as: Hackathon.self)
+                        var hackathon = try document.data(as: Hackathon.self)
+                        hackathon.id = document.documentID // Set the hackathon ID
+                        return hackathon
                     } catch {
                         print("Error decoding Hackathon: \(error)")
                         return nil

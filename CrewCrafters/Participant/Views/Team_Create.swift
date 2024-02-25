@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Team_create: View {
+    let hackathonIndex: Int
+    @EnvironmentObject var hackathonViewModel: HackathonViewModel
     @State var teamsViewModel = TeamsViewModel()
     @State var count = Int()
     var body: some View {
@@ -93,7 +95,7 @@ struct Team_create: View {
                 Text("Publish Team")}
             .buttonStyle(NavigationButton())
             .padding().simultaneousGesture(TapGesture().onEnded {
-                teamsViewModel.addNewTeam(teamsViewModel.currentTeam)
+                teamsViewModel.addNewTeam(teamsViewModel.currentTeam, hackathonId: hackathonViewModel.hackathons[hackathonIndex].id)
             })
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -103,6 +105,3 @@ struct Team_create: View {
 }
 
 
-#Preview {
-    Team_create()
-}

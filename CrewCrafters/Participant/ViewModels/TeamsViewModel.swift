@@ -21,15 +21,16 @@ class TeamsViewModel: ObservableObject {
         tech_stack: []
     )
     
-    func addNewTeam(_ teams: Teams) {
+    func addNewTeam(_ teams: Teams, hackathonId: String) { // Add hackathonId parameter
         let db = Firestore.firestore()
         do {
-          try db.collection("Teams").addDocument(data: [
+          try db.collection("hackathons/\(hackathonId)/teams").addDocument(data: [
             "name": teams.name,
             "theme": teams.theme,
             "problem": teams.problem,
             "member_count": teams.member_count,
-            "techstack": teams.tech_stack
+            "techstack": teams.tech_stack,
+            "hackathonId": hackathonId // Include hackathonId in the document data
           ])
           print("Document successfully written!")
         } catch {
