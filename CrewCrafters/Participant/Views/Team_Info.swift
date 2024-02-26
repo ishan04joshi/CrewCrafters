@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct Team_info: View {
+    @EnvironmentObject var teamViewModel: TeamsViewModel
     @State var showingDetail = false
     let teamIndex: Int
-    var name: String = ""
-    var image: String = ""
+    var image: String = "team_poster"
     var body: some View {
+        let team = teamViewModel.teams[teamIndex]
         ScrollView{
             VStack(alignment: .leading){
                 Image(image)
@@ -24,13 +25,13 @@ struct Team_info: View {
                 {
                     Text("Themes: ")
                         .fontWeight(.semibold)
-                    Text("Smart Education")
+                    Text(team.theme)
                 }
                 .font(.title3)
                 
                 VStack(alignment: .leading){
                     Text("Problem Statement:").font(.title3).fontWeight(.semibold)
-                    Text("Sed ut perspiciatis, unde omnis iste natus error sit volupt atem accum santium doloremque lauda ntium")
+                    Text(team.problem)
                 }
                 Spacer()
                 
@@ -237,7 +238,7 @@ struct Team_info: View {
             }.padding(.all, 10.0)
             Spacer()
             
-        }.navigationTitle(name).padding(.all, 10)
+        }.navigationTitle(team.name).padding(.all, 10)
     }
 }
 
