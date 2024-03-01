@@ -43,9 +43,9 @@ class ProfileViewModel: ObservableObject {
             }
         }
     
-    func addNewProfile(_ hackathon: Hackathon,userId:String, completion: @escaping () -> Void) {
+    func addNewProfile(_ profile: ProfileM,userId:String, completion: @escaping () -> Void) {
             do {
-                try db.collection("users/\(userId)/profiles").addDocument(from: hackathon) { error in
+                try db.collection("users/\(userId)/profiles").addDocument(from: profile) { error in
                     if let error = error {
                         print("Error writing document: \(error)")
                     } else {

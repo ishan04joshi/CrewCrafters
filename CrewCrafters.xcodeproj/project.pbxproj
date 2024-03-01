@@ -33,6 +33,7 @@
 		1FCC7F402B402EAE00D66078 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC7F3F2B402EAE00D66078 /* Notification.swift */; };
 		2BBEE6EF2B91C50000328FF1 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEE6EE2B91C50000328FF1 /* ProfileViewModel.swift */; };
 		2BBEE6F12B91C51300328FF1 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEE6F02B91C51300328FF1 /* ProfileModel.swift */; };
+		2BBEE6F32B92173D00328FF1 /* Profile_Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEE6F22B92173D00328FF1 /* Profile_Create.swift */; };
 		7F23D3A02B39F0D4006B01BE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F23D39F2B39F0D4006B01BE /* Login.swift */; };
 		7F23D3A22B39F177006B01BE /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F23D3A12B39F177006B01BE /* SignIn.swift */; };
 		7F27AF5A2B2379B000827166 /* CrewCraftersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27AF592B2379B000827166 /* CrewCraftersApp.swift */; };
@@ -96,6 +97,7 @@
 		1FCC7F3F2B402EAE00D66078 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		2BBEE6EE2B91C50000328FF1 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		2BBEE6F02B91C51300328FF1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		2BBEE6F22B92173D00328FF1 /* Profile_Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_Create.swift; sourceTree = "<group>"; };
 		7F23D39F2B39F0D4006B01BE /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		7F23D3A12B39F177006B01BE /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		7F27AF562B2379B000827166 /* CrewCrafters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrewCrafters.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -298,6 +300,7 @@
 				1FCC7F3D2B402BC200D66078 /* MainTabView.swift */,
 				1FCC7F3F2B402EAE00D66078 /* Notification.swift */,
 				1F377BE72B55B0AC00424028 /* ImagePicker.swift */,
+				2BBEE6F22B92173D00328FF1 /* Profile_Create.swift */,
 			);
 			path = " Views";
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				1F4D23212B2DC5EF003B5EC7 /* Hack_Land.swift in Sources */,
 				1F4D23252B2E21FE003B5EC7 /* LeaderboardViewModel.swift in Sources */,
 				1F115C332B5803B400227CD8 /* Organiser_Home.swift in Sources */,
+				2BBEE6F32B92173D00328FF1 /* Profile_Create.swift in Sources */,
 				7F23D3A22B39F177006B01BE /* SignIn.swift in Sources */,
 				1F2AE5942B3438A7004852AA /* SettingModel.swift in Sources */,
 				7F3FD46D2B5697F2000C43EB /* Admin_Home.swift in Sources */,

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-struct ProfileM: Identifiable, Equatable , Decodable{
+struct ProfileM: Identifiable, Equatable, Codable{
     static func == (lhs: ProfileM, rhs: ProfileM) -> Bool {
         return lhs.id == rhs.id
     }
