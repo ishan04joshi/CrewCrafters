@@ -1,127 +1,106 @@
-import SwiftUI
-import UIKit
+//
+//  Organizer_Create.swift
+//  CrewCrafters
+//
+//  Created by Manvi Singhal on 14/01/24.
+//
 
-struct ProfileInputView: View {
-    @State private var name = ""
-    @State private var bio = ""
-    @State private var techStack = ""
-    @State private var about = ""
-    @State private var profileImage: UIImage?
-    @State private var coverImage: UIImage?
-    
-    @ObservedObject var viewModel: ProfileViewModel
+import SwiftUI
+
+struct Profile_Create: View {
     @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var profileViewModel: ProfileViewModel
+    @State private var isImagePickerP = false
+    
     var body: some View {
         VStack {
-            if let profileImage = profileImage {
-                Image(uiImage: profileImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200, height: 200)
-            } else {
-                Button("Select Profile Photo") {
-                    self.presentImagePicker(for: .profile)
+            Form {
+                Section(header: Text("Profile Data")) {
+                    //CameraButton
+                    
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            isImagePickerP.toggle()
+                        }) {
+                            if let profilephoto = profileViewModel.currentProfile.profilephoto{
+                                Image(uiImage: profilephoto)
+                                    .resizable()
+                                    .scaledToFit()
+                            } else {
+                                Circle()
+                                    .fill(Color(hue: 1.0, saturation: 0.0, brightness: 0.867))
+                                    .frame(width: 155)
+                                    .overlay(
+                                        Image(systemName: "camera.fill")
+                                            .resizable()
+                                            .frame(width: 50, height: 40)
+                                            .foregroundStyle(Color.black)
+                                    )
+                            }
+                        }
+                        .sheet(isPresented: $isImagePickerP) {
+                            ImagePicker(image: $profileViewModel.currentProfile.profilephoto, defaultPoster: profileViewModel.defaultphoto)
+                        }
+                        Spacer()
+                    }
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
+
+                    
+                    HStack {
+                        Text("Name: ")
+                        TextField("Name", text: $profileViewModel.currentProfile.name)
+                    }
+                    .padding(.bottom, 7.0)
+                    
+                    HStack {
+                        Text("Bio: ")
+                        TextField("Bio", text: $profileViewModel.currentProfile.bio)
+                    }
+                    .padding(.bottom, 7.0)
+                    
+                    HStack {
+                        Text("About :")
+                        TextField("About", text: $profileViewModel.currentProfile.about)
+                    }
+                    .padding(.bottom, 7.0)
+                    
+                    
+                    
                 }
+                
+                
+               
+                
+                
+                
+                
             }
+           
             
-            if let coverImage = coverImage {
-                Image(uiImage: coverImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200, height: 200)
-            } else {
-                Button("Select Cover Photo") {
-                    self.presentImagePicker(for: .cover)
-                }
+            NavigationLink(destination: OrganiserTabView()) {
+                Text("Publish Hackathon")
             }
-            
-            TextField("Name", text: $name)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            
-            TextField("Bio", text: $bio)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            
-            TextField("Tech Stack", text: $techStack)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            
-            TextField("About", text: $about)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            
-            Button(action: submitProfile) {
-                Text("Submit")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
-        }
-        .padding()
-    }
-    
-    enum ImageType {
-        case profile
-        case cover
-    }
-    
-    func presentImagePicker(for type: ImageType) {
-        let picker = UIImagePickerController()
-        picker.delegate = makeCoordinator()
-        picker.sourceType = .photoLibrary
-        UIApplication.shared.windows.first?.rootViewController?.present(picker, animated: true, completion: nil)
-    }
-    
-    func submitProfile() {
-        // Construct profile object with entered data and images
-        let profile = ProfileM(
-            coverphotoData: coverImage?.jpegData(compressionQuality: 0.1),
-            profilephotoData: profileImage?.jpegData(compressionQuality: 0.1),
-            name: name,
-            bio: bio,
-            techstack: techStack.components(separatedBy: ","),
-            achievementsData: [],
-            about: about
-        )
+            .buttonStyle(NavigationButton())
+            .navigationBarBackButtonHidden()
+            .padding()
+            .simultaneousGesture(TapGesture().onEnded {
+                profileViewModel.addNewProfile(profileViewModel.currentProfile, userId: "pJ38sosDC4e9TFcKx6qFk5IZwS12"){}
+            })
+            .simultaneousGesture(TapGesture().onEnded {
+
+                        })
+                    }
         
-        // Assuming you have a userId available
-        viewModel.addNewProfile(profile, userId: "pJ38sosDC4e9TFcKx6qFk5IZwS12") {
-            // Handle completion if needed
-        }
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-    
-    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        let parent: ProfileInputView
-        
-        init(_ parent: ProfileInputView) {
-            self.parent = parent
-        }
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let image = info[.originalImage] as? UIImage {
-                // Determine which image is selected
-                if picker.sourceType == .photoLibrary {
-                    // Profile photo selected
-                    parent.profileImage = image
-                } else {
-                    // Cover photo selected
-                    parent.coverImage = image
-                }
-            }
-            
-            picker.dismiss(animated: true, completion: nil)
-        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Create Hackathon")
+        .padding(.horizontal, 7)
     }
 }
 
-struct ProfileInputView_Previews: PreviewProvider {
+struct Profile_Create_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileInputView(viewModel: ProfileViewModel())
+        Profile_Create()
     }
 }

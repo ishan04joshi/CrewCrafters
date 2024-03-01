@@ -18,7 +18,8 @@ class ProfileViewModel: ObservableObject {
         achievementsData: [],
         about: ""
         )
-    let defaultPoster = UIImage(named: "default_hackathon_poster")!
+    let defaultcover = UIImage(named: "bg")!
+    let defaultphoto = UIImage(named: "bg")!
     private let db = Firestore.firestore()
     
    

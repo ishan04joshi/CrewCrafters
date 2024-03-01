@@ -29,7 +29,7 @@ struct ProfileM: Identifiable, Equatable, Codable{
             return UIImage(data: data)
         }
         set {
-            coverphotoData = newValue?.jpegData(compressionQuality: 0.1)
+            coverphotoData = newValue?.jpegData(compressionQuality: 0.5)
         }
     }
     var profilephoto: UIImage? {
@@ -38,7 +38,7 @@ struct ProfileM: Identifiable, Equatable, Codable{
             return UIImage(data: data)
         }
         set {
-            profilephotoData = newValue?.jpegData(compressionQuality: 0.1)
+            profilephotoData = newValue?.jpegData(compressionQuality: 0.5)
         }
     }
     
@@ -47,7 +47,7 @@ struct ProfileM: Identifiable, Equatable, Codable{
             return achievementsData.compactMap { UIImage(data: $0) }
         }
         set {
-            achievementsData = newValue.compactMap { $0.jpegData(compressionQuality: 0.1) }
+            achievementsData = newValue.compactMap { $0.jpegData(compressionQuality: 0.5) }
         }
     }
     
