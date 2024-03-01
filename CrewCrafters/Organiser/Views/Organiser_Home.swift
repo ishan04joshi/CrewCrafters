@@ -14,7 +14,7 @@ struct Organizer_Home: View {
         NavigationView {
             List {
                 Section {
-                    Text("Pending Hackathons")
+                    Text("Hackathons")
                         .font(.headline)
                         .fontWeight(.bold)
                     
@@ -24,23 +24,27 @@ struct Organizer_Home: View {
                 }
                 .listRowSeparator(.hidden)
                 
-                Section {
-                    Text("Approved Hackathons")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                    
-                    ForEach(hackathonViewModel.hackathons.filter { $0.status }) { hackathon in
-                        HackathonView(hackathon: hackathon)
-                    }
-                }
-                .listRowSeparator(.hidden)
+//                Section {
+//                    Text("Approved Hackathons")
+//                        .font(.headline)
+//                        .fontWeight(.bold)
+//                    
+//                    ForEach(hackathonViewModel.hackathons.filter { $0.status }) { hackathon in
+//                        HackathonView(hackathon: hackathon)
+//                    }
+//                }
+//                .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
-            .navigationTitle("Welcome! SIIEC")
-            
+            .navigationTitle("Welcome! Organizer")
+            .onAppear {
+                // Fetch hackathons when the view appears
+                hackathonViewModel.fetchHackathons()
+            }
         }
     }
 }
+
 
 struct HackathonView: View {
     let hackathon: Hackathon
