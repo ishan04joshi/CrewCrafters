@@ -13,4 +13,5 @@ import FirebaseFirestore
 
 class UserViewModel: ObservableObject {
     @Published var userRole: String = ""
+    @Published var userId: String = ""
 }

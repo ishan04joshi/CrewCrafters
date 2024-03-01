@@ -31,6 +31,8 @@
 		1FCC7F3C2B400A4800D66078 /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC7F3B2B400A4800D66078 /* NavigationButton.swift */; };
 		1FCC7F3E2B402BC200D66078 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC7F3D2B402BC200D66078 /* MainTabView.swift */; };
 		1FCC7F402B402EAE00D66078 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC7F3F2B402EAE00D66078 /* Notification.swift */; };
+		2BBEE6EF2B91C50000328FF1 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEE6EE2B91C50000328FF1 /* ProfileViewModel.swift */; };
+		2BBEE6F12B91C51300328FF1 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEE6F02B91C51300328FF1 /* ProfileModel.swift */; };
 		7F23D3A02B39F0D4006B01BE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F23D39F2B39F0D4006B01BE /* Login.swift */; };
 		7F23D3A22B39F177006B01BE /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F23D3A12B39F177006B01BE /* SignIn.swift */; };
 		7F27AF5A2B2379B000827166 /* CrewCraftersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27AF592B2379B000827166 /* CrewCraftersApp.swift */; };
@@ -92,6 +94,8 @@
 		1FCC7F3B2B400A4800D66078 /* NavigationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
 		1FCC7F3D2B402BC200D66078 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		1FCC7F3F2B402EAE00D66078 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		2BBEE6EE2B91C50000328FF1 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		2BBEE6F02B91C51300328FF1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		7F23D39F2B39F0D4006B01BE /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		7F23D3A12B39F177006B01BE /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		7F27AF562B2379B000827166 /* CrewCrafters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrewCrafters.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +171,7 @@
 				1F4D23222B2E21A9003B5EC7 /* LeaderboardModel.swift */,
 				7FEAB1AD2B871AF500A692AC /* TeamsModel.swift */,
 				1F2AE5932B3438A7004852AA /* SettingModel.swift */,
+				2BBEE6F02B91C51300328FF1 /* ProfileModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				1F4D23242B2E21FE003B5EC7 /* LeaderboardViewModel.swift */,
 				7FEAB1AB2B871ADB00A692AC /* TeamsViewModel.swift */,
 				1F2AE58F2B343814004852AA /* SettingsViewModel.swift */,
+				2BBEE6EE2B91C50000328FF1 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -399,6 +405,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BBEE6F12B91C51300328FF1 /* ProfileModel.swift in Sources */,
 				7F3B79D42B24DFBF008E03C8 /* Search.swift in Sources */,
 				1FCC7F3E2B402BC200D66078 /* MainTabView.swift in Sources */,
 				7F3B79D62B24DFCD008E03C8 /* Profile.swift in Sources */,
@@ -419,6 +426,7 @@
 				7FEAB1AC2B871ADB00A692AC /* TeamsViewModel.swift in Sources */,
 				1FBA16422B3F112F0064829C /* GoogleSignInButtonView.swift in Sources */,
 				7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */,
+				2BBEE6EF2B91C50000328FF1 /* ProfileViewModel.swift in Sources */,
 				7F3B79DA2B24DFF3008E03C8 /* Hack_Teams.swift in Sources */,
 				1F377BEC2B55BD2100424028 /* SignInWithAppleButtonView.swift in Sources */,
 				1F377BE82B55B0AC00424028 /* ImagePicker.swift in Sources */,

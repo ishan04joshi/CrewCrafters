@@ -105,6 +105,7 @@ struct Login: View {
                 // Fetch user role from Firebase
                 if let currentUser = Auth.auth().currentUser {
                     let userUID = currentUser.uid
+                    userViewModel.userId=userUID
                     // Assuming you have a Firebase database where user roles are stored under "users" node
                     let db = Firestore.firestore()
                     let userRef = db.collection("users").document(userUID)

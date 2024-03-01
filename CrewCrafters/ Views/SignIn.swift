@@ -107,6 +107,7 @@ struct SignIn: View {
     func addUserToFirestore(firstName: String, lastName: String, email: String, role: String) {
         let db = Firestore.firestore()
         if let currentUserUID = Auth.auth().currentUser?.uid {
+            userViewModel.userId=currentUserUID
             db.collection("users").document(currentUserUID).setData([
                 "firstName": firstName,
                 "lastName": lastName,
