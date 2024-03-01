@@ -7,8 +7,9 @@
 
 import Foundation
 import SwiftUI
+import FirebaseFirestore
 class ProfileViewModel: ObservableObject {
-    @Published var currentHackathon: ProfileM = ProfileM(
+    @Published var currentProfile: ProfileM = ProfileM(
         coverphotoData: nil,
         profilephotoData: nil,
         name: "",
@@ -18,61 +19,46 @@ class ProfileViewModel: ObservableObject {
         about: ""
         )
     let defaultPoster = UIImage(named: "default_hackathon_poster")!
-
+    private let db = Firestore.firestore()
     
    
     
-    func fetchProfile() {
-        db.collection("hackathons").getDocuments { querySnapshot, error in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            } else {
-                guard let documents = querySnapshot?.documents else {
-                    print("No documents")
-                    return
-                }
-                
-                self.hackathons = documents.compactMap { document in
+    func fetchProfile(userId:String) {
+            db.collection("users/\(userId)/profile").getDocuments { querySnapshot, error in
+                if let error = error {
+                    print("Error getting documents: \(error)")
+                } else {
+                    guard let document = querySnapshot?.documents.first else {
+                        print("No documents")
+                        return
+                    }
+                    
                     do {
-                        var hackathon = try document.data(as: Hackathon.self)
-                        hackathon.id = document.documentID // Set the hackathon ID
-                        return hackathon
+                        self.currentProfile = try document.data(as: ProfileM.self)
+                        self.currentProfile.id = document.documentID // Set the hackathon ID
                     } catch {
                         print("Error decoding Hackathon: \(error)")
-                        return nil
                     }
                 }
             }
         }
-    }
     
-    func addNewHackathon(_ hackathon: Hackathon, completion: @escaping () -> Void) {
-        do {
-            try db.collection("hackathons").addDocument(from: hackathon) { error in
-                if let error = error {
-                    print("Error writing document: \(error)")
-                } else {
-                    print("Document successfully written!")
-                    self.fetchHackathons()
-                    completion()
+    func addNewProfile(_ hackathon: Hackathon,userId:String, completion: @escaping () -> Void) {
+            do {
+                try db.collection("users/\(userId)/profiles").addDocument(from: hackathon) { error in
+                    if let error = error {
+                        print("Error writing document: \(error)")
+                    } else {
+                        print("Document successfully written!")
+                        self.fetchProfile(userId: userId)
+                        completion()
+                    }
                 }
+            } catch {
+                print("Error writing document: \(error)")
             }
-        } catch {
-            print("Error writing document: \(error)")
         }
-    }
     
-    func filteredHackathons() -> [Hackathon] {
-        let userRole = userViewModel.userRole
-        
-        if userRole == "Organizer" {
-            return hackathons
-        } else if userRole == "Participant" {
-            return hackathons.filter { $0.status }
-        } else {
-            // Handle other cases or return an empty array
-            return []
-        }
-    }
+    
 }
 
