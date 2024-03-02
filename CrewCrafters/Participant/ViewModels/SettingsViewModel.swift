@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 
-class SettingsViewModel: ObservableObject {
+class SettingsViewModel: ObservableObject{
+   // Make userViewModel a published property
     let setting: [SectionSettings] = [
         SectionSettings(header: "Account", settings: [
             Setting(title: "Edit profile", imageName: "person.crop.circle"),
@@ -32,4 +34,8 @@ class SettingsViewModel: ObservableObject {
         ]),
 
     ]
+    func logout() {
+            // Perform logout actions here
+       
+        }
 }

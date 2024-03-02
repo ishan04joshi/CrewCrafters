@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Profile: View {
+    @EnvironmentObject var profileViewModel:ProfileViewModel
     var body: some View {
         NavigationView {
             ScrollView {
@@ -19,7 +20,7 @@ struct Profile: View {
                         .aspectRatio(contentMode: .fill)
                         .clipShape(CustomShape())
                     
-                    Image("user")
+                    Image(uiImage: profileViewModel.currentProfile.profilephoto ?? UIImage(named: "user")!)
                         .resizable()
                         .frame(width: 180, height: 180)
                         .aspectRatio(contentMode: .fit)
@@ -28,10 +29,10 @@ struct Profile: View {
                 }
                 .padding(.bottom, 90.0)
                 
-                Text("Elon Musk")
+                Text(profileViewModel.currentProfile.name)
                     .font(.title2)
                     .fontWeight(.bold)
-                Text("Elon Musk")
+                Text(profileViewModel.currentProfile.bio)
                     .font(.subheadline)
                     .padding(.bottom)
                 
@@ -91,15 +92,14 @@ struct Profile: View {
                 Text("Tech Stack")
                     .titleStyle()
                 
-                ScrollView (.horizontal) {
-                    HStack (spacing: 10) {
-                        ForEach(0..<10){_ in
-                            Text("Sample")
+                ScrollView(.horizontal) {
+                    HStack(spacing: 10) {
+                        ForEach(profileViewModel.currentProfile.techstack, id: \.self) { techName in
+                            Text(techName)
                                 .padding(10)
                                 .background(Color.gray.opacity(0.3))
                                 .cornerRadius(15)
                                 .lineLimit(1)
-                            
                         }
                     }
                 }
@@ -131,7 +131,7 @@ struct Profile: View {
                 Text("About")
                     .titleStyle()
                 
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vestibulum enim a felis faucibus ultrices. Donec sed hendrerit justo. Nunc convallis metus eget sem euismod mollis. Praesent laoreet lacus sed mauris viverra porta sit amet non urna.")
+                Text(profileViewModel.currentProfile.about)
                     .font(.body)
                     .lineLimit(5)
                     .padding([.leading, .bottom, .trailing])
