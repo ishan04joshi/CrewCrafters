@@ -92,7 +92,7 @@ struct Profile_Create: View {
            
             
             NavigationLink(destination: OrganiserTabView()) {
-                Text("Publish Hackathon")
+                Text("Get Started")
             }
             .buttonStyle(NavigationButton())
             .navigationBarBackButtonHidden()
