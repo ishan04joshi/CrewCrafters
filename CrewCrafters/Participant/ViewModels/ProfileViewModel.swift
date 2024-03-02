@@ -14,7 +14,7 @@ class ProfileViewModel: ObservableObject {
         profilephotoData: nil,
         name: "",
         bio: "",
-        techstack: [],
+        techstack: ["","","",""],
         achievementsData: [],
         about: ""
         )
