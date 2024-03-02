@@ -126,7 +126,7 @@ struct SignIn: View {
                 "firstName": firstName,
                 "lastName": lastName,
                 "email": email,
-                "role": userViewModel.userRole
+                "role": role
             ]) { error in
                 if let error = error {
                     print("Error adding document: \(error)")

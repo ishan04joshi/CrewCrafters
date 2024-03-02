@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct ParticipantHome: View {
+    @EnvironmentObject var profileViewModel:ProfileViewModel
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
                     HStack {
-                        Image("user")
+                        Image(uiImage: profileViewModel.currentProfile.profilephoto ?? UIImage(named: "user")!)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 60)
                             .clipShape(Circle())
-                        Text("Hello, Elon Musk!")
+                        Text("Hello, \(profileViewModel.currentProfile.name)!")
                             .font(.title2)
                             .fontWeight(.semibold)
                         Spacer()
@@ -54,13 +55,13 @@ struct ParticipantHome: View {
                     ForEach(0..<2){_ in
                         VStack(alignment: .leading) {
                             HStack {
-                                Image("user")
+                                Image(uiImage: profileViewModel.currentProfile.profilephoto ?? UIImage(named: "user")!)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .clipShape(Circle())
                                     .frame(width: 50)
                                 VStack(alignment: .leading) {
-                                    Text("Elon Musk")
+                                    Text(profileViewModel.currentProfile.name)
                                         .fontWeight(.bold)
                                     HStack(alignment: .center, spacing: 3) {
                                         Text("Amaze Team")
