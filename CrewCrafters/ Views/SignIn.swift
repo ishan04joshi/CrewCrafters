@@ -1,7 +1,7 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
-
+import Combine 
 struct SignIn: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @State private var firstName: String = ""
@@ -12,6 +12,7 @@ struct SignIn: View {
     @State private var roleSelection: Int = 0
     @State private var selected: String = "" // 0 for Organizer, 1 for Participant
     @State private var isSignedUp: Bool = false
+    @State private var navigationIsActive = false // Add this state variable
 
     var body: some View {
         NavigationView {
@@ -32,7 +33,8 @@ struct SignIn: View {
                 
                 TextField("Email Address", text: $email)
                     .textFieldStyle(CustomTextFieldStyle())
-                    .padding(.bottom).autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                    .padding(.bottom)
+                    .autocapitalization(.none)
                 
                 ZStack(alignment: .trailingFirstTextBaseline) {
                     if isPasswordVisible {
@@ -69,12 +71,8 @@ struct SignIn: View {
                 }
                 
                 
-
                 Button(action: {
                     signUpWithFirebase()
-                    NavigationLink(destination: roleSelection == 0 ? AnyView(OrganiserTabView()) : AnyView(MainTabView())) {
-                        EmptyView()
-                    }
                 }) {
                     Text("Sign Up")
                 }
@@ -82,14 +80,24 @@ struct SignIn: View {
                 .navigationBarHidden(true)
                 .padding()
                 
-                // Your other UI components
+            }
+            .background(
+                NavigationLink(destination: roleSelection == 0 ? AnyView(OrganiserTabView()) : AnyView(MainTabView()), isActive: $navigationIsActive) {
+                    EmptyView()
+                }
+                .hidden()
+            )
+        }
+        .onReceive(Just(isSignedUp)) {
+            if $0 {
+                navigationIsActive = true
             }
         }
+        .navigationBarBackButtonHidden(true) // Hide the back button
     }
     
     func signUpWithFirebase() {
         let role = roleSelection == 0 ? "Organizer" : "Participant"
-        
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
@@ -97,20 +105,18 @@ struct SignIn: View {
                 // Handle error, show alert or provide feedback to the user
             } else {
                 print("User signed up successfully as \(role)")
-                userViewModel.userRole = role
+                userViewModel.role = role
                 addUserToFirestore(firstName: firstName, lastName: lastName, email: email, role: role)
                 
                 self.isSignedUp = true // Activate the navigation link
             }
         }
-        
     }
 
-    
     func addUserToFirestore(firstName: String, lastName: String, email: String, role: String) {
         let db = Firestore.firestore()
         if let currentUserUID = Auth.auth().currentUser?.uid {
-            userViewModel.userId=currentUserUID
+            userViewModel.userId = currentUserUID
             db.collection("users").document(currentUserUID).setData([
                 "firstName": firstName,
                 "lastName": lastName,
@@ -127,7 +133,6 @@ struct SignIn: View {
             print("Error: Current user not available")
         }
     }
-
 }
 
 struct CustomTextFieldStyle: TextFieldStyle {
