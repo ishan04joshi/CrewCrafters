@@ -9,7 +9,8 @@ struct SignIn: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
-    @State private var roleSelection: Int = 0 // 0 for Organizer, 1 for Participant
+    @State private var roleSelection: Int = 0
+    @State private var selected: String = "" // 0 for Organizer, 1 for Participant
     @State private var isSignedUp: Bool = false
 
     var body: some View {
@@ -64,15 +65,16 @@ struct SignIn: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.bottom)
                 .onChange(of: roleSelection) { newValue in
-                    userViewModel.userRole = newValue == 0 ? "Organizer" : "Participant"
+                    selected = newValue == 0 ? "Organizer" : "Participant"
                 }
                 
-                NavigationLink(destination: roleSelection == 0 ? AnyView(OrganiserTabView()) : AnyView(MainTabView()), isActive: $isSignedUp) {
-                    EmptyView()
-                }
+                
 
                 Button(action: {
                     signUpWithFirebase()
+                    NavigationLink(destination: roleSelection == 0 ? AnyView(OrganiserTabView()) : AnyView(MainTabView())) {
+                        EmptyView()
+                    }
                 }) {
                     Text("Sign Up")
                 }
@@ -87,7 +89,7 @@ struct SignIn: View {
     
     func signUpWithFirebase() {
         let role = roleSelection == 0 ? "Organizer" : "Participant"
-        userViewModel.userRole = role
+        
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
@@ -95,12 +97,13 @@ struct SignIn: View {
                 // Handle error, show alert or provide feedback to the user
             } else {
                 print("User signed up successfully as \(role)")
-                
+                userViewModel.userRole = role
                 addUserToFirestore(firstName: firstName, lastName: lastName, email: email, role: role)
                 
                 self.isSignedUp = true // Activate the navigation link
             }
         }
+        
     }
 
     
