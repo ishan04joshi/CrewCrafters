@@ -19,7 +19,7 @@ struct OrganiserTabView: View {
                     Image(systemName: "plus")
                     Text("Create")
                 }
-            Profile()
+            Organiser_Profile()
                 .tabItem {
                     Image(systemName: "person.crop.circle")
                     Text("Profile")

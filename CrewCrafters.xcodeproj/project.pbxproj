@@ -28,6 +28,7 @@
 		1FBA16372B3F09D30064829C /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA16362B3F09D30064829C /* Onboarding.swift */; };
 		1FBA163A2B3F0EC80064829C /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA16392B3F0EC80064829C /* PrimaryButton.swift */; };
 		1FBA16422B3F112F0064829C /* GoogleSignInButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA16412B3F112F0064829C /* GoogleSignInButtonView.swift */; };
+		1FCA16CD2B9387ED00C42081 /* Organiser_Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCA16CC2B9387ED00C42081 /* Organiser_Profile.swift */; };
 		1FCC7F3C2B400A4800D66078 /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC7F3B2B400A4800D66078 /* NavigationButton.swift */; };
 		1FCC7F3E2B402BC200D66078 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC7F3D2B402BC200D66078 /* MainTabView.swift */; };
 		1FCC7F402B402EAE00D66078 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC7F3F2B402EAE00D66078 /* Notification.swift */; };
@@ -92,6 +93,7 @@
 		1FBA16362B3F09D30064829C /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		1FBA16392B3F0EC80064829C /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		1FBA16412B3F112F0064829C /* GoogleSignInButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButtonView.swift; sourceTree = "<group>"; };
+		1FCA16CC2B9387ED00C42081 /* Organiser_Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organiser_Profile.swift; sourceTree = "<group>"; };
 		1FCC7F3B2B400A4800D66078 /* NavigationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
 		1FCC7F3D2B402BC200D66078 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		1FCC7F3F2B402EAE00D66078 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				1F377BE52B557C9E00424028 /* Organiser_Create.swift */,
+				1FCA16CC2B9387ED00C42081 /* Organiser_Profile.swift */,
 				1F115C322B5803B400227CD8 /* Organiser_Home.swift */,
 				1F115C3A2B597CA100227CD8 /* OrganiserTabView.swift */,
 			);
@@ -428,6 +431,7 @@
 				1F6ECDE62B63C439005C065F /* HackathonModel.swift in Sources */,
 				1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */,
 				7FEAB1AC2B871ADB00A692AC /* TeamsViewModel.swift in Sources */,
+				1FCA16CD2B9387ED00C42081 /* Organiser_Profile.swift in Sources */,
 				1FBA16422B3F112F0064829C /* GoogleSignInButtonView.swift in Sources */,
 				7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */,
 				2BBEE6EF2B91C50000328FF1 /* ProfileViewModel.swift in Sources */,
