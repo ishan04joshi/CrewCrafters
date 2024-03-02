@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Profile: View {
     @EnvironmentObject var profileViewModel:ProfileViewModel
+    @EnvironmentObject var userViewModel:UserViewModel
     var body: some View {
         NavigationView {
             ScrollView {

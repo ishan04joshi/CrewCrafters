@@ -10,12 +10,10 @@ import SwiftUI
 import FirebaseFirestore
 class ProfileViewModel: ObservableObject {
     @Published var currentProfile: ProfileM = ProfileM(
-        coverphotoData: nil,
         profilephotoData: nil,
         name: "",
         bio: "",
         techstack: ["","","",""],
-        achievementsData: [],
         about: ""
         )
     let defaultcover = UIImage(named: "bg")!
@@ -25,7 +23,7 @@ class ProfileViewModel: ObservableObject {
    
     
     func fetchProfile(userId:String) {
-            db.collection("users/\(userId)/profile").getDocuments { querySnapshot, error in
+            db.collection("users/\(userId)/profiles").getDocuments { querySnapshot, error in
                 if let error = error {
                     print("Error getting documents: \(error)")
                 } else {
@@ -36,7 +34,6 @@ class ProfileViewModel: ObservableObject {
                     
                     do {
                         self.currentProfile = try document.data(as: ProfileM.self)
-                        self.currentProfile.id = document.documentID // Set the hackathon ID
                     } catch {
                         print("Error decoding Hackathon: \(error)")
                     }

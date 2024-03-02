@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ParticipantHome: View {
     @EnvironmentObject var profileViewModel:ProfileViewModel
+    @EnvironmentObject var userViewModel:UserViewModel
     var body: some View {
         NavigationView {
             ScrollView {
@@ -89,6 +90,8 @@ struct ParticipantHome: View {
                         .shadow(color: Color.black.opacity(0.2), radius: 3, x: 3, y: 5)
                     }
                     .padding([.leading, .bottom, .trailing])
+                }.onAppear(){
+                    profileViewModel.fetchProfile(userId: userViewModel.userId)
                 }
             }
             .toolbar {

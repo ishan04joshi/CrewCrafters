@@ -8,7 +8,7 @@ struct Login: View {
     @State private var isPasswordVisible: Bool = false
     @State private var isLoggedIn: Bool = false
     @EnvironmentObject var userViewModel: UserViewModel
-
+    @EnvironmentObject var profileViewModel: ProfileViewModel
     var body: some View {
         VStack {
             Text("Sign In")
