@@ -21,7 +21,7 @@ class ProfileViewModel: ObservableObject {
     let defaultcover = UIImage(named: "bg")!
     let defaultphoto = UIImage(named: "bg")!
     private let db = Firestore.firestore()
-    
+    @EnvironmentObject var userViewModel: UserViewModel
    
     
     func fetchProfile(userId:String) {
@@ -53,6 +53,7 @@ class ProfileViewModel: ObservableObject {
                         print("Document successfully written!")
                         self.fetchProfile(userId: userId)
                         completion()
+                        self.userViewModel.userRole=self.userViewModel.role
                     }
                 }
             } catch {

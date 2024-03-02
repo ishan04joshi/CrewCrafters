@@ -1,7 +1,7 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
-import Combine 
+import Combine
 struct SignIn: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @State private var firstName: String = ""
@@ -82,7 +82,7 @@ struct SignIn: View {
                 
             }
             .background(
-                NavigationLink(destination: roleSelection == 0 ? AnyView(OrganiserTabView()) : AnyView(MainTabView()), isActive: $navigationIsActive) {
+                NavigationLink(destination: roleSelection == 0 ? AnyView(OrganiserTabView()) : AnyView(Profile_Create()), isActive: $navigationIsActive) {
                     EmptyView()
                 }
                 .hidden()
@@ -105,7 +105,12 @@ struct SignIn: View {
                 // Handle error, show alert or provide feedback to the user
             } else {
                 print("User signed up successfully as \(role)")
-                userViewModel.role = role
+                if roleSelection == 0{
+                    userViewModel.userRole = role
+                }
+                else{
+                    userViewModel.role=role
+                }
                 addUserToFirestore(firstName: firstName, lastName: lastName, email: email, role: role)
                 
                 self.isSignedUp = true // Activate the navigation link

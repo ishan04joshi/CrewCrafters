@@ -91,14 +91,14 @@ struct Profile_Create: View {
             }
            
             
-            NavigationLink(destination: OrganiserTabView()) {
+            NavigationLink(destination: MainTabView()) {
                 Text("Get Started")
             }
             .buttonStyle(NavigationButton())
             .navigationBarBackButtonHidden()
             .padding()
             .simultaneousGesture(TapGesture().onEnded {
-                profileViewModel.addNewProfile(profileViewModel.currentProfile, userId: "pJ38sosDC4e9TFcKx6qFk5IZwS12"){}
+                profileViewModel.addNewProfile(profileViewModel.currentProfile, userId: userViewModel.userId){}
             })
             .simultaneousGesture(TapGesture().onEnded {
 
