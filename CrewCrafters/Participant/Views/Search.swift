@@ -44,7 +44,6 @@ struct Search: View {
     }
 }
 
-
 struct HackathonItemView: View {
     let hackathon: Hackathon
     
