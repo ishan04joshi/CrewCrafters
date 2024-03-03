@@ -91,6 +91,7 @@ struct Profile_Create: View {
             .navigationBarBackButtonHidden()
             .padding()
             .simultaneousGesture(TapGesture().onEnded {
+                userViewModel.userRole=userViewModel.role
                 profileViewModel.addNewProfile(profileViewModel.currentProfile, userId: userViewModel.userId){}
             })
             .simultaneousGesture(TapGesture().onEnded {
