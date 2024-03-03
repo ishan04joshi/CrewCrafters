@@ -16,6 +16,13 @@ class ProfileViewModel: ObservableObject {
         techstack: ["","","",""],
         about: ""
         )
+    @Published var anyProfile: ProfileM = ProfileM(
+        profilephotoData: nil,
+        name: "",
+        bio: "",
+        techstack: ["","","",""],
+        about: ""
+        )
     let defaultcover = UIImage(named: "bg")!
     let defaultphoto = UIImage(named: "bg")!
     private let db = Firestore.firestore()
@@ -40,6 +47,24 @@ class ProfileViewModel: ObservableObject {
                 }
             }
         }
+    func fetchanyProfile(userId:String) {
+            db.collection("users/\(userId)/profiles").getDocuments { querySnapshot, error in
+                if let error = error {
+                    print("Error getting documents: \(error)")
+                } else {
+                    guard let document = querySnapshot?.documents.first else {
+                        print("No documents")
+                        return
+                    }
+                    
+                    do {
+                        self.anyProfile = try document.data(as: ProfileM.self)
+                    } catch {
+                        print("Error decoding Hackathon: \(error)")
+                    }
+                }
+            }
+        }
     
     func addNewProfile(_ profile: ProfileM,userId:String, completion: @escaping () -> Void) {
             do {
@@ -50,7 +75,7 @@ class ProfileViewModel: ObservableObject {
                         print("Document successfully written!")
                         self.fetchProfile(userId: userId)
                         completion()
-                        self.userViewModel.userRole=self.userViewModel.role
+                        
                     }
                 }
             } catch {

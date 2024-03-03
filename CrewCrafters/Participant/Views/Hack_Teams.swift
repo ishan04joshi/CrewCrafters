@@ -15,14 +15,13 @@ struct Hack_Teams: View {
     
     var body: some View {
         var hackathonId = hackathonViewModel.hackathons[hackathonIndex].id
-        NavigationView {
+        
             VStack(spacing: 0){
                 HStack {
                     TextField("Teams", text: $searchText)
                         .padding(8)
                         .background(Color(.systemGray6))
                         .cornerRadius(8)
-                        .padding(.horizontal, 8)
                         .padding(.bottom, 8)
                 }
                 
@@ -44,7 +43,7 @@ struct Hack_Teams: View {
             .onAppear {
                 teamViewModel.fetchTeams(hackathonId: hackathonId)
             }
-        }
+        
         
     }
 }

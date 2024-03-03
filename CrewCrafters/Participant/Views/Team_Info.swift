@@ -9,14 +9,14 @@ import SwiftUI
 
 struct Team_info: View {
     @EnvironmentObject var teamViewModel: TeamsViewModel
+    @EnvironmentObject var profileViewModel:ProfileViewModel
     @State var showingDetail = false
     let teamIndex: Int
-    var image: String = "team_poster"
     var body: some View {
         let team = teamViewModel.teams[teamIndex]
         ScrollView{
             VStack(alignment: .leading){
-                Image(image)
+                Image(uiImage: team.teamphoto ?? UIImage(named: "team_poster")!)
                     .resizable()
                     .frame(width: 375.0, height: 195.0)
                     .cornerRadius(20.0)
@@ -43,17 +43,17 @@ struct Team_info: View {
                 
                 VStack{
                     Spacer()
-                    Image(systemName: "person.crop.circle.dashed.circle.fill")
+                    Image(uiImage: profileViewModel.anyProfile.profilephoto ?? UIImage(named: "bg")!)
                         .resizable(resizingMode: .stretch)
                         .frame(width: 65.0, height: 65.0)
                     Spacer()
                 }.frame(width: 80.0)
                 VStack(alignment: .leading){
-                    Text("Ishan Joshi")
+                    Text(profileViewModel.anyProfile.name)
                         .font(.headline)
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.leading)
-                    Text("Web Developer")
+                    Text(profileViewModel.anyProfile.techstack[0])
                         .font(.subheadline)
                     
                 }
@@ -238,7 +238,10 @@ struct Team_info: View {
             }.padding(.all, 10.0)
             Spacer()
             
-        }.navigationTitle(team.name).padding(.all, 10)
+        }.navigationTitle(team.name).padding(.all, 10).onAppear {
+            // Call fetchanyProfile when the view appears
+            profileViewModel.fetchanyProfile(userId: teamViewModel.teams[teamIndex].admin_id)
+        }
     }
 }
 
