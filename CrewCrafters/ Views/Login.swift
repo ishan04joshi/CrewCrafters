@@ -83,7 +83,7 @@ struct Login: View {
     private func determineDestinationView() -> some View {
         if userViewModel.userRole == "Participant" {
             return AnyView(MainTabView())
-        } 
+        }
         else if userViewModel.userRole == "Admin"{
             return AnyView(OrganiserTabView())
         }
@@ -140,3 +140,12 @@ struct Login: View {
         }
     }
 }
+
+//struct Organizer_Create_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            Login()
+//        }
+//        .environmentObject(UserViewModel())
+//    }
+//}

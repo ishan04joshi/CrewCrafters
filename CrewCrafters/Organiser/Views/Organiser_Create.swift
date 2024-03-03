@@ -11,18 +11,17 @@ struct Organizer_Create: View {
     @EnvironmentObject var hackathonViewModel: HackathonViewModel
     @State private var isImagePickerPresented = false
     @State private var initialName = ""
-        @State private var initialAbout = ""
-        @State private var initialMode = ""
-        @State private var initialProblemCount = 1 // Assuming default value is 1
-        @State private var initialStartDate = Date()
-        @State private var initialEndDate = Date()
-        @State private var initialPrizes: [String] = ["", "", ""]
+    @State private var initialAbout = ""
+    @State private var initialMode = ""
+    @State private var initialProblemCount = 1
+    @State private var initialStartDate = Date()
+    @State private var initialEndDate = Date()
+    @State private var initialPrizes: [String] = ["", "", ""]
     
     var body: some View {
         VStack {
             Form {
                 Section(header: Text("Hackathon Information")) {
-                    //CameraButton
                     HStack {
                         Spacer()
                         Button(action: {
@@ -51,7 +50,7 @@ struct Organizer_Create: View {
                     }
                     .padding(.top, 20)
                     .padding(.bottom, 20)
-
+                    
                     
                     HStack {
                         Text("Hackathon Name: ")
@@ -78,7 +77,7 @@ struct Organizer_Create: View {
                 Section(header: Text("Problem Statements")) {
                     
                     HStack {
-                        Text("No. Problems:")
+                        Text("No. of Problems:")
                         Picker("", selection: $hackathonViewModel.currentHackathon.problem_count) {
                             ForEach(1...6, id: \.self) { count in
                                 Text("\(count)").tag(count)
@@ -90,7 +89,7 @@ struct Organizer_Create: View {
                     ForEach(0..<hackathonViewModel.currentHackathon.problem_count, id: \.self) { index in
                         VStack {
                             HStack{
-                                Text("Problem Statement: \(index + 1)")
+                                Text("Problem Statement \(index + 1): ")
                                 Spacer()
                             }
                             TextField("Statement", text: Binding(
@@ -135,7 +134,7 @@ struct Organizer_Create: View {
                 Section(header: Text("Prize details")) {
                     ForEach(0..<3, id: \.self) { index in
                         HStack {
-                            Text("\(index + 1) Position: ")
+                            Text("Position \(index + 1): ")
                             TextField("Amount", text: Binding(
                                 get: {
                                     if index < hackathonViewModel.currentHackathon.prize.count {
@@ -158,9 +157,8 @@ struct Organizer_Create: View {
                         .padding(.bottom, 7.0)
                     }
                 }
-                
             }
-           
+            
             
             NavigationLink(destination: OrganiserTabView()) {
                 Text("Publish Hackathon")
@@ -172,21 +170,19 @@ struct Organizer_Create: View {
                 hackathonViewModel.addNewHackathon(hackathonViewModel.currentHackathon) {}
             })
             .simultaneousGesture(TapGesture().onEnded {
-                            // Reset all state variables to initial values
-                            hackathonViewModel.addNewHackathon(hackathonViewModel.currentHackathon) {}
-                            hackathonViewModel.currentHackathon.name = initialName
-                            hackathonViewModel.currentHackathon.about = initialAbout
-                            hackathonViewModel.currentHackathon.mode = initialMode
-                            hackathonViewModel.currentHackathon.problem_count = initialProblemCount
-                            hackathonViewModel.currentHackathon.startDate = initialStartDate
-                            hackathonViewModel.currentHackathon.endDate = initialEndDate
-                            hackathonViewModel.currentHackathon.prize = initialPrizes
-                        })
-                    }
+                hackathonViewModel.addNewHackathon(hackathonViewModel.currentHackathon) {}
+                hackathonViewModel.currentHackathon.name = initialName
+                hackathonViewModel.currentHackathon.about = initialAbout
+                hackathonViewModel.currentHackathon.mode = initialMode
+                hackathonViewModel.currentHackathon.problem_count = initialProblemCount
+                hackathonViewModel.currentHackathon.startDate = initialStartDate
+                hackathonViewModel.currentHackathon.endDate = initialEndDate
+                hackathonViewModel.currentHackathon.prize = initialPrizes
+            })
+        }
         
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Create Hackathon")
-        .padding(.horizontal, 7)
     }
 }
 
@@ -195,6 +191,6 @@ struct Organizer_Create: View {
 //        NavigationView {
 //            Organizer_Create()
 //        }
-//        .environmentObject(HackathonViewModel()) // Make sure to provide the environment object
+//        .environmentObject(HackathonViewModel())
 //    }
 //}
