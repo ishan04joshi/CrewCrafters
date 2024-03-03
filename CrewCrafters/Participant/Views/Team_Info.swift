@@ -39,203 +39,69 @@ struct Team_info: View {
                     .font(.title3)
                     .fontWeight(.bold)
             }
-            HStack{
-                
-                VStack{
+            HStack {
+                VStack {
                     Spacer()
                     Image(uiImage: profileViewModel.anyProfile.profilephoto ?? UIImage(named: "bg")!)
                         .resizable(resizingMode: .stretch)
                         .frame(width: 65.0, height: 65.0)
                     Spacer()
                 }.frame(width: 80.0)
-                VStack(alignment: .leading){
+                VStack(alignment: .leading) {
                     Text(profileViewModel.anyProfile.name)
                         .font(.headline)
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.leading)
                     Text(profileViewModel.anyProfile.techstack[0])
                         .font(.subheadline)
-                    
                 }
                 Spacer()
                 Spacer()
-                ZStack{
+                ZStack {
                     Text("Admin")
                         .font(.title2)
                         .padding(.trailing, 10.0)
                         .fontWeight(.bold)
                         .foregroundColor(Color.green)
                 }
-                
             }.padding(.all, 10.0)
-            Divider()
-            
-            HStack{
-                
-                VStack{
-                    Spacer()
-                    Image(systemName: "person.crop.circle")
-                        .resizable(resizingMode: .stretch)
-                        .frame(width: 65.0, height: 65.0)
-                    Spacer()
-                }.frame(width: 80.0)
-                
-                VStack(alignment: .leading){
-                    Text("Position 1:")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .multilineTextAlignment(.leading)
-                    Text("Web Developer")
-                        .font(.subheadline)
-                    
+            ForEach(0..<team.member_count) { index in
+                HStack{
+                                
+                                VStack{
+                                    Spacer()
+                                    Image(systemName: "person.crop.circle")
+                                        .resizable(resizingMode: .stretch)
+                                        .frame(width: 65.0, height: 65.0)
+                                    Spacer()
+                                }.frame(width: 80.0)
+                                
+                                VStack(alignment: .leading){
+                                    Text("Position \(index+1):")
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .multilineTextAlignment(.leading)
+                                    Text(team.tech_stack[index])
+                                        .font(.subheadline)
+                                    
+                                }
+                                Spacer()
+                                Spacer()
+                                ZStack{
+                                    Button(action: {print("")}){
+                                        NavigationLink(destination: Apply_form()){
+                                            Text("Apply Now")
+                                                .foregroundColor(.blue)
+                                        }
+                                    }.buttonStyle(.bordered)
+                                        .tint(.blue)
+                                }
+                                
+                            }.padding(.all, 10.0)
+                Divider()
                 }
-                Spacer()
-                Spacer()
-                ZStack{
-                    Button(action: {print("")}){
-                        NavigationLink(destination: Apply_form()){
-                            Text("Apply Now")
-                                .foregroundColor(.blue)
-                        }
-                    }.buttonStyle(.bordered)
-                        .tint(.blue)
-                }
-                
-            }.padding(.all, 10.0)
-            Divider()
-            HStack{
-                
-                VStack{
-                    Spacer()
-                    Image(systemName: "person.crop.circle")
-                        .resizable(resizingMode: .stretch)
-                        .frame(width: 65.0, height: 65.0)
-                    Spacer()
-                }.frame(width: 80.0)
-                
-                VStack(alignment: .leading){
-                    Text("Position 2:")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .multilineTextAlignment(.leading)
-                    Text("App Developer")
-                        .font(.subheadline)
-                    
-                }
-                Spacer()
-                Spacer()
-                ZStack{
-                    Button(action: {print("")}){
-                        NavigationLink(destination: Apply_form()){
-                            Text("Apply Now")
-                                .foregroundColor(.blue)
-                        }
-                    }.buttonStyle(.bordered)
-                        .tint(.blue)
-                }
-                
-            }.padding(.all, 10.0)
-            Divider()
-            HStack{
-                
-                VStack{
-                    Spacer()
-                    Image(systemName: "person.crop.circle")
-                        .resizable(resizingMode: .stretch)
-                        .frame(width: 65.0, height: 65.0)
-                    Spacer()
-                }.frame(width: 80.0)
-                
-                VStack(alignment: .leading){
-                    Text("Position 3:")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .multilineTextAlignment(.leading)
-                    Text("AI Engineer")
-                        .font(.subheadline)
-                    
-                }
-                Spacer()
-                Spacer()
-                ZStack{
-                    Button(action: {print("")}){
-                        NavigationLink(destination: Apply_form()){
-                            Text("Apply Now")
-                                .foregroundColor(.blue)
-                        }
-                    }.buttonStyle(.bordered)
-                        .tint(.blue)
-                }
-                
-            }.padding(.all, 10.0)
-            Divider()
             
             
-            HStack{
-                
-                VStack{
-                    Spacer()
-                    Image(systemName: "person.crop.circle")
-                        .resizable(resizingMode: .stretch)
-                        .frame(width: 65.0, height: 65.0)
-                    Spacer()
-                }.frame(width: 80.0)
-                
-                VStack(alignment: .leading){
-                    Text("Position 4:")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .multilineTextAlignment(.leading)
-                    Text("Backend Developer")
-                        .font(.subheadline)
-                    
-                }
-                Spacer()
-                Spacer()
-                ZStack{
-                    Button(action: {print("")}){
-                        NavigationLink(destination: Apply_form()){
-                            Text("Apply Now")
-                                .foregroundColor(.blue)
-                        }
-                    }.buttonStyle(.bordered)
-                        .tint(.blue)
-                }
-                
-            }.padding(.all, 10.0)
-            Divider()
-            HStack{
-                
-                VStack{
-                    Spacer()
-                    Image(systemName: "person.crop.circle")
-                        .resizable(resizingMode: .stretch)
-                        .frame(width: 65.0, height: 65.0)
-                    Spacer()
-                }.frame(width: 80.0)
-                
-                VStack(alignment: .leading){
-                    Text("Position 5:")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .multilineTextAlignment(.leading)
-                    Text("Database Engineer")
-                        .font(.subheadline)
-                    
-                }
-                Spacer()
-                Spacer()
-                ZStack{
-                    Button(action: {print("")}){
-                        NavigationLink(destination: Apply_form()){
-                            Text("Apply Now")
-                                .foregroundColor(.blue)
-                        }
-                    }.buttonStyle(.bordered)
-                        .tint(.blue)
-                }
-                
-            }.padding(.all, 10.0)
             Spacer()
             
         }.navigationTitle(team.name).padding(.all, 10).onAppear {
