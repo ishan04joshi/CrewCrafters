@@ -11,6 +11,7 @@ struct Team_create: View {
     let hackathonIndex: Int
     @EnvironmentObject var hackathonViewModel: HackathonViewModel
     @EnvironmentObject var teamsViewModel  : TeamsViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     @State private var isImagePickerPresented = false
     @State var count = Int()
     var body: some View {
@@ -77,7 +78,7 @@ struct Team_create: View {
                     HStack{
                         Text("Member Count:")
                         Picker("Member Count:", selection: $count) {
-                            ForEach(1...6, id: \.self) { count in
+                            ForEach(0...5, id: \.self) { count in
                                 Text("\(count)").tag(count)
                             }
                             Text("Other").tag(7) // Assuming 7 represents "Other"
@@ -127,6 +128,7 @@ struct Team_create: View {
                 Text("Publish Team")}
             .buttonStyle(NavigationButton())
             .padding().simultaneousGesture(TapGesture().onEnded {
+                teamsViewModel.currentTeam.admin_id=userViewModel.userId
                 teamsViewModel.addNewTeam(teamsViewModel.currentTeam, hackathonId: hackathonViewModel.hackathons[hackathonIndex].id)
             })
         }

@@ -14,7 +14,8 @@ struct Teams: Identifiable, Equatable , Decodable{
         return lhs.id == rhs.id
     }
     var teamphotoData: Data?
-    var id : String = ""
+    var id: String
+    var admin_id : String = ""
     var name: String
     var theme: String
     var problem: String

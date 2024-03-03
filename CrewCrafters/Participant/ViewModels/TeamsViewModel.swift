@@ -14,9 +14,11 @@ class TeamsViewModel: ObservableObject {
     @Published var teams: [Teams] = []
     let db = Firestore.firestore()
     let defaultphoto = UIImage(named: "bg")!
-    
+    @EnvironmentObject var userViewModel: UserViewModel
     @Published var currentTeam: Teams = Teams(
         teamphotoData: nil,
+        id:"",
+        admin_id:"",
         name: "",
         theme: "",
         problem: "",
@@ -31,7 +33,8 @@ class TeamsViewModel: ObservableObject {
         
         do {
           try db.collection("hackathons/\(hackathonId)/teams").addDocument(data: [
-            "id": "",
+            "id":"",
+            "admin_id": teams.admin_id,
             "name": teams.name,
             "theme": teams.theme,
             "problem": teams.problem,
