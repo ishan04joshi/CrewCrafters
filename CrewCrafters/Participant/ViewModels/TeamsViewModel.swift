@@ -13,14 +13,17 @@ import FirebaseFirestore
 class TeamsViewModel: ObservableObject {
     @Published var teams: [Teams] = []
     let db = Firestore.firestore()
+    let defaultphoto = UIImage(named: "bg")!
     
     @Published var currentTeam: Teams = Teams(
+        teamphotoData: nil,
         name: "",
         theme: "",
         problem: "",
         member_count: 0,
         tech_stack: [],
         hackathonId: ""
+       
     )
 
     
@@ -34,7 +37,9 @@ class TeamsViewModel: ObservableObject {
             "problem": teams.problem,
             "member_count": teams.member_count,
             "tech_stack": teams.tech_stack,
-            "hackathonId": hackathonId // Include hackathonId in the document data
+            "hackathonId": hackathonId,
+            "teamphotoData": teams.teamphotoData ?? nil
+            // Include hackathonId in the document data
           ])
           print("Document successfully written!")
         } catch {

@@ -56,7 +56,7 @@ struct TeamItemView: View {
             
             VStack{
                 Spacer()
-                Image("team_poster")
+                Image(uiImage: team.teamphoto ?? UIImage(named: "team_poster")!)
                     .resizable(resizingMode: .stretch)
                     .frame(width: 85.0, height: 85.0)
                 Spacer()

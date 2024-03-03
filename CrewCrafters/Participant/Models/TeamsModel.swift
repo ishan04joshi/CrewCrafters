@@ -13,6 +13,7 @@ struct Teams: Identifiable, Equatable , Decodable{
     static func == (lhs: Teams, rhs: Teams) -> Bool {
         return lhs.id == rhs.id
     }
+    var teamphotoData: Data?
     var id : String = ""
     var name: String
     var theme: String
@@ -20,6 +21,17 @@ struct Teams: Identifiable, Equatable , Decodable{
     var member_count: Int
     var tech_stack: [String]
     var hackathonId: String
+    
+    
+    var teamphoto: UIImage? {
+        get {
+            guard let data = teamphotoData else { return nil }
+            return UIImage(data: data)
+        }
+        set {
+            teamphotoData = newValue?.jpegData(compressionQuality: 0.1)
+        }
+    }
     
 }
 

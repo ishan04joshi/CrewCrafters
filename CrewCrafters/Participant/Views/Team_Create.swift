@@ -10,21 +10,48 @@ import SwiftUI
 struct Team_create: View {
     let hackathonIndex: Int
     @EnvironmentObject var hackathonViewModel: HackathonViewModel
-    @State var teamsViewModel = TeamsViewModel()
+    @EnvironmentObject var teamsViewModel  : TeamsViewModel
+    @State private var isImagePickerPresented = false
     @State var count = Int()
     var body: some View {
         
         
         VStack{
-            
-//            ZStack{
-////                CameraButton(image: $viewModel.hackathons.hackathonPoster)
-////                    .padding(.top, 20)
-////                    .padding(.bottom, 20)
-//            }
+
             Form {
+                
+                    
                 Section(header: Text("Team Information")
                 ) {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            isImagePickerPresented.toggle()
+                        }) {
+                            if let teamphoto = teamsViewModel.currentTeam.teamphoto {
+                                Image(uiImage: teamphoto)
+                                    .resizable()
+                                    .scaledToFit()
+                            } else {
+                                Circle()
+                                    .fill(Color(hue: 1.0, saturation: 0.0, brightness: 0.867))
+                                    .frame(width: 155)
+                                    .overlay(
+                                        Image(systemName: "camera.fill")
+                                            .resizable()
+                                            .frame(width: 50, height: 40)
+                                            .foregroundStyle(Color.black)
+                                    )
+                            }
+                        }
+                        .sheet(isPresented: $isImagePickerPresented) {
+                            ImagePicker(image: $teamsViewModel.currentTeam.teamphoto, defaultPoster: teamsViewModel.defaultphoto)
+                        }
+                        Spacer()
+                    }
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
+                    
                     HStack{
                         Text("Team Name: ")
                         TextField("Name",text: $teamsViewModel.currentTeam.name)

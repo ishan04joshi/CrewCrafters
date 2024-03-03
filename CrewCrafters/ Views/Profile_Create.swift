@@ -19,12 +19,6 @@ struct Profile_Create: View {
                     //CameraButton
                     
                     HStack {
-//                        Image("bg")
-//                            .resizable()
-//                            .frame(maxWidth: .infinity)
-//                            .frame(height: 230)
-//                            .aspectRatio(contentMode: .fill)
-                            
                         Spacer()
                         Button(action: {
                             isImagePickerP.toggle()
@@ -46,7 +40,6 @@ struct Profile_Create: View {
                                             .foregroundStyle(Color.black)
                                         
                                     )
-                                Text("Choose Pic")
                             }
                         }
                         .sheet(isPresented: $isImagePickerP) {
