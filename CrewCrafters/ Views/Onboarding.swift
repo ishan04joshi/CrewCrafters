@@ -41,7 +41,6 @@ struct Onboarding: View {
         }
     }
     
-    // Function to determine the destination view based on user role
     @ViewBuilder
     private func getDestinationView() -> some View {
         switch userViewModel.userRole {

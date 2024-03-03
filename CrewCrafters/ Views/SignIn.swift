@@ -13,7 +13,7 @@ struct SignIn: View {
     @State private var selected: String = "" // 0 for Organizer, 1 for Participant
     @State private var isSignedUp: Bool = false
     @State private var navigationIsActive = false // Add this state variable
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -48,7 +48,7 @@ struct SignIn: View {
                     Button(action: {
                         isPasswordVisible.toggle()
                         if isPasswordVisible {
-                            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+                            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
                                 isPasswordVisible = false
                             }
                         }
@@ -59,17 +59,19 @@ struct SignIn: View {
                     }
                     .padding(.trailing, 20)
                 }
+                .padding(.bottom)
                 
                 Picker(selection: $roleSelection, label: Text("Select Role")) {
-                    Text("Organizer").tag(0)
-                    Text("Participant").tag(1)
+                    Text("Organizer")
+                        .tag(0)
+                    Text("Participant")
+                        .tag(1)
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.bottom)
                 .onChange(of: roleSelection) { newValue in
                     selected = newValue == 0 ? "Organizer" : "Participant"
                 }
-                
                 
                 Button(action: {
                     signUpWithFirebase()
@@ -78,14 +80,21 @@ struct SignIn: View {
                 }
                 .buttonStyle(NavigationButton())
                 .navigationBarHidden(true)
-                .padding()
+                .padding(.horizontal)
+                
+                HStack(spacing: 0) {
+                    Text("Already a member? ")
+                    NavigationLink("Log In", destination: Login())
+                        .foregroundColor(Color.blue)
+                }
                 
             }
+            .padding(.horizontal, 10)
             .background(
                 NavigationLink(destination: roleSelection == 0 ? AnyView(OrganiserTabView()) : AnyView(Profile_Create()), isActive: $navigationIsActive) {
                     EmptyView()
                 }
-                .hidden()
+                    .hidden()
             )
         }
         .onReceive(Just(isSignedUp)) {
@@ -93,7 +102,7 @@ struct SignIn: View {
                 navigationIsActive = true
             }
         }
-        .navigationBarBackButtonHidden(true) // Hide the back button
+        .navigationBarBackButtonHidden(true)
     }
     
     func signUpWithFirebase() {
@@ -117,7 +126,7 @@ struct SignIn: View {
             }
         }
     }
-
+    
     func addUserToFirestore(firstName: String, lastName: String, email: String, role: String) {
         let db = Firestore.firestore()
         if let currentUserUID = Auth.auth().currentUser?.uid {
@@ -151,8 +160,8 @@ struct CustomTextFieldStyle: TextFieldStyle {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignIn()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignIn()
+//    }
+//}
