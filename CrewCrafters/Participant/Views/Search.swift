@@ -40,7 +40,7 @@ struct Search: View {
             .onAppear {
                 hackathonViewModel.fetchHackathons()
             }
-        }
+        }.navigationBarHidden(true)
     }
 }
 

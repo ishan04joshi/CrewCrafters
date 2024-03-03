@@ -77,7 +77,7 @@ struct TeamItemView: View {
             Spacer()
             Spacer()
             ZStack{
-                Text("2/\(team.member_count)")
+                Text("0/\(team.member_count)")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(Color.blue)
