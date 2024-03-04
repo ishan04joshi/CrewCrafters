@@ -12,7 +12,7 @@ struct SignIn: View {
     @State private var roleSelection: Int = 0
     @State private var selected: String = "" // 0 for Organizer, 1 for Participant
     @State private var isSignedUp: Bool = false
-    @State private var navigationIsActive = false // Add this state variable
+    @State private var navigationIsActive = false
     
     var body: some View {
         NavigationView {
@@ -68,7 +68,11 @@ struct SignIn: View {
                         .tag(1)
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .padding(.bottom)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                )
+                .padding()
                 .onChange(of: roleSelection) { newValue in
                     selected = newValue == 0 ? "Organizer" : "Participant"
                 }
@@ -89,7 +93,7 @@ struct SignIn: View {
                 }
                 
             }
-            .padding(.horizontal, 10)
+            .padding(.horizontal)
             .background(
                 NavigationLink(destination: roleSelection == 0 ? AnyView(OrganiserTabView()) : AnyView(Profile_Create()), isActive: $navigationIsActive) {
                     EmptyView()
