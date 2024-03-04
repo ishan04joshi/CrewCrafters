@@ -16,35 +16,33 @@ struct Hack_Teams: View {
     var body: some View {
         var hackathonId = hackathonViewModel.hackathons[hackathonIndex].id
         
-            VStack(spacing: 0){
-                HStack {
-                    TextField("Teams", text: $searchText)
-                        .padding(8)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(8)
-                        .padding(.bottom, 8)
-                }
-                
-                
-                ScrollView {
-                    ForEach(teamViewModel.teams.filter {
-                        searchText.isEmpty || $0.name.localizedCaseInsensitiveContains(searchText)
-                    }) { team in
-                        NavigationLink(destination: Team_info(teamIndex: teamViewModel.teams.firstIndex(of: team) ?? 0)) {
-                            TeamItemView(team: team)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        Divider()
+        VStack(spacing: 0){
+            HStack {
+                TextField("Teams", text: $searchText)
+                    .padding(8)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(8)
+                    .padding(.bottom, 8)
+            }
+            .padding(.horizontal)
+            
+            ScrollView {
+                ForEach(teamViewModel.teams.filter {
+                    searchText.isEmpty || $0.name.localizedCaseInsensitiveContains(searchText)
+                }) { team in
+                    NavigationLink(destination: Team_info(teamIndex: teamViewModel.teams.firstIndex(of: team) ?? 0)) {
+                        TeamItemView(team: team)
                     }
+                    .buttonStyle(PlainButtonStyle())
+                    Divider()
                 }
-                .padding(.horizontal)
             }
-            .navigationTitle("Search")
-            .onAppear {
-                teamViewModel.fetchTeams(hackathonId: hackathonId)
-            }
-        
-        
+            .padding(.horizontal)
+        }
+        .navigationTitle("Search")
+        .onAppear {
+            teamViewModel.fetchTeams(hackathonId: hackathonId)
+        }
     }
 }
 struct TeamItemView: View {

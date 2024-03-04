@@ -51,6 +51,7 @@ struct Apply_form: View {
             }) {
                 Text("Apply")
             }
+            .buttonStyle(NavigationButton())
             .padding()
             .alert(isPresented: $showSuccessAlert) {
                 Alert(title: Text("Application Submitted"), message: nil, dismissButton: .default(Text("OK")) {

@@ -57,16 +57,22 @@ struct HackathonItemView: View {
             
             HStack {
                 Text(hackathon.name)
-                    .font(.callout)
+                    .font(.title3)
                     .fontWeight(.bold)
                 
                 Spacer()
                 
-                HStack(spacing: 4) {
+                HStack(spacing: 3) {
                     Image(systemName: "calendar")
-                    Text("\(formatDate(from: hackathon.startDate)) - \(formatDate(from: hackathon.endDate))")
-                        .font(.callout)
-                        .fontWeight(.semibold)
+                        .font(.title2)
+                    VStack{
+                        Text("\(formatDate(from: hackathon.startDate))")
+                            .font(.callout)
+                            .fontWeight(.semibold)
+                        Text("\(formatDate(from: hackathon.endDate))")
+                            .font(.callout)
+                            .fontWeight(.semibold)
+                    }
                 }
             }
             .padding()

@@ -23,8 +23,6 @@ class HackathonViewModel: ObservableObject {
     private let db = Firestore.firestore()
     @EnvironmentObject var userViewModel: UserViewModel
     
-   
-    
     func fetchHackathons() {
         db.collection("hackathons").getDocuments { querySnapshot, error in
             if let error = error {

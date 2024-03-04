@@ -16,14 +16,9 @@ struct Team_create: View {
     @State var count = Int()
     var body: some View {
         
-        
         VStack{
-
             Form {
-                
-                    
-                Section(header: Text("Team Information")
-                ) {
+                Section(header: Text("Team Information")) {
                     HStack {
                         Spacer()
                         Button(action: {
@@ -32,7 +27,8 @@ struct Team_create: View {
                             if let teamphoto = teamsViewModel.currentTeam.teamphoto {
                                 Image(uiImage: teamphoto)
                                     .resizable()
-                                    .scaledToFit()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 255, height: 180)
                             } else {
                                 Circle()
                                     .fill(Color(hue: 1.0, saturation: 0.0, brightness: 0.867))
@@ -50,8 +46,7 @@ struct Team_create: View {
                         }
                         Spacer()
                     }
-                    .padding(.top, 20)
-                    .padding(.bottom, 20)
+                    .padding(.vertical, 20)
                     
                     HStack{
                         Text("Team Name: ")
@@ -67,10 +62,6 @@ struct Team_create: View {
                         Text("Problem Statement: ")
                         TextField("Statement",text: $teamsViewModel.currentTeam.problem)
                     }.padding(.bottom, 7.0)
-                    
-                    
-                    
-                    
                 }
                 
                 
@@ -118,7 +109,7 @@ struct Team_create: View {
                         }
                         .padding(.bottom, 7.0)
                     }
-                                }
+                }
                 
                 
             }.contentMargins(.horizontal, 5)
