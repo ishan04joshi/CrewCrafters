@@ -99,11 +99,11 @@ func formatDate(from date: Date) -> String {
     return formatter.string(from: date)
 }
 
-struct Organizer_Create_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            Organizer_Home()
-        }
-        .environmentObject(HackathonViewModel())
-    }
-}
+//struct Organizer_Create_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            Organizer_Home()
+//        }
+//        .environmentObject(HackathonViewModel())
+//    }
+//}

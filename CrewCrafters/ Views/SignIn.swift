@@ -84,7 +84,7 @@ struct SignIn: View {
                 
                 HStack(spacing: 0) {
                     Text("Already a member? ")
-                    NavigationLink("Log In", destination: Login())
+                    NavigationLink("Sign In", destination: Login())
                         .foregroundColor(Color.blue)
                 }
                 

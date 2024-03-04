@@ -19,8 +19,8 @@ struct Search: View {
                         .padding(8)
                         .background(Color(.systemGray6))
                         .cornerRadius(8)
-                        .padding(.horizontal, 8)
-                        .padding(.bottom, 8)
+                        .padding(.horizontal)
+                        .padding(.bottom)
                 }
                 
                 ScrollView {
@@ -31,7 +31,7 @@ struct Search: View {
                             HackathonItemView(hackathon: hackathon)
                         }
                         .buttonStyle(PlainButtonStyle())
-                        Divider()
+                        .padding(.bottom)
                     }
                 }
                 .padding(.horizontal)
@@ -44,32 +44,45 @@ struct Search: View {
     }
 }
 
-
 struct HackathonItemView: View {
     let hackathon: Hackathon
     
     var body: some View {
         VStack {
             Image(uiImage: hackathon.hackathonPoster ?? UIImage(named: "default_hackathon_poster")!)
-                .resizable(resizingMode: .stretch)
-                .frame(width: 355.0, height: 157.0)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 340.0, height: 200.0)
                 .cornerRadius(20.0)
-                .padding(.all, 10.0)
             
             HStack {
                 Text(hackathon.name)
                     .font(.callout)
                     .fontWeight(.bold)
-                    .padding([.top, .leading, .trailing], 7.0)
+                
                 Spacer()
-                HStack {
+                
+                HStack(spacing: 4) {
                     Image(systemName: "calendar")
                     Text("\(formatDate(from: hackathon.startDate)) - \(formatDate(from: hackathon.endDate))")
                         .font(.callout)
                         .fontWeight(.semibold)
-                        .padding([.top, .trailing], 7.0)
                 }
             }
+            .padding()
         }
+        .padding(5)
+        .background(Color.white)
+        .cornerRadius(20)
+        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 3, y: 3)
     }
 }
+
+//struct Organizer_Create_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            Search()
+//        }
+//        .environmentObject(HackathonViewModel())
+//    }
+//}
