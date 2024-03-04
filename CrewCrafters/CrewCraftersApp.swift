@@ -8,16 +8,20 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseAppCheck
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
 
+    return true
+  }
+}
 @main
-struct CrewCraftersApp: App {
-    init()
-    {
-        let providerFactory = AppCheckDebugProviderFactory()
-        AppCheck.setAppCheckProviderFactory(providerFactory)
 
-        FirebaseApp.configure()
-    }
+
+struct CrewCraftersApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
     @StateObject private var userViewModel = UserViewModel()
     @StateObject private var hackathonViewModel = HackathonViewModel()
     @StateObject private var teamViewModel = TeamsViewModel()
