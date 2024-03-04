@@ -12,7 +12,7 @@ struct SignIn: View {
     @State private var roleSelection: Int = 0
     @State private var selected: String = "" // 0 for Organizer, 1 for Participant
     @State private var isSignedUp: Bool = false
-    @State private var navigationIsActive = false // Add this state variable
+    @State private var navigationIsActive = false
     
     var body: some View {
         NavigationView {
@@ -89,7 +89,7 @@ struct SignIn: View {
                 }
                 
             }
-            .padding(.horizontal, 10)
+            .padding(.horizontal)
             .background(
                 NavigationLink(destination: roleSelection == 0 ? AnyView(OrganiserTabView()) : AnyView(Profile_Create()), isActive: $navigationIsActive) {
                     EmptyView()

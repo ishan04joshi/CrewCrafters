@@ -76,7 +76,7 @@ struct Login: View {
                     .foregroundColor(Color.blue)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     // Function to determine the destination view based on user role
