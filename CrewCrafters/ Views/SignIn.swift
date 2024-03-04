@@ -68,7 +68,11 @@ struct SignIn: View {
                         .tag(1)
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .padding(.bottom)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                )
+                .padding()
                 .onChange(of: roleSelection) { newValue in
                     selected = newValue == 0 ? "Organizer" : "Participant"
                 }
