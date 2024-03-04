@@ -10,6 +10,7 @@ import SwiftUI
 struct Team_info: View {
     @EnvironmentObject var teamViewModel: TeamsViewModel
     @EnvironmentObject var profileViewModel:ProfileViewModel
+    @EnvironmentObject var userViewModel:UserViewModel
     @State var showingDetail = false
     let teamIndex: Int
     var body: some View {
@@ -65,42 +66,81 @@ struct Team_info: View {
                         .foregroundColor(Color.green)
                 }
             }.padding(.all, 10.0)
-            ForEach(0..<team.member_count) { index in
-                HStack{
-                                
-                                VStack{
-                                    Spacer()
-                                    Image(systemName: "person.crop.circle")
-                                        .resizable(resizingMode: .stretch)
-                                        .frame(width: 65.0, height: 65.0)
-                                    Spacer()
-                                }.frame(width: 80.0)
-                                
-                                VStack(alignment: .leading){
-                                    Text("Position \(index+1):")
-                                        .font(.headline)
-                                        .fontWeight(.semibold)
-                                        .multilineTextAlignment(.leading)
-                                    Text(team.tech_stack[index])
-                                        .font(.subheadline)
-                                    
+            if(teamViewModel.teams[teamIndex].admin_id==userViewModel.userId){
+                ForEach(0..<team.member_count) { index in
+                    HStack{
+                        
+                        VStack{
+                            Spacer()
+                            Image(systemName: "person.crop.circle")
+                                .resizable(resizingMode: .stretch)
+                                .frame(width: 65.0, height: 65.0)
+                            Spacer()
+                        }.frame(width: 80.0)
+                        
+                        VStack(alignment: .leading){
+                            Text("Position \(index+1):")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .multilineTextAlignment(.leading)
+                            Text(team.tech_stack[index])
+                                .font(.subheadline)
+                            
+                        }
+                        Spacer()
+                        Spacer()
+                        ZStack{
+                            Button(action: {print("")}){
+                                NavigationLink(destination: Applications()){
+                                    Text("Applications")
+                                        .foregroundColor(.blue)
                                 }
-                                Spacer()
-                                Spacer()
-                                ZStack{
-                                    Button(action: {print("")}){
-                                        NavigationLink(destination: Apply_form()){
-                                            Text("Apply Now")
-                                                .foregroundColor(.blue)
-                                        }
-                                    }.buttonStyle(.bordered)
-                                        .tint(.blue)
-                                }
-                                
-                            }.padding(.all, 10.0)
-                Divider()
+                            }.buttonStyle(.bordered)
+                                .tint(.blue)
+                        }
+                        
+                    }.padding(.all, 10.0)
+                    Divider()
                 }
-            
+            }
+            else{
+                ForEach(0..<team.member_count) { index in
+                    HStack{
+                        
+                        VStack{
+                            Spacer()
+                            Image(systemName: "person.crop.circle")
+                                .resizable(resizingMode: .stretch)
+                                .frame(width: 65.0, height: 65.0)
+                            Spacer()
+                        }.frame(width: 80.0)
+                        
+                        VStack(alignment: .leading){
+                            Text("Position \(index+1):")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .multilineTextAlignment(.leading)
+                            Text(team.tech_stack[index])
+                                .font(.subheadline)
+                            
+                        }
+                        Spacer()
+                        Spacer()
+                        ZStack{
+                            Button(action: {print("")}){
+                                NavigationLink(destination: Apply_form()){
+                                    Text("Apply Now")
+                                        .foregroundColor(.blue)
+                                }
+                            }.buttonStyle(.bordered)
+                                .tint(.blue)
+                        }
+                        
+                    }.padding(.all, 10.0)
+                    Divider()
+                }
+                
+            }
             
             Spacer()
             
