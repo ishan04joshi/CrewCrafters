@@ -9,6 +9,10 @@ struct Login: View {
     @State private var isLoggedIn: Bool = false
     @EnvironmentObject var userViewModel: UserViewModel
     @EnvironmentObject var profileViewModel: ProfileViewModel
+    
+    // Error message
+    @State private var errorMessage: String = ""
+    
     var body: some View {
         VStack {
             Text("Sign In")
@@ -58,6 +62,10 @@ struct Login: View {
             }
             .padding(.bottom)
             
+            // Error message
+            Text(errorMessage)
+                .foregroundColor(.red).padding(.vertical) // Set the text color to red
+            
             // Sign In Button
             NavigationLink(destination: determineDestinationView(), isActive: $isLoggedIn) {
                 EmptyView()
@@ -97,7 +105,7 @@ struct Login: View {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 print("Error signing in: \(error.localizedDescription)")
-                // Handle error, show alert or provide feedback to the user
+                errorMessage = error.localizedDescription // Set error message
             } else {
                 // Successful sign-in
                 print("User signed in successfully")
@@ -141,11 +149,4 @@ struct Login: View {
     }
 }
 
-//struct Organizer_Create_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            Login()
-//        }
-//        .environmentObject(UserViewModel())
-//    }
-//}
+

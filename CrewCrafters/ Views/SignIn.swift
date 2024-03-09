@@ -2,6 +2,7 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 import Combine
+
 struct SignIn: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @State private var firstName: String = ""
@@ -13,6 +14,9 @@ struct SignIn: View {
     @State private var selected: String = "" // 0 for Organizer, 1 for Participant
     @State private var isSignedUp: Bool = false
     @State private var navigationIsActive = false
+    
+    // Error messages
+    @State private var errorMessage: String = ""
     
     var body: some View {
         NavigationView {
@@ -77,6 +81,8 @@ struct SignIn: View {
                     selected = newValue == 0 ? "Organizer" : "Participant"
                 }
                 
+                Text(errorMessage).foregroundColor(.red)// Display error message
+                
                 Button(action: {
                     signUpWithFirebase()
                 }) {
@@ -98,7 +104,7 @@ struct SignIn: View {
                 NavigationLink(destination: roleSelection == 0 ? AnyView(OrganiserTabView()) : AnyView(Profile_Create()), isActive: $navigationIsActive) {
                     EmptyView()
                 }
-                    .hidden()
+                .hidden()
             )
         }
         .onReceive(Just(isSignedUp)) {
@@ -112,17 +118,34 @@ struct SignIn: View {
     func signUpWithFirebase() {
         let role = roleSelection == 0 ? "Organizer" : "Participant"
         
+        // Validation checks
+        guard !firstName.isEmpty else {
+            errorMessage = "First name is required"
+            return
+        }
+        guard !lastName.isEmpty else {
+            errorMessage = "Last name is required"
+            return
+        }
+        guard !email.isEmpty else {
+            errorMessage = "Email is required"
+            return
+        }
+        guard !password.isEmpty else {
+            errorMessage = "Password is required"
+            return
+        }
+        
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 print("Error signing up: \(error.localizedDescription)")
-                // Handle error, show alert or provide feedback to the user
+                errorMessage = error.localizedDescription // Set error message
             } else {
                 print("User signed up successfully as \(role)")
-                if roleSelection == 0{
+                if roleSelection == 0 {
                     userViewModel.userRole = role
-                }
-                else{
-                    userViewModel.role=role
+                } else {
+                    userViewModel.role = role
                 }
                 addUserToFirestore(firstName: firstName, lastName: lastName, email: email, role: role)
                 
@@ -163,9 +186,3 @@ struct CustomTextFieldStyle: TextFieldStyle {
             .cornerRadius(50)
     }
 }
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SignIn()
-//    }
-//}
