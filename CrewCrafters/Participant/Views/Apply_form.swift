@@ -80,8 +80,8 @@ struct Home: View {
     }
 }
 
-struct Apply_form_Previews: PreviewProvider {
-    static var previews: some View {
-        Apply_form()
-    }
-}
+//struct Apply_form_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Apply_form()
+//    }
+//}

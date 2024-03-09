@@ -51,7 +51,6 @@ struct Organizer_Create: View {
                     .padding(.top, 20)
                     .padding(.bottom, 20)
                     
-                    
                     HStack {
                         Text("Hackathon Name: ")
                         TextField("Name", text: $hackathonViewModel.currentHackathon.name)
@@ -69,9 +68,6 @@ struct Organizer_Create: View {
                         TextField("Online / Offline", text: $hackathonViewModel.currentHackathon.mode)
                     }
                     .padding(.bottom, 7.0)
-                    
-                    
-                    
                 }
                 
                 Section(header: Text("Problem Statements")) {

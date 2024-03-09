@@ -85,11 +85,11 @@ struct TeamItemView: View {
     }
 }
 
-//struct HackLand_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            Hack_Teams(hackathonIndex: 0)
-//        }
-//        .environmentObject(HackathonViewModel())
-//    }
-//}
+struct HackLand_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            Hack_Teams(hackathonIndex: 0)
+        }
+        .environmentObject(HackathonViewModel())
+    }
+}

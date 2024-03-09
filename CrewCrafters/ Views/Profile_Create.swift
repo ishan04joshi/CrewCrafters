@@ -104,8 +104,8 @@ struct Profile_Create: View {
     }
 }
 
-struct Profile_Create_Previews: PreviewProvider {
-    static var previews: some View {
-        Profile_Create()
-    }
-}
+//struct Profile_Create_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Profile_Create()
+//    }
+//}

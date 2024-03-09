@@ -36,7 +36,7 @@ class HackathonViewModel: ObservableObject {
                 self.hackathons = documents.compactMap { document in
                     do {
                         var hackathon = try document.data(as: Hackathon.self)
-                        hackathon.id = document.documentID // Set the hackathon ID
+                        hackathon.id = document.documentID
                         return hackathon
                     } catch {
                         print("Error decoding Hackathon: \(error)")
