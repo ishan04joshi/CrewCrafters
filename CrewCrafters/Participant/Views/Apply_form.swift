@@ -1,100 +1,87 @@
-//
-//  Apply_form.swift
-//  CrewCrafters
-//
-//  Created by user1 on 19/01/24.
-//
-
 import SwiftUI
 
 struct Apply_form: View {
-    @State var showingDetail = false
-    @State var shareProfile = true
     @State var name: String = ""
-    @State var theme: String = ""
-    @State var problem: String = ""
-    @State var techstack: String = ""
-    @State var details: String = ""
+    @State var email: String = ""
+    @State var phone: String = ""
+    @State var shareProfile = true
     @State private var role = "Web Dev"
-        let position = ["Web Dev", "App Dev", "Cloud Engg.", "AI Engg.", "Backend Dev"]
-    @State var n: Int = 1
-    @StateObject private var viewModel = HackathonViewModel() //CHANGE
-    var body: some View {
-        
-        
-        VStack{
-            Form {
-                Section(header: Text("Personal Infor")
-                ) {
-                    HStack{
-                        Text("Name: ")
-                        TextField("Name",text: $name)
-                    }.padding(.bottom, 7.0)
-                    
-                    HStack{
-                        Text("E-mail: ")
-                        TextField("email",text: $theme)
-                    }.padding(.bottom, 7.0)
-                    
-                    HStack{
-                        Text("Phone No.: ")
-                        TextField("Statement",text: $problem)
-                    }.padding(.bottom, 7.0)
-                    
-                    
-                    
-                }
-                
-                
-                Section() {
+    let position = ["Web Dev", "App Dev", "Cloud Engg.", "AI Engg.", "Backend Dev"]
+    @State var githubLink: String = ""
+    @State var suitability: String = ""
+    @State var achievements: String = ""
     
-                    HStack{
-                            Toggle("Share Profile", isOn: $shareProfile)
-                        }.padding(.bottom, 7.0)
-                    HStack{
-                        Text("GitHub Link: ")
-                        TextField("Statement",text: $problem)
-                    }.padding(.bottom, 7.0)
-                    HStack{
-
-                        Picker("Prefered Position: ", selection: $role) {
-                                    ForEach(position, id: \.self) {
-                                        Text($0)
-                                    }
-                                }
-                    }.padding(.bottom, 7.0)
-                    
-                    VStack(alignment: .leading){
-                        Text("How are you suitable for this role:")
-                        TextField("Brief discription",text: $problem)
-                    }.padding(.bottom, 7.0)
-                    
-                    VStack(alignment: .leading){
-                        Text("Previous Achievments")
-                        TextField("Give upto 3",text: $problem)
-                    }.padding(.bottom, 7.0)
-                    VStack(alignment: .leading){
-                        Text("Resume: ")
-                        //put button here
-                
-                    }.padding(.bottom, 7.0)
-                    
+    @State private var showSuccessAlert = false
+    @State private var navigateToHome = false
+    
+    var body: some View {
+        VStack {
+            Form {
+                Section(header: Text("Personal Info")) {
+                    TextField("Name", text: $name)
+                    TextField("Email", text: $email)
+                    TextField("Phone No.", text: $phone)
                 }
                 
-                
-            }.contentMargins(.horizontal, 5)
+                Section(header: Text("Application Details")) {
+                    Toggle("Share Profile", isOn: $shareProfile)
+                    TextField("GitHub Link", text: $githubLink)
+                    
+                    Picker("Preferred Position", selection: $role) {
+                        ForEach(position, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text("How are you suitable for this role:")
+                        TextField("Brief description", text: $suitability)
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text("Previous Achievements")
+                        TextField("Up to 3", text: $achievements)
+                    }
+                }
+            }
+            .contentMargins(.horizontal, 5)
             
-            NavigationLink(destination: Team_info(name: name, image: "hackathon_poster")){
-                Text("Apply")}
+            Button(action: {
+                submitApplication()
+            }) {
+                Text("Apply")
+            }
             .buttonStyle(NavigationButton())
             .padding()
+            .alert(isPresented: $showSuccessAlert) {
+                Alert(title: Text("Application Submitted"), message: nil, dismissButton: .default(Text("OK")) {
+                    navigateToHome = true
+                })
+            }
+            .background(NavigationLink("", destination: Search(), isActive: $navigateToHome))
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Create Your Team")
+        .navigationTitle("Apply")
         .padding(.all, 7)
+    }
+    
+    private func submitApplication() {
+        // Here you would perform the actual submission logic
+        // For now, let's just simulate a submission with a delay
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            showSuccessAlert = true
+        }
     }
 }
 
-#Preview {
-    Apply_form()
+struct Home: View {
+    var body: some View {
+        Text("Home Screen")
+    }
 }
+
+//struct Apply_form_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Apply_form()
+//    }
+//}

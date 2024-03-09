@@ -7,11 +7,7 @@
 
 import Foundation
 import SwiftUI
-
-struct ProblemStatementInfo {
-    var problem: String
-    var description: String
-}
+import UIKit
 
 struct MemberInfo:Identifiable{
     var id =  UUID()
@@ -26,7 +22,7 @@ struct TeamsInfo: Identifiable{
     var memberCount: Int
     var filledPosition: Int
     var theme: String
-    var problemStatement: String
+    var problemStatement: [String]
     var techstack: [String]
     var details: String
 }
@@ -37,23 +33,41 @@ struct HackathonTeams: Identifiable {
     var teamInfo: [TeamsInfo]
 }
 
-struct Hackathon: Identifiable, Equatable {
+struct Hackathon: Identifiable, Equatable, Codable {
     static func == (lhs: Hackathon, rhs: Hackathon) -> Bool {
         return lhs.id == rhs.id
     }
-    var id = UUID()
-    var hackathonPoster: UIImage?
+    
+    var id : String = ""
+    var hackathonPosterData: Data?
     var name: String
     var about: String
     var mode: String
     var problem_count: Int
-    var problemStatements: [ProblemStatementInfo]
+    var problemStatements: [String]
     var themes: [String]
     var startDate: Date
     var endDate: Date
-    var partners: [UIImage]
-    var prize1: String
-    var prize2: String
-    var prize3: String
-    var isApproved: Bool
+    var partnerImagesData: [Data]
+    var prize: [String]
+    var status: Bool
+    
+    var hackathonPoster: UIImage? {
+        get {
+            guard let data = hackathonPosterData else { return nil }
+            return UIImage(data: data)
+        }
+        set {
+            hackathonPosterData = newValue?.jpegData(compressionQuality: 0.1)
+        }
+    }
+    
+    var partners: [UIImage] {
+        get {
+            return partnerImagesData.compactMap { UIImage(data: $0) }
+        }
+        set {
+            partnerImagesData = newValue.compactMap { $0.jpegData(compressionQuality: 0.1) }
+        }
+    }
 }

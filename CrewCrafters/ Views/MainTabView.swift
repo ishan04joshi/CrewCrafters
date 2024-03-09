@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @EnvironmentObject var hackathonViewModel: HackathonViewModel
+    @EnvironmentObject var teamViewModel: TeamsViewModel
     var body: some View {
         TabView {
             ParticipantHome()

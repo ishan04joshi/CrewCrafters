@@ -1,17 +1,23 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
+import Combine
 
 struct SignIn: View {
+    @EnvironmentObject var userViewModel: UserViewModel
     @State private var firstName: String = ""
     @State private var lastName: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
-    @State private var roleSelection: Int = 0 // 0 for Organizer, 1 for Participant
-    @ObservedObject var onboardingViewModel: OnboardingViewModel
+    @State private var roleSelection: Int = 0
+    @State private var selected: String = "" // 0 for Organizer, 1 for Participant
     @State private var isSignedUp: Bool = false
-
+    @State private var navigationIsActive = false
+    
+    // Error messages
+    @State private var errorMessage: String = ""
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -32,6 +38,7 @@ struct SignIn: View {
                 TextField("Email Address", text: $email)
                     .textFieldStyle(CustomTextFieldStyle())
                     .padding(.bottom)
+                    .autocapitalization(.none)
                 
                 ZStack(alignment: .trailingFirstTextBaseline) {
                     if isPasswordVisible {
@@ -45,7 +52,7 @@ struct SignIn: View {
                     Button(action: {
                         isPasswordVisible.toggle()
                         if isPasswordVisible {
-                            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+                            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
                                 isPasswordVisible = false
                             }
                         }
@@ -56,19 +63,26 @@ struct SignIn: View {
                     }
                     .padding(.trailing, 20)
                 }
-                
-                Picker(selection: $roleSelection, label: Text("Select Role")) {
-                    Text("Organizer").tag(0)
-                    Text("Participant").tag(1)
-                }
-                .pickerStyle(SegmentedPickerStyle())
                 .padding(.bottom)
                 
-                // Sign Up Button
-                NavigationLink(destination: roleSelection == 0 ? AnyView(OrganiserTabView()) : AnyView(MainTabView()), isActive: $isSignedUp) {
-                    EmptyView()
+                Picker(selection: $roleSelection, label: Text("Select Role")) {
+                    Text("Organizer")
+                        .tag(0)
+                    Text("Participant")
+                        .tag(1)
                 }
-
+                .pickerStyle(SegmentedPickerStyle())
+                .overlay(
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                )
+                .padding()
+                .onChange(of: roleSelection) { newValue in
+                    selected = newValue == 0 ? "Organizer" : "Participant"
+                }
+                
+                Text(errorMessage).foregroundColor(.red)// Display error message
+                
                 Button(action: {
                     signUpWithFirebase()
                 }) {
@@ -76,54 +90,88 @@ struct SignIn: View {
                 }
                 .buttonStyle(NavigationButton())
                 .navigationBarHidden(true)
-                .padding()
+                .padding(.horizontal)
                 
-                // Your other UI components
+                HStack(spacing: 0) {
+                    Text("Already a member? ")
+                    NavigationLink("Sign In", destination: Login())
+                        .foregroundColor(Color.blue)
+                }
+                
+            }
+            .padding(.horizontal)
+            .background(
+                NavigationLink(destination: roleSelection == 0 ? AnyView(OrganiserTabView()) : AnyView(Profile_Create()), isActive: $navigationIsActive) {
+                    EmptyView()
+                }
+                .hidden()
+            )
+        }
+        .onReceive(Just(isSignedUp)) {
+            if $0 {
+                navigationIsActive = true
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
     
-    // Function to handle sign up with Firebase
     func signUpWithFirebase() {
-        let role = roleSelection == 0 ? UserRole.organizer : UserRole.participant
+        let role = roleSelection == 0 ? "Organizer" : "Participant"
+        
+        // Validation checks
+        guard !firstName.isEmpty else {
+            errorMessage = "First name is required"
+            return
+        }
+        guard !lastName.isEmpty else {
+            errorMessage = "Last name is required"
+            return
+        }
+        guard !email.isEmpty else {
+            errorMessage = "Email is required"
+            return
+        }
+        guard !password.isEmpty else {
+            errorMessage = "Password is required"
+            return
+        }
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 print("Error signing up: \(error.localizedDescription)")
-                // Handle error, show alert or provide feedback to the user
+                errorMessage = error.localizedDescription // Set error message
             } else {
-                // Successful sign-up
                 print("User signed up successfully as \(role)")
-                
-                // Add user information to Firestore
+                if roleSelection == 0 {
+                    userViewModel.userRole = role
+                } else {
+                    userViewModel.role = role
+                }
                 addUserToFirestore(firstName: firstName, lastName: lastName, email: email, role: role)
                 
-                // Set current user in ViewModel
-                switch role {
-                case .organizer:
-                    self.onboardingViewModel.signInAsOrganizer()
-                case .participant:
-                    self.onboardingViewModel.signInAsParticipant()
-                }
                 self.isSignedUp = true // Activate the navigation link
             }
         }
     }
-
     
-    func addUserToFirestore(firstName: String, lastName: String, email: String, role: UserRole) {
+    func addUserToFirestore(firstName: String, lastName: String, email: String, role: String) {
         let db = Firestore.firestore()
-        db.collection("users").addDocument(data: [
-            "firstName": firstName,
-            "lastName": lastName,
-            "email": email,
-            "role": role == .organizer ? "Organizer" : "Participant"
-        ]) { error in
-            if let error = error {
-                print("Error adding document: \(error)")
-            } else {
-                print("Document added successfully")
+        if let currentUserUID = Auth.auth().currentUser?.uid {
+            userViewModel.userId = currentUserUID
+            db.collection("users").document(currentUserUID).setData([
+                "firstName": firstName,
+                "lastName": lastName,
+                "email": email,
+                "role": role
+            ]) { error in
+                if let error = error {
+                    print("Error adding document: \(error)")
+                } else {
+                    print("Document added successfully")
+                }
             }
+        } else {
+            print("Error: Current user not available")
         }
     }
 }
@@ -136,11 +184,5 @@ struct CustomTextFieldStyle: TextFieldStyle {
             .padding()
             .background(Color.black.opacity(0.04))
             .cornerRadius(50)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignIn(onboardingViewModel: OnboardingViewModel())
     }
 }

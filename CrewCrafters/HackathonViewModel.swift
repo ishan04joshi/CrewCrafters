@@ -1,107 +1,78 @@
-//
-//  HackathonViewModel.swift
-//  CrewCrafters
-//
-//  Created by Manvi Singhal on 26/01/24.
-//
-
-import Foundation
 import SwiftUI
+import Firebase
+import Foundation
+import FirebaseFirestore
 
 class HackathonViewModel: ObservableObject {
     @Published var hackathons: [Hackathon] = []
-    let defaultPoster = UIImage(named: "default_hackathon_poster")!
-    let poster1 = UIImage(named: "hackathon_poster")!
-    let partner1 = UIImage(named: "partner1")!
-    let partner2 = UIImage(named: "partner2")!
-    let partner3 = UIImage(named: "partner3")!
-    
-    init() {
-        self.hackathons = [
-            Hackathon(
-                hackathonPoster: poster1,
-                name: "Hackathon 1",
-                about: "Lorem Ispum Dolor",
-                mode: "Online",
-                problem_count: 1,
-                problemStatements: [ProblemStatementInfo(problem: "", description: "")],
-                themes: ["Artificial Intelligence","Natural Language Processing"],
-                startDate: Date.now,
-                endDate: Date.now.addingTimeInterval(86400),
-                partners: [partner1,partner2,partner3],
-                prize1: "7000",
-                prize2: "6000",
-                prize3: "5000",
-                isApproved: false
-            ),
-            Hackathon(
-                hackathonPoster: defaultPoster,
-                name: "ocean hack",
-                about: "",
-                mode: "Offline",
-                problem_count: 2,
-                problemStatements: [
-                    ProblemStatementInfo(problem: "", description: ""),
-                    ProblemStatementInfo(problem: "", description: "")
-                ],
-                themes: [],
-                startDate: Date.now,
-                endDate: Date.now,
-                partners: [],
-                prize1: "",
-                prize2: "",
-                prize3: "",
-                isApproved: true
-            ),
-            Hackathon(
-                hackathonPoster: defaultPoster,
-                name: "SIH",
-                about: "",
-                mode: "Offline",
-                problem_count: 2,
-                problemStatements: [
-                    ProblemStatementInfo(problem: "", description: ""),
-                    ProblemStatementInfo(problem: "", description: "")
-                ],
-                themes: [],
-                startDate: Date.now,
-                endDate: Date.now,
-                partners: [],
-                prize1: "",
-                prize2: "",
-                prize3: "",
-                isApproved: true
-            )
-        ]
-    }
-    
     @Published var currentHackathon: Hackathon = Hackathon(
-        hackathonPoster: nil,
-        name: "",
-        about: "",
-        mode: "",
-        problem_count: 1,
-        problemStatements: [ProblemStatementInfo(problem: "", description: "")],
-        themes: [],
-        startDate: Date.now,
-        endDate: Date.now,
-        partners: [],
-        prize1: "",
-        prize2: "",
-        prize3: "",
-        isApproved: false
-    )
+            hackathonPosterData: nil,
+            name: "",
+            about: "",
+            mode: "",
+            problem_count: 1,
+            problemStatements: [],
+            themes: [],
+            startDate: Date(),
+            endDate: Date(),
+            partnerImagesData: [],
+            prize: [],
+            status: false
+        )
+    let defaultPoster = UIImage(named: "default_hackathon_poster")!
+    private let db = Firestore.firestore()
+    @EnvironmentObject var userViewModel: UserViewModel
     
-    func addNewHackathon(_ hackathon: Hackathon) {
-        hackathons.append(hackathon)
+    func fetchHackathons() {
+        db.collection("hackathons").getDocuments { querySnapshot, error in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                guard let documents = querySnapshot?.documents else {
+                    print("No documents")
+                    return
+                }
+                
+                self.hackathons = documents.compactMap { document in
+                    do {
+                        var hackathon = try document.data(as: Hackathon.self)
+                        hackathon.id = document.documentID
+                        return hackathon
+                    } catch {
+                        print("Error decoding Hackathon: \(error)")
+                        return nil
+                    }
+                }
+            }
+        }
     }
     
-    func filteredHackathons(for userRole: UserRole) -> [Hackathon] {
-        switch userRole {
-        case .organizer:
+    func addNewHackathon(_ hackathon: Hackathon, completion: @escaping () -> Void) {
+        do {
+            try db.collection("hackathons").addDocument(from: hackathon) { error in
+                if let error = error {
+                    print("Error writing document: \(error)")
+                } else {
+                    print("Document successfully written!")
+                    self.fetchHackathons()
+                    completion()
+                }
+            }
+        } catch {
+            print("Error writing document: \(error)")
+        }
+    }
+    
+    func filteredHackathons() -> [Hackathon] {
+        let userRole = userViewModel.userRole
+        
+        if userRole == "Organizer" {
             return hackathons
-        case .participant:
-            return hackathons.filter { $0.isApproved }
+        } else if userRole == "Participant" {
+            return hackathons.filter { $0.status }
+        } else {
+            // Handle other cases or return an empty array
+            return []
         }
     }
 }

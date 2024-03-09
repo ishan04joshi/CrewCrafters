@@ -10,6 +10,7 @@ import SwiftUI
 struct Hack_Land: View {
     let hackathonIndex: Int
     @EnvironmentObject var hackathonViewModel: HackathonViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
         if hackathonIndex < hackathonViewModel.hackathons.count {
@@ -20,33 +21,35 @@ struct Hack_Land: View {
                     
                     Image(uiImage: hackathon.hackathonPoster ?? UIImage(named: "default_hackathon_poster")!)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 360)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 350, height: 200)
                         .cornerRadius(20.0)
                         .padding([.leading, .bottom, .trailing])
                     
-                    HStack{
-                        Spacer()
-                        Spacer()
-//                        NavigationLink(destination: Hack_Teams(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0),){
-//                            Text("Join a Team")
-//                                .foregroundColor(.blue)
-//                            
-//                        }
-                        .buttonStyle(.bordered)
-                        .tint(.blue)
-                        Spacer()
-                        NavigationLink(destination: Team_create()){
-                            Text("Make a Team")
-                                .foregroundColor(.blue)
+                    if userViewModel.userRole == "Participant"{
+                        HStack{
+                            Spacer()
+                            Spacer()
+                            
+                            NavigationLink(destination: Hack_Teams(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)){
+                                Text("Join a Team")
+                                    .foregroundColor(.blue)
+                                
+                            }
+                            .buttonStyle(.bordered)
+                            .tint(.blue)
+                            Spacer()
+                            NavigationLink(destination: Team_create(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)){
+                                Text("Make a Team")
+                                    .foregroundColor(.blue)
+                            }
+                            .buttonStyle(.bordered)
+                            .tint(.blue)
+                            Spacer()
+                            Spacer()
                         }
-                        .buttonStyle(.bordered)
-                        .tint(.blue)
-                        Spacer()
-                        Spacer()
+                        .padding(.bottom)
                     }
-                    .padding(.bottom)
-                    
                     
                     Text("About")
                         .titleStyle()
@@ -59,25 +62,31 @@ struct Hack_Land: View {
                     Text("Themes")
                         .titleStyle()
                     
-                    VStack(alignment: .leading, spacing: 10.0) {
-                        ForEach(hackathon.themes, id: \.self) { theme in
+                    let themes = ["Machine Learning", "Data Science", "Blockchain", "Internet of Things", "Cybersecurity", "Web Development"]
+
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 300), spacing: 10)], alignment: .leading, spacing: 10.0) {
+                        ForEach(themes, id: \.self) { theme in
                             Text(theme)
+                                .frame(maxWidth: .infinity)
                                 .themelistStyle()
                         }
                     }
-                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 0))
+                    .padding()
+
                     
                     Text("Partners")
                         .titleStyle()
                     
-                    HStack{
-                        ForEach(hackathon.partners, id: \.self) { partner in
-                            Spacer()
-                            Image(uiImage: partner)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 85.0, height: 85.0)
-                            Spacer()
+                    HStack {
+                        ForEach(0..<3) { index in
+                            HStack {
+                                Spacer()
+                                Image(uiImage: UIImage(named: "partner\(index + 1)")!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 85.0, height: 85.0)
+                                Spacer()
+                            }
                         }
                     }
                     
@@ -124,9 +133,9 @@ struct Hack_Land: View {
                         .titleStyle()
                     
                     VStack(alignment: .leading, spacing: 15.0) {
-                        PrizeView(prizeTitle: "First Place", prize: "₹\(hackathon.prize1)")
-                        PrizeView(prizeTitle: "Second Place", prize: "₹\(hackathon.prize2)")
-                        PrizeView(prizeTitle: "Third Place", prize: "₹\(hackathon.prize3)")
+                        PrizeView(prizeTitle: "First Place", prize: "\(hackathon.prize[0])")
+                        PrizeView(prizeTitle: "Second Place", prize: "\(hackathon.prize[1])")
+                        PrizeView(prizeTitle: "Third Place", prize: "\(hackathon.prize[2])")
                     }
                     .padding([.leading, .bottom, .trailing])
                 }

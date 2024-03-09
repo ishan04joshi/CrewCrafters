@@ -1,10 +1,3 @@
-//
-//  Settings.swift
-//  CrewCrafters
-//
-//  Created by user1 on 09/12/23.
-//
-
 import SwiftUI
 
 struct Settings: View {
@@ -18,22 +11,30 @@ struct Settings: View {
                         .font(.subheadline)
                         .fontWeight(.bold)) {
                             ForEach(section.settings) { setting in
-                                HStack {
-                                    Image(systemName: setting.imageName)
-                                        .padding(.trailing, 20.0)
-                                    Text(setting.title)
+                                if setting.title == "Log Out" {
+                                    Button(action: {
+                                        viewModel.logout()
+                                    }) {
+                                        HStack {
+                                            Image(systemName: setting.imageName)
+                                                .padding(.trailing, 20.0)
+                                            Text(setting.title)
+                                        }
+                                    }
+                                } else {
+                                    HStack {
+                                        Image(systemName: setting.imageName)
+                                            .padding(.trailing, 20.0)
+                                        Text(setting.title)
+                                    }
                                 }
                             }
                         }
                 }
             }
             .padding(.all, 7)
-        }.navigationTitle("Settings")
-            .searchable(text: $searchText)
+        }
+        .navigationTitle("Settings")
+        .searchable(text: $searchText)
     }
-}
-
-
-#Preview {
-    Settings()
 }

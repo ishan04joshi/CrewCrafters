@@ -9,18 +9,57 @@ import SwiftUI
 
 struct Organizer_Create: View {
     @EnvironmentObject var hackathonViewModel: HackathonViewModel
+    @State private var isImagePickerPresented = false
+    @State private var initialName = ""
+    @State private var initialAbout = ""
+    @State private var initialMode = ""
+    @State private var initialProblemCount = 1
+    @State private var initialStartDate = Date()
+    @State private var initialEndDate = Date()
+    @State private var initialPrizes: [String] = ["", "", ""]
     
     var body: some View {
         VStack {
             Form {
                 Section(header: Text("Hackathon Information")) {
-                    CameraButton(image: $hackathonViewModel.currentHackathon.hackathonPoster)
-                        .padding(.top, 20)
-                        .padding(.bottom, 20)
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            isImagePickerPresented.toggle()
+                        }) {
+                            if let hackathonPoster = hackathonViewModel.currentHackathon.hackathonPoster {
+                                Image(uiImage: hackathonPoster)
+                                    .resizable()
+                                    .scaledToFit()
+                            } else {
+                                Circle()
+                                    .fill(Color(hue: 1.0, saturation: 0.0, brightness: 0.867))
+                                    .frame(width: 155)
+                                    .overlay(
+                                        Image(systemName: "camera.fill")
+                                            .resizable()
+                                            .frame(width: 50, height: 40)
+                                            .foregroundStyle(Color.black)
+                                    )
+                            }
+                        }
+                        .sheet(isPresented: $isImagePickerPresented) {
+                            ImagePicker(image: $hackathonViewModel.currentHackathon.hackathonPoster, defaultPoster: hackathonViewModel.defaultPoster)
+                        }
+                        Spacer()
+                    }
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
                     
                     HStack {
                         Text("Hackathon Name: ")
                         TextField("Name", text: $hackathonViewModel.currentHackathon.name)
+                    }
+                    .padding(.bottom, 7.0)
+                    
+                    HStack {
+                        Text("About Hackathon: ")
+                        TextField("About", text: $hackathonViewModel.currentHackathon.about)
                     }
                     .padding(.bottom, 7.0)
                     
@@ -31,10 +70,10 @@ struct Organizer_Create: View {
                     .padding(.bottom, 7.0)
                 }
                 
-                
                 Section(header: Text("Problem Statements")) {
+                    
                     HStack {
-                        Text("Problem Statements:")
+                        Text("No. of Problems:")
                         Picker("", selection: $hackathonViewModel.currentHackathon.problem_count) {
                             ForEach(1...6, id: \.self) { count in
                                 Text("\(count)").tag(count)
@@ -43,16 +82,34 @@ struct Organizer_Create: View {
                     }
                     .padding(.bottom, 5.0)
                     
-                    ForEach(0..<max(1, hackathonViewModel.currentHackathon.problem_count), id: \.self) { index in
-                        VStack(alignment: .leading) {
-                            ForEach(0..<max(1, hackathonViewModel.currentHackathon.problemStatements.count), id: \.self) { problemIndex in
-                                TextField("Problem Statement \(index + 1)", text: $hackathonViewModel.currentHackathon.problemStatements[problemIndex].problem)
-                                TextField("Description", text: $hackathonViewModel.currentHackathon.problemStatements[problemIndex].description)
+                    ForEach(0..<hackathonViewModel.currentHackathon.problem_count, id: \.self) { index in
+                        VStack {
+                            HStack{
+                                Text("Problem Statement \(index + 1): ")
+                                Spacer()
                             }
+                            TextField("Statement", text: Binding(
+                                get: {
+                                    if index < hackathonViewModel.currentHackathon.problemStatements.count{
+                                        return hackathonViewModel.currentHackathon.problemStatements[index]
+                                    } else {
+                                        return ""
+                                    }
+                                },
+                                set: { newValue in
+                                    
+                                    if index < hackathonViewModel.currentHackathon.problemStatements.count {
+                                        hackathonViewModel.currentHackathon.problemStatements[index] = newValue
+                                    } else {
+                                        hackathonViewModel.currentHackathon.problemStatements.append(newValue)
+                                    }
+                                }
+                            ))
+                            
                         }
+                        .padding(.bottom, 7.0)
                     }
                 }
-                
                 
                 Section(header: Text("Timeline")) {
                     HStack {
@@ -71,39 +128,57 @@ struct Organizer_Create: View {
                 
                 
                 Section(header: Text("Prize details")) {
-                    HStack {
-                        Text("First Position: ")
-                        TextField("Amount", text: $hackathonViewModel.currentHackathon.prize1)
+                    ForEach(0..<3, id: \.self) { index in
+                        HStack {
+                            Text("Position \(index + 1): ")
+                            TextField("Amount", text: Binding(
+                                get: {
+                                    if index < hackathonViewModel.currentHackathon.prize.count {
+                                        return hackathonViewModel.currentHackathon.prize[index]
+                                    } else {
+                                        return ""
+                                    }
+                                },
+                                set: { newValue in
+                                    
+                                    if index < hackathonViewModel.currentHackathon.prize.count {
+                                        hackathonViewModel.currentHackathon.prize[index] = newValue
+                                    } else {
+                                        hackathonViewModel.currentHackathon.prize.append(newValue)
+                                    }
+                                }
+                            ))
+                            
+                        }
+                        .padding(.bottom, 7.0)
                     }
-                    .padding(.bottom, 7.0)
-                    
-                    HStack {
-                        Text("Second Position: ")
-                        TextField("Amount", text: $hackathonViewModel.currentHackathon.prize2)
-                    }
-                    .padding(.bottom, 7.0)
-                    
-                    HStack {
-                        Text("Third Position: ")
-                        TextField("Amount", text: $hackathonViewModel.currentHackathon.prize3)
-                    }
-                    .padding(.bottom, 7.0)
                 }
             }
-            .contentMargins(.horizontal, 5)
             
-            NavigationLink(destination: Organizer_Home()) {
+            
+            NavigationLink(destination: OrganiserTabView()) {
                 Text("Publish Hackathon")
             }
             .buttonStyle(NavigationButton())
+            .navigationBarBackButtonHidden()
             .padding()
             .simultaneousGesture(TapGesture().onEnded {
-                hackathonViewModel.addNewHackathon(hackathonViewModel.currentHackathon)
+                hackathonViewModel.addNewHackathon(hackathonViewModel.currentHackathon) {}
+            })
+            .simultaneousGesture(TapGesture().onEnded {
+                hackathonViewModel.addNewHackathon(hackathonViewModel.currentHackathon) {}
+                hackathonViewModel.currentHackathon.name = initialName
+                hackathonViewModel.currentHackathon.about = initialAbout
+                hackathonViewModel.currentHackathon.mode = initialMode
+                hackathonViewModel.currentHackathon.problem_count = initialProblemCount
+                hackathonViewModel.currentHackathon.startDate = initialStartDate
+                hackathonViewModel.currentHackathon.endDate = initialEndDate
+                hackathonViewModel.currentHackathon.prize = initialPrizes
             })
         }
+        
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Create Hackathon")
-        .padding(.horizontal, 7)
     }
 }
 
@@ -112,6 +187,6 @@ struct Organizer_Create: View {
 //        NavigationView {
 //            Organizer_Create()
 //        }
-//        .environmentObject(HackathonViewModel()) // Make sure to provide the environment object
+//        .environmentObject(HackathonViewModel())
 //    }
 //}

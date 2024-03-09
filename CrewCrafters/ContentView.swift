@@ -5,12 +5,14 @@
 //  Created by user1 on 08/12/23.
 //
 
-import SwiftUI
 
+import SwiftUI
+import FirebaseCore
+import FirebaseAppCheck
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            Onboarding()
+           Onboarding()
         }
         .navigationBarHidden(true)
     }
