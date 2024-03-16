@@ -27,21 +27,17 @@ class TeamsViewModel: ObservableObject {
         hackathonId: ""
     )
     
-    func addNewTeam(_ teams: Teams, hackathonId: String) {
-        
+    func addNewTeam(_ team: Teams, hackathonId: String, completion: @escaping () -> Void) {
         do {
-            try db.collection("hackathons/\(hackathonId)/teams").addDocument(data: [
-                "id":"",
-                "admin_id": teams.admin_id,
-                "name": teams.name,
-                "theme": teams.theme,
-                "problem": teams.problem,
-                "member_count": teams.member_count,
-                "tech_stack": teams.tech_stack,
-                "hackathonId": hackathonId,
-                "teamphotoData": teams.teamphotoData ?? nil
-            ])
-            print("Document successfully written!")
+            try db.collection("hackathons/\(hackathonId)/teams").addDocument(from: team) { error in
+                if let error = error {
+                    print("Error writing document: \(error)")
+                } else {
+                    print("Document successfully written!")
+                    self.fetchTeams(hackathonId: hackathonId) // Fetch updated teams
+                    completion()
+                }
+            }
         } catch {
             print("Error writing document: \(error)")
         }

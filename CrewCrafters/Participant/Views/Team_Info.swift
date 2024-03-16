@@ -11,10 +11,13 @@ struct Team_info: View {
     @EnvironmentObject var teamViewModel: TeamsViewModel
     @EnvironmentObject var profileViewModel:ProfileViewModel
     @EnvironmentObject var userViewModel:UserViewModel
+    @EnvironmentObject var hackathonViewModel:HackathonViewModel
     @State var showingDetail = false
     let teamIndex: Int
+    let hid:String
     var body: some View {
         let team = teamViewModel.teams[teamIndex]
+        var teamId = teamViewModel.teams[teamIndex].id
         ScrollView{
             VStack(alignment: .leading){
                 Image(uiImage: team.teamphoto ?? UIImage(named: "team_poster")!)
@@ -67,6 +70,7 @@ struct Team_info: View {
                 }
             }.padding(.all, 10.0)
             if(teamViewModel.teams[teamIndex].admin_id==userViewModel.userId){
+                
                 ForEach(0..<team.member_count) { index in
                     HStack{
                         
@@ -85,13 +89,12 @@ struct Team_info: View {
                                 .multilineTextAlignment(.leading)
                             Text(team.tech_stack[index])
                                 .font(.subheadline)
-                            
                         }
                         Spacer()
                         Spacer()
                         ZStack{
                             Button(action: {print("")}){
-                                NavigationLink(destination: Applications()){
+                                NavigationLink(destination: Applications(tech_stack: team.tech_stack[index],hackathonId:hid,teamid:teamId)){
                                     Text("Applications")
                                         .foregroundColor(.blue)
                                 }
@@ -128,7 +131,7 @@ struct Team_info: View {
                         Spacer()
                         ZStack{
                             Button(action: {print("")}){
-                                NavigationLink(destination: Apply_form()){
+                                NavigationLink(destination: Apply_form(tech_stack: team.tech_stack[index],hackathonId:hid,teamid:teamId)){
                                     Text("Apply Now")
                                         .foregroundColor(.blue)
                                 }

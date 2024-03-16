@@ -26,6 +26,7 @@ struct CrewCraftersApp: App {
     @StateObject private var hackathonViewModel = HackathonViewModel()
     @StateObject private var teamViewModel = TeamsViewModel()
     @StateObject private var profileViewModel = ProfileViewModel()
+    @StateObject private var applyViewModel = ApplyViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -33,6 +34,7 @@ struct CrewCraftersApp: App {
                 .environmentObject(hackathonViewModel)
                 .environmentObject(teamViewModel)
                 .environmentObject(profileViewModel)
+                .environmentObject(applyViewModel)
         }
     }
 }

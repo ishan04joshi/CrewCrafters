@@ -30,7 +30,7 @@ struct Hack_Teams: View {
                 ForEach(teamViewModel.teams.filter {
                     searchText.isEmpty || $0.name.localizedCaseInsensitiveContains(searchText)
                 }) { team in
-                    NavigationLink(destination: Team_info(teamIndex: teamViewModel.teams.firstIndex(of: team) ?? 0)) {
+                    NavigationLink(destination: Team_info(teamIndex: teamViewModel.teams.firstIndex(of: team) ?? 0,hid:hackathonId)) {
                         TeamItemView(team: team)
                     }
                     .buttonStyle(PlainButtonStyle())

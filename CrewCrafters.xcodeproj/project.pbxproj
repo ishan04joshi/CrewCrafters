@@ -36,6 +36,9 @@
 		2BBEE6EF2B91C50000328FF1 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEE6EE2B91C50000328FF1 /* ProfileViewModel.swift */; };
 		2BBEE6F12B91C51300328FF1 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEE6F02B91C51300328FF1 /* ProfileModel.swift */; };
 		2BBEE6F32B92173D00328FF1 /* Profile_Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEE6F22B92173D00328FF1 /* Profile_Create.swift */; };
+		7F1D72992BA5A9310058C789 /* ApplyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1D72982BA5A9310058C789 /* ApplyModel.swift */; };
+		7F1D729B2BA5A9860058C789 /* ApplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1D729A2BA5A9860058C789 /* ApplyViewModel.swift */; };
+		7F1D729D2BA609140058C789 /* ApplicationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1D729C2BA609140058C789 /* ApplicationDetail.swift */; };
 		7F23D3A02B39F0D4006B01BE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F23D39F2B39F0D4006B01BE /* Login.swift */; };
 		7F23D3A22B39F177006B01BE /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F23D3A12B39F177006B01BE /* SignIn.swift */; };
 		7F27AF5A2B2379B000827166 /* CrewCraftersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27AF592B2379B000827166 /* CrewCraftersApp.swift */; };
@@ -102,6 +105,9 @@
 		2BBEE6EE2B91C50000328FF1 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		2BBEE6F02B91C51300328FF1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		2BBEE6F22B92173D00328FF1 /* Profile_Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_Create.swift; sourceTree = "<group>"; };
+		7F1D72982BA5A9310058C789 /* ApplyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyModel.swift; sourceTree = "<group>"; };
+		7F1D729A2BA5A9860058C789 /* ApplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyViewModel.swift; sourceTree = "<group>"; };
+		7F1D729C2BA609140058C789 /* ApplicationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDetail.swift; sourceTree = "<group>"; };
 		7F23D39F2B39F0D4006B01BE /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		7F23D3A12B39F177006B01BE /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		7F27AF562B2379B000827166 /* CrewCrafters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrewCrafters.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +184,7 @@
 				7FEAB1AD2B871AF500A692AC /* TeamsModel.swift */,
 				1F2AE5932B3438A7004852AA /* SettingModel.swift */,
 				2BBEE6F02B91C51300328FF1 /* ProfileModel.swift */,
+				7F1D72982BA5A9310058C789 /* ApplyModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,6 +196,7 @@
 				7FEAB1AB2B871ADB00A692AC /* TeamsViewModel.swift */,
 				1F2AE58F2B343814004852AA /* SettingsViewModel.swift */,
 				2BBEE6EE2B91C50000328FF1 /* ProfileViewModel.swift */,
+				7F1D729A2BA5A9860058C789 /* ApplyViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -206,6 +214,7 @@
 				7F3B79DD2B24E009008E03C8 /* Team_Create.swift */,
 				1F115C362B582FC800227CD8 /* ParticipantHome.swift */,
 				2B4D8A2D2B95A3840050FC65 /* Applications.swift */,
+				7F1D729C2BA609140058C789 /* ApplicationDetail.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -416,6 +425,7 @@
 			files = (
 				2BBEE6F12B91C51300328FF1 /* ProfileModel.swift in Sources */,
 				7F3B79D42B24DFBF008E03C8 /* Search.swift in Sources */,
+				7F1D729D2BA609140058C789 /* ApplicationDetail.swift in Sources */,
 				1FCC7F3E2B402BC200D66078 /* MainTabView.swift in Sources */,
 				7F3B79D62B24DFCD008E03C8 /* Profile.swift in Sources */,
 				1F115C3B2B597CA100227CD8 /* OrganiserTabView.swift in Sources */,
@@ -431,6 +441,7 @@
 				7F3FD46D2B5697F2000C43EB /* Admin_Home.swift in Sources */,
 				1F6ECDE82B63C664005C065F /* HackathonViewModel.swift in Sources */,
 				7F3B79DC2B24DFFD008E03C8 /* Team_Info.swift in Sources */,
+				7F1D729B2BA5A9860058C789 /* ApplyViewModel.swift in Sources */,
 				1F6ECDE62B63C439005C065F /* HackathonModel.swift in Sources */,
 				1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */,
 				7FEAB1AC2B871ADB00A692AC /* TeamsViewModel.swift in Sources */,
@@ -439,6 +450,7 @@
 				7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */,
 				2BBEE6EF2B91C50000328FF1 /* ProfileViewModel.swift in Sources */,
 				7F3B79DA2B24DFF3008E03C8 /* Hack_Teams.swift in Sources */,
+				7F1D72992BA5A9310058C789 /* ApplyModel.swift in Sources */,
 				1F377BEC2B55BD2100424028 /* SignInWithAppleButtonView.swift in Sources */,
 				1F377BE82B55B0AC00424028 /* ImagePicker.swift in Sources */,
 				7F23D3A02B39F0D4006B01BE /* Login.swift in Sources */,
