@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct ParticipantHome: View {
+    let hackathonIndex: Int
     @EnvironmentObject var profileViewModel:ProfileViewModel
     @EnvironmentObject var userViewModel:UserViewModel
+    @EnvironmentObject var teamViewModel: TeamsViewModel
     @EnvironmentObject var hackathonViewModel: HackathonViewModel
     
     var body: some View {
+        
+        let hackathonId = "031pO28CxUynwuMHXzeL"
         NavigationView {
             ScrollView {
                 VStack {
@@ -20,17 +24,17 @@ struct ParticipantHome: View {
                         Image(uiImage: profileViewModel.currentProfile.profilephoto ?? UIImage(named: "user")!)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 60)
+                            .frame(width: 100)
                             .clipShape(Circle())
                         Text("Hello, \(profileViewModel.currentProfile.name)!")
                             .font(.title2)
                             .fontWeight(.semibold)
                         Spacer()
                     }
-                    .padding()
+                    .padding(.bottom, 20)
                     
                     
-                    Text("Trending Hackathons")
+                    Text("Upcoming Hackathons")
                         .titleStyle()
                     
                     ScrollView(.horizontal) {
@@ -49,44 +53,98 @@ struct ParticipantHome: View {
                         hackathonViewModel.fetchHackathons()
                     }
                     
+                    Text("Previous Teams")
+                        .titleStyle()
+                    
+                    ScrollView(.horizontal) {
+                        HStack{
+                            ForEach(teamViewModel.teams){ team in
+                                NavigationLink(destination: Team_info(teamIndex: teamViewModel.teams.firstIndex(of: team) ?? 0,hid:hackathonId)) {
+                                    TeamItemHomeView(team: team)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                .padding(.bottom)
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                    .onAppear {
+                        teamViewModel.fetchTeams(hackathonId: hackathonId)
+                    }
+                    
+                    
                     Text("Applied Hackathon")
                         .titleStyle()
                     
                     ForEach(0..<2){_ in
-                        VStack(alignment: .leading) {
-                            HStack {
+                        VStack(alignment: .leading, spacing: 16) {
+                            HStack(spacing: 12) {
                                 Image(uiImage: profileViewModel.currentProfile.profilephoto ?? UIImage(named: "user")!)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .clipShape(Circle())
-                                    .frame(width: 50)
-                                VStack(alignment: .leading) {
+                                    .frame(width: 80)
+                                
+                                VStack(alignment: .leading, spacing: 4) {
                                     Text(profileViewModel.currentProfile.name)
                                         .fontWeight(.bold)
+                                        .font(.title3)
                                     HStack(alignment: .center, spacing: 3) {
-                                        Text("Amaze Team")
+                                        
+                                        Image(uiImage: UIImage(named: "team_poster")!)
+                                            .resizable(resizingMode: .stretch)
+                                            .frame(width: 30.0, height: 30.0)
+                                            .shadow(color: Color.black.opacity(0.1), radius: 3, x: 2, y: 2)
+                                        Text("Error 404")
                                             .fontWeight(.semibold)
-                                        Image(systemName: "person.3.fill")
-                                            .font(.caption)
+                                    }.onAppear {
+                                        teamViewModel.fetchTeams(hackathonId: hackathonId)
                                     }
                                     .foregroundStyle(Color.black.opacity(0.5))
                                 }
                             }
                             .padding(8)
-                            
-                            Text("Just applied in Amaze Team for Ocean Hackathon as Web Developer")
-                                .lineLimit(...6)
+                            Text("Upcoming Deadline:")
+                                .fontWeight(.semibold)
                                 .padding(8)
+                            HStack{
+                                Text("Problem Statement Submission")
+                                    .lineLimit(6)
+                                    .padding(.leading, 8)
+                                Spacer()
+                                HStack {
+                                    Image(systemName: "calendar")
+                                        .font(.caption)
+                                    Text("06 Mar 24")
+                                        .font(.caption)
+                                }.padding(6)
+                            }
                             
-                            Image("hackathon_poster")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .cornerRadius(20)
+                            HStack{
+                                Text("Prototype Submission")
+                                    .lineLimit(6)
+                                    .padding(8)
+                                Spacer()
+                                HStack {
+                                    Image(systemName: "calendar")
+                                        .font(.caption)
+                                    Text("10 Mar 24")
+                                        .font(.caption)
+                                }.padding(6)
+                            }
+                           
+                            if let firstHackathon = hackathonViewModel.hackathons.first {
+                                NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: firstHackathon) ?? 0)) {
+                                    ParticipantAppliedHomeHackathonView(hackathon: firstHackathon)
+                                        .padding(.bottom)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
                         }
-                        .padding()
                         .background(Color.white)
                         .cornerRadius(20)
                         .shadow(color: Color.black.opacity(0.2), radius: 3, x: 3, y: 5)
+
                     }
                     .padding([.leading, .bottom, .trailing])
                 }.onAppear(){
@@ -114,15 +172,127 @@ struct ParticipantHomeHackathonView: View {
     let hackathon: Hackathon
     
     var body: some View {
-        Image(uiImage: hackathon.hackathonPoster ?? UIImage(named: "default_hackathon_poster")!)
-            .resizable()
-            .frame(width: 250, height: 150)
-            .aspectRatio(contentMode: .fit)
-            .cornerRadius(15)
+        ZStack(alignment: .bottomLeading){
+            Image(uiImage: hackathon.hackathonPoster ?? UIImage(named: "default_hackathon_poster")!)
+                .resizable()
+                .frame(width: 250, height: 150)
+                .aspectRatio(contentMode: .fit)
+                .cornerRadius(15)
+                .overlay(
+                    LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+                        .frame(width: 250.0, height: 150.0)
+                        .clipShape(
+                            .rect(
+                                topLeadingRadius: 10,
+                                bottomLeadingRadius: 8,
+                                bottomTrailingRadius: 8,
+                                topTrailingRadius: 10
+                            )
+                        )
+                        .padding(.bottom, 0)
+                )
+            Text(hackathon.name)
+                .font(.title3)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 0))
+        }
+    }
+}
+struct TeamItemHomeView: View {
+    let team: Teams
+    
+    var body: some View {
+        VStack {
+            
+            VStack{
+                Image(uiImage: team.teamphoto ?? UIImage(named: "team_poster")!)
+                    .resizable(resizingMode: .stretch)
+                    .clipShape(Circle())
+                    .frame(width: 85.0, height: 85.0)
+                    .shadow(color: Color.black.opacity(0.3), radius: 5, x: 3, y: 3)
+            }
+            Spacer()
+            VStack(alignment: .leading){
+                Text(team.name)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.leading)
+               
+            }
+        }.padding(.all, 10.0)
+    }
+}
+struct ParticipantAppliedHomeHackathonView: View {
+    let hackathon: Hackathon
+    
+    var body: some View {
+    VStack(alignment: .leading, spacing: 7)  {
+        ZStack(alignment: .bottomLeading) {
+            Image(uiImage: hackathon.hackathonPoster ?? UIImage(named: "default_hackathon_poster")!)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 340.0, height: 200.0)
+                .clipShape(
+                    .rect(
+                        topLeadingRadius: 10,
+                        bottomLeadingRadius: 0,
+                        bottomTrailingRadius: 0,
+                        topTrailingRadius: 10
+                    )
+                )
+                .overlay(
+                    LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+                        .frame(width: 340.0, height: 200.0)
+                        .clipShape(
+                            .rect(
+                                topLeadingRadius: 10,
+                                bottomLeadingRadius: 0,
+                                bottomTrailingRadius: 0,
+                                topTrailingRadius: 10
+                            )
+                        )
+                        .padding(.bottom, 0)
+                )
+            
+            Text(hackathon.name)
+                .font(.title3)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 0))
+        }
+        
+        HStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    Image(systemName: "calendar")
+                        .font(.caption)
+                    Text("\(formatDate(from: hackathon.startDate)) - \(formatDate(from: hackathon.endDate))")
+                        .font(.caption)
+                }
+                HStack {
+                    Image(systemName: "location.fill")
+                        .font(.caption)
+                    
+                    Text("Chennai, India")
+                        .font(.caption)
+                }
+                .foregroundStyle(Color.gray)
+            }
+            .padding(.leading)
+            
+            Spacer()
+        }
+        .padding(.trailing)
+    }
+    .padding(.bottom)
+    .background(Color.white)
+    .cornerRadius(10)
+    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 3, y: 3)
+    .padding(.horizontal)
     }
 }
 
-
-#Preview {
-    ParticipantHome()
-}
+//#Preview {
+//    ParticipantHome(hackathonIndex: )
+//}

@@ -57,6 +57,7 @@
 		7FD6E0B92B59AC0100818D83 /* Apply_form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD6E0B82B59AC0100818D83 /* Apply_form.swift */; };
 		7FEAB1AC2B871ADB00A692AC /* TeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEAB1AB2B871ADB00A692AC /* TeamsViewModel.swift */; };
 		7FEAB1AE2B871AF500A692AC /* TeamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEAB1AD2B871AF500A692AC /* TeamsModel.swift */; };
+		842DEF4F2BAC25F40044E239 /* team_Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DEF4E2BAC25F40044E239 /* team_Space.swift */; };
 		93433A812B761BC500B79C58 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 93433A802B761BC500B79C58 /* FirebaseAnalytics */; };
 		93433A832B761BC500B79C58 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 93433A822B761BC500B79C58 /* FirebaseAnalyticsOnDeviceConversion */; };
 		93433A852B761BC500B79C58 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93433A842B761BC500B79C58 /* FirebaseAnalyticsSwift */; };
@@ -127,6 +128,7 @@
 		7FD6E0B82B59AC0100818D83 /* Apply_form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apply_form.swift; sourceTree = "<group>"; };
 		7FEAB1AB2B871ADB00A692AC /* TeamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewModel.swift; sourceTree = "<group>"; };
 		7FEAB1AD2B871AF500A692AC /* TeamsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsModel.swift; sourceTree = "<group>"; };
+		842DEF4E2BAC25F40044E239 /* team_Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = team_Space.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 		1F115C2C2B58023100227CD8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				842DEF4D2BAC25DA0044E239 /* TeamSpace */,
 				7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */,
 				7F3B79D32B24DFBF008E03C8 /* Search.swift */,
 				7F3B79D52B24DFCD008E03C8 /* Profile.swift */,
@@ -318,6 +321,14 @@
 				2BBEE6F22B92173D00328FF1 /* Profile_Create.swift */,
 			);
 			path = " Views";
+			sourceTree = "<group>";
+		};
+		842DEF4D2BAC25DA0044E239 /* TeamSpace */ = {
+			isa = PBXGroup;
+			children = (
+				842DEF4E2BAC25F40044E239 /* team_Space.swift */,
+			);
+			path = TeamSpace;
 			sourceTree = "<group>";
 		};
 		93433AA02B7625EC00B79C58 /* Frameworks */ = {
@@ -466,6 +477,7 @@
 				1FBA163A2B3F0EC80064829C /* PrimaryButton.swift in Sources */,
 				1FCC7F402B402EAE00D66078 /* Notification.swift in Sources */,
 				7F27AF5A2B2379B000827166 /* CrewCraftersApp.swift in Sources */,
+				842DEF4F2BAC25F40044E239 /* team_Space.swift in Sources */,
 				7F3FD46F2B5699DC000C43EB /* Admin_Approved.swift in Sources */,
 				1FCC7F3C2B400A4800D66078 /* NavigationButton.swift in Sources */,
 			);

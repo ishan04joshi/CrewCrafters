@@ -19,6 +19,7 @@ struct Search: View {
                     TextField("Search Hackathons", text: $searchText)
                         .padding(8)
                         .background(Color(.systemGray6))
+                    
                         .cornerRadius(8)
                         .padding(.horizontal)
                         .padding(.bottom)

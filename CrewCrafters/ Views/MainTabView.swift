@@ -12,7 +12,7 @@ struct MainTabView: View {
     @EnvironmentObject var teamViewModel: TeamsViewModel
     var body: some View {
         TabView {
-            ParticipantHome()
+            ParticipantHome(hackathonIndex: 1)
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
