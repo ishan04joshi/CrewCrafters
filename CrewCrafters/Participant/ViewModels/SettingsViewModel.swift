@@ -1,15 +1,17 @@
-//
-//  SettingsViewModel.swift
-//  CrewCrafters
-//
-//  Created by Manvi Singhal on 21/12/23.
-//
-
 import Foundation
 import SwiftUI
+import FirebaseAuth
 
-class SettingsViewModel: ObservableObject{
-   // Make userViewModel a published property
+class SettingsViewModel: ObservableObject {
+    @Published var userViewModel: UserViewModel // Make userViewModel a published property
+    @Binding var isLoggedIn: Bool // Binding to control navigation
+    
+    init(userViewModel: UserViewModel, isLoggedIn: Binding<Bool>) {
+        self.userViewModel = userViewModel
+        self._isLoggedIn = isLoggedIn
+    }
+    
+    // Your existing code
     let setting: [SectionSettings] = [
         SectionSettings(header: "Account", settings: [
             Setting(title: "Edit profile", imageName: "person.crop.circle"),
@@ -32,10 +34,27 @@ class SettingsViewModel: ObservableObject{
             Setting(title: "Add Account", imageName: "person.2.circle"),
             Setting(title: "Log Out", imageName: "rectangle.portrait.and.arrow.right"),
         ]),
-
     ]
+    
     func logout() {
-            // Perform logout actions here
-       
+        do {
+            try Auth.auth().signOut()
+            // Reset userViewModel properties upon logout
+            isLoggedIn = false
+            userViewModel.userRole = ""
+            userViewModel.userId = ""
+            userViewModel.role = ""// Set isLoggedIn to false to trigger navigation
+            
+        } catch let error {
+            print("Error signing out: \(error.localizedDescription)")
         }
+    }
+    
+    // Function to update userViewModel properties
+    func updateUserViewModel(userRole: String, userId: String, role:String) {
+        userViewModel.userRole = userRole
+        userViewModel.userId = userId
+        userViewModel.role = role
+        userViewModel.currentUser = false
+    }
 }

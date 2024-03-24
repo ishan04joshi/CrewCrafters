@@ -144,10 +144,13 @@ struct SignIn: View {
                 print("User signed up successfully as \(role)")
                 if roleSelection == 0 {
                     userViewModel.userRole = role
+                    addUserToFirestore(firstName: firstName, lastName: lastName, email: email, role: role)
+                    userViewModel.currentUser = true
                 } else {
                     userViewModel.role = role
+                    addUserToFirestore(firstName: firstName, lastName: lastName, email: email, role: role)
                 }
-                addUserToFirestore(firstName: firstName, lastName: lastName, email: email, role: role)
+                
                 
                 self.isSignedUp = true // Activate the navigation link
             }

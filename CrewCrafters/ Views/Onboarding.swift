@@ -4,12 +4,12 @@ import FirebaseAuth
 struct Onboarding: View {
     @State private var isActive: Bool = false
     @EnvironmentObject var userViewModel: UserViewModel
-
+    @EnvironmentObject var profileViewModel: ProfileViewModel
+    
     var body: some View {
         Group {
-            if let _ = Auth.auth().currentUser {
-                // User is signed in, navigate to the appropriate view
-                getDestinationView()
+            if userViewModel.currentUser == true {
+                fetchUserRoleAndNavigate()
             } else {
                 // User is not signed in, show the image screen
                 VStack {
@@ -41,9 +41,9 @@ struct Onboarding: View {
         }
     }
     
-    @ViewBuilder
-    private func getDestinationView() -> some View {
-        switch userViewModel.userRole {
+    func fetchUserRoleAndNavigate() -> some View {
+        Group {
+            switch userViewModel.userRole {
             case "Admin":
                 OrganiserTabView()
             case "Organizer":
@@ -52,12 +52,12 @@ struct Onboarding: View {
                 MainTabView()
             default:
                 Login()
+            }
+        }
+        .onAppear {
+            // Fetch user role
+            profileViewModel.fetchProfile(userId: userViewModel.userId)
+            userViewModel.getUserRole()
         }
     }
 }
-
-//struct Onboarding_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Onboarding()
-//    }
-//}

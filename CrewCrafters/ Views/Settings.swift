@@ -2,9 +2,13 @@ import SwiftUI
 
 struct Settings: View {
     @State var searchText = ""
-    @ObservedObject var viewModel = SettingsViewModel()
+    @EnvironmentObject var userViewModel: UserViewModel // Assuming you have a reference to UserViewModel
+    @State private var isLoggedIn = true // State variable to control navigation
+    
     var body: some View {
-        VStack {
+        let viewModel = SettingsViewModel(userViewModel: userViewModel, isLoggedIn: $isLoggedIn)
+        
+        return VStack {
             List {
                 ForEach(viewModel.setting) { section in
                     Section(header: Text(section.header)
@@ -36,5 +40,11 @@ struct Settings: View {
         }
         .navigationTitle("Settings")
         .searchable(text: $searchText)
+        .environmentObject(viewModel)
+        .onChange(of: isLoggedIn) { newValue in
+            if !newValue {
+                // Navigate to sign-in page
+            }
+        }
     }
 }

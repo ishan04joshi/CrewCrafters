@@ -38,7 +38,7 @@ class ApplyViewModel: ObservableObject {
                         apply.id = document.documentID
                         return apply
                     } catch {
-                        print("Error decoding Teams: \(error)")
+                        print("Error decoding Application: \(error)")
                         return nil
                     }
                 }
