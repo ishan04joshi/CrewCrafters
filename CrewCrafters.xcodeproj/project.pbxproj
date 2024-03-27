@@ -57,7 +57,9 @@
 		7FD6E0B92B59AC0100818D83 /* Apply_form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD6E0B82B59AC0100818D83 /* Apply_form.swift */; };
 		7FEAB1AC2B871ADB00A692AC /* TeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEAB1AB2B871ADB00A692AC /* TeamsViewModel.swift */; };
 		7FEAB1AE2B871AF500A692AC /* TeamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEAB1AD2B871AF500A692AC /* TeamsModel.swift */; };
-		842DEF4F2BAC25F40044E239 /* team_Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DEF4E2BAC25F40044E239 /* team_Space.swift */; };
+		8414FAA52BB4B0FC00DBB3BA /* Team_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414FAA42BB4B0FC00DBB3BA /* Team_view.swift */; };
+		8414FAA72BB4B2F900DBB3BA /* chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414FAA62BB4B2F900DBB3BA /* chat.swift */; };
+		84B2BF202BADBCAB006ED5E7 /* Team_Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2BF1F2BADBCAB006ED5E7 /* Team_Space.swift */; };
 		93433A812B761BC500B79C58 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 93433A802B761BC500B79C58 /* FirebaseAnalytics */; };
 		93433A832B761BC500B79C58 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 93433A822B761BC500B79C58 /* FirebaseAnalyticsOnDeviceConversion */; };
 		93433A852B761BC500B79C58 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93433A842B761BC500B79C58 /* FirebaseAnalyticsSwift */; };
@@ -128,7 +130,9 @@
 		7FD6E0B82B59AC0100818D83 /* Apply_form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apply_form.swift; sourceTree = "<group>"; };
 		7FEAB1AB2B871ADB00A692AC /* TeamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewModel.swift; sourceTree = "<group>"; };
 		7FEAB1AD2B871AF500A692AC /* TeamsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsModel.swift; sourceTree = "<group>"; };
-		842DEF4E2BAC25F40044E239 /* team_Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = team_Space.swift; sourceTree = "<group>"; };
+		8414FAA42BB4B0FC00DBB3BA /* Team_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team_view.swift; sourceTree = "<group>"; };
+		8414FAA62BB4B2F900DBB3BA /* chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chat.swift; sourceTree = "<group>"; };
+		84B2BF1F2BADBCAB006ED5E7 /* Team_Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team_Space.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,7 +330,9 @@
 		842DEF4D2BAC25DA0044E239 /* TeamSpace */ = {
 			isa = PBXGroup;
 			children = (
-				842DEF4E2BAC25F40044E239 /* team_Space.swift */,
+				84B2BF1F2BADBCAB006ED5E7 /* Team_Space.swift */,
+				8414FAA42BB4B0FC00DBB3BA /* Team_view.swift */,
+				8414FAA62BB4B2F900DBB3BA /* chat.swift */,
 			);
 			path = TeamSpace;
 			sourceTree = "<group>";
@@ -444,6 +450,7 @@
 				1F115C392B584E8500227CD8 /* OnboardingViewModel.swift in Sources */,
 				7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */,
 				1F4D23212B2DC5EF003B5EC7 /* Hack_Land.swift in Sources */,
+				8414FAA52BB4B0FC00DBB3BA /* Team_view.swift in Sources */,
 				1F4D23252B2E21FE003B5EC7 /* LeaderboardViewModel.swift in Sources */,
 				1F115C332B5803B400227CD8 /* Organiser_Home.swift in Sources */,
 				2BBEE6F32B92173D00328FF1 /* Profile_Create.swift in Sources */,
@@ -457,6 +464,7 @@
 				1F2AE5902B343814004852AA /* SettingsViewModel.swift in Sources */,
 				7FEAB1AC2B871ADB00A692AC /* TeamsViewModel.swift in Sources */,
 				1FCA16CD2B9387ED00C42081 /* Organiser_Profile.swift in Sources */,
+				84B2BF202BADBCAB006ED5E7 /* Team_Space.swift in Sources */,
 				1FBA16422B3F112F0064829C /* GoogleSignInButtonView.swift in Sources */,
 				7F27AF5C2B2379B000827166 /* ContentView.swift in Sources */,
 				2BBEE6EF2B91C50000328FF1 /* ProfileViewModel.swift in Sources */,
@@ -469,6 +477,7 @@
 				1FBA16372B3F09D30064829C /* Onboarding.swift in Sources */,
 				1F4D231D2B2DC2BD003B5EC7 /* TextStyles.swift in Sources */,
 				7F3B79E02B24E01A008E03C8 /* Settings.swift in Sources */,
+				8414FAA72BB4B2F900DBB3BA /* chat.swift in Sources */,
 				2B4D8A2E2B95A3840050FC65 /* Applications.swift in Sources */,
 				7FD6E0B92B59AC0100818D83 /* Apply_form.swift in Sources */,
 				7FEAB1AE2B871AF500A692AC /* TeamsModel.swift in Sources */,
@@ -477,7 +486,6 @@
 				1FBA163A2B3F0EC80064829C /* PrimaryButton.swift in Sources */,
 				1FCC7F402B402EAE00D66078 /* Notification.swift in Sources */,
 				7F27AF5A2B2379B000827166 /* CrewCraftersApp.swift in Sources */,
-				842DEF4F2BAC25F40044E239 /* team_Space.swift in Sources */,
 				7F3FD46F2B5699DC000C43EB /* Admin_Approved.swift in Sources */,
 				1FCC7F3C2B400A4800D66078 /* NavigationButton.swift in Sources */,
 			);

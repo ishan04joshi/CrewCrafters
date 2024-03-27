@@ -22,10 +22,10 @@ struct MainTabView: View {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
-            Leaderboard()
+            Team_Space(hackathonIndex: 1)
                 .tabItem {
-                    Image(systemName: "chart.bar.fill")
-                    Text("LeaderBoard")
+                    Image(systemName: "person.2")
+                    Text("Teams")
                 }
             Profile()
                 .tabItem {

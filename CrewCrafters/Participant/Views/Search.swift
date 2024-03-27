@@ -50,6 +50,7 @@ struct Search: View {
 struct HackathonItemView: View {
     let hackathon: Hackathon
     @EnvironmentObject var teamViewModel: TeamsViewModel
+    @EnvironmentObject var hackathonViewModel: HackathonViewModel
     @State private var teamCount: Int = 0
     @State private var teamPosters: [UIImage] = []
     
@@ -88,7 +89,7 @@ struct HackathonItemView: View {
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 0))
             }
-            
+           
             HStack {
                 VStack(alignment: .leading) {
                     HStack {
@@ -107,6 +108,7 @@ struct HackathonItemView: View {
                     .foregroundStyle(Color.gray)
                 }
                 .padding(.leading)
+                .padding(.bottom)
                 
                 Spacer()
                 
@@ -138,6 +140,27 @@ struct HackathonItemView: View {
                 }
             }
             .padding(.trailing)
+            HStack{
+                Spacer()
+                Spacer()
+                
+                NavigationLink(destination: Hack_Teams(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)){
+                    Text("Join a Team")
+                        .foregroundColor(.blue)
+                }
+                .buttonStyle(.bordered)
+                .tint(.blue)
+                Spacer()
+                Spacer()
+                NavigationLink(destination: Team_create(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)){
+                    Text("Make a Team")
+                        .foregroundColor(.blue)
+                }
+                .buttonStyle(.bordered)
+                .tint(.blue)
+                Spacer()
+                Spacer()
+            }
             
         }
         .padding(.bottom)
