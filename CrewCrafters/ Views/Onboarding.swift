@@ -44,12 +44,10 @@ struct Onboarding: View {
     func fetchUserRoleAndNavigate() -> some View {
         Group {
             switch userViewModel.userRole {
-            case "Admin":
-                OrganiserTabView()
-            case "Organizer":
-                OrganiserTabView()
             case "Participant":
                 MainTabView()
+            case "Organizer":
+                OrganiserTabView()
             default:
                 Login()
             }

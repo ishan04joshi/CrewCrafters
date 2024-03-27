@@ -42,6 +42,7 @@ struct Apply_form: View {
             
             Button(action: {
                 ApplyViewModel.currentApplication.userId = userViewModel.userId
+                ApplyViewModel.currentApplication.tech_stack=tech_stack
                 ApplyViewModel.addNewApplication(ApplyViewModel.currentApplication, hackathonId: hackathonId, teamId: teamid, tech_stack: tech_stack){}
                 submitApplication()
             }) {

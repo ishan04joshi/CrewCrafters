@@ -315,8 +315,8 @@
 		7F3B79D22B24DF8B008E03C8 /*  Views */ = {
 			isa = PBXGroup;
 			children = (
-				7F23D3A12B39F177006B01BE /* SignIn.swift */,
 				7F3B79DF2B24E01A008E03C8 /* Settings.swift */,
+				7F23D3A12B39F177006B01BE /* SignIn.swift */,
 				7F23D39F2B39F0D4006B01BE /* Login.swift */,
 				1FBA16362B3F09D30064829C /* Onboarding.swift */,
 				1FCC7F3D2B402BC200D66078 /* MainTabView.swift */,

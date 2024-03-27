@@ -3,13 +3,9 @@ import SwiftUI
 import FirebaseAuth
 
 class SettingsViewModel: ObservableObject {
-    @Published var userViewModel: UserViewModel // Make userViewModel a published property
-    @Binding var isLoggedIn: Bool // Binding to control navigation
+    @EnvironmentObject var userViewModel: UserViewModel // Make userViewModel a published property// Binding to control navigation
     
-    init(userViewModel: UserViewModel, isLoggedIn: Binding<Bool>) {
-        self.userViewModel = userViewModel
-        self._isLoggedIn = isLoggedIn
-    }
+    
     
     // Your existing code
     let setting: [SectionSettings] = [
@@ -36,25 +32,6 @@ class SettingsViewModel: ObservableObject {
         ]),
     ]
     
-    func logout() {
-        do {
-            try Auth.auth().signOut()
-            // Reset userViewModel properties upon logout
-            isLoggedIn = false
-            userViewModel.userRole = ""
-            userViewModel.userId = ""
-            userViewModel.role = ""// Set isLoggedIn to false to trigger navigation
-            
-        } catch let error {
-            print("Error signing out: \(error.localizedDescription)")
-        }
-    }
     
-    // Function to update userViewModel properties
-    func updateUserViewModel(userRole: String, userId: String, role:String) {
-        userViewModel.userRole = userRole
-        userViewModel.userId = userId
-        userViewModel.role = role
-        userViewModel.currentUser = false
-    }
+    
 }
