@@ -17,6 +17,13 @@ class ProfileViewModel: ObservableObject {
         techstack: ["","","",""],
         about: ""
     )
+    @Published var manyProfile: ProfileM = ProfileM(
+        profilephotoData: nil,
+        name: "",
+        bio: "",
+        techstack: ["","","",""],
+        about: ""
+    )
     let defaultcover = UIImage(named: "bg")!
     let defaultphoto = UIImage(named: "bg")!
     private let db = Firestore.firestore()
@@ -90,4 +97,35 @@ class ProfileViewModel: ObservableObject {
             print("Error writing document: \(error)")
         }
     }
+    func fetchmanyProfile(userId: String, completion: @escaping (ProfileM?) -> Void) {
+            guard !userId.isEmpty else {
+                print("Invalid userId")
+                completion(nil)
+                return
+            }
+            
+            db.collection("users/\(userId)/profiles").getDocuments { querySnapshot, error in
+                if let error = error {
+                    print("Error getting documents: \(error)")
+                    completion(nil)
+                } else {
+                    guard let document = querySnapshot?.documents.first else {
+                        print("No documents")
+                        completion(nil)
+                        return
+                    }
+                    
+                    do {
+                        let profile = try document.data(as: ProfileM.self)
+                        completion(profile)
+                    } catch {
+                        print("Error decoding Profile: \(error)")
+                        completion(nil)
+                    }
+                }
+            }
+        }
+    
+   
+
 }

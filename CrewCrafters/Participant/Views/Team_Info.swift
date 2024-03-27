@@ -12,6 +12,7 @@ struct Team_info: View {
     @EnvironmentObject var profileViewModel:ProfileViewModel
     @EnvironmentObject var userViewModel:UserViewModel
     @EnvironmentObject var hackathonViewModel:HackathonViewModel
+    @EnvironmentObject var applyViewModel: ApplyViewModel
     @State var showingDetail = false
     let teamIndex: Int
     let hid:String
@@ -73,37 +74,78 @@ struct Team_info: View {
                 
                 ForEach(0..<team.member_count) { index in
                     HStack{
-                        
-                        VStack{
-                            Spacer()
-                            Image(systemName: "person.crop.circle")
-                                .resizable(resizingMode: .stretch)
-                                .frame(width: 65.0, height: 65.0)
-                            Spacer()
-                        }.frame(width: 80.0)
-                        
-                        VStack(alignment: .leading){
-                            Text("Position \(index+1):")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                                .multilineTextAlignment(.leading)
-                            Text(team.tech_stack[index])
-                                .font(.subheadline)
-                        }
-                        Spacer()
-                        Spacer()
-                        ZStack{
-                            Button(action: {print("")}){
-                                NavigationLink(destination: Applications(tech_stack: team.tech_stack[index],hackathonId:hid,teamid:teamId)){
-                                    Text("Applications")
-                                        .foregroundColor(.blue)
+                        if let applicationWithStatus1 = applyViewModel.applications.first(where: { $0.tech_stack == team.tech_stack[index] && $0.status == 1 }) {
+                            var uid=applicationWithStatus1.userId
+                            HStack{
+                                VStack{
+                                    Spacer()
+                                    Image(uiImage: profileViewModel.manyProfile.profilephoto ?? UIImage(named: "bg")!)
+                                        .resizable(resizingMode: .stretch)
+                                        .frame(width: 65.0, height: 65.0)
+                                    Spacer()
+                                }.frame(width: 80.0)
+                                VStack(alignment: .leading){
+                                    Text(profileViewModel.manyProfile.name)
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .multilineTextAlignment(.leading)
+                                    Text(team.tech_stack[index])
+                                        .font(.subheadline)
                                 }
-                            }.buttonStyle(.bordered)
-                                .tint(.blue)
+                            }.onAppear{profileViewModel.fetchmanyProfile(userId: uid) { fetchedProfile in
+                                if let fetchedProfile = fetchedProfile {
+                                    // Update the profile photo view once the profile is fetched
+                                    DispatchQueue.main.async {
+                                        profileViewModel.manyProfile = fetchedProfile
+                                    }
+                                }
+                            }
+                                
+                            }
+                            Spacer()
+                            Spacer()
+                            ZStack{
+                                Button(action: {print("")}){
+                                    Text("Filled").foregroundColor(.blue)
+                                    
+                                }.buttonStyle(.bordered)
+                                    .tint(.green)
+                            }
                         }
+                        else{
+                            VStack{
+                                Spacer()
+                                Image(systemName: "person.crop.circle")
+                                    .resizable(resizingMode: .stretch)
+                                    .frame(width: 65.0, height: 65.0)
+                                Spacer()
+                            }.frame(width: 80.0)
+                            
+                            VStack(alignment: .leading){
+                                Text("Position \(index+1):")
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                    .multilineTextAlignment(.leading)
+                                Text(team.tech_stack[index])
+                                    .font(.subheadline)
+                            }
+                            Spacer()
+                            Spacer()
+                            ZStack{
+                                Button(action: {print("")}){
+                                    NavigationLink(destination: Applications(tech_stack: team.tech_stack[index],hackathonId:hid,teamid:teamId)){
+                                        Text("Applications")
+                                            .foregroundColor(.blue)
+                                    }
+                                }.buttonStyle(.bordered)
+                                    .tint(.blue)
+                            }
+                        }
+                            
+                        }.padding(.all, 10.0)
                         
-                    }.padding(.all, 10.0)
-                    Divider()
+                        Divider()
+                    
                 }
             }
             else{

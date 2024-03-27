@@ -15,7 +15,8 @@ class ApplyViewModel: ObservableObject {
         suitability: "",
         achievements: "",
         status: 0,
-        userId:""
+        userId:"",
+        tech_stack:""
         )
      let db = Firestore.firestore()
    
@@ -23,6 +24,7 @@ class ApplyViewModel: ObservableObject {
     
 
     func fetchApplication(hackathonId:String,teamId:String,tech_stack:String) {
+        
         db.collection("hackathons/\(hackathonId)/teams/\(teamId)/\(tech_stack)").getDocuments { querySnapshot, error in
             if let error = error {
                 print("Error getting documents: \(error)")
@@ -48,6 +50,7 @@ class ApplyViewModel: ObservableObject {
 
     
     func addNewApplication(_ apply: ApplyModel,hackathonId:String,teamId:String,tech_stack:String,completion: @escaping () -> Void) {
+           
             do {
                 try db.collection("hackathons/\(hackathonId)/teams/\(teamId)/\(tech_stack)").addDocument(from: apply) { error in
                     if let error = error {

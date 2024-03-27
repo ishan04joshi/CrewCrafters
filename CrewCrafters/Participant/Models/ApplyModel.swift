@@ -18,4 +18,5 @@ struct ApplyModel: Identifiable,Equatable, Codable{
     var achievements: String
     var status:Int //0-pending , -1 rejected , 1 aprroved
     var userId:String
+    var tech_stack:String
 }
