@@ -17,7 +17,8 @@ struct Organizer_Create: View {
     @State private var initialStartDate = Date()
     @State private var initialEndDate = Date()
     @State private var initialPrizes: [String] = ["", "", ""]
-    
+    @State private var initialLoc = ""
+    @State private var initialsite = ""
     var body: some View {
         VStack {
             Form {
@@ -68,6 +69,17 @@ struct Organizer_Create: View {
                         TextField("Online / Offline", text: $hackathonViewModel.currentHackathon.mode)
                     }
                     .padding(.bottom, 7.0)
+                    HStack {
+                        Text("Location :")
+                        TextField("City & State", text: $initialLoc)
+                    }
+                    .padding(.bottom, 7.0)
+                    HStack {
+                        Text("Website Link :")
+                        TextField("abc.com", text: $initialsite)
+                    }
+                    .padding(.bottom, 7.0)
+                   
                 }
                 
                 Section(header: Text("Problem Statements")) {
