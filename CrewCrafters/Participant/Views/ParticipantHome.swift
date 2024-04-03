@@ -26,15 +26,50 @@ struct ParticipantHome: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 100)
                             .clipShape(Circle())
-                        Text("Hello, \(profileViewModel.currentProfile.name)!")
-                            .font(.title2)
-                            .fontWeight(.semibold)
+                            .padding(.leading,25)
+                        VStack(alignment: .leading){
+                            Text("Hey").font(.title3)
+                                .fontWeight(.semibold)
+                                .foregroundColor(Color.gray)
+                            Text(" \(profileViewModel.currentProfile.name)!")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                        }.padding()
+                        
                         Spacer()
+                        HStack
+                        {
+                            Button(action: {}){
+                                NavigationLink(destination: Notification()){
+                                    Image(systemName: "bell.fill").resizable()
+                                        .frame(width: 23,height: 23).foregroundColor(Color.blue)
+                                    
+                                }
+                            }
+                        }.padding(.trailing,25)
+                        
                     }
                     .padding(.bottom, 20)
+    
                     
-                    
+                    ScrollView(.horizontal) {
+                        HStack{
+                            ForEach(teamViewModel.teams){ team in
+                                NavigationLink(destination: Team_info(teamIndex: teamViewModel.teams.firstIndex(of: team) ?? 0,hid:hackathonId)) {
+                                    TeamItemHomeView(team: team)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                .padding(.bottom)
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                    .onAppear {
+                        teamViewModel.fetchTeams(hackathonId: hackathonId)
+                    }
+
                     Text("Upcoming Hackathons")
+                        .font(.title)
                         .titleStyle()
                     
                     ScrollView(.horizontal) {
@@ -52,28 +87,10 @@ struct ParticipantHome: View {
                     .onAppear {
                         hackathonViewModel.fetchHackathons()
                     }
-                    
-                    Text("Previous Teams")
-                        .titleStyle()
-                    
-                    ScrollView(.horizontal) {
-                        HStack{
-                            ForEach(teamViewModel.teams){ team in
-                                NavigationLink(destination: Team_info(teamIndex: teamViewModel.teams.firstIndex(of: team) ?? 0,hid:hackathonId)) {
-                                    TeamItemHomeView(team: team)
-                                }
-                                .buttonStyle(PlainButtonStyle())
-                                .padding(.bottom)
-                            }
-                        }
-                    }
-                    .padding(.horizontal)
-                    .onAppear {
-                        teamViewModel.fetchTeams(hackathonId: hackathonId)
-                    }
-                    
+                                        
                     
                     Text("Applied Hackathon")
+                        .font(.title)
                         .titleStyle()
                     
                     ForEach(0..<2){_ in
@@ -100,7 +117,7 @@ struct ParticipantHome: View {
                                     }.onAppear {
                                         teamViewModel.fetchTeams(hackathonId: hackathonId)
                                     }
-                                    .foregroundStyle(Color.black.opacity(0.5))
+                                    .foregroundStyle(Color.white.opacity(0.5))
                                 }
                             }
                             .padding(8)
@@ -141,32 +158,26 @@ struct ParticipantHome: View {
                                 .buttonStyle(PlainButtonStyle())
                             }
                         }
-                        .background(Color.white)
+                        .background(Color.black)
+                        .foregroundColor(Color.white)
                         .cornerRadius(20)
-                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 3, y: 5)
+                        .shadow(color: Color.gray.opacity(0.2), radius: 3, x: 3, y: 5)
 
                     }
                     .padding([.leading, .bottom, .trailing])
                 }.onAppear(){
                     profileViewModel.fetchProfile(userId: userViewModel.userId)
                 }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    HStack
-                    {
-                        Button(action: {}){
-                            NavigationLink(destination: Notification()){
-                                Image(systemName: "bell.fill")
-                                
-                            }
-                        }
-                    }
-                }
-            }
+            }.background(Color.black)
+                .foregroundColor(Color.white)
         }
     }
 }
+
+
+
+//down are view structures
+
 
 struct ParticipantHomeHackathonView: View {
     let hackathon: Hackathon
@@ -209,13 +220,13 @@ struct TeamItemHomeView: View {
                 Image(uiImage: team.teamphoto ?? UIImage(named: "team_poster")!)
                     .resizable(resizingMode: .stretch)
                     .clipShape(Circle())
-                    .frame(width: 85.0, height: 85.0)
+                    .frame(width: 65.0, height: 65.0)
                     .shadow(color: Color.black.opacity(0.3), radius: 5, x: 3, y: 3)
             }
             Spacer()
             VStack(alignment: .leading){
                 Text(team.name)
-                    .font(.title3)
+                    .font(.subheadline)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.leading)
                
@@ -277,7 +288,7 @@ struct ParticipantAppliedHomeHackathonView: View {
                     Text("Chennai, India")
                         .font(.caption)
                 }
-                .foregroundStyle(Color.gray)
+                .foregroundStyle(Color.white)
             }
             .padding(.leading)
             
@@ -286,13 +297,20 @@ struct ParticipantAppliedHomeHackathonView: View {
         .padding(.trailing)
     }
     .padding(.bottom)
-    .background(Color.white)
+    .background(Color.gray)
     .cornerRadius(10)
     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 3, y: 3)
     .padding(.horizontal)
     }
 }
 
-//#Preview {
-//    ParticipantHome(hackathonIndex: )
-//}
+
+struct ParticipantHome_Previews: PreviewProvider {
+    static var previews: some View {
+        ParticipantHome(hackathonIndex: 0)
+            .environmentObject(ProfileViewModel())
+            .environmentObject(UserViewModel())
+            .environmentObject(TeamsViewModel())
+            .environmentObject(HackathonViewModel())
+    }
+}
