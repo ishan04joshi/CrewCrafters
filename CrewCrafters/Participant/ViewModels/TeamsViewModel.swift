@@ -27,21 +27,66 @@ class TeamsViewModel: ObservableObject {
         hackathonId: ""
     )
     
-    func addNewTeam(_ team: Teams, hackathonId: String, completion: @escaping () -> Void) {
+    func addNewTeam(_ team: Teams, hackathonId: String, aid:String, completion: @escaping () -> Void) {
+        let adminId = aid // Assuming userViewModel.userId represents the admin's ID
+        
+        // Add admin ID to the team document
+        var teamWithAdminId = team
+        teamWithAdminId.admin_id = adminId
+        
         do {
-            try db.collection("hackathons/\(hackathonId)/teams").addDocument(from: team) { error in
+            // Declare newDocumentRef here
+            var newDocumentRef: DocumentReference?
+            
+            // Add the team document to Firestore
+            newDocumentRef = try db.collection("hackathons/\(hackathonId)/teams").addDocument(from: teamWithAdminId) { error in
                 if let error = error {
                     print("Error writing document: \(error)")
                 } else {
                     print("Document successfully written!")
-                    self.fetchTeams(hackathonId: hackathonId) // Fetch updated teams
-                    completion()
+                    
+                    // Fetch the newly created document to get its ID
+                    newDocumentRef?.getDocument { (documentSnapshot, error) in
+                        if let error = error {
+                            print("Error fetching document: \(error)")
+                            return
+                        }
+                        
+                        guard let teamId = documentSnapshot?.documentID else {
+                            print("Failed to get document ID for the team.")
+                            return
+                        }
+                        
+                        // Add admin ID as a member subcollection
+                        let adminData: [String: Any] = [
+                            "admin_id": adminId,
+                            // Add any other admin-related data if needed
+                        ]
+                        self.db.collection("hackathons/\(hackathonId)/teams/\(teamId)/members").document("members").setData(adminData) { error in
+                            if let error = error {
+                                print("Error adding admin data: \(error)")
+                            } else {
+                                print("Admin data added successfully!")
+                            }
+                            
+                            // Fetch updated teams
+                            self.fetchTeams(hackathonId: hackathonId)
+                            completion()
+                        }
+                    }
                 }
             }
         } catch {
-            print("Error writing document: \(error)")
+            // Handle any errors thrown during the process
+            print("Error adding document to Firestore: \(error)")
         }
     }
+
+
+
+
+
+
     
     func fetchTeams(hackathonId: String) {
         db.collection("hackathons/\(hackathonId)/teams").getDocuments { querySnapshot, error in
@@ -115,4 +160,5 @@ class TeamsViewModel: ObservableObject {
             }
         }
     }
+    
 }

@@ -60,18 +60,31 @@ struct ApplicationDetail: View {
     }
     
     private func updateStatus(status: Int) {
+        let application = applyViewModel.applications[applicationIndex]
+        let userId = application.userId // Assuming application ID represents the user's ID
+        
         applyViewModel.applications[applicationIndex].status = status
         
         // Update the status in Firestore
-        let application = applyViewModel.applications[applicationIndex]
+        applyViewModel.db.collection("hackathons/\(hackathonId)/teams/\(teamId)/members")
+            .document("members")
+            .updateData([tech_stack: userId]) { error in
+                if let error = error {
+                    print("Error updating user's status: \(error)")
+                } else {
+                    print("User's status updated successfully!")
+                }
+            }
+        
         applyViewModel.db.collection("hackathons/\(hackathonId)/teams/\(teamId)/\(tech_stack)")
             .document(application.id)
             .updateData(["status": status]) { error in
                 if let error = error {
-                    print("Error updating status: \(error)")
+                    print("Error updating application status: \(error)")
                 } else {
-                    print("Status updated successfully!")
+                    print("Application status updated successfully!")
                 }
             }
     }
+
 }

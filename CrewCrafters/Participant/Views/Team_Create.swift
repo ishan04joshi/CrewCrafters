@@ -120,7 +120,7 @@ struct Team_create: View {
             .buttonStyle(NavigationButton())
             .padding().simultaneousGesture(TapGesture().onEnded {
                 teamsViewModel.currentTeam.admin_id=userViewModel.userId
-                teamsViewModel.addNewTeam(teamsViewModel.currentTeam,hackathonId: hackathonViewModel.hackathons[hackathonIndex].id){}
+                teamsViewModel.addNewTeam(teamsViewModel.currentTeam,hackathonId: hackathonViewModel.hackathons[hackathonIndex].id,aid: userViewModel.userId){}
             })
         }
         .navigationBarTitleDisplayMode(.inline)
