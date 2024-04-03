@@ -13,22 +13,38 @@ struct Profile: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                ZStack{
-                    Image("bg")
-                        .resizable()
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 230)
-                        .aspectRatio(contentMode: .fill)
-                        .clipShape(CustomShape())
+                VStack{
+                    HStack
+                    {
+                        Spacer()
+                        Button(action: {}){
+                            NavigationLink(destination: Settings()){
+                                Image(systemName: "gear").resizable()
+                                    .frame(width: 30,height: 30).foregroundColor(Color.blue)
+                                
+                            }
+                        }.padding(.all , 4)
+                    }
+
+                    ZStack{
+                        Image("bg")
+                            .resizable()
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 230)
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(CustomShape())
+                            .ignoresSafeArea()
+                        
+                        Image(uiImage: profileViewModel.currentProfile.profilephoto ?? UIImage(named: "user")!)
+                            .resizable()
+                            .frame(width: 180, height: 180)
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Circle())
+                            .offset(y: 115)
+                    }
+                    .padding(.bottom, 90.0)
                     
-                    Image(uiImage: profileViewModel.currentProfile.profilephoto ?? UIImage(named: "user")!)
-                        .resizable()
-                        .frame(width: 180, height: 180)
-                        .aspectRatio(contentMode: .fit)
-                        .clipShape(Circle())
-                        .offset(y: 115)
-                }
-                .padding(.bottom, 90.0)
+                }.padding(.top, 35)
                 
                 Text(profileViewModel.currentProfile.name)
                     .font(.title2)
@@ -190,22 +206,25 @@ struct Profile: View {
                     }
                 }
                 .padding([.leading, .bottom, .trailing])
-                .navigationTitle("Profile")
+//                .navigationTitle("Profile")
             }
+            .ignoresSafeArea()
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    HStack
-                    {
-                        Button(action: {}){
-                            NavigationLink(destination: Settings()){
-                                Image(systemName: "gear")
-                                
-                            }
-                        }
-                    }
-                }
-            }
+            .background(Color.black)
+            .foregroundColor(Color.white)
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    HStack
+//                    {
+//                        Button(action: {}){
+//                            NavigationLink(destination: Settings()){
+//                                Image(systemName: "gear")
+//
+//                            }
+//                        }
+//                    }
+//                }
+//            }
         }
     }
 }
@@ -230,6 +249,10 @@ struct CustomShape: Shape {
 }
 
 
-#Preview {
-    Profile()
+struct Profile_Previews: PreviewProvider {
+    static var previews: some View {
+        Profile()
+            .environmentObject(ProfileViewModel())
+            .environmentObject(UserViewModel())
+    }
 }

@@ -14,36 +14,41 @@ struct Search: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 0){
-                HStack {
-                    TextField("Search Hackathons", text: $searchText)
-                        .padding(8)
-                        .background(Color(.systemGray6))
+            ScrollView{
+                VStack(spacing: 0){
+                    HStack {
+                        TextField("Search Hackathons", text: $searchText)
+                            .padding(8)
+                            .background(Color(.systemGray6))
+                        
+                            .cornerRadius(8)
+                            .padding(.horizontal)
+                            .padding(.bottom)
+                    }.padding(.vertical, 10)
                     
-                        .cornerRadius(8)
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                }
-                
-                ScrollView {
-                    ForEach(hackathonViewModel.hackathons.filter {
-                        searchText.isEmpty || $0.name.localizedCaseInsensitiveContains(searchText)
-                    }) { hackathon in
-                        NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)) {
-                            HackathonItemView(hackathon: hackathon)
+                    ScrollView {
+                        ForEach(hackathonViewModel.hackathons.filter {
+                            searchText.isEmpty || $0.name.localizedCaseInsensitiveContains(searchText)
+                        }) { hackathon in
+                            NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)) {
+                                HackathonItemView(hackathon: hackathon)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            .padding(.bottom)
                         }
-                        .buttonStyle(PlainButtonStyle())
-                        .padding(.bottom)
+                    }.shadow(color: Color.gray.opacity(0.3), radius: 5, x: 4, y: 4)
+                        .padding(.horizontal)
+                }.background(Color.black)
+                    .foregroundColor(Color.white)
+                
+                    .onAppear {
+                        hackathonViewModel.fetchHackathons()
                     }
-                }
-                .padding(.horizontal)
             }
-            .navigationTitle("Search")
-            .onAppear {
-                hackathonViewModel.fetchHackathons()
-            }
+
+                .background(Color.black)
         }
-        .navigationBarHidden(true)
+
     }
 }
 
@@ -88,7 +93,7 @@ struct HackathonItemView: View {
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 0))
-            }
+            }.shadow(color: Color.gray.opacity(0.3), radius: 2, y: 1)
            
             HStack {
                 VStack(alignment: .leading) {
@@ -164,7 +169,8 @@ struct HackathonItemView: View {
             
         }
         .padding(.bottom)
-        .background(Color.white)
+        .background(Color.black)
+        .foregroundColor(Color.white)
         .cornerRadius(10)
         .shadow(color: Color.black.opacity(0.1), radius: 5, x: 3, y: 3)
         .padding(.horizontal)
@@ -179,3 +185,14 @@ struct HackathonItemView: View {
 //        .environmentObject(HackathonViewModel())
 //    }
 //}
+
+
+struct Search_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            Search()
+                .environmentObject(HackathonViewModel())
+                .environmentObject(TeamsViewModel())
+        }
+    }
+}
