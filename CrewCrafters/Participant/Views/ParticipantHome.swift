@@ -41,9 +41,9 @@ struct ParticipantHome: View {
                         ZStack
                         {
                             Circle()
-                                    .foregroundColor(Color.gray.opacity(0.5))
-                                    .frame(width: 36,height: 35)
-                                    .padding(.trailing, 2)
+                                .foregroundColor(Color.gray.opacity(0.5))
+                                .frame(width: 36,height: 35)
+                                .padding(.trailing, 2)
                             Button(action: {}){
                                 NavigationLink(destination: Notification()){
                                     Image(systemName: "bell.fill").resizable()
@@ -55,7 +55,7 @@ struct ParticipantHome: View {
                         
                     }
                     .padding(.bottom, 20)
-    
+                    
                     
                     ScrollView(.horizontal) {
                         HStack{
@@ -72,7 +72,7 @@ struct ParticipantHome: View {
                     .onAppear {
                         teamViewModel.fetchTeams(hackathonId: hackathonId)
                     }
-
+                    
                     Text("Upcoming Hackathons")
                         .font(.title)
                         .titleStyle()
@@ -92,7 +92,7 @@ struct ParticipantHome: View {
                     .onAppear {
                         hackathonViewModel.fetchHackathons()
                     }
-                                        
+                    
                     
                     Text("Applied Hackathon")
                         .font(.title)
@@ -100,7 +100,7 @@ struct ParticipantHome: View {
                     
                     ForEach(0..<2){_ in
                         VStack(alignment: .leading, spacing: 16) {
-                           
+                            
                             if let firstHackathon = hackathonViewModel.hackathons.first {
                                 NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: firstHackathon) ?? 0)) {
                                     ParticipantAppliedHomeHackathonView(hackathon: firstHackathon)
@@ -112,7 +112,7 @@ struct ParticipantHome: View {
                         .background(Color.black)
                         .foregroundColor(Color.white)
                         .cornerRadius(20)
-
+                        
                     }
                     .padding([.leading, .bottom, .trailing])
                 }.onAppear(){
@@ -179,7 +179,7 @@ struct TeamItemHomeView: View {
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.leading)
-               
+                
             }
         }.padding(.all, 10.0)
     }
@@ -191,86 +191,86 @@ struct ParticipantAppliedHomeHackathonView: View {
     @State private var teamCount: Int = 0
     @State private var teamPosters: [UIImage] = []
     var body: some View {
-    VStack(alignment: .leading, spacing: 7)  {
-        HStack{
-            Text(hackathon.name)
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                
-            Spacer()
-            VStack {
-                HStack(spacing: -10) {
-                    if !teamPosters.isEmpty {
-                        ForEach(teamPosters.prefix(3), id: \.self) { poster in
-                            Image(uiImage: poster)
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .clipShape(Circle())
-                        }
-                    }
-                }
-                .onAppear {
-                    teamViewModel.fetchTeamPosters(for: hackathon.id) { posters in
-                        teamPosters = posters
-                    }
-                }
-                Text("+ \(teamCount)00")
-                    .font(.caption)
-                    .onAppear {
-                        teamViewModel.fetchTeamCount(for: hackathon.id) { count in
-                            teamCount = count
-                        }
-                    }.padding(.leading,25)
-            }
-        }.padding()
-        
-        VStack(alignment: .leading){
-            Text("Themes")
-                .font(.callout)
-                .fontWeight(.semibold)
-                .foregroundColor(.gray)
-                
-            Text("No Restriction")
-                .font(.callout)
-                .fontWeight(.bold)
-                .foregroundColor(.gray)
-                
-        }.padding(.horizontal)
-        
-        HStack {
-            VStack(alignment: .leading) {
-                HStack {
-                    Image(systemName: "calendar")
-                        .font(.caption)
-                    Text("\(formatDate(from: hackathon.startDate)) - \(formatDate(from: hackathon.endDate))")
-                        .font(.callout)
-                }
-                HStack {
-                    Image(systemName: "location.fill")
-                        .font(.callout)
-                    
-                    Text("Chennai, India")
-                        .font(.caption)
-                }
-                .foregroundStyle(Color.white)
-            }
-            
-            Spacer()
+        VStack(alignment: .leading, spacing: 7)  {
             HStack{
-                NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)){
-                    Text("More Info")
-                        .foregroundColor(.white).padding(.all ,10)
-                }.background(Color.blue.opacity(0.4))
-                    .cornerRadius(8.0)
+                Text(hackathon.name)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
                 
+                Spacer()
+                VStack {
+                    HStack(spacing: -10) {
+                        if !teamPosters.isEmpty {
+                            ForEach(teamPosters.prefix(3), id: \.self) { poster in
+                                Image(uiImage: poster)
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .clipShape(Circle())
+                            }
+                        }
+                    }
+                    .onAppear {
+                        teamViewModel.fetchTeamPosters(for: hackathon.id) { posters in
+                            teamPosters = posters
+                        }
+                    }
+                    Text("+ \(teamCount)00")
+                        .font(.caption)
+                        .onAppear {
+                            teamViewModel.fetchTeamCount(for: hackathon.id) { count in
+                                teamCount = count
+                            }
+                        }.padding(.leading,25)
+                }
+            }.padding()
+            
+            VStack(alignment: .leading){
+                Text("Themes")
+                    .font(.callout)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.gray)
+                
+                Text("No Restriction")
+                    .font(.callout)
+                    .fontWeight(.bold)
+                    .foregroundColor(.gray)
+                
+            }.padding(.horizontal)
+            
+            HStack {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "calendar")
+                            .font(.caption)
+                        Text("\(formatDate(from: hackathon.startDate)) - \(formatDate(from: hackathon.endDate))")
+                            .font(.callout)
+                    }
+                    HStack {
+                        Image(systemName: "location.fill")
+                            .font(.callout)
+                        
+                        Text("Chennai, India")
+                            .font(.caption)
+                    }
+                    .foregroundStyle(Color.white)
+                }
+                
+                Spacer()
+                HStack{
+                    NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)){
+                        Text("More Info")
+                            .foregroundColor(.white).padding(.all ,10)
+                    }.background(Color.blue.opacity(0.4))
+                        .cornerRadius(8.0)
+                    
+                }
             }
+            .padding()
         }
-        .padding()
-    }
-    .background(Color.gray.opacity(0.4))
-    .cornerRadius(15)
-    .shadow(color: Color.blue.opacity(0.1), radius: 5, x: 3, y: 3)
+        .background(Color.gray.opacity(0.4))
+        .cornerRadius(15)
+        .shadow(color: Color.blue.opacity(0.1), radius: 5, x: 3, y: 3)
     }
 }
 
