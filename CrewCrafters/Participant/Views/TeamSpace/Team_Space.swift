@@ -107,4 +107,15 @@ struct TeamSpaceItemView: View {
 //    }
 //}
 
+struct Previews: PreviewProvider {
+    static var previews: some View {
+        let hackathonViewModel = HackathonViewModel() // Create an instance of your
+        let teamViewModel = TeamsViewModel()
+        NavigationView {
+            Team_Space(hackathonIndex: 0)
+                .environmentObject(hackathonViewModel)
+                .environmentObject(teamViewModel)
+        }
+    }
+}
 

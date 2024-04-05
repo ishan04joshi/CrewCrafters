@@ -99,16 +99,16 @@ struct HackathonItemView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         Image(systemName: "calendar")
-                            .font(.caption)
+                            .font(.callout)
                         Text("\(formatDate(from: hackathon.startDate)) - \(formatDate(from: hackathon.endDate))")
-                            .font(.caption)
+                            .font(.callout)
                     }
                     HStack {
                         Image(systemName: "location.fill")
-                            .font(.caption)
+                            .font(.callout)
                         
                         Text("Chennai, India")
-                            .font(.caption)
+                            .font(.callout)
                     }
                     .foregroundStyle(Color.gray)
                 }
@@ -135,7 +135,7 @@ struct HackathonItemView: View {
                             }
                         }
                         Text("\(teamCount)")
-                            .font(.caption)
+                            .font(.callout)
                             .onAppear {
                                 teamViewModel.fetchTeamCount(for: hackathon.id) { count in
                                     teamCount = count
@@ -154,7 +154,7 @@ struct HackathonItemView: View {
                         .foregroundColor(.blue)
                 }
                 .buttonStyle(.bordered)
-                .tint(.blue)
+                .tint(.gray)
                 Spacer()
                 Spacer()
                 NavigationLink(destination: Team_create(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)){
@@ -162,29 +162,21 @@ struct HackathonItemView: View {
                         .foregroundColor(.blue)
                 }
                 .buttonStyle(.bordered)
-                .tint(.blue)
+                .tint(.gray)
                 Spacer()
                 Spacer()
             }
             
         }
         .padding(.bottom)
-        .background(Color.black)
+        .background(Color.blue.opacity(0.1))
         .foregroundColor(Color.white)
         .cornerRadius(10)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 3, y: 3)
+        .shadow(color: Color.black.opacity(0.3), radius: 5, x: 3, y: 3)
         .padding(.horizontal)
     }
 }
 
-//struct Organizer_Create_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            Search()
-//        }
-//        .environmentObject(HackathonViewModel())
-//    }
-//}
 
 
 struct Search_Previews: PreviewProvider {
