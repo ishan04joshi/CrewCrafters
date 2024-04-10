@@ -3,6 +3,7 @@ import SwiftUI
 import FirebaseFirestore
 
 class ProfileViewModel: ObservableObject {
+    @Published var profiles: [ProfileM] = []
     @Published var currentProfile: ProfileM = ProfileM(
         profilephotoData: nil,
         name: "",

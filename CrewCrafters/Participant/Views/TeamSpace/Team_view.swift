@@ -77,7 +77,7 @@ struct Team_view: View {
             }
             ZStack{
                 
-                NavigationLink(destination: chat(teamIndex: 2)) {
+                NavigationLink(destination: ChatView(teamIndex: 2)) {
                     HStack {
                         Text("Group Chat")
                             .foregroundColor(.blue)
