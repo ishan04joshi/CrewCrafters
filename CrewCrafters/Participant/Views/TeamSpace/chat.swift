@@ -56,7 +56,7 @@ struct ChatView: View {
         
         // Ensure the collection name doesn't contain invalid characters
         let teamName = teamViewModel.teams[teamIndex].name.replacingOccurrences(of: "/", with: "_")
-        let collectionPath = "messages/\(teamViewModel.teams[teamIndex].admin_id)/\(teamName)"
+        let collectionPath = "messages/\(teamViewModel.teams[teamIndex].admin_id)/\(teamViewModel.teams[teamIndex].name)"
         
         // Check if the collection exists
         db.collection(collectionPath).document("dummy").getDocument { snapshot, error in
@@ -111,7 +111,7 @@ struct ChatView: View {
         
         // Ensure the collection name doesn't contain invalid characters
         let teamName = teamViewModel.teams[teamIndex].name.replacingOccurrences(of: "/", with: "_")
-        let collectionPath = "messages/\(teamViewModel.teams[teamIndex].admin_id)/\(teamName)"
+        let collectionPath = "messages/\(teamViewModel.teams[teamIndex].admin_id)/\(teamViewModel.teams[teamIndex].name)"
         
         db.collection(collectionPath).addDocument(data: [
             "message": messageText,
