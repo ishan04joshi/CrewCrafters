@@ -2,11 +2,13 @@ import SwiftUI
 import Firebase
 import Foundation
 import FirebaseFirestore
+import FirebaseStorage
+
 
 class HackathonViewModel: ObservableObject {
     @Published var hackathons: [Hackathon] = []
     @Published var currentHackathon: Hackathon = Hackathon(
-            hackathonPosterData: nil,
+            posterURL: nil,
             name: "",
             about: "",
             mode: "",
@@ -47,19 +49,49 @@ class HackathonViewModel: ObservableObject {
         }
     }
     
-    func addNewHackathon(_ hackathon: Hackathon, completion: @escaping () -> Void) {
-        do {
-            try db.collection("hackathons").addDocument(from: hackathon) { error in
-                if let error = error {
+    func addNewHackathon(_ hackathon: Hackathon, posterImage: UIImage, completion: @escaping () -> Void) {
+        // Convert UIImage to Data
+        guard let imageData = posterImage.jpegData(compressionQuality: 0.1) else {
+            print("Failed to convert image to data")
+            return
+        }
+        
+        // Reference to Firebase Storage
+        let storageRef = Storage.storage().reference().child("hackathonPosters").child(UUID().uuidString)
+        
+        // Upload image data to Firebase Storage
+        storageRef.putData(imageData, metadata: nil) { (metadata, error) in
+            if let error = error {
+                print("Error uploading image: \(error.localizedDescription)")
+                return
+            }
+            
+            // Retrieve the download URL of the uploaded image
+            storageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    print("Error getting download URL: \(error?.localizedDescription ?? "")")
+                    return
+                }
+                
+                // Update the posterURL property of the hackathon object
+                var newHackathon = hackathon
+                newHackathon.posterURL = downloadURL.absoluteString
+                
+                // Add the modified hackathon object to Firestore
+                do {
+                    try self.db.collection("hackathons").addDocument(from: newHackathon) { error in
+                        if let error = error {
+                            print("Error writing document: \(error)")
+                        } else {
+                            print("Document successfully written!")
+                            self.fetchHackathons()
+                            completion()
+                        }
+                    }
+                } catch {
                     print("Error writing document: \(error)")
-                } else {
-                    print("Document successfully written!")
-                    self.fetchHackathons()
-                    completion()
                 }
             }
-        } catch {
-            print("Error writing document: \(error)")
         }
     }
     

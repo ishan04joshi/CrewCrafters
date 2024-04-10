@@ -55,38 +55,59 @@ struct HackathonView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 7)  {
             ZStack(alignment: .bottomLeading) {
-                Image(uiImage: hackathon.hackathonPoster ?? UIImage(named: "default_hackathon_poster")!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 340.0, height: 200.0)
-                    .clipShape(
-                        .rect(
-                            topLeadingRadius: 10,
-                            bottomLeadingRadius: 0,
-                            bottomTrailingRadius: 0,
-                            topTrailingRadius: 10
-                        )
-                    )
-                    .overlay(
-                        LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
-                            .frame(width: 340.0, height: 200.0)
-                            .clipShape(
-                                .rect(
-                                    topLeadingRadius: 10,
-                                    bottomLeadingRadius: 0,
-                                    bottomTrailingRadius: 0,
-                                    topTrailingRadius: 10
+                if let posterURL = hackathon.posterURL {
+                    AsyncImage(url: URL(string: posterURL)) { phase in
+                        switch phase {
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 340.0, height: 200.0)
+                                .clipShape(
+                                    RoundedRectangle(cornerRadius: 10)
                                 )
-                            )
-                            .padding(.bottom, 0)
-                    )
+                                .overlay(
+                                    LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+                                        .frame(width: 340.0, height: 200.0)
+                                        .clipShape(
+                                            RoundedRectangle(cornerRadius: 10)
+                                        )
+                                        .padding(.bottom, 0)
+                                )
+                        default:
+                            ProgressView()
+                                .frame(width: 340.0, height: 200.0)
+                                .clipShape(
+                                    RoundedRectangle(cornerRadius: 10)
+                                )
+                                .padding(.bottom, 0)
+                        }
+                    }
+                } else {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 340.0, height: 200.0)
+                        .foregroundColor(.gray)
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 10)
+                        )
+                        .overlay(
+                            LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+                                .frame(width: 340.0, height: 200.0)
+                                .clipShape(
+                                    RoundedRectangle(cornerRadius: 10)
+                                )
+                                .padding(.bottom, 0)
+                        )
+                }
                 
                 Text(hackathon.name)
                     .font(.title3)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 0))
-            }
+            }.shadow(color: Color.gray.opacity(0.3), radius: 2, y: 1)
            
             HStack {
                 VStack(alignment: .leading) {
@@ -139,17 +160,19 @@ struct HackathonView: View {
             }
             .padding(.trailing)
             
+            
         }
         .padding(.bottom)
-        .background(Color.white)
+        .background(Color.black)
+        .foregroundColor(Color.white)
         .cornerRadius(10)
         .shadow(color: Color.black.opacity(0.1), radius: 5, x: 3, y: 3)
         .padding(.horizontal)
         .background(
-            NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)) {
-                EmptyView()
-            }.opacity(0)
-        )
+                    NavigationLink(destination: Hack_Land(hackathonIndex: hackathonViewModel.hackathons.firstIndex(of: hackathon) ?? 0)) {
+                        EmptyView()
+                    }.opacity(0)
+                )
     }
 }
 

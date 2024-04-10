@@ -62,31 +62,52 @@ struct HackathonItemView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 7)  {
             ZStack(alignment: .bottomLeading) {
-                Image(uiImage: hackathon.hackathonPoster ?? UIImage(named: "default_hackathon_poster")!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 340.0, height: 200.0)
-                    .clipShape(
-                        .rect(
-                            topLeadingRadius: 10,
-                            bottomLeadingRadius: 0,
-                            bottomTrailingRadius: 0,
-                            topTrailingRadius: 10
-                        )
-                    )
-                    .overlay(
-                        LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
-                            .frame(width: 340.0, height: 200.0)
-                            .clipShape(
-                                .rect(
-                                    topLeadingRadius: 10,
-                                    bottomLeadingRadius: 0,
-                                    bottomTrailingRadius: 0,
-                                    topTrailingRadius: 10
+                if let posterURL = hackathon.posterURL {
+                    AsyncImage(url: URL(string: posterURL)) { phase in
+                        switch phase {
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 340.0, height: 200.0)
+                                .clipShape(
+                                    RoundedRectangle(cornerRadius: 10)
                                 )
-                            )
-                            .padding(.bottom, 0)
-                    )
+                                .overlay(
+                                    LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+                                        .frame(width: 340.0, height: 200.0)
+                                        .clipShape(
+                                            RoundedRectangle(cornerRadius: 10)
+                                        )
+                                        .padding(.bottom, 0)
+                                )
+                        default:
+                            ProgressView()
+                                .frame(width: 340.0, height: 200.0)
+                                .clipShape(
+                                    RoundedRectangle(cornerRadius: 10)
+                                )
+                                .padding(.bottom, 0)
+                        }
+                    }
+                } else {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 340.0, height: 200.0)
+                        .foregroundColor(.gray)
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 10)
+                        )
+                        .overlay(
+                            LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+                                .frame(width: 340.0, height: 200.0)
+                                .clipShape(
+                                    RoundedRectangle(cornerRadius: 10)
+                                )
+                                .padding(.bottom, 0)
+                        )
+                }
                 
                 Text(hackathon.name)
                     .font(.title3)
@@ -176,6 +197,7 @@ struct HackathonItemView: View {
         .padding(.horizontal)
     }
 }
+
 
 //struct Organizer_Create_Previews: PreviewProvider {
 //    static var previews: some View {

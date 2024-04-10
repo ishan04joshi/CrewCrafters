@@ -184,24 +184,41 @@ struct ParticipantHomeHackathonView: View {
     
     var body: some View {
         ZStack(alignment: .bottomLeading){
-            Image(uiImage: hackathon.hackathonPoster ?? UIImage(named: "default_hackathon_poster")!)
-                .resizable()
-                .frame(width: 250, height: 150)
-                .aspectRatio(contentMode: .fit)
-                .cornerRadius(15)
-                .overlay(
-                    LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
-                        .frame(width: 250.0, height: 150.0)
-                        .clipShape(
-                            .rect(
-                                topLeadingRadius: 10,
-                                bottomLeadingRadius: 8,
-                                bottomTrailingRadius: 8,
-                                topTrailingRadius: 10
+            if let posterURL = hackathon.posterURL {
+                AsyncImage(url: URL(string: posterURL)) { phase in
+                    switch phase {
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 250, height: 150)
+                            .cornerRadius(15)
+                            .overlay(
+                                LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+                                    .frame(width: 250.0, height: 150.0)
+                                    .clipShape(
+                                        RoundedRectangle(cornerRadius: 10)
+                                    )
+                                    .padding(.bottom, 0)
                             )
-                        )
-                        .padding(.bottom, 0)
-                )
+                    default:
+                        ProgressView()
+                    }
+                }
+            } else {
+                Image(uiImage: UIImage(named: "default_hackathon_poster")!)
+                    .resizable()
+                    .frame(width: 250, height: 150)
+                    .cornerRadius(15)
+                    .overlay(
+                        LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+                            .frame(width: 250.0, height: 150.0)
+                            .clipShape(
+                                RoundedRectangle(cornerRadius: 10)
+                            )
+                            .padding(.bottom, 0)
+                    )
+            }
             Text(hackathon.name)
                 .font(.title3)
                 .fontWeight(.bold)
@@ -238,71 +255,87 @@ struct ParticipantAppliedHomeHackathonView: View {
     let hackathon: Hackathon
     
     var body: some View {
-    VStack(alignment: .leading, spacing: 7)  {
-        ZStack(alignment: .bottomLeading) {
-            Image(uiImage: hackathon.hackathonPoster ?? UIImage(named: "default_hackathon_poster")!)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 340.0, height: 200.0)
-                .clipShape(
-                    .rect(
-                        topLeadingRadius: 10,
-                        bottomLeadingRadius: 0,
-                        bottomTrailingRadius: 0,
-                        topTrailingRadius: 10
-                    )
-                )
-                .overlay(
-                    LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+        VStack(alignment: .leading, spacing: 7)  {
+            ZStack(alignment: .bottomLeading) {
+                if let posterURL = hackathon.posterURL {
+                    AsyncImage(url: URL(string: posterURL)) { phase in
+                        switch phase {
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 340.0, height: 200.0)
+                                .clipShape(
+                                    RoundedRectangle(cornerRadius: 10)
+                                )
+                                .overlay(
+                                    LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+                                        .frame(width: 340.0, height: 200.0)
+                                        .clipShape(
+                                            RoundedRectangle(cornerRadius: 10)
+                                        )
+                                        .padding(.bottom, 0)
+                                )
+                        default:
+                            ProgressView()
+                        }
+                    }
+                } else {
+                    Image(uiImage: UIImage(named: "default_hackathon_poster")!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
                         .frame(width: 340.0, height: 200.0)
                         .clipShape(
-                            .rect(
-                                topLeadingRadius: 10,
-                                bottomLeadingRadius: 0,
-                                bottomTrailingRadius: 0,
-                                topTrailingRadius: 10
-                            )
+                            RoundedRectangle(cornerRadius: 10)
                         )
-                        .padding(.bottom, 0)
-                )
-            
-            Text(hackathon.name)
-                .font(.title3)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 0))
-        }
-        
-        HStack {
-            VStack(alignment: .leading) {
-                HStack {
-                    Image(systemName: "calendar")
-                        .font(.caption)
-                    Text("\(formatDate(from: hackathon.startDate)) - \(formatDate(from: hackathon.endDate))")
-                        .font(.caption)
+                        .overlay(
+                            LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+                                .frame(width: 340.0, height: 200.0)
+                                .clipShape(
+                                    RoundedRectangle(cornerRadius: 10)
+                                )
+                                .padding(.bottom, 0)
+                        )
                 }
-                HStack {
-                    Image(systemName: "location.fill")
-                        .font(.caption)
-                    
-                    Text("Chennai, India")
-                        .font(.caption)
-                }
-                .foregroundStyle(Color.white)
+                
+                Text(hackathon.name)
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 0))
             }
-            .padding(.leading)
             
-            Spacer()
+            HStack {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "calendar")
+                            .font(.caption)
+                        Text("\(formatDate(from: hackathon.startDate)) - \(formatDate(from: hackathon.endDate))")
+                            .font(.caption)
+                    }
+                    HStack {
+                        Image(systemName: "location.fill")
+                            .font(.caption)
+                        
+                        Text("Chennai, India")
+                            .font(.caption)
+                    }
+                    .foregroundStyle(Color.white)
+                }
+                .padding(.leading)
+                
+                Spacer()
+            }
+            .padding(.trailing)
         }
-        .padding(.trailing)
-    }
-    .padding(.bottom)
-    .background(Color.gray)
-    .cornerRadius(10)
-    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 3, y: 3)
-    .padding(.horizontal)
+        .padding(.bottom)
+        .background(Color.gray)
+        .cornerRadius(10)
+        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 3, y: 3)
+        .padding(.horizontal)
     }
 }
+
 
 
 struct ParticipantHome_Previews: PreviewProvider {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+// Import SDWebImageSwiftUI for async image loading
 
 struct Hack_Land: View {
     let hackathonIndex: Int
@@ -19,12 +20,30 @@ struct Hack_Land: View {
             ScrollView{
                 VStack(alignment: .leading) {
                     
-                    Image(uiImage: hackathon.hackathonPoster ?? UIImage(named: "default_hackathon_poster")!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 350, height: 200)
-                        .cornerRadius(20.0)
-                        .padding([.leading, .bottom, .trailing])
+                    if let posterURL = hackathon.posterURL {
+                        AsyncImage(url: URL(string: posterURL)) { phase in
+                            switch phase {
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 350, height: 200)
+                                    .cornerRadius(20.0)
+                                    .padding([.leading, .bottom, .trailing])
+                            default:
+                                ProgressView()
+                                    .frame(width: 50, height: 50)
+                                    .padding([.leading, .bottom, .trailing])
+                            }
+                        }
+                    } else {
+                        Image(uiImage: UIImage(named: "default_hackathon_poster")!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 350, height: 200)
+                            .cornerRadius(20.0)
+                            .padding([.leading, .bottom, .trailing])
+                    }
                     
                     if userViewModel.userRole == "Participant"{
                         HStack{
@@ -165,12 +184,3 @@ struct PrizeView: View {
         }
     }
 }
-
-//struct HackLand_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            Hack_Land(hackathonIndex: 0)
-//        }
-//        .environmentObject(HackathonViewModel())
-//    }
-//}

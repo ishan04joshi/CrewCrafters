@@ -54,6 +54,8 @@
 		7F3B79E62B24E4E4008E03C8 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */; };
 		7F3FD46D2B5697F2000C43EB /* Admin_Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FD46C2B5697F2000C43EB /* Admin_Home.swift */; };
 		7F3FD46F2B5699DC000C43EB /* Admin_Approved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FD46E2B5699DC000C43EB /* Admin_Approved.swift */; };
+		7F68526E2BBFC1EC009B54A2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7F68526D2BBFC1EC009B54A2 /* FirebaseStorage */; };
+		7F6852702BBFC78D009B54A2 /* img.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F68526F2BBFC78D009B54A2 /* img.swift */; };
 		7FD6E0B92B59AC0100818D83 /* Apply_form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD6E0B82B59AC0100818D83 /* Apply_form.swift */; };
 		7FEAB1AC2B871ADB00A692AC /* TeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEAB1AB2B871ADB00A692AC /* TeamsViewModel.swift */; };
 		7FEAB1AE2B871AF500A692AC /* TeamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEAB1AD2B871AF500A692AC /* TeamsModel.swift */; };
@@ -127,6 +129,7 @@
 		7F3B79E52B24E4E4008E03C8 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
 		7F3FD46C2B5697F2000C43EB /* Admin_Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin_Home.swift; sourceTree = "<group>"; };
 		7F3FD46E2B5699DC000C43EB /* Admin_Approved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin_Approved.swift; sourceTree = "<group>"; };
+		7F68526F2BBFC78D009B54A2 /* img.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = img.swift; sourceTree = "<group>"; };
 		7FD6E0B82B59AC0100818D83 /* Apply_form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apply_form.swift; sourceTree = "<group>"; };
 		7FEAB1AB2B871ADB00A692AC /* TeamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewModel.swift; sourceTree = "<group>"; };
 		7FEAB1AD2B871AF500A692AC /* TeamsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsModel.swift; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 				93433A912B761C4100B79C58 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				93433A8F2B761C4100B79C58 /* FirebaseAnalyticsSwift in Frameworks */,
 				93433A992B761C7500B79C58 /* FirebaseAnalyticsSwift in Frameworks */,
+				7F68526E2BBFC1EC009B54A2 /* FirebaseStorage in Frameworks */,
 				93433AA42B76260700B79C58 /* FirebaseAuth in Frameworks */,
 				93433A8D2B761C4100B79C58 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				93433A812B761BC500B79C58 /* FirebaseAnalytics in Frameworks */,
@@ -323,6 +327,7 @@
 				1FCC7F3F2B402EAE00D66078 /* Notification.swift */,
 				1F377BE72B55B0AC00424028 /* ImagePicker.swift */,
 				2BBEE6F22B92173D00328FF1 /* Profile_Create.swift */,
+				7F68526F2BBFC78D009B54A2 /* img.swift */,
 			);
 			path = " Views";
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 				93433A9C2B761C7500B79C58 /* FirebaseAppCheck */,
 				93433AA12B7625EC00B79C58 /* FirebaseFirestore */,
 				93433AA32B76260700B79C58 /* FirebaseAuth */,
+				7F68526D2BBFC1EC009B54A2 /* FirebaseStorage */,
 			);
 			productName = CrewCrafters;
 			productReference = 7F27AF562B2379B000827166 /* CrewCrafters.app */;
@@ -476,6 +482,7 @@
 				1F4D23232B2E21A9003B5EC7 /* LeaderboardModel.swift in Sources */,
 				1FBA16372B3F09D30064829C /* Onboarding.swift in Sources */,
 				1F4D231D2B2DC2BD003B5EC7 /* TextStyles.swift in Sources */,
+				7F6852702BBFC78D009B54A2 /* img.swift in Sources */,
 				7F3B79E02B24E01A008E03C8 /* Settings.swift in Sources */,
 				8414FAA72BB4B2F900DBB3BA /* chat.swift in Sources */,
 				2B4D8A2E2B95A3840050FC65 /* Applications.swift in Sources */,
@@ -735,6 +742,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1FA3910A2B3C35B70094D805 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		7F68526D2BBFC1EC009B54A2 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93433A7F2B761BC500B79C58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 		93433A802B761BC500B79C58 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -39,7 +39,7 @@ struct Hackathon: Identifiable, Equatable, Codable {
     }
     
     var id : String = ""
-    var hackathonPosterData: Data?
+    var posterURL: String?
     var name: String
     var about: String
     var mode: String
@@ -52,15 +52,15 @@ struct Hackathon: Identifiable, Equatable, Codable {
     var prize: [String]
     var status: Bool
     
-    var hackathonPoster: UIImage? {
-        get {
-            guard let data = hackathonPosterData else { return nil }
-            return UIImage(data: data)
-        }
-        set {
-            hackathonPosterData = newValue?.jpegData(compressionQuality: 0.1)
-        }
-    }
+//    var hackathonPoster: UIImage? {
+//        get {
+//            guard let data = hackathonPosterData else { return nil }
+//            return UIImage(data: data)
+//        }
+//        set {
+//            hackathonPosterData = newValue?.jpegData(compressionQuality: 0.1)
+//        }
+//    }
     
     var partners: [UIImage] {
         get {
